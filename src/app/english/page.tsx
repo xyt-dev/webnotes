@@ -25,6 +25,16 @@ export default function EnglishPage() {
             Instead, the company has done precisely what it had long promised it would not: challenge the constitutionality of Vermont's
           rules in the federal court, as part of an effort to keep its Vermont nuclear power plant running. It's a stunning move.
         </Para>
+
+        <Title3>Text3</Title3>
+        <Para>
+            In spite of "endless talk of difference," American society is an amazing machine for homogenizing people. There is "the democratizing
+          uniformity of dress and discourse, and the casualness and absence of difference" characteristic of popular culture. People are obsorbed
+          into "a culture of consumption" launched by the 19th-century department stores that offered "vast arrays of goods in an elegent atmosphere.
+          Instead of intimate stores catering to a knowledgeable elite," these were stores "anyone could enter, regardless of class or background.
+          This turned shopping into a public and democratic act." The mass media, advertising and sports are other forces for homogenization.
+
+        </Para>
       </TextBox>
 
     </div>
