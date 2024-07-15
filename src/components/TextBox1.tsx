@@ -2,7 +2,7 @@ import { ReactNode } from "react"
 import {/*  merienda, */ kalam /* , noto_sans_jp */, zen_maru_gothic,  } from "@/fonts/fonts"
 import './font.css'
 
-export function Title1({children}: {children: ReactNode}) {
+export function Title1({children}: {children?: ReactNode}) {
   return (
     <div className="w-[100%] text-center font-bold text-[1.8rem] underline underline-offset-8 mb-6">
       {children}
@@ -10,25 +10,25 @@ export function Title1({children}: {children: ReactNode}) {
   )
 }
 
-export function Title2({children}: {children: ReactNode}) {
+export function Title2({children}: {children?: ReactNode}) {
   return (
-    <div className="w-[100%] text-center font-bold text-[1.3rem] mb-2">
+    <div className="w-[100%] text-center font-bold text-[1.3rem] mb-3">
       {children}
     </div>
   )
 }
 
-export function Title3({children}: {children: ReactNode}) {
+export function Title3({children}: {children?: ReactNode}) {
   return (
-    <div className="w-[100%] text font-bold text-[1rem]">
+    <div className="w-[100%] text font-bold text-[1.1rem] mb-1">
       {children}
     </div>
   )
 }
 
-export function Paragraph({children}: {children: ReactNode}) {
+export function Paragraph({children}: {children?: ReactNode}) {
   return (
-    <span>&nbsp;&nbsp;{children}</span>
+    <span className="block mb-1">&nbsp;&nbsp;{children}</span>
   )
 }
 
