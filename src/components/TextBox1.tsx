@@ -10,9 +10,15 @@ function Title({children}: {children: ReactNode}) {
   )
 }
 
+export function Paragraph({children}: {children: ReactNode}) {
+  return (
+    <span>&nbsp;&nbsp;{children}</span>
+  )
+}
+
 export default function TextBox1({children, title}: {children?: ReactNode, title?: ReactNode}) {
   return (
-    <div className={`p-5 border-[1px] shadow-custom bg-neutral-200/10 text-blue-800 ${kalam.className} ${zen_maru_gothic.className} Kalam_Zen_maru_gothic`}>
+    <div className={`p-5 border-[1px] shadow-custom bg-neutral-200/10 text-blue-800 max-w-[800px] mx-auto ${kalam.className} ${zen_maru_gothic.className} Kalam_Zen_maru_gothic`}>
       <Title>{title}</Title>
       {children}
     </div>
