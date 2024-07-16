@@ -1,8 +1,9 @@
 import TextBox from "@/components/TextBox1"
-import { Paragraph as Para, Title1, Title2, Title3 } from "@/components/TextBox1"
+import { Paragraph as Para, Title1, Title2, Title3, Bold as b } from "@/components/TextBox1"
+
 export default function EnglishPage() {
   return (
-    <div className={`w-[320px] sm:w-[50%] mx-auto  text-blue-800`}>
+    <div className={`w-[100%] mx-auto text-blue-800`}>
       
       <TextBox>
         <Title1><span className="text-pink-600 underline">阅读的逻辑</span></Title1>
@@ -46,7 +47,25 @@ export default function EnglishPage() {
         
         <Title3>Text1</Title3>
         <Para>
-            
+            Of all the changes that have taken place in English-language newspapers during the past quarter-century, perhaps the most far-reaching
+          has been the inexorable decline in the scope and seriousness of their arts coverage.
+        </Para>
+        <Para>
+            It is difficult to the point of impossibility for the average reader under the age of forty to imagine a time when high-quality arts
+          criticism could be found in most big-city newspapers. Yet a considerable number of the most significant collections of criticism published
+          in the 20th century <b>consisted</b> in large part <b>of</b> newspaper reviews. To read such books today is to marvel at the fact that their
+          learned contents were once deemed suitable for publication in general-circulation dailies.
+        </Para>
+
+        <Title3>Text2</Title3>
+        <Para>
+            Though often viewed as a problem for western states, the growing frequency of wildfire is a national concern because of its impact on 
+          federal tax dollars, says Professor Moritz, a specialist in fire ecology and management.
+        </Para>
+        <Para>
+            In 2015, the US Forest Service for the first time spent more than half of its $5.5 billion annual budget fighting fires--nearly double
+          the percentage it spent on such efforts 20 years ago. In effect, fewer federal funds today are going towards the agency's other work--such as
+          forest conservation, watershed and cultural resources management, and infrastructure upkeep.
         </Para>
           
       </TextBox>
