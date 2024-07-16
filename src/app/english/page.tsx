@@ -2,7 +2,7 @@ import TextBox from "@/components/TextBox1"
 import { Paragraph as Para, Title1, Title2, Title3 } from "@/components/TextBox1"
 export default function EnglishPage() {
   return (
-    <div className={`w-[320px] sm:w-[50%] mx-auto`}>
+    <div className={`w-[320px] sm:w-[50%] mx-auto  text-blue-800`}>
       
       <TextBox>
         <Title1><span className="text-pink-600 underline">阅读的逻辑</span></Title1>
@@ -33,8 +33,22 @@ export default function EnglishPage() {
           into "a culture of consumption" launched by the 19th-century department stores that offered "vast arrays of goods in an elegent atmosphere.
           Instead of intimate stores catering to a knowledgeable elite," these were stores "anyone could enter, regardless of class or background.
           This turned shopping into a public and democratic act." The mass media, advertising and sports are other forces for homogenization.
-
         </Para>
+
+        <Title3>Text4</Title3>
+        <Para>
+            In a rare unanimous ruling, the US Supreme Court has overturned the corruption conviction of a former Virginia governor. But it did so
+            while holding its nose at the ethics of his conduct, which included accepting gifts such as a Rolex watch and a Ferrari automobile from
+            a company seeking access to government.
+        </Para>
+
+        <Title2>段间逻辑</Title2>
+        
+        <Title3>Text1</Title3>
+        <Para>
+            
+        </Para>
+          
       </TextBox>
 
     </div>

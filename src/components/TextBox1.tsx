@@ -12,7 +12,7 @@ export function Title1({children}: {children?: ReactNode}) {
 
 export function Title2({children}: {children?: ReactNode}) {
   return (
-    <div className="w-[100%] text-center font-bold text-[1.3rem] mb-3">
+    <div className="w-[100%] text-center font-bold text-[1.3rem] mb-3 mt-3">
       {children}
     </div>
   )
@@ -34,7 +34,7 @@ export function Paragraph({children}: {children?: ReactNode}) {
 
 export default function TextBox1({children}: {children?: ReactNode}) {
   return (
-    <div className={`p-6 border-[1px] shadow-custom bg-neutral-200/10 text-blue-800 max-w-[800px] mx-auto ${kalam.className} ${zen_maru_gothic.className} Kalam_Zen_maru_gothic`}>
+    <div className={`p-6 border-[1px] shadow-custom bg-neutral-200/10 max-w-[800px] mx-auto ${kalam.className} ${zen_maru_gothic.className} Kalam_Zen_maru_gothic`}>
       {children}
     </div>
   )
