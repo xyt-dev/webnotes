@@ -67,7 +67,28 @@ export default function EnglishPage() {
           the percentage it spent on such efforts 20 years ago. In effect, fewer federal funds today are going towards the agency's other work--such as
           forest conservation, watershed and cultural resources management, and infrastructure upkeep.
         </Para>
-          
+
+        <Title3>Text3</Title3>
+        <Para>
+            Many Americans regard the jury as a concrete expression of curcial democratic values, including the principles that all citizens who meet
+          minimal qualifications of age and literacy are equally competent to serve on juries; that jurors should be selected randomly from a representative 
+          cross section of the community; that no citizen should be denied the right to serve on a jury on account of race, religion, sex, or national origin;
+          that defendants are entitled to trail by their peers; and that verdicts should represent the conscience of the community and not just the letter of
+          the law. The jury is also said to be the best surviving example of direct rather than representative democracy. In a direct democracy, citizens take
+          turns to govern themselves, rather than electing representatives to govern for them.
+        </Para>
+        <Para>
+            But as recently as in 1968, jury selection conflicted with these democratic ideals. In some states, for example, jury duty was limited to persons
+          of supposedly superior intelligence, education, and moral character. Although the Supreme Court of US had prohibited intentional racial discrimination
+          in jury selection as early as 1880 case of Western Virginia, the practice of selecting so-called elite or blue-ribben juries provided a convenient
+          way around this and other antidiscrimination laws.
+        </Para>
+        <Para>
+            The system also failed to regularly include women on juries until the mid-20th century. Although women first served on state juries in Utah in 1898,
+          it was not until the 1940s that a majority of states made women eligible for jury duty. Even then several states automatically exempted women from jury
+          duty unless they personally asked to have their names included on the jury list. This practice was justified by the claim that women were needed at home,
+          and it kept juries unrepresentative of women through the 1960s.
+        </Para>
       </TextBox>
 
     </div>

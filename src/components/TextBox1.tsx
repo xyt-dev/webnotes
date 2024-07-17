@@ -26,9 +26,14 @@ export function Title3({children}: {children?: ReactNode}) {
   )
 }
 
-export function Paragraph({children}: {children?: ReactNode}) {
+export function Paragraph({children, noIndent}: {children?: ReactNode, noIndent?: boolean}) {
+  function indent() {
+    if (!noIndent) {
+      return (<span>&nbsp;&nbsp;</span>)
+    }
+  }
   return (
-    <span className="block pb-1">&nbsp;&nbsp;{children}</span>
+    <span className="inline-block">{indent()}{children}</span>
   )
 }
 
