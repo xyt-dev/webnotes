@@ -33,7 +33,7 @@ export function Paragraph({children, noIndent}: {children?: ReactNode, noIndent?
     }
   }
   return (
-    <span className="inline-block">{indent()}{children}</span>
+    <span className="inline-block pb-1">{indent()}{children}</span>
   )
 }
 

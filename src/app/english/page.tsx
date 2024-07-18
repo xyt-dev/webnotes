@@ -89,6 +89,17 @@ export default function EnglishPage() {
           duty unless they personally asked to have their names included on the jury list. This practice was justified by the claim that women were needed at home,
           and it kept juries unrepresentative of women through the 1960s.
         </Para>
+
+        <Title3>Text4</Title3>
+        <Para>
+            Over the past decade, thousands of patents have been granted for what are called business methods. Amazon.com received one for its "one-click" online
+          payment system. Merrill Lynch got legal protection for an assets allocation strategy. One inventor patented a technique for lifting a box.
+        </Para>
+        <Para>
+            Now the nation's top patent court appears completely ready to scale back on business-method patents, which have been controversial ever since they
+          were first authorized 10 years ago. In a move that has intellectual-property lawyers abuzz, the U.S Court of Appeal said it would use a particular case
+          to conduct a broad review of business-method patents.
+        </Para>
       </TextBox>
 
     </div>
