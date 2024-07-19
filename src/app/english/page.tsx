@@ -1,5 +1,5 @@
 import TextBox from "@/components/TextBox1"
-import { Paragraph as Para, Title1, Title2, Title3, Bold as b } from "@/components/TextBox1"
+import { Paragraph as Para, Title1, Title2, Title3, Bold as B } from "@/components/TextBox1"
 
 export default function EnglishPage() {
   return (
@@ -53,7 +53,7 @@ export default function EnglishPage() {
         <Para>
             It is difficult to the point of impossibility for the average reader under the age of forty to imagine a time when high-quality arts
           criticism could be found in most big-city newspapers. Yet a considerable number of the most significant collections of criticism published
-          in the 20th century <b>consisted</b> in large part <b>of</b> newspaper reviews. To read such books today is to marvel at the fact that their
+          in the 20th century <B>consisted</B> in large part <B>of</B> newspaper reviews. To read such books today is to marvel at the fact that their
           learned contents were once deemed suitable for publication in general-circulation dailies.
         </Para>
 
