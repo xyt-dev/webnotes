@@ -8,8 +8,6 @@ export default function EnglishPage() {
       <TextBox>
         <Title1><span className="text-pink-600 underline">阅读的逻辑</span></Title1>
 
-        <Title2>句间逻辑</Title2>
-
         <Title3>Text1</Title3>
         <Para>
             In the weeks and months that followed Mr. Hrist's sale, spending of any sort became deeply unfashinable. In the art
@@ -43,9 +41,7 @@ export default function EnglishPage() {
             a company seeking access to government.
         </Para>
 
-        <Title2>段间逻辑</Title2>
-        
-        <Title3>Text1</Title3>
+        <Title3>Text5</Title3>
         <Para>
             Of all the changes that have taken place in English-language newspapers during the past quarter-century, perhaps the most far-reaching
           has been the inexorable decline in the scope and seriousness of their arts coverage.
@@ -57,7 +53,7 @@ export default function EnglishPage() {
           learned contents were once deemed suitable for publication in general-circulation dailies.
         </Para>
 
-        <Title3>Text2</Title3>
+        <Title3>Text6</Title3>
         <Para>
             Though often viewed as a problem for western states, the growing frequency of wildfire is a national concern because of its impact on 
           federal tax dollars, says Professor Moritz, a specialist in fire ecology and management.
@@ -68,7 +64,7 @@ export default function EnglishPage() {
           forest conservation, watershed and cultural resources management, and infrastructure upkeep.
         </Para>
 
-        <Title3>Text3</Title3>
+        <Title3>Text7</Title3>
         <Para>
             Many Americans regard the jury as a concrete expression of curcial democratic values, including the principles that all citizens who meet
           minimal qualifications of age and literacy are equally competent to serve on juries; that jurors should be selected randomly from a representative 
@@ -90,15 +86,28 @@ export default function EnglishPage() {
           and it kept juries unrepresentative of women through the 1960s.
         </Para>
 
-        <Title3>Text4</Title3>
+        <Title3>Text8</Title3>
         <Para>
-            Over the past decade, thousands of patents have been granted for what are called business methods. Amazon.com received one for its "one-click" online
-          payment system. Merrill Lynch got legal protection for an assets allocation strategy. One inventor patented a technique for lifting a box.
+            Over the past decade, thousands of patents have been granted for what are called business methods. Amazon.com received one for its "one-click"
+          online payment system. Merrill Lynch got legal protection for an assets allocation strategy. One inventor patented a technique for lifting a box.
         </Para>
         <Para>
-            Now the nation's top patent court appears completely ready to scale back on business-method patents, which have been controversial ever since they
-          were first authorized 10 years ago. In a move that has intellectual-property lawyers abuzz, the U.S Court of Appeal said it would use a particular case
-          to conduct a broad review of business-method patents.
+            Now the nation's top patent court appears completely ready to scale back on business-method patents, which have been controversial ever since
+          they were first authorized 10 years ago. In a move that has intellectual-property lawyers abuzz, the U.S Court of Appeal said it would use a
+          particular case to conduct a broad review of business-method patents.
+        </Para>
+
+        <Title3>Text9</Title3>
+        <Para>
+            Perhaps willfully, it may be easier to think about such lengthy timescales than about the more immediate future. The potential evolution
+          of today's technology, and its social consequences, is dazzlingly complicated, and it's perhaps best left to science fiction writers and
+          futurologists to explore the many possibilities we can envisage. That's one reason why we have launched a new publication dedicated to the
+          near future.
+        </Para>
+        <Para>
+            But take a longer view and there is a surprising amount that we can say with considerable assurance. As(引导从句) so often, the past holds
+          the key to the future: we have now identified enough of long-term patterns shaping the history of the planet, and our species, to make evidence-based
+          forecasts about the situations in which our descendants will find themselves.
         </Para>
       </TextBox>
 
