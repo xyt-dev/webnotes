@@ -9,7 +9,7 @@ export default function MathPage() {
     <div className={`w-[100%] mx-auto text-blue-800`}>
       <Link href='https://xy6.notion.site' className="text-blue-600 text-center hover:text-fuchsia-500 w-min text-2xl mx-auto block mb-6">Notion</Link>
       <TextBox>
-        <Title1><div className="text-pink-600 underline">张宇1000题</div></Title1>
+        <Title1><div className="text-rose-500 underline">张宇1000题</div></Title1>
         <Title2><div className="pb-6">高等数学</div></Title2>
         <div>
           <li>[1] 函数伸缩平移可逆变换, 凑函数方程组, 解出f(x)</li>
@@ -41,6 +41,10 @@ export default function MathPage() {
           <li>[35] 拆出奇函数</li>
           <li>[36] 逻辑: 根据题设f(x)在x=0处导数存在, 则x-&gt;0时极限存在且等于f(0), 然后根据海涅定理得到改点极限的值, 同时也是f(0)的值, 然后通过海涅定理结合导数定义求出f'(0) (只有海涅定理成立时<Latex>{`$\\frac{1}{n}$`}</Latex>才能替换x, 且可以保持对应的无穷小的阶数)</li>
           <li>函数+数列联想到海涅定理(函数与数列的桥梁)</li>
+          <li>[37] 拆出导数定义</li>
+          <li>函数在一点可导，导函数不一定连续(例: <Latex>{`$f(x)=x^2sin(\\frac{1}{x}), f(0)=0$`}</Latex>)</li>
+          <li>[40] <Latex>{`$|f(x)| = \\sqrt{f^2(x)} = g(x)$`}</Latex>; 假设-&gt;反证</li>
+          <li>[42] <Latex>{`$df(a) = f'(a)dx, \\Delta f(a) = f'(a)\\Delta x+o(\\Delta x)$`}</Latex></li>
         </div>
       </TextBox>
     </div>

@@ -109,6 +109,16 @@ export default function EnglishPage() {
           the key to the future: we have now identified enough of long-term patterns shaping the history of the planet, and our species, to make evidence-based
           forecasts about the situations in which our descendants will find themselves.
         </Para>
+
+        <Title3>Text10</Title3>
+        <Para>
+            All around the world, lawyers generate more hostility than the members of any other profession--with the possible exception of journalism.
+          But there are few places where clients have more grounds for complaint than America.
+        </Para>
+        <Para>
+            During the decade before the economic crisis, spending on legal services in America grew twice as fast as inflation. The best lawyers made
+          skyscrapers-full of money, tempting ever more students to pile into law schools.
+        </Para>
       </TextBox>
 
     </div>
