@@ -7,7 +7,7 @@ import 'katex/dist/katex.min.css'; // 导入 KaTeX 样式
 export default function MathPage() {
   return (
     <div className={`w-[100%] mx-auto`}>
-      <Link href='https://xy6.notion.site' className="daisy-btn daisy-btn-ghost w-min pl-10 pr-10 daisy-glass flex justify-center text-center font-medium text-2xl mx-auto mb-6">Notion</Link>
+      <Link href='https://xy6.notion.site' className="daisy-btn daisy-btn-ghost w-min pl-10 pr-10 daisy-glass flex justify-center text-center font-medium text-xl mx-auto mb-6">Notion</Link>
       <TextBox>
         <Title1><div className="text-rose-500 underline">张宇1000题</div></Title1>
         <Title2><div className="pb-6">高等数学</div></Title2>

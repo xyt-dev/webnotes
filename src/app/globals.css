@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* daisy theme: */
 /* :root .daisy-prose {
-    --tw-prose-body: var(--fallback-bc, oklch(var(--bc)/1)); // no opacity
+    --tw-prose-body: var(--fallback-bc, oklch(var(--bc) / 0.8));
+}
+:root {
+    color: oklch(var(--bc) / 0.8)
 } */

@@ -1,6 +1,6 @@
 export default function OSPage() {
   return (
-    <div className="prose daisy-prose max-w-[1200px] leading-[35px] mx-auto sm:p-6">
+    <div className="prose daisy-prose max-w-[1000px] leading-[35px] mx-auto pt-6">
     </div>
   )
 }
