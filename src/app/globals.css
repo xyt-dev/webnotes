@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root .daisy-prose {
+    --tw-prose-body: var(--fallback-bc, oklch(var(--bc)/1));
+}
