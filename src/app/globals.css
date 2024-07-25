@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root .daisy-prose {
-    --tw-prose-body: var(--fallback-bc, oklch(var(--bc)/1));
-}
+/* :root .daisy-prose {
+    --tw-prose-body: var(--fallback-bc, oklch(var(--bc)/1)); // no opacity
+} */
