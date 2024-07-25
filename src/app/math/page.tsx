@@ -44,7 +44,7 @@ export default function MathPage() {
           <li>[37] 拆出导数定义</li>
           <li>函数在一点可导，导函数不一定连续(例: <Latex>{`$f(x)=x^2sin(\\frac{1}{x}), f(0)=0$`}</Latex>)</li>
           <li>[40] <Latex>{`$|f(x)| = \\sqrt{f^2(x)} = g(x)$`}</Latex>; 假设-&gt;反证</li>
-          <li>[42] <Latex>{`$df(a) = f'(a)dx, \\Delta f(a) = f'(a)\\Delta x+o(\\Delta x)$`}</Latex></li>
+          <li>[42] <Latex>{`$df(a) = f'(a)dx = f'(a)\\Delta x, \\Delta f(a) = f'(a)\\Delta x+o(\\Delta x)$`}</Latex></li>
         </div>
       </TextBox>
     </div>
