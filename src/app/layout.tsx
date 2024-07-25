@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-slate-300/10">
+    <html lang="en" data-theme="cupcake">
       <body className={`${inter.className} min-h-screen`}>{children}</body>
     </html>
   );

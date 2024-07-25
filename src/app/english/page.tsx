@@ -3,7 +3,7 @@ import { Paragraph as Para, Title1, Title2, Title3, Bold as B } from "@/componen
 
 export default function EnglishPage() {
   return (
-    <div className={`w-[100%] mx-auto text-blue-800`}>
+    <div className={`w-[100%] mx-auto`}>
       
       <TextBox>
         <Title1><span className="text-pink-600 underline">阅读的逻辑</span></Title1>
