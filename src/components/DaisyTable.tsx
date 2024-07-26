@@ -1,7 +1,7 @@
 import React from "react"
 
 export default function Table({ children, heads, indexed }: { children?: React.ReactNode, heads?: string[], indexed?: boolean }) {
-  const headers = heads?.map(head => <th className="text-base" key={head}>{head}</th>)
+  const headers = heads?.map(head => <th className="text-sm" key={head}>{head}</th>)
   const processedChildren = React.Children.map(children, (trChild: React.ReactNode, index) => {
     if (React.isValidElement(trChild) && trChild.type === 'tr') {
       const rowChildren = React.Children.toArray(trChild.props.children)
@@ -16,7 +16,7 @@ export default function Table({ children, heads, indexed }: { children?: React.R
             return React.cloneElement(tdChild, {}, '~')
         }
         if (!React.isValidElement(tdChild))
-          nInvalidElement ++;  // <tr> <td> </tr> there are invalid elements
+          nInvalidElement ++;  // eg: <tr> <td> </tr> there are two invalid elements
         return tdChild;
       })
       while (nInvalidElement > 0) {
@@ -37,7 +37,7 @@ export default function Table({ children, heads, indexed }: { children?: React.R
       <table className="daisy-table">
         <thead className="bg-base-200">
           <tr>
-            <th>\</th>
+            {indexed && <th>\</th>}
             {headers}
           </tr>
         </thead>
