@@ -8,19 +8,26 @@ export default function Table({ children, heads, indexed }: { children?: React.R
       while (rowChildren.length < (heads?.length || 0)) {
         rowChildren.push(<td key={`empty-${rowChildren.length}`}>~</td>);  // fill with <td>~</td>
       }
-      const _processedRowChildren = rowChildren.map((tdChild: React.ReactNode) => {
+      let nInvalidElement = 0;
+      let _processedRowChildren = rowChildren.map((tdChild: React.ReactNode) => {
         if (React.isValidElement(tdChild) && tdChild.type === 'td') {
           const content = tdChild.props.children;
           if (!content || (typeof content === 'string' && content.trim() === ''))
             return React.cloneElement(tdChild, {}, '~')
         }
+        if (!React.isValidElement(tdChild))
+          nInvalidElement ++;  // <tr> <td> </tr> there are invalid elements
         return tdChild;
       })
+      while (nInvalidElement > 0) {
+        _processedRowChildren.push(<td key={`empty-${rowChildren.length}`}>~</td>);  // fill with <td>~</td>
+        nInvalidElement --;
+      }
       indexed = indexed || false
       const processedRowChildren = indexed
         ? [<th key="index" className="w-16">{index + 1}</th>, ...React.Children.toArray(_processedRowChildren)]
         : React.Children.toArray(_processedRowChildren)
-      return React.cloneElement(trChild as React.ReactElement, {className: "daisy-hover"}, processedRowChildren);
+      return React.cloneElement(trChild as React.ReactElement, { className: "daisy-hover" }, processedRowChildren);
     }
     return trChild;
   })
