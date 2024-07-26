@@ -13,9 +13,8 @@ export default function Table({ children, heads, indexed }: { children?: React.R
           const content = tdChild.props.children;
           if (!content || (typeof content === 'string' && content.trim() === ''))
             return React.cloneElement(tdChild, {}, '~')
-          else
-            return tdChild;
         }
+        return tdChild;
       })
       indexed = indexed || false
       const processedRowChildren = indexed
@@ -25,6 +24,7 @@ export default function Table({ children, heads, indexed }: { children?: React.R
     }
     return trChild;
   })
+
   return (
     <div className="overflow-x-auto">
       <table className="daisy-table">

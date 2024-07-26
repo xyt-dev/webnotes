@@ -11,8 +11,9 @@ export default function EnglishWords() {
         </tr>
         <tr>
           <td></td>
-          <td> gallery    </td>
-          <td></td>
+          <td>     </td>
+          <span>hahhaa</span>
+          <td>a</td>
         </tr>
       </Table>
     </div>
