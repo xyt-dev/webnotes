@@ -1,10 +1,11 @@
 import TextBox from "@/components/TextBox1"
 import { Paragraph as Para, Title1, Title2, Title3, Bold as B } from "@/components/TextBox1"
+import Link from "next/link"
 
 export default function EnglishPage() {
   return (
     <div className={`w-[100%] mx-auto`}>
-      
+      <Link href='/english/words' className="daisy-btn daisy-btn-ghost w-min pl-10 pr-10 daisy-glass flex justify-center text-center font-medium text-2xl mx-auto mb-6">Words</Link>
       <TextBox>
         <Title1><span className="text-pink-600 underline">阅读的逻辑</span></Title1>
 
@@ -119,6 +120,7 @@ export default function EnglishPage() {
             During the decade before the economic crisis, spending on legal services in America grew twice as fast as inflation. The best lawyers made
           skyscrapers-full of money, tempting ever more students to pile into law schools.
         </Para>
+
       </TextBox>
 
     </div>
