@@ -76,13 +76,34 @@ export default function EnglishWords() {
           <td>automobil</td>
         </tr>
         <tr>
+          <td>overturn</td> <td>v. 推翻,撤销</td>
+        </tr>
+        <tr>
           <td>ethic</td> <td>n. [~s]道德准则; 伦理标准</td>
           <td></td>
           <td>
-              In a rare <strong>unanimous ruling</strong>, the US Supreme Court has overturned
-            the <strong>corruption conviction</strong> of a former Virginia governor. But it did so while <strong>holding
-            its nose at the ethics of his conduct</strong>, which included acception gifts such as a Rolex
-            watch and a Ferrari <strong>automobile</strong> from a company seeking access to government.
+              In a rare <strong>unanimous ruling</strong>, the US Supreme Court has <strong>overturned</strong>
+            the <strong>corruption conviction</strong> of a former Virginia governor. But it did so while
+            <strong>holding its nose at the ethics of his conduct</strong>, which included acception gifts 
+            such as a Rolex watch and a Ferrari <strong>automobile</strong> from a company seeking access to government.
+          </td>
+        </tr>
+        <tr>
+          <td></td> <td></td> <td>marvel at &nbsp; 对...感到惊奇</td>
+        </tr>
+        <tr>
+          <td>learned</td> <td>adj. 学识丰富的,知识渊博的</td>
+        </tr>
+        <tr>
+          <td>deem</td> <td>v. [不用与进行时]认为,视为; 觉得</td>
+        </tr>
+        <tr>
+          <td>circulation</td> <td>n. [报刊的]发行</td>
+          <td></td>
+          <td>
+              <strong>To read such books today is to marvel at</strong> the fact that their learned contents
+            were once <strong>deemed</strong> suitable(作补语, 描述主语"contents"的状态) for publication in
+            <strong>general-circulation</strong> dailies.  (综合性日报, 大众日报)
           </td>
         </tr>
 
