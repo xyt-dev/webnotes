@@ -150,8 +150,8 @@ export default function EnglishPage() {
         # Example special workspace (scratcpad)<br/>
         # bind = $mainMod, S, togglespecialworkspace, magic<br/>
         # bind = $mainMod SHIFT, S, movetoworkspace, special:magic<br/>
-        # Scroll through existing workspaces with mainMod + scroll<br/>
         <br/>
+        # Scroll through existing workspaces with mainMod + scroll<br/>
         bind = $mainMod, mouse_down, workspace, e+1<br/>
         bind = $mainMod, mouse_up, workspace, e-1<br/>
         <br/>
@@ -168,6 +168,14 @@ export default function EnglishPage() {
         在.config/gtk-3.0/settings.ini中添加:<br/>
         gtk-im-module=fcitx<br/>
         这使gtk使用fcitx作为input method
+      </p>
+      <h3>代理</h3>
+      <p>
+        export http_proxy=http://127.0.0.1:7890<br/>
+        export https_proxy=http://127.0.0.1:7890 # 注意，应都用"http://", 否则可能有SSL相关问题<br/>
+      </p>
+      <p>
+        <a href='http://clash.razord.top'>http://clash.razord.top</a> 可进入clash的前端界面
       </p>
       <h2>VSCode Config</h2>
       <p>
