@@ -163,12 +163,6 @@ export default function EnglishPage() {
         bind = $mainMod SHIFT, C, exec, google-chrome-stable -proxy-server=”127.0.0.1:7890”<br/>
         bind = $mainMod SHIFT, N, exec, neovide
       </p>
-      <h3>fcitx5在使用hyprland时卡在左上角, 解决方案: </h3>
-      <p>
-        在.config/gtk-3.0/settings.ini中添加:<br/>
-        gtk-im-module=fcitx<br/>
-        这使gtk使用fcitx作为input method
-      </p>
       <h3>代理</h3>
       <p>
         export http_proxy=http://127.0.0.1:7890<br/>

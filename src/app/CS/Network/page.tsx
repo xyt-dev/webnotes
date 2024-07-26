@@ -2,9 +2,9 @@ export default function NetworkPage() {
   return (
     <div className="prose daisy-prose max-w-[1000px] leading-[35px] mx-auto pt-6">
       <h1>wow</h1>
-      <p>如何使用 daisyUI 的主题？daisyUI 原生已经有很多精美制作的主题，你可以直接获取它们。 每一个主题都定义了一些全局的变量，这些变量会影响所有的 daisyUI 组件。 要使用一个主题，只需要在 tailwind.config.js 里添加主题名字，然后在 HTML 标签里添加 data-theme 属性即可：</p>
+      <p>如何使用 daisyUI 的主题? daisyUI 原生已经有很多精美制作的主题，你可以直接获取它们。 每一个主题都定义了一些全局的变量，这些变量会影响所有的 daisyUI 组件。 要使用一个主题，只需要在 tailwind.config.js 里添加主题名字，然后在 HTML 标签里添加 data-theme 属性即可：</p>
 <div className="overflow-x-auto">
-  <table className="table">
+  <table className="daisy-table">
     {/* head */}
     <thead>
       <tr>
