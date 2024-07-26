@@ -2,7 +2,7 @@ import React from "react"
 
 export default function Table({ children, heads, indexed }: { children?: React.ReactNode, heads?: string[], indexed?: boolean }) {
   const headers = heads?.map(head => <th className="text-base" key={head}>{head}</th>)
-  const processedChildren = React.Children.map(children, (trChild, index) => {
+  const processedChildren = React.Children.map(children, (trChild: React.ReactNode, index) => {
     if (React.isValidElement(trChild) && trChild.type === 'tr') {
       const rowChildren = React.Children.toArray(trChild.props.children)
       while (rowChildren.length < (heads?.length || 0)) {
@@ -20,7 +20,7 @@ export default function Table({ children, heads, indexed }: { children?: React.R
       const processedRowChildren = indexed
         ? [<th key="index" className="w-16">{index + 1}</th>, ...React.Children.toArray(_processedRowChildren)]
         : React.Children.toArray(_processedRowChildren)
-      return React.cloneElement(trChild, {}, processedRowChildren);
+      return React.cloneElement(trChild as React.ReactElement, {className: "daisy-hover"}, processedRowChildren);
     }
     return trChild;
   })

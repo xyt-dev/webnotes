@@ -6,14 +6,17 @@ export default function EnglishWords() {
       <Table heads={["Word", "Explanation", "Phrase", "Sentence"]} indexed>
         <tr>
           <td>gallery</td>
-          <td>     </td>
-          <td></td>
+          <td>(艺术作品的)展览; 画廊</td>
         </tr>
         <tr>
-          <td></td>
-          <td>     </td>
-          <span>hahhaa</span>
-          <td>a</td>
+          <td>saleroom</td>
+          <td>拍卖场</td>
+        </tr>
+        <tr>
+          <td>justified</td>
+        </tr>
+        <tr>
+          <td>involved</td>
         </tr>
       </Table>
     </div>
