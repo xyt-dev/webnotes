@@ -25,7 +25,7 @@ export default function EnglishWords() {
         </tr>
         <tr>
           <td>constitutionality</td> <td>n. 符合宪法性</td>
-          <td></td>
+          <td>a a a a a a a a a a a</td>
           <td>
               Instead, the company has done precisely what it had long promised it would not: challenge
             the constitutionality of Vermont's rules in the federal court, as an effort to keep its Vermont
