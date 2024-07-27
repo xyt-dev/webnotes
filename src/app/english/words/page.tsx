@@ -73,7 +73,7 @@ export default function EnglishWords() {
           <td>She had a previous conviction for a similar offense.</td>
         </tr>
         <tr>
-          <td>automobil</td>
+          <td>automobile</td>
         </tr>
         <tr>
           <td>overturn</td> <td>v. 推翻,撤销</td>
@@ -95,15 +95,16 @@ export default function EnglishWords() {
           <td>learned</td> <td>adj. 学识丰富的,知识渊博的</td>
         </tr>
         <tr>
-          <td>deem</td> <td>v. [不用与进行时]认为,视为; 觉得</td>
+          <td>deem</td> <td>v. [不用于进行时]认为,视为; 觉得</td>
+          <td>be deemed adj.(作补语, 描述主语的状态)</td>
         </tr>
         <tr>
           <td>circulation</td> <td>n. [报刊的]发行</td>
           <td></td>
           <td>
               <strong>To read such books today is to marvel at</strong> the fact that their learned contents
-            were once <strong>deemed</strong> suitable(作补语, 描述主语"contents"的状态) for publication in
-            <strong>general-circulation</strong> dailies.  (综合性日报, 大众日报)
+            were once <strong>deemed</strong> suitable for publication in <strong>general-circulation</strong> dailies.
+            (综合性日报, 大众日报)
           </td>
         </tr>
 

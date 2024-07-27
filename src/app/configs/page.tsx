@@ -257,7 +257,7 @@ export default function EnglishPage() {
         <span>"gitlens.currentLine.enabled": false,</span>
         <span>// ui</span>
         <span>"window.zoomLevel": 2.3,</span>
-        <span>"window.titleBarStyle": "custom",</span>
+        <span>"window.titleBarStyle": "native",  // custom</span>
         <span>"window.menuBarVisibility": "compact",</span>
         <span>"window.customMenuBarAltFocus": false,</span>
         <span>"window.customTitleBarVisibility": "never",</span>
@@ -286,9 +286,14 @@ export default function EnglishPage() {
         <span>    "frame": false,  // disable native menu in native mode</span>
         <span>&#125;,</span>
         <span>"apc.activityBar": &#123;</span>
-        <span>    "size": 35,</span>
-        <span>    "itemSize": 35,</span>
-        <span>    "itemMargin": 10</span>
+        <span>    "size": 30,</span>
+        <span>    "itemSize": 30,</span>
+        <span>    "itemMargin": 5,</span>
+        <span>    "position": "bottom",</span>
+        <span>&#125;,</span>
+        <span>"apc.statusBar": &#123;</span>
+        <span>    "position": "editor-bottom",</span>
+        <span>    "height": 30</span>
         <span>&#125;,</span>
         <span>"workbench.layoutControl.enabled": false,</span>
         <span>"window.commandCenter": false,</span>
