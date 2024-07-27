@@ -84,7 +84,7 @@ export default function EnglishWords() {
           <td>
               In a rare <strong>unanimous ruling</strong>, the US Supreme Court has <strong>overturned</strong>
             the <strong>corruption conviction</strong> of a former Virginia governor. But it did so while
-            <strong>holding its nose at the ethics of his conduct</strong>, which included acception gifts 
+            <strong>holding its nose at the ethics of his conduct</strong>, which included accepting gifts 
             such as a Rolex watch and a Ferrari <strong>automobile</strong> from a company seeking access to government.
           </td>
         </tr>

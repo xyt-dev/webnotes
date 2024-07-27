@@ -11,14 +11,14 @@ export default function EnglishPage() {
 
         <Title3>Text1</Title3>
         <Para>
-            In the weeks and months that followed Mr. Hrist's sale, spending of any sort became deeply unfashinable. In the art
+            In the weeks and months that followed Mr. Hrist's sale, spending of any sort became deeply unfashionable. In the art
           world that meant collectors stayed away from galleries and salerooms.
         </Para>
 
         <Title3>Text2</Title3>
         <Para>
             A deal is a deal--except, apparently, when Entergy is involved. The company, a major energy supplier in New England,
-          provoked justified outrage in Vermont last week when it announced it was reneging on a longstanding committment to abide by the
+          provoked justified outrage in Vermont last week when it announced it was reneging on a longstanding commitment to abide by the
           state's strict nuclear regulations.
         </Para>
         <Para>
@@ -29,8 +29,8 @@ export default function EnglishPage() {
         <Title3>Text3</Title3>
         <Para>
             In spite of "endless talk of difference," American society is an amazing machine for homogenizing people. There is "the democratizing
-          uniformity of dress and discourse, and the casualness and absence of difference" characteristic of popular culture. People are obsorbed
-          into "a culture of consumption" launched by the 19th-century department stores that offered "vast arrays of goods in an elegent atmosphere.
+          uniformity of dress and discourse, and the casualness and absence of difference" characteristic of popular culture. People are absorbed
+          into "a culture of consumption" launched by the 19th-century department stores that offered "vast arrays of goods in an elegant atmosphere.
           Instead of intimate stores catering to a knowledgeable elite," these were stores "anyone could enter, regardless of class or background.
           This turned shopping into a public and democratic act." The mass media, advertising and sports are other forces for homogenization.
         </Para>
@@ -67,7 +67,7 @@ export default function EnglishPage() {
 
         <Title3>Text7</Title3>
         <Para>
-            Many Americans regard the jury as a concrete expression of curcial democratic values, including the principles that all citizens who meet
+            Many Americans regard the jury as a concrete expression of crucial democratic values, including the principles that all citizens who meet
           minimal qualifications of age and literacy are equally competent to serve on juries; that jurors should be selected randomly from a representative 
           cross section of the community; that no citizen should be denied the right to serve on a jury on account of race, religion, sex, or national origin;
           that defendants are entitled to trail by their peers; and that verdicts should represent the conscience of the community and not just the letter of
@@ -77,7 +77,7 @@ export default function EnglishPage() {
         <Para>
             But as recently as in 1968, jury selection conflicted with these democratic ideals. In some states, for example, jury duty was limited to persons
           of supposedly superior intelligence, education, and moral character. Although the Supreme Court of US had prohibited intentional racial discrimination
-          in jury selection as early as 1880 case of Western Virginia, the practice of selecting so-called elite or blue-ribben juries provided a convenient
+          in jury selection as early as 1880 case of Western Virginia, the practice of selecting so-called elite or blue-ribbon juries provided a convenient
           way around this and other antidiscrimination laws.
         </Para>
         <Para>
