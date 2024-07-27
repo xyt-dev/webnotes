@@ -44,7 +44,7 @@ export default function EnglishWords() {
           <td>deference</td> <td>n. 尊重,尊敬</td>
         </tr>
         <tr>
-          <td>absorb</td>
+          <td>absorb</td> <td>v. 吸收; 同化; 理解,掌握; 使专心; 承担</td>
         </tr>
         <tr>
           <td>consumption</td>
@@ -107,9 +107,51 @@ export default function EnglishWords() {
             (综合性日报, 大众日报)
           </td>
         </tr>
-
-
-
+        <tr>
+          <td>impact</td>
+        </tr>
+        <tr>
+          <td>ecology</td> <td></td>
+          <td></td>
+          <td>
+              Though often viewed as a problem for western states, the growing frequency of wildfires is a 
+            national concern because of its <strong>impact</strong> on federal tax dollars, says Professor Moritz, 
+            a specialist in fire <strong>ecology</strong> and management.
+          </td>
+        </tr>
+        <tr>
+          <td>watershed</td> <td>n. 集水区; 流域; 分水岭</td>
+        </tr>
+        <tr>
+          <td>budget</td>
+        </tr>
+        <tr>
+          <td>agency</td> <td>n. (政府的)专门机构</td>
+        </tr>
+        <tr>
+          <td>conservation</td> <td>n. (对自然环境的)保护</td>
+        </tr>
+        <tr>
+          <td>infrastructure</td>
+        </tr>
+        <tr>
+          <td>upkeep</td> <td>n. 保养; 维修</td>
+        </tr>
+        <tr>
+          <td>spouse</td> <td>n. 配偶</td>
+        </tr>
+        <tr>
+          <td>solidly</td>
+        </tr>
+        <tr>
+          <td>stripe</td> <td>n. 类型,类别</td>
+        </tr>
+        <tr>
+          <td>fluctuation</td>
+        </tr>
+        <tr>
+          <td>campaign</td> <td>v. 参与运动,领导运动</td>
+        </tr>
       </Table>
     </div>
   )

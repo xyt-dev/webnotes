@@ -253,6 +253,7 @@ export default function EnglishPage() {
         <span>"vim.highlightedyank.enable": true,</span>
         <span>"vim.highlightedyank.textColor": "#282828",  // gruvbox bg0</span>
         <span>"vim.highlightedyank.color": "#fbf1c7",  // gruvbox fg0</span>
+        <span>"vim.hlsearch": true,</span>
         <span>"http.proxy": "http://127.0.0.1:7890",</span>
         <span>"http.proxyStrictSSL": false,</span>
         <span>"files.exclude": &#123;</span>
