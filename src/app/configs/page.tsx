@@ -174,9 +174,10 @@ export default function EnglishPage() {
       <h2>VSCode Config</h2>
       <li>ArchLinux 下使用 yay -S visual-studio-code-bin 以安装正常版本 VSCode<br/></li>
       <li>code -r [path] 可以在原窗口切换到新工作目录<br/></li>
-      <li>UI使用Apc Customize UI++插件优化</li>
+      <li>UI优化使用Apc Customize UI++插件</li>
       <li>编辑区提示使用Error Lens插件</li>
-      <li>文件树使用Catppccin Icons</li>
+      <li>文件树使用Catppccin Icons插件</li>
+      <li>项目管理使用Project Manager插件</li>
       <h3>settings.json</h3>
       <DaisyCode>
         <span>"workbench.colorTheme": "Gruvbox Dark Hard",</span>
@@ -302,6 +303,10 @@ export default function EnglishPage() {
         <span>&#125;,</span>
         <span>"workbench.layoutControl.enabled": false,</span>
         <span>"window.commandCenter": false,</span>
+        <span>// projects manager</span>
+        <span>"projectManager.git.baseFolders": [</span>
+        <span>    // "$home/CodeSpace"  // git projects base folder</span>
+        <span>],</span>
       </DaisyCode>
       <h3>keybindings.json:</h3>
       <DaisyCode>
