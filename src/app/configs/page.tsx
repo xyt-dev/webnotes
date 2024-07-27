@@ -174,12 +174,8 @@ export default function EnglishPage() {
       <h2>VSCode Config</h2>
       <li>ArchLinux 下使用 yay -S visual-studio-code-bin 以安装正常版本 VSCode<br/></li>
       <li>code -r [path] 可以在原窗口切换到新工作目录<br/></li>
-      <li>Theme: Gruvbox Dark Hard</li>
-      <li>UI优化使用Apc Customize UI++插件</li>
-      <li>编辑区提示使用Error Lens插件</li>
-      <li>文件树使用Catppuccin Icons/Material Icons插件</li>
-      <li>拼写检查使用cSpell插件</li>
-      <li>项目管理使用Project Manager插件</li>
+      <li>配置所用插件: Gruvbox Theme, Vim, Apc Customize UI++, Material Icon Theme/Catppuccin Icons,<br/>
+                      GitLens, Error Lens, Code Spell Checker, Project Manager</li>
       <h3>settings.json</h3>
       <DaisyCode>
         <span>"workbench.colorTheme": "Gruvbox Dark Hard",</span>
