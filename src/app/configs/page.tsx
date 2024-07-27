@@ -172,13 +172,11 @@ export default function EnglishPage() {
         <a href='http://clash.razord.top'>http://clash.razord.top</a> 可进入clash的前端界面
       </p>
       <h2>VSCode Config</h2>
-      <p>
-        <li>ArchLinux 下使用 yay -S visual-studio-code-bin 以安装正常版本 VSCode<br/></li>
-        <li>code -r [path] 可以在原窗口切换到新工作目录<br/></li>
-        <li>UI使用Apc Customize UI++插件优化</li>
-        <li>编辑区提示使用Error Lens插件</li>
-        <li>文件树使用Catppccin Icons</li>
-      </p>
+      <li>ArchLinux 下使用 yay -S visual-studio-code-bin 以安装正常版本 VSCode<br/></li>
+      <li>code -r [path] 可以在原窗口切换到新工作目录<br/></li>
+      <li>UI使用Apc Customize UI++插件优化</li>
+      <li>编辑区提示使用Error Lens插件</li>
+      <li>文件树使用Catppccin Icons</li>
       <h3>settings.json</h3>
       <DaisyCode>
         <span>"workbench.colorTheme": "Gruvbox Dark Hard",</span>
@@ -260,7 +258,7 @@ export default function EnglishPage() {
         <span>  "**/.git": false</span>
         <span>&#125;,</span>
         <span>"terminal.external.linuxExec": "kitty",</span>
-        <span>"terminal.integrated.persistentSessionScrollback": 1000,</span>
+        <span>"editor.linkedEditing": true,  // html tag linked edit</span>
         <span>"gitlens.currentLine.enabled": false,</span>
         <span>// ui</span>
         <span>"window.zoomLevel": 2.3,</span>
