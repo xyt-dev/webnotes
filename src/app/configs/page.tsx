@@ -259,6 +259,12 @@ export default function EnglishPage() {
         <span>"vim.highlightedyank.textColor": "#282828",  // gruvbox bg0</span>
         <span>"vim.highlightedyank.color": "#fbf1c7",  // gruvbox fg0</span>
         <span>"vim.hlsearch": true,</span>
+        <span>"vim.normalModeKeyBindingsNonRecursive": [  // Esc remove highlight</span>
+        <span>    &#123;</span>
+        <span>        "before": ["&lt;Esc&gt;"],</span>
+        <span>        "commands": [":nohlsearch"]</span> 
+        <span>    &#125;</span>
+        <span>],</span>
         <span>"http.proxy": "http://127.0.0.1:7890",</span>
         <span>"http.proxyStrictSSL": false,</span>
         <span>"files.exclude": &#123;</span>
@@ -307,6 +313,7 @@ export default function EnglishPage() {
         <span>    "position": "editor-bottom",</span>
         <span>    "height": 30</span>
         <span>&#125;,</span>
+        <span>"errorLens.onSave": true,  // show message only on save</span>
         <span>"workbench.layoutControl.enabled": false,</span>
         <span>"window.commandCenter": false,</span>
         <span>// projects manager</span>

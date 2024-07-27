@@ -44,7 +44,7 @@ export default function EnglishWords() {
           <td>deference</td> <td>n. 尊重,尊敬</td>
         </tr>
         <tr>
-          <td>absorb</td> <td>v. 吸收; 同化; 理解,掌握; 使专心; 承担</td>
+          <td>absorb</td> <td>v. 吸收; 同化; 理解,掌握; 使专心; 承担,对付</td>
         </tr>
         <tr>
           <td>consumption</td>
@@ -147,11 +147,42 @@ export default function EnglishWords() {
           <td>stripe</td> <td>n. 类型,类别</td>
         </tr>
         <tr>
+          <td>weather</td> <td>n. 天气 v. 经受住,渡过困难</td>
+        </tr>
+        <tr>
+          <td>parachute</td>
+        </tr>
+        <tr>
+          <td>budget</td> <td>n. 预算 v. 制定预算,计划开支</td>
+        </tr>
+        <tr>
+          <td>implication</td> <td>n. 可能的影响(或作用,结果)</td>
+        </tr>
+        <tr>
+          <td>back-up</td>
+        </tr>
+        <tr>
+          <td>workforce</td> <td>n. 劳动力; 全体员工</td>
+        </tr>
+        <tr>
           <td>fluctuation</td>
+        </tr>
+        <tr>
+          <td>outlive</td> <td>v. (在...后)继续存在</td>
         </tr>
         <tr>
           <td>campaign</td> <td>v. 参与运动,领导运动</td>
         </tr>
+        <tr>
+          <td>picture</td> <td>n. 图片,照片; 状况,情形,形势 v. 想象; 描绘; 绘画,拍摄;</td>
+        </tr>
+        <tr>
+          <td>legislative</td>
+        </tr>
+        <tr>
+          <td>deductible</td> <td>n. 免赔额(自费额)</td>
+        </tr>
+
       </Table>
     </div>
   )
