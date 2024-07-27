@@ -174,9 +174,11 @@ export default function EnglishPage() {
       <h2>VSCode Config</h2>
       <li>ArchLinux 下使用 yay -S visual-studio-code-bin 以安装正常版本 VSCode<br/></li>
       <li>code -r [path] 可以在原窗口切换到新工作目录<br/></li>
+      <li>Theme: Gruvbox Dark Hard</li>
       <li>UI优化使用Apc Customize UI++插件</li>
       <li>编辑区提示使用Error Lens插件</li>
-      <li>文件树使用Catppccin Icons插件</li>
+      <li>文件树使用Catppuccin Icons/Material Icons插件</li>
+      <li>拼写检查使用cSpell插件</li>
       <li>项目管理使用Project Manager插件</li>
       <h3>settings.json</h3>
       <DaisyCode>
@@ -241,8 +243,11 @@ export default function EnglishPage() {
         <span>"git.autofetch": true,</span>
         <span>"editor.tabSize": 2,</span>
         <span>"git.openRepositoryInParentFolders": "always",</span>
-        <span>"workbench.iconTheme": "catppuccin-mocha",</span>
+        <span>"workbench.iconTheme": "material-icon-theme",  // "catppuccin-mocha",</span>
         <span>"catppuccin-icons.hidesExplorerArrows": true,</span>
+        <span>"material-icon-theme.hidesExplorerArrows": true,</span>
+        <span>"material-icon-theme.folders.color": "#ffaacc",</span>
+        <span>"material-icon-theme.files.color": "#ffaacc",</span>
         <span>"security.workspace.trust.untrustedFiles": "open",</span>
         <span>"editor.quickSuggestions": &#123;</span>
         <span>  "comments": "on",</span>
@@ -308,6 +313,12 @@ export default function EnglishPage() {
         <span>"projectManager.git.baseFolders": [</span>
         <span>    // "$home/CodeSpace"  // git projects base folder</span>
         <span>],</span>
+        <span>"cSpell.diagnosticLevel": "Hint",</span>
+        <span>"cSpell.minWordLength": 5,</span>
+        <span>// add user words:</span>
+        <span>"cSpell.userWords": [</span>
+        <span>    "gruvbox",</span>
+        <span>]</span>
       </DaisyCode>
       <h3>keybindings.json:</h3>
       <DaisyCode>
