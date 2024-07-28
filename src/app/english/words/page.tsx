@@ -292,7 +292,15 @@ export default function EnglishWords() {
           <td>elite</td> <td>n./adj.</td>
         </tr>
         <tr>
-          <td>blue-ribbon</td> <td>最佳的,顶级的,一流的</td>
+          <td>blue-ribbon</td> <td>adj. 最佳的,顶级的,一流的</td>
+        </tr>
+        <tr>
+          <td>eligible</td> <td>adj. 合格的,有资格的,具备条件的</td>
+        </tr>
+        <tr>
+          <td>exempt</td> <td>v. 免除,豁免(from)</td>
+          <td></td>
+          <td>The interest on the money is exempt from tax.</td>
         </tr>
       </Table>
     </div>
