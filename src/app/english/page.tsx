@@ -5,7 +5,6 @@ import Link from "next/link"
 export default function EnglishPage() {
   return (
     <div className={`w-[100%] mx-auto`}>
-      <Link href='/english/accumulation' className="daisy-btn daisy-btn-ghost w-min pl-10 pr-10 daisy-glass flex justify-center text-center font-medium text-2xl mx-auto mb-6">Words</Link>
       <TextBox>
         <Title1><span className="text-pink-600 underline">阅读的逻辑</span></Title1>
 
