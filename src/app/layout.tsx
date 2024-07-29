@@ -18,21 +18,23 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="cupcake">
       <body className={`${inter.className}`}>
-        <div className="daisy-drawer">
+        <div className="daisy-drawer 2xl:daisy-drawer-open">
           <input id="drawer" type="checkbox" className="daisy-drawer-toggle" />
-          <div className="drawer-content min-h-screen min-w-full absolute">
-            <label htmlFor="drawer" className="daisy-btn daisy-drawer-button m-1 daisy-btn-ghost">
-              <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block h-5 w-5 stroke-current md:h-6 md:w-6">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </label>
+          <div className="daisy-drawer-content min-h-screen min-w-full">
+            <nav className="daisy-navbar sticky top-0">
+              <label htmlFor="drawer" className="daisy-btn daisy-drawer-button m-1 daisy-btn-ghost 2xl:hidden">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block h-5 w-5 stroke-current md:h-6 md:w-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </label>
+            </nav>
             {/* Page content here */}
             {children}
           </div>
           <div className="daisy-drawer-side">
             <label htmlFor="drawer" aria-label="close sidebar" className="daisy-drawer-overlay"></label>
             {/* Sidebar content here */}
-            <Menu/>
+            <Menu />
           </div>
         </div>
       </body>
