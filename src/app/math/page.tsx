@@ -49,10 +49,15 @@ export default function MathPage() {
             <li>[44] n个函数乘积的导数</li>
             <li>[45] 函数绝对值的导数</li>
             <li>[47] 反函数的导数</li>
-            <li>[48] 隐函数存在定理: F(x, y(x))在点<Latex>{`$(x_0, y_0)$`}</Latex>附近连续 且 <Latex>{`$F'_y$`}</Latex>在该点附近连续
-              且 <Latex>{`$F'_y(x_0, y_0)\\neq0$`}, </Latex><br/>则该点附近存在函数y=y(x)【只是充分条件】且 <Latex>{`$y'(x_0)=-\\frac{1}{tan\\alpha}=-\\frac{F'_x}{F'_y}$`}</Latex><br />
+            <li>隐函数存在定理: F(x, y(x))在点<Latex>{`$(x_0, y_0)$`}</Latex>附近连续 且 <Latex>{`$F'_y$`}</Latex>在该点附近连续
+              且 <Latex>{`$F'_y(x_0, y_0)\\neq0$`}, </Latex>则该点附近存在<strong>连续</strong>函数y=f(x)【只是充分条件】<br/>若在该区域内还存在连续偏导数<Latex>{`$F_x$`}</Latex>, 则在该区域内有连续导函数<Latex>{`$y'(x)=-\\frac{F'_x}{F'_y}$`}</Latex><br />
               <Latex>{`F(x, y)`}</Latex>在<Latex>{`$tan\\alpha=\\frac{F'_y}{F'_x}$`}</Latex>方向上函数变化率最快, 在<Latex>{`$tan\\alpha=-\\frac{F'_x}{F'_y}$`}</Latex>方向上为等高线
             </li>
+            <li>[48] 先看出y&gt;0, 再用隐函数存在定理</li>
+            <li>[49] 参数方程确定的函数的一阶导数</li>
+            <li>[50] 求一点处导数值,若公式法计算复杂应尝试定义法; 证明一点导数存在且连续(该点处用定义法, 两边用公式法)</li>
+            <li>[53] 函数乘积的n阶导数(求其中一项即可，用组合数(Leibniz公式))</li>
+
           </ul>
         </div>
       </TextBox>
