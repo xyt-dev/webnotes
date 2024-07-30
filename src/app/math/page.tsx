@@ -1,5 +1,5 @@
-import TextBox from "@/components/TextBox1"
-import { Title1, Title2 } from "@/components/TextBox1"
+import TextBox from "@/components/RowTextBox"
+import { Title1, Title2 } from "@/components/RowTextBox"
 import Link from "next/link";
 import Latex from "react-latex-next"
 import 'katex/dist/katex.min.css'; // 导入 KaTeX 样式
@@ -43,7 +43,7 @@ export default function MathPage() {
             <li>[36] 逻辑: 根据题设f(x)在x=0处导数存在, 则x-&gt;0时极限存在且等于f(0), 然后根据海涅定理得到改点极限的值, 同时也是f(0)的值, 然后通过海涅定理结合导数定义求出f'(0) (只有海涅定理成立时<Latex>{`$\\frac{1}{n}$`}</Latex>才能替换x, 且可以保持对应的无穷小的阶数)</li>
             <li>函数+数列联想到海涅定理(函数与数列的桥梁)</li>
             <li>[37] 拆出导数定义</li>
-            <li>函数在一点可导，导函数不一定连续(例: <Latex>{`$f(x)=x^2sin(\\frac{1}{x}), f(0)=0$`}</Latex>)</li>
+            <li>函数在一点可导，导函数不一定连续(例: <Latex>{`$f(x)=x^2sin(\\frac{1}{x}), f(0)=0$`}</Latex>); 所以特殊点的导数要用定义法</li>
             <li>[40] <Latex>{`$|f(x)| = \\sqrt{f^2(x)} = g(x)$`}</Latex>; 假设-&gt;反证</li>
             <li>[42] <Latex>{`$df(a) = f'(a)dx = f'(a)\\Delta x, \\Delta f(a) = f'(a)\\Delta x+o(\\Delta x)$`}</Latex></li>
             <li>[44] n个函数乘积的导数</li>
@@ -62,7 +62,17 @@ export default function MathPage() {
             <li>[57] 整体求出关于参数a的最值,再根据不等式求解a | 作逻辑等价变换,将a看作关于x的函数或不等式(运算简单)</li>
             <li>[58] 看图像注意坐标轴; 拐点要求函数在该点连续</li>
             <li>[59] 注意可导条件,这样就能放心用公式求导</li>
-            <li></li>
+            <li>
+              <details open> <summary className="cursor-pointer">曲率:</summary>
+                <Latex>{`$\\kappa = lim_{\\Delta s->0}|\\frac{\\Delta \\theta}{\\Delta s}|$`}</Latex> 其中 <Latex>{`$\\Delta s$`}</Latex> 是走过的弧长, <Latex>{`$\\Delta\\theta$`}</Latex> 是切线方向旋转的角度<br />
+                <Latex>{`$\\kappa$`}</Latex>是该点处内切圆半径的倒数<br />
+                对于函数 y = f(x):<br />
+                <Latex>{`$\\kappa = lim_{\\Delta x->0}|\\frac{\\Delta arctan(f'(x))}{\\Delta x\\sqrt{1 + f'(x)^2}}| = \\frac{|f''(x)|}{(1 + f'^2(x))^{3/2}}$`}</Latex>
+              </details>
+            </li>
+            <li>[62] 曲率公式; 隐函数求导,当<Latex>{`$y'$`}</Latex>是一个分式时, 将分母移到另一边, 然后对方程两边求导可能简化计算</li>
+            <li>隐函数求导本质: <Latex>{`$F(x,y(x))$`}</Latex>隐函数求导得到的是y'关于方程上点(x, y)的关系式, 该关系式可能不是函数, 但在不包含<Latex>{`$F'_y=0$`}</Latex>的二维空间的局部存在函数y=f(x)</li>
+            <li>[63] <Latex>{`$f(x)=a+bx+cx^2+o(x^2)$`}</Latex>, <Latex>{`$f''(x)=2c+o(1)$`}</Latex>, 通过曲率公式得到<Latex>{`$|f''(x)|$`}, 再通过曲率圆的方位确定凹凸性, 即二阶导数的正负</Latex></li>
           </ul>
         </div>
       </TextBox>

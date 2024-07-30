@@ -1,5 +1,5 @@
-import TextBox from "@/components/TextBox1"
-import { Paragraph as Para, Title1, Title2, Title3, Bold as B } from "@/components/TextBox1"
+import TextBox from "@/components/RowTextBox"
+import { Paragraph as Para, Title1, Title2, Title3, Bold as B } from "@/components/RowTextBox"
 import Link from "next/link"
 
 export default function EnglishPage() {

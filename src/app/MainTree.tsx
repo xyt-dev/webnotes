@@ -1,7 +1,7 @@
 import Link from "next/link"
-export default function Menu() {
+export default function MainTree() {
   return (
-    <ul className="daisy-menu bg-base-100 text-base-content min-h-full w-80 p-4">
+    <ul className="daisy-menu mx-auto bg-base-100 text-base-content min-h-full w-80 p-4">
       <li>
         <Link href='/'>🥳MainPage</Link>
       </li>
