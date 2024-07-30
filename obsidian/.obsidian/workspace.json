@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "caef49ed763782db",
+        "id": "f8767440677cfb6b",
         "type": "tabs",
         "children": [
           {
-            "id": "993d57a6cb8b7152",
+            "id": "db80892efc291aaa",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Math/Math.md",
-                "mode": "source",
+                "file": "Math/1000题/高等数学.md",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -80,18 +80,28 @@
         "type": "tabs",
         "children": [
           {
+            "id": "05a0414092d43e36",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Math/1000题/高等数学.md"
+              }
+            }
+          },
+          {
             "id": "2b82cf98c785a7e6",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Math/Math.md",
+                "file": "Math/1000题/高等数学.md",
                 "collapseAll": false,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
-                "backlinkCollapsed": false,
+                "backlinkCollapsed": true,
                 "unlinkedCollapsed": true
               }
             }
@@ -102,7 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Math/Math.md",
+                "file": "Math/1000题/高等数学.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -120,45 +130,59 @@
             }
           },
           {
-            "id": "05a0414092d43e36",
+            "id": "0e16276e0e8fe208",
             "type": "leaf",
             "state": {
-              "type": "outline",
-              "state": {
-                "file": "Math/Math.md"
-              }
+              "type": "advanced-tables-toolbar",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 327.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
       "switcher:打开快速切换": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "command-palette:打开命令面板": false,
-      "publish:发布更改": false
+      "publish:发布更改": true
     }
   },
-  "active": "993d57a6cb8b7152",
+  "active": "db80892efc291aaa",
   "lastOpenFiles": [
+    "Math/求渐近线.md",
+    "Math/1000题/高等数学.md",
+    "Math/_attachments/Pasted image 20240730174016.png",
+    "Math/attachments/Pasted image 20240730174044.png",
+    "Math/未命名.md",
+    "Math/1000题",
+    "Math/attachments/Pasted image 20240730173343.png",
+    "Math/_attachments",
+    "未命名 1",
+    "Math/未命名 1.md",
+    "Math/Images/1.png",
+    "未命名.canvas",
+    "Excalidraw/Drawing 2024-07-30 15.27.58.excalidraw.md",
+    "Excalidraw",
+    "未命名.md",
+    "Image/Pas4et.md",
+    "Math/Images/1.png.png",
+    "Image",
     "Pasted image 20240730110438.png",
-    "Math/Math.md",
     "Images/Pasted image 20240730104727.png",
     "Images/123.png",
     "Pasted image 20240730104755.png",
-    "Images",
-    "Math/未命名 1.md",
-    "Math/未命名.md",
+    "Math/Images",
     "Math",
-    "未命名.canvas",
     "未命名/未命名 1/未命名 1/未命名 1/未命名.md",
     "未命名/未命名 1/未命名 1/未命名 1",
     "未命名/未命名 1/未命名 1",

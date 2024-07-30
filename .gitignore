@@ -6,6 +6,9 @@
 .pnp.js
 .yarn/install-state.gz
 
+.trash
+/obsidian/.obsidian/plugins
+
 # testing
 /coverage
 

@@ -22,6 +22,10 @@ export function getMarkdownContent(filePath: string) {
   return fileContent
 }
 
+// issue:
+// 1. codeblock highlight 
+// 2. cannot share image in obsidian
+// 3. no >![Tips]...
 export default function MarkdownPage({filePath}: {filePath: string}) {
   return (
     <div>

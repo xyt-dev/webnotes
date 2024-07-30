@@ -4,7 +4,13 @@
   "promptDelete": true,
   "strictLineBreaks": true,
   "showLineNumber": false,
-  "showRibbon": false,
+  "showRibbon": true,
   "rightToLeft": false,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "readableLineLength": true,
+  "newFileLocation": "current",
+  "trashOption": "local",
+  "showUnsupportedFiles": true,
+  "attachmentFolderPath": "./_attachments",
+  "newLinkFormat": "relative"
 }

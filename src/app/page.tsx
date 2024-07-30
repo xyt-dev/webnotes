@@ -1,5 +1,4 @@
 import MidLink from "@/components/MidLink";
-import MarkdownPage from "@/components/MarkdownPage";
 
 export default function HomePage() {
   return (
@@ -10,7 +9,6 @@ export default function HomePage() {
         <MidLink href='/english'>English</MidLink>
         <MidLink href='/configs'>Configs</MidLink>
       </div>
-      {/* <MarkdownPage filePath="@/../obsidian/Math/Math.md" /> */}
     </main>
   );
 }

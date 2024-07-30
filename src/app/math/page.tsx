@@ -50,7 +50,7 @@ export default function MathPage() {
             <li>[45] 函数绝对值的导数</li>
             <li>[47] 反函数的导数</li>
             <li>隐函数存在定理: F(x, y(x))在点<Latex>{`$(x_0, y_0)$`}</Latex>附近连续 且 <Latex>{`$F'_y$`}</Latex>在该点附近连续
-              且 <Latex>{`$F'_y(x_0, y_0)\\neq0$`}, </Latex>则该点附近存在<strong>连续</strong>函数y=f(x)【只是充分条件】<br />若在该区域内还存在连续偏导数<Latex>{`$F_x$`}</Latex>, 则在该区域内有连续导函数<Latex>{`$y'(x)=-\\frac{F'_x}{F'_y}$`}</Latex><br />
+              且 <Latex>{`$F'_y(x_0, y_0)\\neq0$`}, </Latex>则该点附近存在<strong>连续</strong>函数y=f(x)【只是充分条件】<br />若在该区域内还存在连续偏导数<Latex>{`$F'_x$`}</Latex>, 则在该区域内有连续导函数<Latex>{`$y'(x)=-\\frac{F'_x}{F'_y}$`}</Latex><br />
               <Latex>{`F(x, y)`}</Latex>在<Latex>{`$tan\\alpha=\\frac{F'_y}{F'_x}$`}</Latex>方向上函数变化率最快, 在<Latex>{`$tan\\alpha=-\\frac{F'_x}{F'_y}$`}</Latex>方向上为等高线
             </li>
             <li>[48] 先看出y&gt;0, 再用隐函数存在定理</li>

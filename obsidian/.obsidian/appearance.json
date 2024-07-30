@@ -4,7 +4,10 @@
   "textFontFamily": "JetBrainsMono Nerd Font",
   "monospaceFontFamily": "JetBrainsMono Nerd Font",
   "enabledCssSnippets": [
-    "custom"
+    "custom",
+    "width",
+    "gruvbox",
+    "image"
   ],
   "cssTheme": "Obsidian gruvbox",
   "accentColor": "#f1efc7",

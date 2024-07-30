@@ -1,18 +1,12 @@
-body {
-  --file-line-width: 66rem;
-}
 
 /* .inline-title {
   color: #fbf1c7
 } */
 
-.cm-header, h1, h2, h3, h4, h5, h6, workspace-tab-header-inner-title {
+.cm-header, h1, h2, h3, h4, h5, h6, workspace-tab-header-inner-title,
+.cm-line .cm-strong, strong {
   color: #ffcc99 !important
 }
-
-/* .cm-header, h1 {
-  color: #ffcc99 !important
-} */
 
 .workspace-tab-header.is-active .workspace-tab-header-inner-title, .titlebar-button  {
   color: #fbf1c7 !important
@@ -24,7 +18,8 @@ body {
   color: #fbf1c7 !important
 }
 
-.nav-files-container, .nav-header, .view-content, .workspace-sidedock-vault-profile {
+.nav-files-container, .nav-header, .view-content,
+.workspace-sidedock-vault-profile, .side-dock-ribbon {
   background-color: #282828 !important
 }
 
