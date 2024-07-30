@@ -14,7 +14,7 @@ body {
   color: #ffcc99 !important
 } */
 
-.workspace-tab-header.is-active .workspace-tab-header-inner-title {
+.workspace-tab-header.is-active .workspace-tab-header-inner-title, .titlebar-button  {
   color: #fbf1c7 !important
 }
 
@@ -23,3 +23,8 @@ body {
 .nav-file-title.tappable.is-active, .tree-item-self.is-clickable.is-active{
   color: #fbf1c7 !important
 }
+
+.nav-files-container, .nav-header, .view-content, .workspace-sidedock-vault-profile {
+  background-color: #282828 !important
+}
+

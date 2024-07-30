@@ -1,13 +1,27 @@
 
-# 求斜渐近线
+## 求斜渐近线
 
 $$
 y = xln(e+\frac{1}{x})
 $$
 
----
+>
+>wow
 
-# haha
+| Featurec   | Support |     | wow | hi                 |
+| :----------: | :-------: | --- | :---: | :------------------: |
+| CommonMark | 100%    |     | GFM | 100% w/ remark-gfm |
 
-haha  
-asdaa
+~~strikethrough~~
+
+**bold**
+
+
+
+```cpp
+#include <stdio.h>
+
+```
+
+>[!Note]- wow
+>content
