@@ -161,7 +161,9 @@ export default function EnglishPage() {
         <br/>
         # chrome启动需要附带参数启用代理<br/>
         bind = $mainMod SHIFT, C, exec, google-chrome-stable -proxy-server=”127.0.0.1:7890”<br/>
-        bind = $mainMod SHIFT, N, exec, neovide
+        bind = $mainMod SHIFT, N, exec, neovide<br/>
+        # 截图: 需要安装grim和slurp<br/>
+        bind = $mainMod SHIFT, 4, exec, grim -g "$(slurp)" - | wl-copy
       </p>
       <h3>代理</h3>
       <p>

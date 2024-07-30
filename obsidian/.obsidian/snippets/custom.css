@@ -1,0 +1,25 @@
+body {
+  --file-line-width: 66rem;
+}
+
+/* .inline-title {
+  color: #fbf1c7
+} */
+
+.cm-header, h1, h2, h3, h4, h5, h6, workspace-tab-header-inner-title {
+  color: #ffcc99 !important
+}
+
+/* .cm-header, h1 {
+  color: #ffcc99 !important
+} */
+
+.workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color: #fbf1c7 !important
+}
+
+
+.nav-folder-title:hover, .nav-file-title:hover,
+.nav-file-title.tappable.is-active, .tree-item-self.is-clickable.is-active{
+  color: #fbf1c7 !important
+}

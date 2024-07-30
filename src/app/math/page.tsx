@@ -3,6 +3,7 @@ import { Title1, Title2 } from "@/components/TextBox1"
 import Link from "next/link";
 import Latex from "react-latex-next"
 import 'katex/dist/katex.min.css'; // 导入 KaTeX 样式
+import Image from "next/image";
 
 export default function MathPage() {
   return (
@@ -49,14 +50,19 @@ export default function MathPage() {
             <li>[45] 函数绝对值的导数</li>
             <li>[47] 反函数的导数</li>
             <li>隐函数存在定理: F(x, y(x))在点<Latex>{`$(x_0, y_0)$`}</Latex>附近连续 且 <Latex>{`$F'_y$`}</Latex>在该点附近连续
-              且 <Latex>{`$F'_y(x_0, y_0)\\neq0$`}, </Latex>则该点附近存在<strong>连续</strong>函数y=f(x)【只是充分条件】<br/>若在该区域内还存在连续偏导数<Latex>{`$F_x$`}</Latex>, 则在该区域内有连续导函数<Latex>{`$y'(x)=-\\frac{F'_x}{F'_y}$`}</Latex><br />
+              且 <Latex>{`$F'_y(x_0, y_0)\\neq0$`}, </Latex>则该点附近存在<strong>连续</strong>函数y=f(x)【只是充分条件】<br />若在该区域内还存在连续偏导数<Latex>{`$F_x$`}</Latex>, 则在该区域内有连续导函数<Latex>{`$y'(x)=-\\frac{F'_x}{F'_y}$`}</Latex><br />
               <Latex>{`F(x, y)`}</Latex>在<Latex>{`$tan\\alpha=\\frac{F'_y}{F'_x}$`}</Latex>方向上函数变化率最快, 在<Latex>{`$tan\\alpha=-\\frac{F'_x}{F'_y}$`}</Latex>方向上为等高线
             </li>
             <li>[48] 先看出y&gt;0, 再用隐函数存在定理</li>
             <li>[49] 参数方程确定的函数的一阶导数</li>
             <li>[50] 求一点处导数值,若公式法计算复杂应尝试定义法; 证明一点导数存在且连续(该点处用定义法, 两边用公式法)</li>
             <li>[53] 函数乘积的n阶导数(求其中一项即可，用组合数(Leibniz公式))</li>
-
+            <li>[54] 找最值看两端和内部极值点(分段点,无定义点,不可导点, 导数为0的点)</li>
+            <li>[56] 判断分段点是否为可导点和极值点; xlnx函数图像: <Image className="mx-auto mt-1 mb-1" src='/Images/Math/xlnx.png' alt='xlnx' width={500} height={0} /> </li>
+            <li>[57] 整体求出关于参数a的最值,再根据不等式求解a | 作逻辑等价变换,将a看作关于x的函数或不等式(运算简单)</li>
+            <li>[58] 看图像注意坐标轴; 拐点要求函数在该点连续</li>
+            <li>[59] 注意可导条件,这样就能放心用公式求导</li>
+            <li></li>
           </ul>
         </div>
       </TextBox>

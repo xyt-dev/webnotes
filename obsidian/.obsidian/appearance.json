@@ -1,0 +1,12 @@
+{
+  "baseFontSize": 18,
+  "interfaceFontFamily": "JetBrainsMono Nerd Font",
+  "textFontFamily": "JetBrainsMono Nerd Font",
+  "monospaceFontFamily": "JetBrainsMono Nerd Font",
+  "enabledCssSnippets": [
+    "custom"
+  ],
+  "cssTheme": "Obsidian gruvbox",
+  "accentColor": "#f1efc7",
+  "theme": "obsidian"
+}
