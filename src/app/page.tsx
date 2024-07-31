@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <main>
-      <ul className="daisy-menu mx-auto text-[1rem] bg-base-200 rounded-box text-base-content min-h-full min-w-[800px] w-[30%] p-6">
+      <ul className="daisy-menu mx-auto text-[1rem] bg-base-200 rounded-box text-base-content min-h-full min-w-[300px] w-[30%] p-6">
         <li>
           <Link href='/math'>Math</Link>
         </li>
