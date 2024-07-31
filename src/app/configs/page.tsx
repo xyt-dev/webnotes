@@ -371,7 +371,7 @@ export default function EnglishPage() {
         <span>&#123;</span>
         <span>  "key": "shift+h",</span>
         <span>  "command": "workbench.action.previousEditor",</span>
-        <span>  "when": "((vim.mode=='Normal' && editorFocus) || !inputFocus") && !renameInputVisible</span>
+        <span>  "when": "((vim.mode=='Normal' && editorFocus) || !inputFocus) && !renameInputVisible"</span>
         <span>&#125;,</span>
         <span>&#123;</span>
         <span>  "key": "ctrl+w",</span>

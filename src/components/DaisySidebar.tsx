@@ -37,7 +37,7 @@ export default function DaisySidebar({children, page}: {children: React.ReactNod
       <div className="daisy-drawer-side z-[51]">
         <label htmlFor="drawer" aria-label="close sidebar" className="daisy-drawer-overlay"></label>
         {/* Sidebar content here */}
-        <ul className="daisy-menu bg-base-100 text-base-content min-h-full w-80 max-w-[80%] p-6 pt-0">
+        <ul className="daisy-menu bg-base-100 text-base-content min-h-full w-80 max-w-[80%] p-6">
           {children}
         </ul>
       </div>
