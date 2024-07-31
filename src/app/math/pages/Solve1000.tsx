@@ -44,6 +44,7 @@ export default function Solve1000() {
             <li>函数+数列联想到海涅定理(函数与数列的桥梁)</li>
             <li>[37] 拆出导数定义</li>
             <li>函数在一点可导，导函数不一定连续(例: <Latex>{`$f(x)=x^2sin(\\frac{1}{x}), f(0)=0$`}</Latex>); 所以特殊点的导数要用定义法</li>
+            <Image className="mx-auto mt-1 mb-1" src='/Images/Math/x2sin1divx.png' alt='x^2sin1/x' width={500} height={0} />
             <li>[40] <Latex>{`$|f(x)| = \\sqrt{f^2(x)} = g(x)$`}</Latex>; 假设-&gt;反证</li>
             <li>[42] <Latex>{`$df(a) = f'(a)dx = f'(a)\\Delta x, \\Delta f(a) = f'(a)\\Delta x+o(\\Delta x)$`}</Latex></li>
             <li>[44] n个函数乘积的导数</li>

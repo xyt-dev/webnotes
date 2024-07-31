@@ -163,7 +163,9 @@ export default function EnglishPage() {
         bind = $mainMod SHIFT, C, exec, google-chrome-stable -proxy-server=”127.0.0.1:7890”<br/>
         bind = $mainMod SHIFT, N, exec, neovide<br/>
         # 截图: 需要安装grim和slurp<br/>
-        bind = $mainMod SHIFT, 4, exec, grim -g "$(slurp)" - | wl-copy
+        bind = $mainMod SHIFT, 4, exec, grim -g "$(slurp)" - | wl-copy<br/>
+        # make fcitx5 more stable<br/>
+        windowrule=pseudo,fcitx;<br/>
       </p>
       <h3>代理</h3>
       <p>
@@ -177,7 +179,7 @@ export default function EnglishPage() {
       <li>ArchLinux 下使用 yay -S visual-studio-code-bin 以安装正常版本 VSCode<br/></li>
       <li>code -r [path] 可以在原窗口切换到新工作目录<br/></li>
       <li>配置所用插件: Gruvbox Theme, Vim, Apc Customize UI++, Material Icon Theme/Catppuccin Icons,<br/>
-                      GitLens, Error Lens, Code Spell Checker, Project Manager</li>
+                      Error Lens, Code Spell Checker, Project Manager</li>
       <h3>settings.json</h3>
       <DaisyCode>
         <span>"workbench.colorTheme": "Gruvbox Dark Hard",</span>
@@ -270,7 +272,6 @@ export default function EnglishPage() {
         <span>&#125;,</span>
         <span>"terminal.external.linuxExec": "kitty",</span>
         <span>"editor.linkedEditing": true,  // html tag linked edit</span>
-        <span>"gitlens.currentLine.enabled": false,</span>
         <span>// ui</span>
         <span>"window.zoomLevel": 2.3,</span>
         <span>"window.titleBarStyle": "native",  // custom</span>
@@ -365,12 +366,12 @@ export default function EnglishPage() {
         <span>&#123;</span>
         <span>  "key": "shift+l",</span>
         <span>  "command": "workbench.action.nextEditor",</span>
-        <span>  "when": "(vim.mode == 'Normal' && editorFocus) || !inputFocus"</span>
+        <span>  "when": "((vim.mode=='Normal' && editorFocus) || !inputFocus) && !renameInputVisible"</span>
         <span>&#125;,</span>
         <span>&#123;</span>
         <span>  "key": "shift+h",</span>
         <span>  "command": "workbench.action.previousEditor",</span>
-        <span>  "when": "(vim.mode == 'Normal' && editorFocus) || !inputFocus"</span>
+        <span>  "when": "((vim.mode=='Normal' && editorFocus) || !inputFocus") && !renameInputVisible</span>
         <span>&#125;,</span>
         <span>&#123;</span>
         <span>  "key": "ctrl+w",</span>
