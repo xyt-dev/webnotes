@@ -3,13 +3,14 @@ import DaisySidebar, { DaisySidebarLeaf as Leaf, DaisySidebarNode as Node } from
 import React, { useState } from "react";
 
 export default function DaisyPages() {
-  const [pageRenderingName, setPageRenderingName] = useState("");
+  const [pageRenderingName, setPageRenderingName] = useState("$");
   const pages:{[key: string]: React.ReactNode} = {
+    "$": "$",
   }
   return (
     <DaisySidebar page={pages[pageRenderingName]}>
-      <Node summary="操作系统">
-        <Leaf setPageRendering={() => {setPageRenderingName("")}}> </Leaf>
+      <Node summary="$">
+        <Leaf setPageRendering={() => {setPageRenderingName("$")}}>$</Leaf>
       </Node>
     </DaisySidebar>
   )

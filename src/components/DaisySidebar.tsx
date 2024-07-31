@@ -1,18 +1,27 @@
-import { useState } from "react"
+import React from "react"
 
-export function Node({children}: {children: React.ReactNode}) {
+export function DaisySidebarNode({children, summary}: {children: React.ReactNode, summary?: string}) {
   return (
-    <details open>
-      <summary>Math</summary>
-      <ul>
-        {children}
-      </ul>
-    </details>
+    <li>
+      <details open>
+        <summary>{summary}</summary>
+        <ul>
+          {children}
+        </ul>
+      </details>
+    </li>
+  )
+}
+
+export function DaisySidebarLeaf({children, setPageRendering}: {children: string, setPageRendering: (pageName: string) => void}) {
+  return (
+    <li>
+      <span onClick={() => setPageRendering(children)}>{children}</span>
+    </li>
   )
 }
 
 export default function DaisySidebar({children, page}: {children: React.ReactNode, page: React.ReactNode}) {
-  const [pageName, setPageName] = useState('')
   return (
     <div className="daisy-drawer 2xl:daisy-drawer-open">
       <input id="drawer" type="checkbox" className="daisy-drawer-toggle" />
@@ -30,7 +39,7 @@ export default function DaisySidebar({children, page}: {children: React.ReactNod
       <div className="daisy-drawer-side">
         <label htmlFor="drawer" aria-label="close sidebar" className="daisy-drawer-overlay"></label>
         {/* Sidebar content here */}
-        <ul className="daisy-menu bg-base-100 text-base-content min-h-full w-80 p-4">
+        <ul className="daisy-menu bg-base-100 text-base-content min-h-full w-80 max-w-[80%] p-4">
           {children}
         </ul>
       </div>

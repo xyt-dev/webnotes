@@ -1,5 +1,5 @@
 import Table from "@/components/DaisyTable"
-export default function EnglishWords() {
+export default function EnglishAccumulation() {
   return (
     <div className="prose daisy-prose max-w-[1500px] leading-[35px] mx-auto pt-6">
       <h1 className="text-center">Accumulation</h1>
