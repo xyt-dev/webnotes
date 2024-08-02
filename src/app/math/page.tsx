@@ -6,18 +6,18 @@ import Link from "next/link";
 import WildSolve from "./pages/WildSolve";
 
 export default function DaisyPages() {
+  const pages:{[key: string]: React.ReactNode} = {
+    "Solve1000": Solve1000(),
+    "WildSolve": WildSolve(),
+  }
   const [pageRenderingName, setPageRenderingName] = useState(() => {
     const lastPage = localStorage.getItem("lastPage");
-    return lastPage ? lastPage : "Solve1000";
+    return lastPage && pages[lastPage] ? lastPage : "Solve1000";
   });
   function Leaf({ children, pageName }: { children: string, pageName: string }) {
     return (
       <DaisySidebarLeaf setPageRendering={() => { setPageRenderingName(pageName); localStorage.setItem("lastPage", pageName) }} isSelected={pageRenderingName === pageName}>{children}</DaisySidebarLeaf>
     )
-  }
-  const pages:{[key: string]: React.ReactNode} = {
-    "Solve1000": Solve1000(),
-    "WildSolve": WildSolve(),
   }
   return (
     <DaisySidebar page={pages[pageRenderingName]}>
