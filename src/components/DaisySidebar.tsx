@@ -17,7 +17,7 @@ export function DaisySidebarNode({children, summary}: {children: React.ReactNode
 export function DaisySidebarLeaf({children, setPageRendering, isSelected}: {children: string, setPageRendering: (pageName: string) => void, isSelected?: boolean}) {
   return (
     <li>
-      <span className={clsx({'bg-base-content': isSelected, 'text-base-100': isSelected})} onClick={() => setPageRendering(children)}>{children}</span>
+      <span className={clsx({'bg-base-content': isSelected, 'text-base-100': isSelected, 'hover:bg-base-content/90': isSelected})} onClick={() => setPageRendering(children)}>{children}</span>
     </li>
   )
 }

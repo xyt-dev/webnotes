@@ -4,13 +4,13 @@ import React, { useState } from "react";
 
 export default function DaisyPages() {
   const [pageRenderingName, setPageRenderingName] = useState("$");
-  const pages: { [key: string]: React.ReactNode } = {
-    "$": "$",
-  }
   function Leaf({ children, pageName }: { children: string, pageName: string }) {
     return (
       <DaisySidebarLeaf setPageRendering={() => { setPageRenderingName(pageName) }} isSelected={pageRenderingName === pageName}>{children}</DaisySidebarLeaf>
     )
+  }
+  const pages: { [key: string]: React.ReactNode } = {
+    "$": "$",
   }
   return (
     <DaisySidebar page={pages[pageRenderingName]}>

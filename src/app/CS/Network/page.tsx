@@ -1,16 +1,19 @@
 "use client"
-import DaisySidebar, { DaisySidebarLeaf as Leaf, DaisySidebarNode as Node } from "@/components/DaisySidebar";
+import DaisySidebar, { DaisySidebarLeaf, DaisySidebarNode as Node } from "@/components/DaisySidebar";
 import React, { useState } from "react";
 
 export default function NetworkPage() {
   const [pageRenderingName, setPageRenderingName] = useState("");
-  const pages:{[key: string]: React.ReactNode} = {
+  function Leaf({ children, pageName }: { children: string, pageName: string }) {
+    return (
+      <DaisySidebarLeaf setPageRendering={() => { setPageRenderingName(pageName) }} isSelected={pageRenderingName === pageName}>{children}</DaisySidebarLeaf>
+    )
+  }
+  const pages: { [key: string]: React.ReactNode } = {
   }
   return (
     <DaisySidebar page={pages[pageRenderingName]}>
-      <Node summary="计算机网络">
-        <Leaf setPageRendering={() => {setPageRenderingName("")}}> </Leaf>
-      </Node>
+      <Leaf pageName="firstPage">第一页</Leaf>
     </DaisySidebar>
   )
 }

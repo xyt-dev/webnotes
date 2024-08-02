@@ -98,7 +98,13 @@ export default function Solve1000() {
               </details>
             </li>
             <li>[78] 拉格朗日中值应用(隐藏的f(0)=0); <strong>微分不等式的应用在于<Latex>{`$\\xi$`}</Latex>的区间与单调性</strong></li>
-            <li>[79] 参数方程; 速度是距离的导数</li>
+            <li>[79] 参数方程的物理应用</li>
+            <li>
+              [83] 定积分的定义: 分<Latex>{`$n$`}</Latex>段, <Latex>{`$n->\\infty$`}</Latex>, 跨度为<Latex>{`$\\frac{1}{n}$`}</Latex>,
+              区间长度为<Latex>{`$\\frac{1}{n}$`}</Latex>, <Latex>{`$\\sum_{k=1}^{n}{f(\\xi_k)}$`}</Latex>
+            </li>
+            <li>[84] 定积分的定义; 注意定积分的积分函数是否为"区间内的奇函数":<br /> <Latex>{`$f(a+b-x)=-f(x)$`}</Latex></li>
+            <li>区间再现公式: <Latex>{`$\\int_a^bf(x)dx = \\int_a^bf(a+b-x)dx$`}</Latex></li>
           </ul>
         </div>
       </TextBox>
