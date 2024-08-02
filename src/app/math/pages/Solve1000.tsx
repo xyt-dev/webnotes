@@ -86,7 +86,7 @@ export default function Solve1000() {
             <li>[74] 只说了一点处可导, 未说明函数处处可导或在附近可导; 凑导数定义</li>
             <li>[75] sinx在x=0处一阶拉格朗日余项泰勒公式:<Latex>{`$sinx=x-\\frac{sin\\xi}{2}x^2, \\xi\\in (0,x)$`}</Latex></li>
             <li>[76] 罗尔定理的应用: 限制实根的最大数量n, 之后找到n个实根就能证明有n个实根</li>
-            <li>[77] (1).凹凸性的应用: 凹/凸区间内函数上两点构成的弦在函数的上方/下方, 两个零点间的x轴当然也是一条弦
+            <li><strong>[77]</strong> (1).凹凸性的应用: 凹/凸区间内函数上两点构成的弦在函数的上方/下方, 两个零点间的x轴当然也是一条弦
               <details open> <summary className="cursor-pointer">(2). <strong>迭代型数列常用方法: </strong></summary>
                 <ol>
                   <li>使用数学归纳法证明第n项性质, 如取值范围;</li>
@@ -104,9 +104,16 @@ export default function Solve1000() {
               区间长度为<Latex>{`$\\frac{1}{n}$`}</Latex>, <Latex>{`$\\sum_{k=1}^{n}{f(\\xi_k)}$`}</Latex>
             </li>
             <li>[84] 定积分的定义; 注意定积分的积分函数是否为"区间内的奇函数":<br /> <Latex>{`$f(a+b-x)=-f(x)$`}</Latex></li>
+            <li>定义域内有界且只存在有限个间断点(间断点为零测度集)的实函数<strong>黎曼可积</strong></li>
             <li>区间再现公式: <Latex>{`$\\int_a^bf(x)dx = \\int_a^bf(a+b-x)dx$`}</Latex></li>
-            <li><strong>[86]</strong> 拆出奇函数的积分; <Latex>{`$m(b-a)\\le\\int_a^bf(x)\\le M(b-a), a<b$`}</Latex></li>
-            <li><Latex>{`$e^x~,~x~,~ln(1+x)$`}</Latex><Image  className="mx-auto mt-1 mb-1" src='/Images/Math/xlnxex.png' alt='xlnxex' width={500} height={0} /></li>
+            <li><strong>[86]</strong> 拆出奇函数的积分; <Latex>{`$m(b-a)\\le\\int_a^bf(x)dx\\le M(b-a), a<b$`}</Latex></li>
+            <li><Latex>{`$e^x~,~x~,~ln(1+x)~,~sin(x)$`}</Latex><Image  className="mx-auto mt-1 mb-1" src='/Images/Math/xlnxexsinx.png' alt='xlnxexsinx' width={500} height={0} /></li>
+            <li>[87] <Latex>{`$m_1\\ge M_2, \\int_a^{a+c}f(x)dx>m_1c\\ge M_2c>\\int_b^{b+c}f(x)dx$`}</Latex></li>
+            <li><strong>连续函数一定存在原函数, 存在震荡间断点的函数可能存在原函数</strong></li>
+            <li>连续函数零点之间的值恒正或恒负, 原函数在这些区间内单调; 若零点处导数值不为零, 根据积分保号性, 领域内两侧分别&gt;/&lt;0, 进而推出两侧区间分别&gt;/&lt;0, 直到两侧的下一个零点([93])</li>
+            <li>[90] 原函数的定义; 定积分的几何意义</li>
+            <li>[91] 反函数求导: <Latex>{`$y=f^{-1}(x),~ f'(y)=\\frac{1}{y'(f(y))}$`}</Latex></li>
+            <li>[92] <strong>周期函数、奇偶函数</strong>的导数、变上限积分</li>
           </ul>
         </div>
       </TextBox>
