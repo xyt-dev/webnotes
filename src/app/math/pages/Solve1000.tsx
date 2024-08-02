@@ -105,6 +105,8 @@ export default function Solve1000() {
             </li>
             <li>[84] 定积分的定义; 注意定积分的积分函数是否为"区间内的奇函数":<br /> <Latex>{`$f(a+b-x)=-f(x)$`}</Latex></li>
             <li>区间再现公式: <Latex>{`$\\int_a^bf(x)dx = \\int_a^bf(a+b-x)dx$`}</Latex></li>
+            <li><strong>[86]</strong> 拆出奇函数的积分; <Latex>{`$m(b-a)\\le\\int_a^bf(x)\\le M(b-a), a<b$`}</Latex></li>
+            <li><Latex>{`$e^x~,~x~,~ln(1+x)$`}</Latex><Image  className="mx-auto mt-1 mb-1" src='/Images/Math/xlnxex.png' alt='xlnxex' width={500} height={0} /></li>
           </ul>
         </div>
       </TextBox>
