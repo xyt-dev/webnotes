@@ -9,7 +9,7 @@ export default function DaisyPages() {
   return (
     <DaisySidebar page={pages[pageRenderingName]}>
       <Node summary="操作系统">
-        <Leaf setPageRendering={() => {setPageRenderingName("")}}> </Leaf>
+        <Leaf setPageRendering={() => {setPageRenderingName("第一页")}}> </Leaf>
       </Node>
     </DaisySidebar>
   )

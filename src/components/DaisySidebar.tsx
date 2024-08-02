@@ -1,4 +1,5 @@
 import React from "react"
+import clsx from "clsx"
 
 export function DaisySidebarNode({children, summary}: {children: React.ReactNode, summary?: string}) {
   return (
@@ -13,10 +14,10 @@ export function DaisySidebarNode({children, summary}: {children: React.ReactNode
   )
 }
 
-export function DaisySidebarLeaf({children, setPageRendering}: {children: string, setPageRendering: (pageName: string) => void}) {
+export function DaisySidebarLeaf({children, setPageRendering, isSelected}: {children: string, setPageRendering: (pageName: string) => void, isSelected?: boolean}) {
   return (
     <li>
-      <span onClick={() => setPageRendering(children)}>{children}</span>
+      <span className={clsx({'bg-base-content': isSelected, 'text-base-100': isSelected})} onClick={() => setPageRendering(children)}>{children}</span>
     </li>
   )
 }
@@ -37,7 +38,7 @@ export default function DaisySidebar({children, page}: {children: React.ReactNod
       <div className="daisy-drawer-side z-[51]">
         <label htmlFor="drawer" aria-label="close sidebar" className="daisy-drawer-overlay"></label>
         {/* Sidebar content here */}
-        <ul className="daisy-menu bg-base-100 text-base-content min-h-full w-80 max-w-[80%] p-6">
+        <ul className="daisy-menu bg-base-100 text-base-content min-h-full w-80 max-w-[80%] 2xl:max-w-full p-6">
           {children}
         </ul>
       </div>

@@ -451,6 +451,18 @@ export default function EnglishPage() {
                 explorerResourceIsFolder && !inputFocus"`}
         <span>&#125;,</span>
       </DaisyCode>
+      <h2>ranger 配置</h2>
+      <h3>rc.conf:</h3>
+      <p>
+        set show_hidden true<br/>
+        set preview_images true<br/>
+        set preview_images_method kitty<br/>
+      </p>
+      <h3>rifle.conf:</h3>
+      <p>
+        mime ^text, label editor = nvim -- "$@"<br/>
+        !mime ^text, label editor, ext |sml|json|csv|tex|py|pl|rb|js|sh|php = nvim -- "$@"<br/>
+      </p>
     </div>
   )
 }

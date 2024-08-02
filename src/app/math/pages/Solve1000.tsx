@@ -73,8 +73,32 @@ export default function Solve1000() {
             </li>
             <li>[62] 曲率公式; 隐函数求导,当<Latex>{`$y'$`}</Latex>是一个分式时, 将分母移到另一边, 然后对方程两边求导可能简化计算</li>
             <li>隐函数求导本质: <Latex>{`$F(x,y(x))$`}</Latex>隐函数求导得到的是y'关于方程上点(x, y)的关系式, 该关系式可能不是函数, 但在不包含<Latex>{`$F'_y=0$`}</Latex>的二维空间的局部存在函数y=f(x)</li>
-            <li>[63] <Latex>{`$f(x)=a+bx+cx^2+o(x^2)$`}</Latex>, <Latex>{`$f''(x)=2c+o(1)$`}</Latex>, 通过曲率公式得到<Latex>{`$|f''(x)|$`}, 再通过曲率圆的方位确定凹凸性, 即二阶导数的正负</Latex></li>
+            <li>[63] <Latex>{`$f(x)=a+bx+cx^2+o(x^2)$`}</Latex>, <Latex>{`$f''(x)=2c+o(1)$`}</Latex>, 通过曲率公式得到<Latex>{`$|f''(x)|$`}, 再通过曲率圆的方位确定凹凸性, 即二阶导数的正负</Latex>; 或直接隐函数求二阶导, 与泰勒公式对比求解</li>
+            <li>[64] n次多项式至多n个实根, 所以一元二次方程最多2个实根</li>
             <li>[65~67] 根据零点个数判断参数范围: 计算两端、特殊点、极值点处的值/极限(可能需要先对参数取值分类讨论), 分为n个单调区间, 然后根据零点定理推导参数范围</li>
+            <li>[69] <Latex>{`$ln(1+x)=\\frac{x}{1+\\xi}~,~\\xi\\in (0,x)~(x > 0)$`}</Latex></li>
+            <li>对于可导函数f(x), 若<Latex>{`$f(x_0)=0$`}</Latex>, 则<Latex>{`$f(x)=f(x)-f(x_0)=f'(\\xi)(x-x_0), \\xi\\in (x_0,x) or (x, x_0)$`}</Latex></li>
+            <li>[70] <Latex>{`$ln(1+\\frac{1}{x})=ln(1+x)-ln(x)=\\frac{1}{\\xi}~,~\\xi\\in (x,x+1)$`}</Latex></li>
+            <li>对于可导函数f(x), <Latex>{`$f(x+a)-f(x)=af'(\\xi), \\xi\\in (x,x+a)$`}</Latex></li>
+            <li>[71] <strong>可以从要证明的结论的某些角度出发, 构造式子来结合题目所给条件</strong></li>
+            <li>[72] <strong>无法直接证伪时, 可以举反例</strong></li>
+            <li>[73] 柯西中值定理</li>
+            <li>[74] 只说了一点处可导, 未说明函数处处可导或在附近可导; 凑导数定义</li>
+            <li>[75] sinx在x=0处一阶拉格朗日余项泰勒公式:<Latex>{`$sinx=x-\\frac{sin\\xi}{2}x^2, \\xi\\in (0,x)$`}</Latex></li>
+            <li>[76] 罗尔定理的应用: 限制实根的最大数量n, 之后找到n个实根就能证明有n个实根</li>
+            <li>[77] (1).凹凸性的应用: 凹/凸区间内函数上两点构成的弦在函数的上方/下方, 两个零点间的x轴当然也是一条弦
+              <details open> <summary className="cursor-pointer">(2). <strong>迭代型数列常用方法: </strong></summary>
+                <ol>
+                  <li>使用数学归纳法证明第n项性质, 如取值范围;</li>
+                  <li>单调有界准则证明极限A存在, 之后由 <Latex>{`$A = f(A)$`}</Latex> 求出极限;</li>
+                  <li><Latex>{`$x_{n+1}=f(x_n)$`}</Latex> 若有 <Latex>{`$x_{n+1} <=> ax_n$`}</Latex> 可求到第一项;</li>
+                  <li>夹逼准则</li>
+                  <li>压缩映射</li>
+                </ol>
+              </details>
+            </li>
+            <li>[78] 拉格朗日中值应用(隐藏的f(0)=0); <strong>微分不等式的应用在于<Latex>{`$\\xi$`}</Latex>的区间与单调性</strong></li>
+            <li>[79] 参数方程; 速度是距离的导数</li>
           </ul>
         </div>
       </TextBox>
