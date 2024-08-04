@@ -107,13 +107,39 @@ export default function Solve1000() {
             <li>定义域内有界且只存在有限个间断点(间断点为零测度集)的实函数<strong>黎曼可积</strong></li>
             <li>区间再现公式: <Latex>{`$\\int_a^bf(x)dx = \\int_a^bf(a+b-x)dx$`}</Latex></li>
             <li><strong>[86]</strong> 拆出奇函数的积分; <Latex>{`$m(b-a)\\le\\int_a^bf(x)dx\\le M(b-a), a<b$`}</Latex></li>
-            <li><Latex>{`$e^x~,~x~,~ln(1+x)~,~sin(x)$`}</Latex><Image  className="mx-auto mt-1 mb-1" src='/Images/Math/xlnxexsinx.png' alt='xlnxexsinx' width={500} height={0} /></li>
+            <li><Latex>{`$e^x~,~x~,~ln(1+x)~,~sin(x)$`}</Latex><Image className="mx-auto mt-1 mb-1" src='/Images/Math/xlnxexsinx.png' alt='xlnxexsinx' width={500} height={0} /></li>
             <li>[87] <Latex>{`$m_1\\ge M_2, \\int_a^{a+c}f(x)dx>m_1c\\ge M_2c>\\int_b^{b+c}f(x)dx$`}</Latex></li>
             <li><strong>连续函数一定存在原函数, 存在震荡间断点的函数可能存在原函数</strong></li>
             <li>连续函数零点之间的值恒正或恒负, 原函数在这些区间内单调; 若零点处导数值不为零, 根据积分保号性, 领域内两侧分别&gt;/&lt;0, 进而推出两侧区间分别&gt;/&lt;0, 直到两侧的下一个零点([93])</li>
             <li>[90] 原函数的定义; 定积分的几何意义</li>
             <li>[91] 反函数求导: <Latex>{`$y=f^{-1}(x),~ f'(y)=\\frac{1}{y'(f(y))}$`}</Latex></li>
             <li>[92] <strong>周期函数、奇偶函数</strong>的导数、变上限积分</li>
+            <li>[94] 定积分的几何意义</li>
+            <li>[95] 注意: <Latex>{`$\\int_{-\\infty}^{+\\infty}$`}</Latex>上的奇函数看似积分为0, 实则发散; <Latex>{`$\\int_{-\\infty}^{+\\infty}$`}</Latex>一定要分两边计算</li>
+            <li>讨论反常积分敛散性只需关注暇点处或无穷远处</li>
+            <li>
+              [96] 比较判别法证明参数p&gt;a时收敛然后再证明p&le;a时发散, 即可证明p的取值应该&gt;a; 若参数被消掉, 常在分母中的参数上<Latex>{`$\\pm\\epsilon$`}</Latex>
+              <ul><li><Latex>{`$\\frac{lnx}{x^p}$`}</Latex> 同 <Latex>{`$\\frac{1}{x^p}$`}</Latex></li></ul>
+            </li>
+            <li>
+              <details open>
+                <summary className="cursor-pointer">原函数公式记忆: </summary>
+                <ul>
+                  <li><Latex>{`$\\int\\frac{dx}{a^2+x^2}=\\frac{1}{a}arctan(\\frac{x}{a})+C$`}</Latex></li>
+                  <li><Latex>{`$\\int\\frac{dx}{a^2-x^2}=\\frac{1}{2a}ln|\\frac{a+x}{a-x}|+C$`}</Latex></li>
+                  <li><Latex>{`$\\int\\frac{dx}{x^2-a^2}=\\frac{1}{2a}ln|\\frac{x-a}{x+a}|+C$`}</Latex></li>
+                  <li><Latex>{`$\\int\\frac{1}{\\sqrt{a^2-x^2}}dx=arcsin\\frac{x}{a}+C$`}</Latex></li>
+                  <li><Latex>{`$\\int\\frac{1}{\\sqrt{x^2-a^2}}dx=ln|x+\\sqrt{x^2-a^2}|+C$`}</Latex></li>
+                  <li><Latex>{`$\\int\\frac{1}{\\sqrt{x^2+a^2}}dx=ln|x+\\sqrt{x^2+a^2}|+C$`}</Latex></li>
+                  <li><Latex>{`$\\int\\sqrt{x^2+a^2}dx=\\frac{x}{2}\\sqrt{x^2+a^2}+\\frac{a^2}{2}ln|x+\\sqrt{x^2+a^2}|+C$`}</Latex></li>
+                  <li><Latex>{`$\\int\\sqrt{x^2-a^2}dx=\\frac{x}{2}\\sqrt{x^2-a^2}+\\frac{a^2}{2}ln|x+\\sqrt{x^2-a^2}|+C$`}</Latex></li>
+                  <li><Latex>{`$\\int\\sqrt{a^2-x^2}dx=\\frac{x}{2}\\sqrt{a^2-x^2}+\\frac{a^2}{2}arcsin\\frac{x}{a}+C$`}</Latex></li>
+                  <li><Latex>{`$\\int secxdx=ln|secx+tanx|+C$`}</Latex></li>
+                  <li><Latex>{`$\\int cscxdx=ln|cscx-cotx|+C\\\\~~~~~~~~~~~~~~~~=-ln|cscx+cotx|+C~~~(cscx-cotx=\\frac{1}{cscx+cotx})$`}</Latex></li>
+                </ul>
+              </details>
+            </li>
+            <li>[97] 注意: <Latex>{`$secx不等价于\\sqrt{1+tan^2x}$`}</Latex></li>
           </ul>
         </div>
       </TextBox>
