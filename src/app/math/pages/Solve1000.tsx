@@ -113,7 +113,7 @@ export default function Solve1000() {
             <li>连续函数零点之间的值恒正或恒负, 原函数在这些区间内单调; 若零点处导数值不为零, 根据积分保号性, 领域内两侧分别&gt;/&lt;0, 进而推出两侧区间分别&gt;/&lt;0, 直到两侧的下一个零点([93])</li>
             <li>[90] 原函数的定义; 定积分的几何意义</li>
             <li>[91] 反函数求导: <Latex>{`$y=f^{-1}(x),~ f'(y)=\\frac{1}{y'(f(y))}$`}</Latex></li>
-            <li>[92] <strong>周期函数、奇偶函数</strong>的导数、变上限积分</li>
+            <li><strong>[92] 周期函数、奇偶函数的导数、变上限积分</strong></li>
             <li>[94] 定积分的几何意义</li>
             <li>[95] 注意: <Latex>{`$\\int_{-\\infty}^{+\\infty}$`}</Latex>上的奇函数看似积分为0, 实则发散; <Latex>{`$\\int_{-\\infty}^{+\\infty}$`}</Latex>一定要分两边计算</li>
             <li>讨论反常积分敛散性只需关注暇点处或无穷远处</li>
@@ -139,13 +139,21 @@ export default function Solve1000() {
                 </ul>
               </details>
             </li>
-            <li>[97] 注意: <Latex>{`$secx不等价于\\sqrt{1+tan^2x}$`}</Latex></li>
+            <li>[97] <strong>一元函数微积分的计算: </strong>
+              <ul>
+                <li><Latex>{`$secx不等价于\\sqrt{1+tan^2x}$`}</Latex>, 原函数F(x)要在原定义域上求导都等于f(x)</li>
+                <li><strong>换元理论上需要严格单调性(至少在指定的定义域内), 否则求定积分需要分区间处理, 第二类换元法则需要找到g(t)严格单调且覆盖x定义域的区间</strong>  <br />eg: <Latex>{`$\\int_0^\\pi xcosxdx=\\int_0^1arcsintdt+\\int_1^0\\pi-arcsintdt$`}</Latex></li>
+                <li><strong>第一类换元法求不定积分时,如果被积函数是 f(g(x))g'(x) 的形式,则t=g(x)不需要单调 (t=g(x)就算是多值函数也没关系,因为x知道是啥; 也不需要知道反函数是啥就能全部换成t)</strong> <br />eg: 使用万能公式代换求解(19)</li>
+                <li>高次函数求积分可能用到递推式</li>
+                <li>万能公式换元法</li>
+              </ul>
+            </li>
+            <li>[99] 有理分式分解(方程组解出系数)</li>
+            <li>[102] <Latex>{`$\\int\\frac{1}{ax^2+bx+c}dx$`}</Latex> 一般情况下将分母上的二次函数转化为顶点式</li>
           </ul>
         </div>
       </TextBox>
     </div>
   )
 }
-
-
 

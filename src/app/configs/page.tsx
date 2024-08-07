@@ -180,6 +180,7 @@ export default function EnglishPage() {
       <li>code -r [path] 可以在原窗口切换到新工作目录<br/></li>
       <li>配置所用插件: Gruvbox Theme, Vim, Apc Customize UI++, Material Icon Theme/Catppuccin Icons,<br/>
                       Error Lens, Code Spell Checker, Project Manager</li>
+      <li>给Apc修改权限: sudo chown -R $(whoami) /opt/visual-studio-code</li>
       <h3>settings.json</h3>
       <DaisyCode>
         <span>"workbench.colorTheme": "Gruvbox Dark Hard",</span>
