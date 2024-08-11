@@ -274,7 +274,7 @@ export default function EnglishPage() {
         <span>"terminal.external.linuxExec": "kitty",</span>
         <span>"editor.linkedEditing": true,  // html tag linked edit</span>
         <span>// ui</span>
-        <span>"window.zoomLevel": 2.3,</span>
+        <span>"window.zoomLevel": 2,  // 行高: 7mm </span>
         <span>"window.titleBarStyle": "native",  // custom</span>
         <span>"window.menuBarVisibility": "compact",</span>
         <span>"window.customMenuBarAltFocus": false,</span>

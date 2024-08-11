@@ -82,6 +82,7 @@ export default function Solve1000() {
             <li>对于可导函数f(x), <Latex>{`$f(x+a)-f(x)=af'(\\xi), \\xi\\in (x,x+a)$`}</Latex></li>
             <li>[71] <strong>可以从要证明的结论的某些角度出发, 构造式子来结合题目所给条件</strong></li>
             <li>[72] <strong>无法直接证伪时, 可以举反例</strong></li>
+            <li><strong>只要函数在区间内可导，其导函数在区间内就具有介质性质(达布定理); </strong></li>
             <li>[73] 柯西中值定理</li>
             <li>[74] 只说了一点处可导, 未说明函数处处可导或在附近可导; 凑导数定义</li>
             <li>[75] sinx在x=0处一阶拉格朗日余项泰勒公式:<Latex>{`$sinx=x-\\frac{sin\\xi}{2}x^2, \\xi\\in (0,x)$`}</Latex></li>
@@ -109,7 +110,12 @@ export default function Solve1000() {
             <li><strong>[86]</strong> 拆出奇函数的积分; <Latex>{`$m(b-a)\\le\\int_a^bf(x)dx\\le M(b-a), a<b$`}</Latex></li>
             <li><Latex>{`$e^x~,~x~,~ln(1+x)~,~sin(x)$`}</Latex><Image className="mx-auto mt-1 mb-1" src='/Images/Math/xlnxexsinx.png' alt='xlnxexsinx' width={500} height={0} /></li>
             <li>[87] <Latex>{`$m_1\\ge M_2, \\int_a^{a+c}f(x)dx>m_1c\\ge M_2c>\\int_b^{b+c}f(x)dx$`}</Latex></li>
-            <li><strong>连续函数一定存在原函数, 存在震荡间断点的函数可能存在原函数</strong></li>
+            <li><strong>有原函数(不定积分)不需要可积, 定积分只需要可积而不需要有原函数 <br /> 有原函数+可积 -&gt; 牛顿莱布尼兹公式</strong></li>
+            <li><strong>连续函数一定存在原函数, 存在震荡间断点的函数可能存在原函数, 闭区间内连续则在闭区间内可积 <br />闭区间内连续 -&gt; 牛顿莱布尼兹公式</strong></li>
+            <li>
+              <strong>原函数存在定理+变限积分的导数: </strong><br />
+              <Image className="mx-auto mt-1 mb-1" src='/Images/Math/原函数存在定理.png' alt='int' width={500} height={0} />
+            </li>
             <li>连续函数零点之间的值恒正或恒负, 原函数在这些区间内单调; 若零点处导数值不为零, 根据积分保号性, 领域内两侧分别&gt;/&lt;0, 进而推出两侧区间分别&gt;/&lt;0, 直到两侧的下一个零点([93])</li>
             <li>[90] 原函数的定义; 定积分的几何意义</li>
             <li>[91] 反函数求导: <Latex>{`$y=f^{-1}(x),~ f'(y)=\\frac{1}{y'(f(y))}$`}</Latex></li>
@@ -142,14 +148,39 @@ export default function Solve1000() {
             <li>[97] <strong>一元函数微积分的计算: </strong>
               <ul>
                 <li><Latex>{`$secx不等价于\\sqrt{1+tan^2x}$`}</Latex>, 原函数F(x)要在原定义域上求导都等于f(x)</li>
-                <li><strong>换元理论上需要严格单调性(至少在指定的定义域内), 否则求定积分需要分区间处理, 第二类换元法则需要找到g(t)严格单调且覆盖x定义域的区间</strong>  <br />eg: <Latex>{`$\\int_0^\\pi xcosxdx=\\int_0^1arcsintdt+\\int_1^0\\pi-arcsintdt$`}</Latex></li>
-                <li><strong>第一类换元法求不定积分时,如果被积函数是 f(g(x))g'(x) 的形式,则t=g(x)不需要单调 (t=g(x)就算是多值函数也没关系,因为x知道是啥; 也不需要知道反函数是啥就能全部换成t)</strong> <br />eg: 使用万能公式代换求解(19)</li>
+                <li><strong>换元理论上需要严格单调性(至少在指定的定义域内), 否则可能需要分区间处理, 第二类换元法则需要找到g(t)严格单调且覆盖x定义域的区间</strong>  <br />eg: <Latex>{`$\\int_0^\\pi xcosxdx=\\int_0^1arcsintdt+\\int_1^0\\pi-arcsintdt$`}</Latex></li>
+                <li><strong>第一类换元法求定积分或不定积分时,如果被积函数是 f(g(x))g'(x) 的形式,则t=g(x)不需要单调 (t=g(x)就算是多值函数也没关系,也不需要知道反函数)</strong> <br />eg: 使用万能公式代换求解(19)</li>
                 <li>高次函数求积分可能用到递推式</li>
                 <li>万能公式换元法</li>
               </ul>
             </li>
-            <li>[99] 有理分式分解(方程组解出系数)</li>
+            <li>[99] <strong>有理分式分解(方程组解出系数)</strong></li>
             <li>[102] <Latex>{`$\\int\\frac{1}{ax^2+bx+c}dx$`}</Latex> 一般情况下将分母上的二次函数转化为顶点式</li>
+            <li>[108] 对于变限积分x能提出来提出来, 不能简单提出尝试换元(换元和求积分时x是常数,求导时x是变量)</li>
+            <li>[109] 判断导数是否连续</li>
+            <li>[111] 运用换元证明积分函数的奇偶性 (f(t)为偶函数暗示倒代换)</li>
+            <li>[112,117] 对于含绝对值的积分, 可以分割区间计算</li>
+            <li>[113] 只考虑变量在题中所属区间, 简化计算</li>
+            <li>[115] 通过<Latex>{`$\\int_a^xf(x)dx$`}求f(x)任意区间定积分</Latex></li>
+            <li>[116]
+              Method1: <Latex>{`$\\int_0^{1,2,3,4}f(x)dx$`}</Latex>可以尝试换元 sint或cost 使用点火公式 <br />
+              Method2: <Latex>{`$\\int\\sqrt{1-x^2}dx=-\\frac{1}{3x}d((1-x^2)^{\\frac{3}{2}})$`}</Latex>
+            </li>
+            <li>[120] <Latex>{`$\\frac{1}{\\sqrt{x}}dx=d(2\\sqrt{x})~~\\int lnx dx=xlnx-x+C$`}</Latex></li>
+            <li>[123] 切点给一阶导数值暗示分布积分; 找到显然解还要证明零点唯一</li>
+            <li>[124] 绕y轴旋转的旋转体体积</li>
+            <li>[125] <Latex>{`$\\int\\frac{e^x}{x}dx~\\int\\frac{1}{lnx}dx$`}</Latex> 都不是初等积分; 交换积分次序或分布积分(<Latex>{`$uv|^b_a=0$`}</Latex>)</li>
+            <li>[126] 绕x轴旋转的旋转体体积</li>
+            <li><Latex>{`$\\int\\sqrt{1+e^{ax}}dx~(a\\neq0)$`}</Latex>不是初等积分</li>
+            <li>
+              <strong>弧长公式: </strong><br />
+              [127] 直角坐标系下: <br /><Latex>{`$ds=\\sqrt{1+f'(x)^2}dx\\\\L=\\int_a^bds=\\int_a^b\\sqrt{1+f'(x)^2}dx=\\int_a^b\\sqrt{1+\\frac{y'(t)^2}{x'(t)^2}}x'(t)dt=\\int_a^b\\sqrt{x'(t)^2+y'(t)^2}dt$`}</Latex> <br />
+              [128] 极坐标系下: <br /><Latex>{`$ds=\\sqrt{\\rho(\\theta)^2+\\rho'(\\theta)^2}d\\theta\\\\L=\\int_a^bds=\\int_a^b\\sqrt{\\rho(\\theta)^2+\\rho'(\\theta)^2}d\\theta$`}</Latex> <br />
+              [129] <strong>弧线积分可以切换积分变量(注意是否单调)</strong>
+            </li>
+            <li><strong>[130]</strong> <Latex>{`$\\int_0^\\pi f(xsinx)d(xsinx)=F(xsinx)|_0^\\pi=0$`}</Latex></li>
+            <li>[131] 三角函数积分和求导都会循环(同时容易产生积分循环), 常利用这一点进行分布积分; 注意三角函数奇偶性</li>
+            <li>[132] 求零点个数的基本方法而已: 端点和特殊点划分区间+单调性+零点定理+单调区间至多一零点</li>
           </ul>
         </div>
       </TextBox>
