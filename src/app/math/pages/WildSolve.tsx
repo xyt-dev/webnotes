@@ -22,6 +22,7 @@ export default function WildSolve() {
       <ol>
         <Solve tags={["不定积分", "反三角函数"]}><Img src="/Images/Math/wildsolve/1.png" /></Solve>
         <Solve tags={["导数"]}><Img src="/Images/Math/wildsolve/2.png" /></Solve>
+        <img src="Images/Math/xlnx.png" alt="" />
       </ol>
     </DaisyProsePage>
   )
