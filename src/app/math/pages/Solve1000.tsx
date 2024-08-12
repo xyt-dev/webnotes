@@ -186,11 +186,10 @@ export default function Solve1000() {
             <li>[134] 平均值-&gt;定积分-&gt;中值</li>
             <li>[135] 变上限积分换元求导; 微分方程</li>
             <li><strong>反证法=证明逆否命题</strong></li>
-            <li><strong>[136]</strong> 泰勒中值定理; 反证法</li>
-            <li>[138] <strong>(1) 函数存在周期性、对称性等能使不同区间函数值相等的性质时，可以将未知函数表达式的目标区间内的取值变换到已知函数表达式的区间</strong> <br />
+            <li><strong>[136]</strong> 泰勒中值定理; 反证法; 极限的保号性</li>
+            <li><strong>[138] (1) 函数存在周期性、对称性等能使不同区间函数值相等的性质时，可以将未知函数表达式的目标区间内的取值变换到已知函数表达式的区间</strong> <br />
               (2) f(x)单调递增, f(a)&lt;f(x)&lt;f(b), <Latex>{`$\\frac{f(a)}{b}<\\frac{f(x)}{x}<\\frac{f(b)}{a}$`}</Latex>; &nbsp;夹逼准则; &nbsp;等价无穷大替换
             </li>
-            wow
           </ul>
         </div>
       </TextBox>
