@@ -12,8 +12,8 @@ if (isGithubActions) {
 }
 
 const nextConfig = {
-  assetPrefix: "/webnotes/",
-  basePath: "/webnotes",
+  assetPrefix: _assetPrefix,
+  basePath: _basePath,
   output: _output
 };
 
