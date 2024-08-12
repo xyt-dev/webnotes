@@ -1,19 +1,35 @@
 "use client"
 import DaisySidebar, { DaisySidebarLeaf, DaisySidebarNode as Node } from "@/components/DaisySidebar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Solve1000 from "./pages/Solve1000";
 import Link from "next/link";
 import WildSolve from "./pages/WildSolve";
 
 export default function DaisyPages() {
-  const pages:{[key: string]: React.ReactNode} = {
+  const pages: { [key: string]: React.ReactNode } = {
     "Solve1000": Solve1000(),
     "WildSolve": WildSolve(),
   }
-  const [pageRenderingName, setPageRenderingName] = useState(() => {
-    const lastPage = localStorage.getItem("lastPage");
-    return lastPage && pages[lastPage] ? lastPage : "Solve1000";
+  const [pageRenderingName, setPageRenderingName] = useState("")
+  useEffect(() => {
+      const lastPage = localStorage.getItem("lastPage");
+      lastPage && pages[lastPage] ? setPageRenderingName(lastPage) : setPageRenderingName("Solve1000");
   });
+  useEffect(() => {
+    if (pageRenderingName !== "") {
+      const savedPosition = localStorage.getItem("scrollPosition");
+      if (savedPosition) {
+        window.scrollTo(0, parseInt(savedPosition, 10));
+      }
+      const handleScroll = () => {
+        localStorage.setItem("scrollPosition", window.scrollY.toString());
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  })
   function Leaf({ children, pageName }: { children: string, pageName: string }) {
     return (
       <DaisySidebarLeaf setPageRendering={() => { setPageRenderingName(pageName); localStorage.setItem("lastPage", pageName) }} isSelected={pageRenderingName === pageName}>{children}</DaisySidebarLeaf>

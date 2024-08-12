@@ -1,3 +1,4 @@
+'use client'
 import React from "react"
 import clsx from "clsx"
 
@@ -29,7 +30,7 @@ export default function DaisySidebar({children, page}: {children: React.ReactNod
       <div className="daisy-drawer-content min-h-screen min-w-full">
         <label htmlFor="drawer" className="daisy-btn daisy-drawer-button m-1 daisy-btn-ghost 2xl:hidden sticky top-1 z-50">
           <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block h-5 w-5 stroke-current md:h-6 md:w-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </label>
         {/* Page content here */}

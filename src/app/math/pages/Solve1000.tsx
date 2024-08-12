@@ -25,6 +25,7 @@ export default function Solve1000() {
             <li>[9] 已知函数极限存在, 设极限为A列方程求解</li>
             <li>[10] 幂指函数-&gt;<Latex>{`$e^{ln}$`}</Latex>; 泰勒公式</li>
             <li>[12] 求极限时, 乘积的部分极限存在且不为0, 可以将其作为常数提出，因为其倒数的极限存在</li>
+            <li><Latex>{`$\\frac{\\infty}{\\infty}$`}</Latex>分子分母同样分别可用等价无穷大替换, <strong>等价无穷大之间相差低阶无穷小</strong></li>
             <li>[14] <Latex>{`$x\\rightarrow0时, ln(x+\\sqrt{1+x^2})~x$`}</Latex></li>
             <li>[15] 结合洛必达和泰勒公式快速求解, 加减慎用泰勒公式</li>
             <li>[19] 整体的泰勒公式可以由部分的泰勒公式运算得到，还可以利用这点求整体的某一阶导数</li>
@@ -81,7 +82,7 @@ export default function Solve1000() {
             <li>[70] <Latex>{`$ln(1+\\frac{1}{x})=ln(1+x)-ln(x)=\\frac{1}{\\xi}~,~\\xi\\in (x,x+1)$`}</Latex></li>
             <li>对于可导函数f(x), <Latex>{`$f(x+a)-f(x)=af'(\\xi), \\xi\\in (x,x+a)$`}</Latex></li>
             <li>[71] <strong>可以从要证明的结论的某些角度出发, 构造式子来结合题目所给条件</strong></li>
-            <li>[72] <strong>无法直接证伪时, 可以举反例</strong></li>
+            <li>[72,137] <strong>无法直接证伪时, 可以举反例</strong></li>
             <li><strong>只要函数在区间内可导，其导函数在区间内就具有介质性质(达布定理); </strong></li>
             <li>[73] 柯西中值定理</li>
             <li>[74] 只说了一点处可导, 未说明函数处处可导或在附近可导; 凑导数定义</li>
@@ -181,6 +182,15 @@ export default function Solve1000() {
             <li><strong>[130]</strong> <Latex>{`$\\int_0^\\pi f(xsinx)d(xsinx)=F(xsinx)|_0^\\pi=0$`}</Latex></li>
             <li>[131] 三角函数积分和求导都会循环(同时容易产生积分循环), 常利用这一点进行分布积分; 注意三角函数奇偶性</li>
             <li>[132] 求零点个数的基本方法而已: 端点和特殊点划分区间+单调性+零点定理+单调区间至多一零点</li>
+            <li><strong>[133] x&ge;a时f(x)有反函数g(x) =&gt; f(x)和g(x)单调; g(x)&ge;a且仅在x=f(0)处取等号</strong></li>
+            <li>[134] 平均值-&gt;定积分-&gt;中值</li>
+            <li>[135] 变上限积分换元求导; 微分方程</li>
+            <li><strong>反证法=证明逆否命题</strong></li>
+            <li><strong>[136]</strong> 泰勒中值定理; 反证法</li>
+            <li>[138] <strong>(1) 函数存在周期性、对称性等能使不同区间函数值相等的性质时，可以将未知函数表达式的目标区间内的取值变换到已知函数表达式的区间</strong> <br />
+              (2) f(x)单调递增, f(a)&lt;f(x)&lt;f(b), <Latex>{`$\\frac{f(a)}{b}<\\frac{f(x)}{x}<\\frac{f(b)}{a}$`}</Latex>; &nbsp;夹逼准则; &nbsp;等价无穷大替换
+            </li>
+            wow
           </ul>
         </div>
       </TextBox>
