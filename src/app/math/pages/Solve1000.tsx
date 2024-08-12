@@ -194,6 +194,9 @@ export default function Solve1000() {
             <li><strong>[138] (1) 函数存在周期性、对称性等能使不同区间函数值相等的性质时，可以将未知函数表达式的目标区间内的取值变换到已知函数表达式的区间</strong> <br />
               (2) f(x)单调递增, f(a)&lt;f(x)&lt;f(b), <Latex>{`$\\frac{f(a)}{b}<\\frac{f(x)}{x}<\\frac{f(b)}{a}$`}</Latex>; &nbsp;夹逼准则; &nbsp;等价无穷大替换
             </li>
+            <li>[139] 引力 <Latex>{`$dF=\\frac{GM(dm)}{L^2}$`}</Latex>; 三角换元</li>
+            <li>[140] (1) 旋转体体积; 抛物线方程 <Latex>{`$y^2=2px$`}</Latex> &nbsp; (2) <Latex>{`$dW=\\rho ghdV$`}</Latex></li>
+            <li>[141] (1) <Latex>{`$\\frac{dy}{dt}=\\frac{dy}{dV}\\frac{dV}{dt}~~\\frac{dV}{dy}=S$`}</Latex> &nbsp; (2) 注意积分区间和被积函数的奇偶性</li>
           </ul>
         </div>
       </TextBox>
