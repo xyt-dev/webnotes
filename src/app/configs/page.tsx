@@ -452,6 +452,11 @@ export default function EnglishPage() {
                 explorerResourceIsFolder && !inputFocus"`}
         <span>&#125;,</span>
       </DaisyCode>
+      <h3>设置git代理:</h3>
+      <p>
+        git config --global http.proxy http://127.0.0.1:7890 <br />
+        git config --global https.proxy http://127.0.0.1:7890
+      </p>
       <h2>ranger 配置</h2>
       <h3>rc.conf:</h3>
       <p>

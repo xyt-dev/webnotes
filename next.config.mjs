@@ -1,20 +1,20 @@
 /** @type {import('next').NextConfig} */
 const isGithubActions = process.env.GITHUB_ACTIONS || false;
-let assetPrefix = "";
-let basePath = "";
+let _assetPrefix = "";
+let _basePath = "";
+let _output = undefined
 
 if (isGithubActions) {
-  // 去掉 `<owner>/`
-  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, "");
-
-  assetPrefix = `/${repo}/`;
-  basePath = `/${repo}`;
+  const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
+  _assetPrefix = `/${repo}/`;
+  _basePath = `/${repo}`;
+  _output = "export";
 }
 
 const nextConfig = {
-  basePath,
-  assetPrefix,
-  output: "export",
+  assetPrefix: "/webnotes/",
+  basePath: "/webnotes",
+  output: _output
 };
 
 export default nextConfig;

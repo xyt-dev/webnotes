@@ -29,6 +29,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Print GITHUB_REPOSITORY
+        run: echo "$GITHUB_REPOSITORY"
       - name: Checkout
         uses: actions/checkout@v4
       - name: Detect package manager
