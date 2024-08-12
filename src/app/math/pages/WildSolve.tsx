@@ -1,9 +1,8 @@
-import Image from "next/image"
 import DaisyProsePage from "@/components/DaisyProsePage"
 
-function Img({ src, width }: { src: string, width?: number }) {
+function Img({ src }: { src: string }) {
   return (
-    <Image className="m-1" src={src} alt="" width={width ? width : 430} height={999} />
+    <img className="m-1 mb-5" src={src} width={500} alt="" />
   )
 }
 
@@ -20,9 +19,8 @@ export default function WildSolve() {
   return (
     <DaisyProsePage>
       <ol>
-        <Solve tags={["不定积分", "反三角函数"]}><Img src="/Images/Math/wildsolve/1.png" /></Solve>
-        <Solve tags={["导数"]}><Img src="/Images/Math/wildsolve/2.png" /></Solve>
-        <img src="Images/Math/xlnx.png" alt="" />
+        <Solve tags={["不定积分", "反三角函数"]}><Img src="Images/Math/wildsolve/1.png" /></Solve>
+        <Solve tags={["导数"]}><Img src="Images/Math/wildsolve/2.png" /></Solve>
       </ol>
     </DaisyProsePage>
   )

@@ -1,9 +1,13 @@
 import TextBox from "@/components/RowTextBox"
 import { Title1, Title2 } from "@/components/RowTextBox"
-import Link from "next/link";
 import Latex from "react-latex-next"
 import 'katex/dist/katex.min.css'; // 导入 KaTeX 样式
-import Image from "next/image";
+
+function Img({ src, width }: { src: string, width?: number }) {
+  return (
+    <img className="m-1 mx-auto" src={src} alt="" width={width} />
+  )
+}
 
 export default function Solve1000() {
   return (
@@ -45,7 +49,7 @@ export default function Solve1000() {
             <li>函数+数列联想到海涅定理(函数与数列的桥梁)</li>
             <li>[37] 拆出导数定义</li>
             <li>函数在一点可导，导函数不一定连续(例: <Latex>{`$f(x)=x^2sin(\\frac{1}{x}), f(0)=0$`}</Latex>); 所以特殊点的导数要用定义法</li>
-            <Image className="mx-auto mt-1 mb-1" src='/Images/Math/x2sin1divx.png' alt='x^2sin1/x' width={500} height={0} />
+            <Img src='Images/Math/x2sin1divx.png' width={500} />
             <li>[40] <Latex>{`$|f(x)| = \\sqrt{f^2(x)} = g(x)$`}</Latex>; 假设-&gt;反证</li>
             <li>[42] <Latex>{`$df(a) = f'(a)dx = f'(a)\\Delta x, \\Delta f(a) = f'(a)\\Delta x+o(\\Delta x)$`}</Latex></li>
             <li>[44] n个函数乘积的导数</li>
@@ -60,7 +64,7 @@ export default function Solve1000() {
             <li>[50] 求一点处导数值,若公式法计算复杂应尝试定义法; 证明一点导数存在且连续(该点处用定义法, 两边用公式法)</li>
             <li>[53] 函数乘积的n阶导数(求其中一项即可，用组合数(Leibniz公式))</li>
             <li>[54] 找最值看两端和内部极值点(分段点,无定义点,不可导点, 导数为0的点)</li>
-            <li>[56] 判断分段点是否为可导点和极值点; xlnx函数图像: <Image className="mx-auto mt-1 mb-1" src='/Images/Math/xlnx.png' alt='xlnx' width={500} height={0} /> </li>
+            <li>[56] 判断分段点是否为可导点和极值点; xlnx函数图像: <Img src='Images/Math/xlnx.png' width={500} /> </li>
             <li>[57] 整体求出关于参数a的最值,再根据不等式求解a | 作逻辑等价变换,将a看作关于x的函数或不等式(运算简单)</li>
             <li>[58] 看图像注意坐标轴; 拐点要求函数在该点连续</li>
             <li>[59] 注意可导条件,这样就能放心用公式求导</li>
@@ -109,13 +113,13 @@ export default function Solve1000() {
             <li>定义域内有界且只存在有限个间断点(间断点为零测度集)的实函数<strong>黎曼可积</strong></li>
             <li>区间再现公式: <Latex>{`$\\int_a^bf(x)dx = \\int_a^bf(a+b-x)dx$`}</Latex></li>
             <li><strong>[86]</strong> 拆出奇函数的积分; <Latex>{`$m(b-a)\\le\\int_a^bf(x)dx\\le M(b-a), a<b$`}</Latex></li>
-            <li><Latex>{`$e^x~,~x~,~ln(1+x)~,~sin(x)$`}</Latex><Image className="mx-auto mt-1 mb-1" src='/Images/Math/xlnxexsinx.png' alt='xlnxexsinx' width={500} height={0} /></li>
+            <li><Latex>{`$e^x~,~x~,~ln(1+x)~,~sin(x)$`}</Latex><Img src='Images/Math/xlnxexsinx.png' width={500} /></li>
             <li>[87] <Latex>{`$m_1\\ge M_2, \\int_a^{a+c}f(x)dx>m_1c\\ge M_2c>\\int_b^{b+c}f(x)dx$`}</Latex></li>
             <li><strong>有原函数(不定积分)不需要可积, 定积分只需要可积而不需要有原函数 <br /> 有原函数+可积 -&gt; 牛顿莱布尼兹公式</strong></li>
             <li><strong>连续函数一定存在原函数, 存在震荡间断点的函数可能存在原函数, 闭区间内连续则在闭区间内可积 <br />闭区间内连续 -&gt; 牛顿莱布尼兹公式</strong></li>
             <li>
               <strong>原函数存在定理+变限积分的导数: </strong><br />
-              <Image className="mx-auto mt-1 mb-1" src='/Images/Math/原函数存在定理.png' alt='int' width={500} height={0} />
+              <Img src='Images/Math/原函数存在定理.png' width={500} />
             </li>
             <li>连续函数零点之间的值恒正或恒负, 原函数在这些区间内单调; 若零点处导数值不为零, 根据积分保号性, 领域内两侧分别&gt;/&lt;0, 进而推出两侧区间分别&gt;/&lt;0, 直到两侧的下一个零点([93])</li>
             <li>[90] 原函数的定义; 定积分的几何意义</li>
