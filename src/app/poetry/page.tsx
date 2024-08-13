@@ -12,6 +12,9 @@ function Poetry({ children }: { children?: React.ReactNode }) {
 export default function PoetryPage() {
   return (
     <DaisyProsePage>
+      <TextBox className="!border-none shadow-none text-center mb-10 text-lg mx-5">
+        {<h1 className="text-cyan-300 mb-0">高山流水大诗人诗词集</h1>}
+      </TextBox>
       <Poetry>
         {`
 满江红·軍旗颂  
@@ -43,6 +46,7 @@ export default function PoetryPage() {
  九七七年 “八一”建军节50周年
       ` }
       </Poetry>
+
       <Poetry>
         {`
 荷塘月色   
