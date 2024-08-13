@@ -197,6 +197,8 @@ export default function Solve1000() {
             <li>[139] 引力 <Latex>{`$dF=\\frac{GM(dm)}{L^2}$`}</Latex>; 三角换元</li>
             <li>[140] (1) 旋转体体积; 抛物线方程 <Latex>{`$y^2=2px$`}</Latex> &nbsp; (2) <Latex>{`$dW=\\rho ghdV$`}</Latex></li>
             <li>[141] (1) <Latex>{`$\\frac{dy}{dt}=\\frac{dy}{dV}\\frac{dV}{dt}~~\\frac{dV}{dy}=S$`}</Latex> &nbsp; (2) 注意积分区间和被积函数的奇偶性</li>
+            <li>圆台侧面积: <Latex>{`$S=\\pi(r1+r2)L$`}</Latex><br />
+              [142] 旋转体表面积 <Latex>{`$dS=\\pi(|f(x)|+|f(x+dx)|)\\sqrt{1+f'^2(x)}dx=2\\pi f(x)\\sqrt{1+f'^2(x)}dx$`}</Latex></li>
           </ul>
         </div>
       </TextBox>

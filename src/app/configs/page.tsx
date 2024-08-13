@@ -175,6 +175,11 @@ export default function EnglishPage() {
       <p>
         <a href='http://clash.razord.top'>http://clash.razord.top</a> 可进入clash的前端界面
       </p>
+      <p className="font-bold">设置git代理:</p>
+      <p>
+        git config --global http.proxy http://127.0.0.1:7890 <br />
+        git config --global https.proxy http://127.0.0.1:7890
+      </p>
       <h2>VSCode Config</h2>
       <li>ArchLinux 下使用 yay -S visual-studio-code-bin 以安装正常版本 VSCode<br/></li>
       <li>code -r [path] 可以在原窗口切换到新工作目录<br/></li>
@@ -452,11 +457,6 @@ export default function EnglishPage() {
                 explorerResourceIsFolder && !inputFocus"`}
         <span>&#125;,</span>
       </DaisyCode>
-      <h3>设置git代理:</h3>
-      <p>
-        git config --global http.proxy http://127.0.0.1:7890 <br />
-        git config --global https.proxy http://127.0.0.1:7890
-      </p>
       <h2>ranger 配置</h2>
       <h3>rc.conf:</h3>
       <p>
