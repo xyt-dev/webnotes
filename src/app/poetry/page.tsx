@@ -3,7 +3,7 @@ import TextBox from "@/components/RowTextBox"
 
 function Poetry({ children }: { children?: React.ReactNode }) {
   return (
-    <TextBox className="whitespace-pre-wrap text-center mb-10 text-lg mx-5">
+    <TextBox className="whitespace-pre-wrap text-center mb-10 text-xl mx-5">
       {children}
     </TextBox>
   )
@@ -12,8 +12,8 @@ function Poetry({ children }: { children?: React.ReactNode }) {
 export default function PoetryPage() {
   return (
     <DaisyProsePage>
-      <TextBox className="!border-none shadow-none text-center mb-10 text-lg mx-5">
-        {<h1 className="text-cyan-300 mb-0">高山流水大诗人诗词集</h1>}
+      <TextBox className="!border-none shadow-none text-center mb-10 mx-0 text-lg">
+        {<h2 className="text-cyan-300 mb-0 mt-0">高山流水大诗人诗词集</h2>}
       </TextBox>
       <Poetry>
         {`
