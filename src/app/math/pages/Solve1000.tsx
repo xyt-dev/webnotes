@@ -184,7 +184,7 @@ export default function Solve1000() {
               [129] <strong>弧线积分可以切换积分变量(注意是否单调)</strong>
             </li>
             <li><strong>[130]</strong> <Latex>{`$\\int_0^\\pi f(xsinx)d(xsinx)=F(xsinx)|_0^\\pi=0$`}</Latex></li>
-            <li>[131] 三角函数积分和求导都会循环(同时容易产生积分循环), 常利用这一点进行分布积分; 注意三角函数奇偶性</li>
+            <li>[131] 三角函数、<Latex>{`$e^x$`}</Latex> 的积分和求导都会循环(同时容易产生积分循环), 常利用这一点进行分布积分; 注意三角函数奇偶性</li>
             <li>[132] 求零点个数的基本方法而已: 端点和特殊点划分区间+单调性+零点定理+单调区间至多一零点</li>
             <li><strong>[133] x&ge;a时f(x)有反函数g(x) =&gt; f(x)和g(x)单调; g(x)&ge;a且仅在x=f(0)处取等号</strong></li>
             <li>[134] 平均值-&gt;定积分-&gt;中值</li>
@@ -198,7 +198,9 @@ export default function Solve1000() {
             <li>[140] (1) 旋转体体积; 抛物线方程 <Latex>{`$y^2=2px$`}</Latex> &nbsp; (2) <Latex>{`$dW=\\rho ghdV$`}</Latex></li>
             <li>[141] (1) <Latex>{`$\\frac{dy}{dt}=\\frac{dy}{dV}\\frac{dV}{dt}~~\\frac{dV}{dy}=S$`}</Latex> &nbsp; (2) 注意积分区间和被积函数的奇偶性</li>
             <li>圆台侧面积: <Latex>{`$S=\\pi(r1+r2)L$`}</Latex><br />
-              [142] 旋转体表面积 <Latex>{`$dS=\\pi(|f(x)|+|f(x+dx)|)\\sqrt{1+f'^2(x)}dx=2\\pi f(x)\\sqrt{1+f'^2(x)}dx$`}</Latex></li>
+              [142] 旋转体表面积 <Latex>{`$dS=\\pi(|f(x)|+|f(x+dx)|)\\sqrt{1+f'^2(x)}dx=2\\pi f(x)\\sqrt{1+f'^2(x)}dx$`}</Latex>
+            </li>
+            <li>[143] 微分方程组; 解可分离变量的微分方程</li>
           </ul>
         </div>
       </TextBox>

@@ -3,7 +3,7 @@ import TextBox from "@/components/RowTextBox"
 
 function Poetry({ children }: { children?: React.ReactNode }) {
   return (
-    <TextBox className="whitespace-pre-wrap text-center mb-10 text-xl mx-5">
+    <TextBox className="whitespace-pre-wrap text-center mb-10 text-xl !mx-5">
       {children}
     </TextBox>
   )

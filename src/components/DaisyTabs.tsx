@@ -14,21 +14,21 @@ function ShiftedTabs() {
   )
 }
 
-export function TabPage({ children, tabName, defaultChecked }: { children?: React.ReactNode, tabName: string, defaultChecked?: boolean }) {
+export function TabPage({ children, tabName, defaultChecked }: { children?: React.ReactNode, tabName?: string, defaultChecked?: boolean }) {
   return (
     <>
-    <input type="radio" name="my_tabs_1" role="tab" className="daisy-tab [--tab-bg:oklch(var(--b3))] !border-b-transparent text-xl font-medium " aria-label={tabName} defaultChecked={defaultChecked} />
-    <div role="tabpanel" className="daisy-tab-content border-base-300 rounded-box bg-base-300 p-6 pl-10 pr-10 ">
+    <input type="radio" name="my_tabs_1" role="tab" className="daisy-tab [--tab-bg:oklch(var(--b3))] !border-b-transparent text-base font-medium " aria-label={tabName} defaultChecked={defaultChecked} />
+    <div role="tabpanel" className="daisy-tab-content border-base-300 rounded-box bg-base-300 p-5 pl-10 pr-10">
       {children}
     </div>
     </>
   )
 }
 
-export default function TabPages ({ children }: { children: React.ReactNode }) {
+export default function TabPages ({ children, className }: { children: React.ReactNode, className?: string }) {
   // children should be TabPage
   return (
-    <div className="daisy-tabs daisy-tabs-lifted daisy-tabs-bordered ">
+    <div className={`daisy-tabs daisy-tabs-lifted daisy-tabs-bordered ${className}`}>
       {children}
     </div>
   )
