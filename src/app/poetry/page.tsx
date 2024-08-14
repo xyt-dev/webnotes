@@ -12,7 +12,7 @@ function Poetry({ children }: { children?: React.ReactNode }) {
 export default function PoetryPage() {
   return (
     <DaisyProsePage>
-      <TextBox className="!border-none shadow-none text-center mb-10 mx-0 text-lg">
+      <TextBox className="!border-none shadow-none text-center mb-10 !mx-5 text-lg">
         {<h2 className="text-cyan-300 mb-0 mt-0">高山流水大诗人诗词集</h2>}
       </TextBox>
       <Poetry>

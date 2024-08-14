@@ -30,14 +30,14 @@ function Solve({ tags, children }: { tags?: string[], children?: React.ReactNode
 
 function SolveTemplate() { // just template
   return (
-        <Solve>
-          <TabPage tabName="题目" defaultChecked>
-            $
-          </TabPage>
-          <TabPage tabName="题解">
-            $
-          </TabPage>
-        </Solve>
+    <Solve>
+      <TabPage tabName="题目" defaultChecked>
+        $
+      </TabPage>
+      <TabPage tabName="题解">
+        $
+      </TabPage>
+    </Solve>
   )
 }
 
@@ -60,15 +60,31 @@ export default function WildSolve() {
           </TabPage>
         </Solve>
 
-        <Solve>
+        <Solve tags={["定积分", "积分再现公式", "区间诱导"]}>
           <TabPage tabName="题目" defaultChecked>
             <Img src="Images/Math/wildsolve/5.png"></Img>
           </TabPage>
           <TabPage tabName="题解">
-            <Latex>{`$原式=\\int_0^1(1-x)arcsin(2\\sqrt{x-x^2}dx)\\\\ =\\frac{1}{2}\\int_0^1 arcsin(2\\sqrt{\\frac{1}{4}-(x-\\frac{1}{2})^2})dx$`}</Latex>
+            <Latex>{`$原式=\\int_0^1(1-x)arcsin(2\\sqrt{x-x^2}dx)\\\\ 
+              =\\frac{1}{2}\\int_0^1 arcsin(2\\sqrt{\\frac{1}{4}-(x-\\frac{1}{2})^2})dx\\\\
+              x-\\frac{1}{2}=\\frac{1}{2}cos\\theta~~(值域覆盖+单调)\\\\
+              原式=\\frac{1}{4}\\int_0^{\\pi} arcsin(sin\\theta)sin\\theta d\\theta\\\\
+              =\\frac{1}{4}(\\int_0^{\\frac{\\pi}{2}}\\theta sin\\theta d\\theta + \\int_{\\frac{\\pi}{2}}^{\\pi}(\\pi - \\theta)sin\\theta d\\theta)\\\\
+              =\\frac{1}{2}$`}</Latex>
           </TabPage>
         </Solve>
 
+
+        <Solve tags={["不定积分", "极限"]}>
+          <TabPage tabName="题目" defaultChecked>
+            <Latex>{`$\\int{(x^{dx} - 1)}$`}</Latex>
+          </TabPage>
+          <TabPage tabName="题解">
+            <Latex>{`$\\int{(x^{dx} - 1)}=\\int{\\frac{x^{dx}-1}{dx}}dx\\\\
+              =\\int{lim_{a\\rightarrow 0}\\frac{x^a-1}{a}}dx\\\\
+              =xlnx-x+C$`}</Latex>
+          </TabPage>
+        </Solve>
       </ol>
     </DaisyProsePage>
   )
