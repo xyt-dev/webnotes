@@ -1,5 +1,7 @@
 import DaisyProsePage from "@/components/DaisyProsePage"
 import TabPages, { TabPage } from "@/components/DaisyTabs"
+import Latex from "react-latex-next"
+import 'katex/dist/katex.min.css'; // 导入 KaTeX 样式
 
 function Img({ src, width }: { src: string, width?: number }) {
   if (width) {
@@ -19,10 +21,23 @@ function Solve({ tags, children }: { tags?: string[], children?: React.ReactNode
   return (
     <li className="mb-5">
       {Tags}
-      <TabPages className="mt-2">
+      <TabPages className="mt-2 leading-[3rem]">
         {children}
       </TabPages>
     </li>
+  )
+}
+
+function SolveTemplate() { // just template
+  return (
+        <Solve>
+          <TabPage tabName="题目" defaultChecked>
+            $
+          </TabPage>
+          <TabPage tabName="题解">
+            $
+          </TabPage>
+        </Solve>
   )
 }
 
@@ -31,8 +46,11 @@ export default function WildSolve() {
     <DaisyProsePage>
       <ol>
         <Solve tags={["不定积分", "反三角函数"]}><Img src="Images/Math/wildsolve/1.png" /></Solve>
+
         <Solve tags={["导数"]}><Img src="Images/Math/wildsolve/2.png" /></Solve>
+
         <Solve tags={["极限"]}><Img src="Images/Math/wildsolve/3.png" /></Solve>
+
         <Solve tags={["口算题"]}>
           <TabPage tabName="题目" defaultChecked>
             <Img src="Images/Math/wildsolve/4.png" width={600} />
@@ -41,6 +59,16 @@ export default function WildSolve() {
             奇偶性
           </TabPage>
         </Solve>
+
+        <Solve>
+          <TabPage tabName="题目" defaultChecked>
+            <Img src="Images/Math/wildsolve/5.png"></Img>
+          </TabPage>
+          <TabPage tabName="题解">
+            <Latex>{`$原式=\\int_0^1(1-x)arcsin(2\\sqrt{x-x^2}dx)\\\\ =\\frac{1}{2}\\int_0^1 arcsin(2\\sqrt{\\frac{1}{4}-(x-\\frac{1}{2})^2})dx$`}</Latex>
+          </TabPage>
+        </Solve>
+
       </ol>
     </DaisyProsePage>
   )

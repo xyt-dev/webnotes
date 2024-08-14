@@ -1,3 +1,4 @@
+import React, { cloneElement, ReactElement } from "react";
 // Template:
 function ShiftedTabs() {
   return (
@@ -14,10 +15,10 @@ function ShiftedTabs() {
   )
 }
 
-export function TabPage({ children, tabName, defaultChecked }: { children?: React.ReactNode, tabName?: string, defaultChecked?: boolean }) {
+export function TabPage({ children, tabName, defaultChecked, name }: { children?: React.ReactNode, tabName?: string, defaultChecked?: boolean, name?: string }) {
   return (
     <>
-    <input type="radio" name="my_tabs_1" role="tab" className="daisy-tab [--tab-bg:oklch(var(--b3))] !border-b-transparent text-base font-medium " aria-label={tabName} defaultChecked={defaultChecked} />
+    <input type="radio" name={name} role="tab" className="daisy-tab [--tab-bg:oklch(var(--b3))] !border-b-transparent text-base font-medium " aria-label={tabName} defaultChecked={defaultChecked} />
     <div role="tabpanel" className="daisy-tab-content border-base-300 rounded-box bg-base-300 p-5 pl-10 pr-10">
       {children}
     </div>
@@ -27,9 +28,23 @@ export function TabPage({ children, tabName, defaultChecked }: { children?: Reac
 
 export default function TabPages ({ children, className }: { children: React.ReactNode, className?: string }) {
   // children should be TabPage
+  function getUuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = (Math.random() * 16) | 0,
+        v = c == 'x' ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+  }
+  const id = getUuid();
+  const childrenWithUniqueNames = React.Children.map(children, child => {
+    if (React.isValidElement(child) && child.type === TabPage) {
+      return cloneElement(child as ReactElement<{name: string}>, { name: id });
+    }
+    return child;
+  });
   return (
     <div className={`daisy-tabs daisy-tabs-lifted daisy-tabs-bordered ${className}`}>
-      {children}
+      {childrenWithUniqueNames}
     </div>
   )
 }
