@@ -331,6 +331,7 @@ export default function EnglishPage() {
         <span>"cSpell.userWords": [</span>
         <span>    "gruvbox",</span>
         <span>]</span>
+        <span>"editor.wordSegmenterLocales": "zh-CN"</span>
       </DaisyCode>
       <h3>keybindings.json:</h3>
       <DaisyCode>

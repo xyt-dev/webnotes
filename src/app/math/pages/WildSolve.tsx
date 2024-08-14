@@ -21,7 +21,7 @@ function Solve({ tags, children }: { tags?: string[], children?: React.ReactNode
   return (
     <li className="mb-5">
       {Tags}
-      <TabPages className="mt-2 leading-[3rem]">
+      <TabPages className="mt-2 leading-10">
         {children}
       </TabPages>
     </li>
@@ -56,13 +56,13 @@ export default function WildSolve() {
             <Img src="Images/Math/wildsolve/4.png" width={600} />
           </TabPage>
           <TabPage tabName="题解">
-            奇偶性
+            奇偶性<br /> 答案: 0, 0
           </TabPage>
         </Solve>
 
-        <Solve tags={["定积分", "积分再现公式", "区间诱导"]}>
+        <Solve tags={["定积分", "区间再现", "区间诱导"]}>
           <TabPage tabName="题目" defaultChecked>
-            <Img src="Images/Math/wildsolve/5.png"></Img>
+            <Img src="Images/Math/wildsolve/5.png" />
           </TabPage>
           <TabPage tabName="题解">
             <Latex>{`$原式=\\int_0^1(1-x)arcsin(2\\sqrt{x-x^2}dx)\\\\ 
@@ -83,6 +83,15 @@ export default function WildSolve() {
             <Latex>{`$\\int{(x^{dx} - 1)}=\\int{\\frac{x^{dx}-1}{dx}}dx\\\\
               =\\int{lim_{a\\rightarrow 0}\\frac{x^a-1}{a}}dx\\\\
               =xlnx-x+C$`}</Latex>
+          </TabPage>
+        </Solve>
+
+        <Solve tags={["定积分", "区间再现", "三角换元"]}>
+          <TabPage tabName="题目" defaultChecked>
+            <Img src="Images/Math/wildsolve/6.png" />
+          </TabPage>
+          <TabPage tabName="题解">
+            换元x=tanu, 然后使用区间再现公式, 与原积分相加构造更简单的积分
           </TabPage>
         </Solve>
       </ol>

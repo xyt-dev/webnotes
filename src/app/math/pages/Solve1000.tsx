@@ -55,7 +55,7 @@ export default function Solve1000() {
             <li>[44] n个函数乘积的导数</li>
             <li>[45] 函数绝对值的导数</li>
             <li>[47] 反函数的导数</li>
-            <li>隐函数存在定理: F(x, y(x))在点<Latex>{`$(x_0, y_0)$`}</Latex>附近连续 且 <Latex>{`$F'_y$`}</Latex>在该点附近连续
+            <li><strong>隐函数存在定理: </strong>F(x, y(x))在点<Latex>{`$(x_0, y_0)$`}</Latex>附近连续 且 <Latex>{`$F'_y$`}</Latex>在该点附近连续
               且 <Latex>{`$F'_y(x_0, y_0)\\neq0$`}, </Latex>则该点附近存在<strong>连续</strong>函数y=f(x)【只是充分条件】<br />若在该区域内还存在连续偏导数<Latex>{`$F'_x$`}</Latex>, 则在该区域内有连续导函数<Latex>{`$y'(x)=-\\frac{F'_x}{F'_y}$`}</Latex><br />
               <Latex>{`F(x, y)`}</Latex>在<Latex>{`$tan\\alpha=\\frac{F'_y}{F'_x}$`}</Latex>方向上函数变化率最快, 在<Latex>{`$tan\\alpha=-\\frac{F'_x}{F'_y}$`}</Latex>方向上为等高线
             </li>
@@ -201,6 +201,8 @@ export default function Solve1000() {
               [142] 旋转体表面积 <Latex>{`$dS=\\pi(|f(x)|+|f(x+dx)|)\\sqrt{1+f'^2(x)}dx=2\\pi f(x)\\sqrt{1+f'^2(x)}dx$`}</Latex>
             </li>
             <li>[143] 微分方程组; 解可分离变量的微分方程</li>
+            <li>[149] 偏导数的不定积分</li>
+            <li>[150] 通过 f(x, y(t)) 和 <Latex>{`$f_y'$`}</Latex> 确定一点附近隐函数t(x)以及t'(x)</li>
           </ul>
         </div>
       </TextBox>

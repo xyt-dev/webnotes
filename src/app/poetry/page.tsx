@@ -1,5 +1,7 @@
+"use client"
 import DaisyProsePage from "@/components/DaisyProsePage"
 import TextBox from "@/components/RowTextBox"
+import { useEffect, useState } from "react";
 
 function Poetry({ children }: { children?: React.ReactNode }) {
   return (
@@ -10,11 +12,41 @@ function Poetry({ children }: { children?: React.ReactNode }) {
 }
 
 export default function PoetryPage() {
+  const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | undefined;
+
+    if (checked) {
+      interval = setInterval(() => {
+        document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      }, 50);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+      document.body.style.backgroundColor = '';
+    };
+  }, [checked]);
+
+  const handleChange = () => {
+    setChecked(prev => !prev);
+  };
+
   return (
     <DaisyProsePage>
-      <TextBox className="!border-none shadow-none text-center mb-10 !mx-5 text-lg">
-        {<h2 className="text-cyan-300 mb-0 mt-0">高山流水大诗人诗词集</h2>}
+      <TextBox className="!border-none shadow-none text-center mb-6 pb-6 !mx-5 text-lg">
+        <h2 className="text-cyan-300 mb-0 mt-0">高山流水大诗人诗词集</h2>
       </TextBox>
+
+      <TextBox className="!border-none shadow-none text-center mb-6 pb-6 pt-0 !mx-5 text-lg">
+        <label className="daisy-swap">
+          <input type="checkbox" onChange={handleChange} />
+          <div className="daisy-swap-on">	😎 </div>
+         <div className="daisy-swap-off"> 😊 </div>
+        </label>
+      </TextBox>
+
       <Poetry>
         {`
 满江红·軍旗颂  
@@ -25,7 +57,7 @@ export default function PoetryPage() {
  五十年，
  南征北战，
  风火硝烟。
- 井岗山头傲霜雪,
+ 井岗山头傲霜雪，
  延河岸边迎风卷。
  老前辈，
  碧血映“八一”，
