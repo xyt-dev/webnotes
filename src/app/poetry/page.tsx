@@ -28,15 +28,17 @@ export default function PoetryPage() {
       audio.play()
       interval = setInterval(() => {
         const bgColor = Math.random() * 360;
-        const colors = [(bgColor + 120) % 360, (bgColor + 150) % 360, (bgColor + 180) % 360, (bgColor + 210) % 360, (bgColor + 240) % 360]
+        const colors = [(bgColor + 120) % 360,  (bgColor + 180) % 360, (bgColor + 240) % 360]
         document.body.style.backgroundColor = `hsl(${bgColor}, 100%, 70%)`;
-        if (title) title.style.color = `hsl(${colors[2]}, 100%, 50%)`;
-        let lastColor = 0;
+        if (title) title.style.color = `hsl(${colors[1]}, 100%, 50%)`;
+        let prev1Color = 0;
+        let prev2Color = 0;
         if (textBoxs) textBoxs.forEach((element) => {
-          let color = Math.floor(Math.random() * 5);
-          while (color == lastColor) color = Math.floor(Math.random() * 5);
+          let color = Math.floor(Math.random() * 3);
+          while (color == prev1Color || color == prev2Color) color = Math.floor(Math.random() * 3);
           (element as HTMLElement).style.color = `hsl(${(colors[color]) % 360}, 100%, 50%)`;
-          lastColor = color;
+          prev2Color = prev1Color;
+          prev1Color = color;
         })
       }, 515);
     }

@@ -203,7 +203,8 @@ export default function Solve1000() {
             <li>[143] 微分方程组; 解可分离变量的微分方程</li>
             <li>[149] 偏导数的不定积分</li>
             <li>[150] 通过 f(x, y(t)) 和 <Latex>{`$f_y'$`}</Latex> 确定一点附近隐函数t(x)以及t'(x) &nbsp; <strong>(y(t)单调, 从而存在t(y), 从而x-&gt;t也是唯一的, 从而存在隐函数t1(x))</strong></li>
-            <li>[151] <strong>计算</strong></li>
+            <li>[151] <strong>多元函数偏导计算</strong></li>
+            <li>[152] 连续使用分布积分</li>
           </ul>
         </div>
       </TextBox>
