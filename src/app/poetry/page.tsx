@@ -13,22 +13,23 @@ function Poetry({ children }: { children?: React.ReactNode }) {
 
 export default function PoetryPage() {
   const [checked, setChecked] = useState(false);
-  const [audio] = useState(new Audio('poetry/homeland song.ogg'));
 
   useEffect(() => {
     let interval: NodeJS.Timeout | undefined;
+    const audio = new Audio('poetry/homeland song.ogg');
+    audio.preload = "auto";
 
     if (checked) {
-      audio.play()
+      audio?.play()
       interval = setInterval(() => {
         document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-      }, 50);
+      }, 515);
     }
 
     return () => {
       if (interval) clearInterval(interval);
       document.body.style.backgroundColor = '';
-      audio.pause()
+      audio?.pause()
     };
   }, [checked]);
 
@@ -38,7 +39,7 @@ export default function PoetryPage() {
 
   return (
     <DaisyProsePage>
-      <TextBox className="!border-none shadow-none text-center mb-6 pb-6 !mx-5 text-lg">
+      <TextBox className="!border-none shadow-none text-center mb-10 pb-6 !mx-5 text-lg">
         <h2 className="text-cyan-300 mb-0 mt-0">高山流水大诗人诗词集</h2>
       </TextBox>
 
@@ -46,8 +47,11 @@ export default function PoetryPage() {
         <label className="daisy-swap text-3xl">
           <input type="checkbox" onChange={handleChange} />
           <div className="daisy-swap-on">	😎 </div>
-          <div className="daisy-swap-off"> 😊 </div>
+          <div className={`daisy-swap-off daisy-tooltip daisy-tooltip-open`} data-tip="点我开始嗨 !"> 😊 </div>
         </label>
+        <br />
+
+
       </TextBox>
 
       <Poetry>

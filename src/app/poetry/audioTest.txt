@@ -1,0 +1,87 @@
+  
+  // const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+
+  // test 2
+  // useEffect(() => {
+  //   const audio = new Audio('poetry/homeland song.ogg');
+  //   audio.preload = "auto";
+  //   audio.load()
+  //   audio.onloadeddata = () => {
+  //     setLoadProgress(100)
+  //     console.log("audio loaded")
+  //   }
+  //   setAudio(audio);
+  // }, [])
+
+  // test1
+  // useEffect(() => {
+  //   const audio = new Audio('poetry/homeland song.ogg');
+  //   audio.preload = "auto";
+  //   setAudio(audio);
+
+  //   const updateProgress = () => {
+  //     if (audio && audio.duration > 0 && audio.buffered.length > 0) {
+  //       let bufferedEnd = audio.buffered.end(audio.buffered.length - 1);
+  //       let progress = bufferedEnd * 100.0 / audio.duration;
+  //       setLoadProgress(progress);
+  //       console.log(progress)
+  //     }
+  //   };
+
+  //   audio.addEventListener('progress', updateProgress);
+  //   const interval = setInterval(() => {
+  //     updateProgress();
+  //     if (loadProgress >= 100) {
+  //       clearInterval(interval);
+  //     }
+  //   }, 1000);
+
+  //   return () => {
+  //     updateProgress();
+  //     clearInterval(interval);
+  //     audio.removeEventListener('progress', updateProgress);
+  //   };
+  // }, [])
+
+  // test3
+  // useEffect(() => {
+  //   const loadAudio = async () => {
+  //     try {
+  //       const response = await fetch('poetry/homeland song.ogg');
+  //       const audioData = await response.blob();
+  //       const audioUrl = URL.createObjectURL(audioData);
+  //       const audio = new Audio(audioUrl);
+  //       console.log(audioUrl, audioData)
+  //       setAudio(audio);
+
+  //       audio.addEventListener('canplaythrough', () => {
+  //         setLoadProgress(100);
+  //       });
+  //     } catch (error) {
+  //       alert('音频加载失败');
+  //     }
+  //   };
+
+  //   loadAudio();
+  // }, []);
+
+
+        <label className="daisy-swap text-4xl">
+          <input type="checkbox" onChange={handleChange} />
+          <div className="daisy-swap-on">	😎 </div>
+          <div className={`daisy-swap-off  ${loadProgress === 100 ? " daisy-tooltip daisy-tooltip-open" : ""}`} data-tip="点我开始嗨 !"> 😊 </div>
+        </label>
+        <br />
+        
+          {/* progress bar */}
+        <div className="text-[0.8rem] mt-[30px]">Music Loaded:</div>
+        <div id="loadBar" style={{ width: '100%', background: '#eee', height: '10px', marginTop: '0' }}>
+          <div
+            style={{
+              width: `${loadProgress}%`,
+              background: checked ? '#ebdbb2' : '#fbf1c7',
+              height: '100%',
+              transition: 'width 0.3s'
+            }}
+          />
+        </div>
