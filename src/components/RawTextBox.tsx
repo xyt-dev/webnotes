@@ -52,7 +52,7 @@ export function HSeperator({children, isVisible}: {children?: ReactNode, isVisib
 export default function TextBox({children, className}: {children?: ReactNode, className?: string}) {
   return (
     // ${kalam.className} ${zen_maru_gothic.className} Kalam_Zen_maru_gothic
-    <div className={`p-6 border-[1px] shadow-custom max-w-[800px] mx-auto ${className}`}>
+    <div className={`RawTextBox p-6 border-[1px] shadow-custom max-w-[800px] mx-auto ${className}`}>
       {children}
     </div>
   )

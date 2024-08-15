@@ -1,5 +1,5 @@
 import Link from "next/link";
-import TextBox from "@/components/RowTextBox";
+import TextBox from "@/components/RawTextBox";
 
 export default function HomePage() {
   return (

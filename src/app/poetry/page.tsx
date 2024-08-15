@@ -1,7 +1,7 @@
 "use client"
 import DaisyProsePage from "@/components/DaisyProsePage"
-import TextBox from "@/components/RowTextBox"
-import { useEffect, useState } from "react";
+import TextBox from "@/components/RawTextBox"
+import { useEffect, useRef, useState } from "react";
 
 function Poetry({ children }: { children?: React.ReactNode }) {
   return (
@@ -13,23 +13,42 @@ function Poetry({ children }: { children?: React.ReactNode }) {
 
 export default function PoetryPage() {
   const [checked, setChecked] = useState(false);
+  const container = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     let interval: NodeJS.Timeout | undefined;
     const audio = new Audio('poetry/homeland song.ogg');
     audio.preload = "auto";
+    const title = document.getElementById('title');
+    let textBoxs = null;
+    if (container.current)
+      textBoxs = container.current.querySelectorAll('.RawTextBox');
 
     if (checked) {
-      audio?.play()
+      audio.play()
       interval = setInterval(() => {
-        document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        const bgColor = Math.random() * 360;
+        const colors = [(bgColor + 120) % 360, (bgColor + 150) % 360, (bgColor + 180) % 360, (bgColor + 210) % 360, (bgColor + 240) % 360]
+        document.body.style.backgroundColor = `hsl(${bgColor}, 100%, 70%)`;
+        if (title) title.style.color = `hsl(${colors[2]}, 100%, 50%)`;
+        let lastColor = 0;
+        if (textBoxs) textBoxs.forEach((element) => {
+          let color = Math.floor(Math.random() * 5);
+          while (color == lastColor) color = Math.floor(Math.random() * 5);
+          (element as HTMLElement).style.color = `hsl(${(colors[color]) % 360}, 100%, 50%)`;
+          lastColor = color;
+        })
       }, 515);
     }
 
     return () => {
       if (interval) clearInterval(interval);
       document.body.style.backgroundColor = '';
-      audio?.pause()
+      if (title) title.style.color = '';
+      if (textBoxs) textBoxs.forEach((element) => {
+        (element as HTMLElement).style.color = '';
+      })
+      audio.pause()
     };
   }, [checked]);
 
@@ -39,8 +58,9 @@ export default function PoetryPage() {
 
   return (
     <DaisyProsePage>
+      <div ref={container}>
       <TextBox className="!border-none shadow-none text-center mb-10 pb-6 !mx-5 text-lg">
-        <h2 className="text-cyan-300 mb-0 mt-0">高山流水大诗人诗词集</h2>
+        <h2 id="title" className="text-cyan-300 mb-0 mt-0">高山流水大诗人诗词集</h2>
       </TextBox>
 
       <TextBox className="!border-none shadow-none text-center mb-6 pb-6 pt-0 !mx-5 text-lg">
@@ -405,6 +425,7 @@ export default function PoetryPage() {
 2024年海南冲浪🏄
         `}
       </Poetry>
+    </div>
     </DaisyProsePage>
   )
 }
