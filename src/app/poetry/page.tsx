@@ -40,7 +40,7 @@ export default function PoetryPage() {
       </TextBox>
 
       <TextBox className="!border-none shadow-none text-center mb-6 pb-6 pt-0 !mx-5 text-lg">
-        <label className="daisy-swap">
+        <label className="daisy-swap text-3xl">
           <input type="checkbox" onChange={handleChange} />
           <div className="daisy-swap-on">	😎 </div>
          <div className="daisy-swap-off"> 😊 </div>
