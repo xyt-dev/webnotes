@@ -13,11 +13,13 @@ function Poetry({ children }: { children?: React.ReactNode }) {
 
 export default function PoetryPage() {
   const [checked, setChecked] = useState(false);
+  const [audio] = useState(new Audio('poetry/homeland song.ogg'));
 
   useEffect(() => {
     let interval: NodeJS.Timeout | undefined;
 
     if (checked) {
+      audio.play()
       interval = setInterval(() => {
         document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
       }, 50);
@@ -26,6 +28,7 @@ export default function PoetryPage() {
     return () => {
       if (interval) clearInterval(interval);
       document.body.style.backgroundColor = '';
+      audio.pause()
     };
   }, [checked]);
 
@@ -43,7 +46,7 @@ export default function PoetryPage() {
         <label className="daisy-swap text-3xl">
           <input type="checkbox" onChange={handleChange} />
           <div className="daisy-swap-on">	😎 </div>
-         <div className="daisy-swap-off"> 😊 </div>
+          <div className="daisy-swap-off"> 😊 </div>
         </label>
       </TextBox>
 
