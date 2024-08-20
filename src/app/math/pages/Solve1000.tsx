@@ -174,9 +174,9 @@ export default function Solve1000() {
             <li>[120] <Latex>{`$\\frac{1}{\\sqrt{x}}dx=d(2\\sqrt{x})~~\\int lnx dx=xlnx-x+C$`}</Latex></li>
             <li>[123] 切点给一阶导数值暗示分布积分; 找到显然解还要证明零点唯一</li>
             <li>[124] 绕y轴旋转的旋转体体积</li>
-            <li>[125] <Latex>{`$\\int\\frac{e^x}{x}dx~\\int\\frac{1}{lnx}dx$`}</Latex> 都不是初等积分; 交换积分次序或分布积分(<Latex>{`$uv|^b_a=0$`}</Latex>)</li>
+            <li>[125] <Latex>{`$\\int\\frac{e^x}{x}dx~\\int\\frac{1}{lnx}dx$`}</Latex> 都没有初等函数形式表达; 交换积分次序或分布积分(<Latex>{`$uv|^b_a=0$`}</Latex>)</li>
             <li>[126] 绕x轴旋转的旋转体体积</li>
-            <li><Latex>{`$\\int\\sqrt{1+e^{ax}}dx~(a\\neq0)$`}</Latex>不是初等积分</li>
+            <li><Latex>{`$\\int\\sqrt{1+e^{ax}}dx~(a\\neq0)$`}</Latex>没有初等函数形式表达</li>
             <li>
               <strong>弧长公式: </strong><br />
               [127] 直角坐标系下: <br /><Latex>{`$ds=\\sqrt{1+f'(x)^2}dx\\\\L=\\int_a^bds=\\int_a^b\\sqrt{1+f'(x)^2}dx=\\int_a^b\\sqrt{1+\\frac{y'(t)^2}{x'(t)^2}}x'(t)dt=\\int_a^b\\sqrt{x'(t)^2+y'(t)^2}dt$`}</Latex> <br />
@@ -203,8 +203,19 @@ export default function Solve1000() {
             <li>[143] 微分方程组; 解可分离变量的微分方程</li>
             <li>[149] 偏导数的不定积分</li>
             <li>[150] 通过 f(x, y(t)) 和 <Latex>{`$f_y'$`}</Latex> 确定一点附近隐函数t(x)以及t'(x) &nbsp; <strong>(y(t)单调, 从而存在t(y), 从而x-&gt;t也是唯一的, 从而存在隐函数t1(x))</strong></li>
-            <li>[151] <strong>多元函数偏导计算</strong></li>
-            <li>[152] 连续使用分布积分</li>
+            <li>[151] <strong>[计算]</strong> 多元函数偏导计算</li>
+            <li>[152] (2) 连续使用分布积分</li>
+            <li>[153] 由一个偏导推另一个偏导, 注意原函数的可导域</li>
+            <li><strong>[155] 二元函数费马定理: 极值 + 一阶偏导数存在 → 偏导 = 0;<br /> D的内部无最值(极值) 或 恒为常数a, 而D的边界都等于a, 则 f(x, y) <Latex>{`$\\equiv$`}</Latex> a</strong></li>
+            <li><strong>二元函数极值判别法: </strong><Img src="Images/Math/AC-B2.png" />方向导数存在条件: 该点处可微</li>
+            <li>[156~158] 求二元函数极值</li>
+            <li><strong>条件极值的判断(拉格朗日乘数法找可能的极值点): <br />函数f(x, y)的梯度方向 与 约束条件的累加函数的梯度方向 平行(等高线平行)时可能存在条件极值 (在这些地方沿约束函数方向走, f(x, y)的增长率为0)<br />梯度方向相同 → 偏导数比例相同 或 f(x, y)的偏导数为0</strong></li>
+            <li>[159] 代入求极值</li>
+            <li>[160] 恒等变换注意等式两端变量定义域和<strong>函数值域</strong></li>
+            <li>[161] <strong>[计算]</strong> 代入求极值 → 最值</li>
+            <li><strong>[162] 极限保号性+极值的定义 证明极值</strong>; <Latex>{`$e^x+e^{-x}-2 \\sim x^2$`}</Latex></li>
+            <li><Latex>{`$\\int\\sqrt{1+x^3}~~\\int\\frac{1}{\\sqrt{1+x^3}}$`}</Latex> 没有初等函数形式表达</li>
+            <li>以下函数的原函数没有初等函数形式表达<Img src="Images/Math/no elementary integration.png" /></li>
           </ul>
         </div>
       </TextBox>
