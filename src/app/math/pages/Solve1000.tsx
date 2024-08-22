@@ -69,7 +69,7 @@ export default function Solve1000() {
             <li>[58] 看图像注意坐标轴; 拐点要求函数在该点连续</li>
             <li>[59] 注意可导条件,这样就能放心用公式求导</li>
             <li>
-              <details open> <summary className="cursor-pointer">曲率:</summary>
+              <details open> <summary className="cursor-pointer"><strong>曲率:</strong></summary>
                 <Latex>{`$\\kappa = lim_{\\Delta s->0}|\\frac{\\Delta \\theta}{\\Delta s}|$`}</Latex> 其中 <Latex>{`$\\Delta s$`}</Latex> 是走过的弧长, <Latex>{`$\\Delta\\theta$`}</Latex> 是切线方向旋转的角度<br />
                 <Latex>{`$\\kappa$`}</Latex>是该点处内切圆半径的倒数<br />
                 对于函数 y = f(x):<br />
@@ -215,7 +215,37 @@ export default function Solve1000() {
             <li>[161] <strong>[计算]</strong> 代入求极值 → 最值</li>
             <li><strong>[162] 极限保号性+极值的定义 证明极值</strong>; <Latex>{`$e^x+e^{-x}-2 \\sim x^2$`}</Latex></li>
             <li><Latex>{`$\\int\\sqrt{1+x^3}~~\\int\\frac{1}{\\sqrt{1+x^3}}$`}</Latex> 没有初等函数形式表达</li>
-            <li>以下函数的原函数没有初等函数形式表达<Img src="Images/Math/no elementary integration.png" /></li>
+            <li>以下函数的原函数没有初等函数形式表达:<Img src="Images/Math/no elementary integration.png" /></li>
+            <li><strong>二重积分做题顺序: </strong>
+              <ol>
+                <li>计算积分区域</li>
+                <li>看是否存在对称性</li>
+                <li>看被积函数是否易于积分(原函数是否存在初等函数形式)
+                  <ul>
+                    <li>更换坐标系</li>
+                    <li>交换积分次序</li>
+                  </ul>
+                </li>
+                <li>看是否应该拆积分区域和被积函数<strong>(注意轴对称+奇偶性)</strong></li>
+              </ol>
+            </li>
+            <li>[165] <Latex>{`$x^2+y^2-xy=a <=> \\frac{x^2}{2}+\\frac{y^2}{\\frac{2}{3}}=a ~逆时针旋转45^。 <=> \\frac{(\\frac{\\sqrt{2}}{2}x+\\frac{\\sqrt{2}}{2}y)^2}{2}+\\frac{3(\\frac{\\sqrt{2}}{2}x-\\frac{\\sqrt{2}}{2}y)^2}{2}=a$`}</Latex></li>
+            <li>[166] (t, f(t))虽然在y=f(x)上, 但求积分时要注意其横纵坐标为常数</li>
+            <li>[167] 极坐标下二重积分; <Latex>{`$sin3\\theta$`}</Latex> 图像: <Img src="Images/Math/sin3theta.png " width={300} /></li>
+            <li>[168, 169] 转换为极坐标 <Latex>{`$r=r(\\theta)$`}</Latex> 再看积分区间;<br /> (168) 轴对称; <br />
+              <strong>(169) 有理分式分解; 凑积分分解; 凑分布积分 <br /><Latex>{`$\\int xf'(x)dx = xf(x) - \\int f(x)dx$`}</Latex></strong><br /> 
+              <Latex>{`$\\int\\frac{18dt}{(t^2+3)^2}=\\int[\\frac{6t^2+18}{(t^2+3)^2}-\\frac{6t^2}{(t^2+3)^2}]dt \\\\ =\\int\\frac{6dt}{t^2+3}+\\int 3td(\\frac{1}{t^2+3})
+              \\\\ =\\sqrt{3}~arctan\\frac{t}{\\sqrt{3}}+\\frac{3t}{t^2+3}+C$`}</Latex>
+            </li>
+            <li>[170] 方法一: 轮换对称性 <br /> 方法二: 三角函数诱导公式 + 区间再现公式  <br />
+                <Latex>{`$\\int_0^{\\frac{\\pi}{2}}\\frac{cost}{sint+cost}dt = \\int_0^{\\frac{\\pi}{2}}\\frac{1}{tant+1}dt = \\int_0^{\\frac{\\pi}{2}}\\frac{1}{tan(\\frac{\\pi}{2}-t)+1}dt = \\int_0^{\\frac{\\pi}{2}}\\frac{tant}{tan(t)+1}dt \\\\ 
+                = \\frac{1}{2}\\int_0^{\\frac{\\pi}{2}}dt= \\frac{\\pi}{4}$`}</Latex>
+            </li>
+            <li>[171] 拆积分函数+轴对称+奇偶性</li>
+            <li>[172] <strong>平方开根加绝对值!</strong> <Latex>{`$r=sin\\theta$`}</Latex>的极坐标函数图像; 对称性;</li>
+            <li>[173] 拆积分区域+轴对称+奇偶性</li>
+            <li>[175] 画非零积分区域</li>
+            <li>[176] <Latex>{`$\\frac{1}{\\sqrt{u}}du=2d\\sqrt{u}$`}</Latex></li>
           </ul>
         </div>
       </TextBox>
