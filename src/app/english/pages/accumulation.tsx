@@ -1,9 +1,9 @@
-import Table from "@/components/DaisyTable"
+import DaisyTable from "@/components/DaisyTable"
 export default function EnglishAccumulation() {
   return (
     <div className="prose daisy-prose max-w-[1500px] leading-[35px] mx-auto pt-6">
       <h1 className="text-center">Accumulation</h1>
-      <Table heads={["Word", "Explanation", "Phrase", "Sentence"]} indexed>
+      <DaisyTable heads={["Word", "Explanation", "Phrase", "Sentence"]} indexed>
         <tr>
           <td>gallery</td> <td>n. (艺术作品的)展览; 画廊</td>
         </tr>
@@ -302,7 +302,7 @@ export default function EnglishAccumulation() {
           <td></td>
           <td>The interest on the money is exempt from tax.</td>
         </tr>
-      </Table>
+      </DaisyTable>
     </div>
   )
 }

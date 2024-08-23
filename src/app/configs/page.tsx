@@ -470,6 +470,20 @@ export default function EnglishPage() {
         mime ^text, label editor = nvim -- "$@"<br/>
         !mime ^text, label editor, ext |sml|json|csv|tex|py|pl|rb|js|sh|php = nvim -- "$@"<br/>
       </p>
+      <h2>yazi 配置</h2>
+      <h3>yazi.toml:</h3>
+      <p>
+        [opener] <br/>
+        edit = [ <br/>
+          &nbsp;&nbsp;&#123; run = 'nvim "$@"', block = true, for = "unix" &#125;, <br/>
+          &nbsp;&nbsp;&#123; run = "code %*",   block = true, for = "windows" &#125;, <br/>
+        ] <br/>
+      </p>
     </div>
   )
 }
+
+
+
+
+

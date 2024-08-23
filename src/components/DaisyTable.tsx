@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Table({ children, heads, indexed }: { children?: React.ReactNode, heads?: string[], indexed?: boolean }) {
+export default function DaisyTable({ children, heads, indexed }: { children?: React.ReactNode, heads?: string[], indexed?: boolean }) {
   const headers = heads?.map(head => <th className="text-sm min-w-[260px]" key={head}>{head}</th>)
   const processedChildren = React.Children.map(children, (trChild: React.ReactNode, index) => {
     if (React.isValidElement(trChild) && trChild.type === 'tr') {

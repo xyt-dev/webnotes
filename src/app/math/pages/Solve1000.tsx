@@ -2,6 +2,7 @@ import TextBox from "@/components/RawTextBox"
 import { Title1, Title2 } from "@/components/RawTextBox"
 import Latex from "react-latex-next"
 import 'katex/dist/katex.min.css'; // 导入 KaTeX 样式
+import Space from "@/components/Space";
 
 function Img({ src, width }: { src: string, width?: number }) {
   return (
@@ -233,19 +234,30 @@ export default function Solve1000() {
             <li>[166] (t, f(t))虽然在y=f(x)上, 但求积分时要注意其横纵坐标为常数</li>
             <li>[167] 极坐标下二重积分; <Latex>{`$sin3\\theta$`}</Latex> 图像: <Img src="Images/Math/sin3theta.png " width={300} /></li>
             <li>[168, 169] 转换为极坐标 <Latex>{`$r=r(\\theta)$`}</Latex> 再看积分区间;<br /> (168) 轴对称; <br />
-              <strong>(169) 有理分式分解; 凑积分分解; 凑分布积分 <br /><Latex>{`$\\int xf'(x)dx = xf(x) - \\int f(x)dx$`}</Latex></strong><br /> 
+              <strong>(169) 有理分式分解; 凑积分分解; 凑分布积分 <br /><Latex>{`$\\int xf'(x)dx = xf(x) - \\int f(x)dx$`}</Latex></strong><br />
               <Latex>{`$\\int\\frac{18dt}{(t^2+3)^2}=\\int[\\frac{6t^2+18}{(t^2+3)^2}-\\frac{6t^2}{(t^2+3)^2}]dt \\\\ =\\int\\frac{6dt}{t^2+3}+\\int 3td(\\frac{1}{t^2+3})
               \\\\ =\\sqrt{3}~arctan\\frac{t}{\\sqrt{3}}+\\frac{3t}{t^2+3}+C$`}</Latex>
             </li>
             <li>[170] 方法一: 轮换对称性 <br /> 方法二: 三角函数诱导公式 + 区间再现公式  <br />
-                <Latex>{`$\\int_0^{\\frac{\\pi}{2}}\\frac{cost}{sint+cost}dt = \\int_0^{\\frac{\\pi}{2}}\\frac{1}{tant+1}dt = \\int_0^{\\frac{\\pi}{2}}\\frac{1}{tan(\\frac{\\pi}{2}-t)+1}dt = \\int_0^{\\frac{\\pi}{2}}\\frac{tant}{tan(t)+1}dt \\\\ 
+              <Latex>{`$\\int_0^{\\frac{\\pi}{2}}\\frac{cost}{sint+cost}dt = \\int_0^{\\frac{\\pi}{2}}\\frac{1}{tant+1}dt = \\int_0^{\\frac{\\pi}{2}}\\frac{1}{tan(\\frac{\\pi}{2}-t)+1}dt = \\int_0^{\\frac{\\pi}{2}}\\frac{tant}{tan(t)+1}dt \\\\ 
                 = \\frac{1}{2}\\int_0^{\\frac{\\pi}{2}}dt= \\frac{\\pi}{4}$`}</Latex>
             </li>
             <li>[171] 拆积分函数+轴对称+奇偶性</li>
             <li>[172] <strong>平方开根加绝对值!</strong> <Latex>{`$r=sin\\theta$`}</Latex>的极坐标函数图像; 对称性;</li>
             <li>[173] 拆积分区域+轴对称+奇偶性</li>
             <li>[175] 画非零积分区域</li>
-            <li>[176] <Latex>{`$\\frac{1}{\\sqrt{u}}du=2d\\sqrt{u}$`}</Latex></li>
+            <li>[176] 方法一: 极坐标<Space width={1} /><Latex>{`$\\frac{1}{\\sqrt{u}}du=2d\\sqrt{u}$`}</Latex><Space width={2} /><strong>*</strong>方法二: 换元法</li>
+            <li>
+
+              <details> <summary className="cursor-pointer"><strong>雅可比行列式(二重积分换元法 使用)</strong></summary>
+                <div className="mb-3"><Img src="Images/Math/2DJacobian.png" /></div>
+                <Img src="Images/Math/2DJacobian2.png" />
+              </details>
+            </li>
+            <li><strong>[177] [计算]</strong> <strong>积分的绝对值&le;绝对值的积分; 二重积分的积分中值定理</strong></li>
+            <li><strong>积分中值定理(注意使用条件):</strong>
+              <Img src="Images/Math/积分中值定理.png"/>
+            </li>
           </ul>
         </div>
       </TextBox>

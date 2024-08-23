@@ -21,6 +21,7 @@ export default function HomePage() {
           <li>
             <Link href='/english'>English</Link>
           </li>
+          <li><Link href='/Tasks'>Tasks</Link></li>
           <li><Link href='/configs'>Configs</Link></li>
         </ul>
       </TextBox>
