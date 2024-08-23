@@ -39,7 +39,7 @@ export default function DaisyPages() {
     <DaisySidebar page={pages[pageRenderingName]}>
       <Leaf pageName="Solve1000">张宇1000题</Leaf>
       <Leaf pageName="WildSolve">野题</Leaf>
-      <li><Link href='https://xy6.notion.site'>Notion笔记</Link></li>
+      <li><Link href='https://xy6.notion.site' legacyBehavior><a target="_blank" rel="noopener noreferrer">Notion笔记</a></Link></li>
     </DaisySidebar>
   )
 }

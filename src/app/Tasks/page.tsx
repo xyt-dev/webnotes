@@ -16,7 +16,15 @@ export default function TablePage() {
             <td>数学20题</td>
             <td>3.5h</td>
           </tr>
+          <tr>
+            <td>408两节</td>
+            <td>2h</td>
+          </tr>
         </DaisyTable>
+        DataStructure: 29节
+        OS: 16节
+        机组: 27节
+        计网: 27节
     </div>
   )
 }

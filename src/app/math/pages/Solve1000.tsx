@@ -256,8 +256,15 @@ export default function Solve1000() {
             </li>
             <li><strong>[177] [计算]</strong> <strong>积分的绝对值&le;绝对值的积分; 二重积分的积分中值定理</strong></li>
             <li><strong>积分中值定理(注意使用条件):</strong>
-              <Img src="Images/Math/积分中值定理.png"/>
+              <Img src="Images/Math/积分中值定理.png" />
             </li>
+            <li>[178] 
+              <ul>
+                <li> <strong>可导函数极值点处导数值为0 =&gt; 导函数无零点 -&gt; 函数单调连续无极值点</strong><br /> </li>
+                <li> <strong>一点处连续+去心邻域(不要求该点可导)内可导+导函数在左右邻域变号 -&gt; 该点为极值点 =&gt; 函数无极值点 -&gt; 函数无任一点满足前述左侧条件 (连续导函数则无穿过x轴的零点)</strong> </li>
+              </ul>
+            </li>
+            <li>[179] 变量可分离</li>
           </ul>
         </div>
       </TextBox>
