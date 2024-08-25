@@ -113,6 +113,22 @@ export default function WildSolve() {
             答案: <Latex>{`$y=Cxe^{-x},~其中C为任意常数$`}</Latex>
           </TabPage>
         </Solve>
+
+        <Solve tags={["微分方程", "伯努利方程"]}>
+          <TabPage tabName="题目" defaultChecked>
+            <Latex>{`$(x+2)y^{''}+x(y^{'})^2=y'$`}</Latex>
+          </TabPage>
+          <TabPage tabName="题解">
+            令y'=p, 有 <Latex>{`$y^{''}=\\frac{dp}{dx}$`}</Latex>, 原式 = <Latex>{`$(x+2)\\frac{dp}{dx}+xp^2=p$`}</Latex>, <Latex>{`$\\frac{dp}{dx}-\\frac{p}{x+2}=-\\frac{x}{x+2}p^2$`}</Latex> <br />
+            使用伯努利方程求解方法 <Latex>{`$\\Rightarrow \\frac{dp^{-1}}{dx}+\\frac{p^{-1}}{x+2}=\\frac{x}{x+2} \\Rightarrow p=\\frac{2x+4}{x^2+C}$`}</Latex> <br />
+            <Latex>{`$\\begin{cases}
+            y=ln(x^2+C)+\\frac{4}{\\sqrt{C}}arctan{\\frac{x}{\\sqrt{C}}+C_1}~~,C>0 \\\\
+            y=2ln|x|-\\frac{4}{x}+C_1~~,C=0 \\\\
+            y=ln|x^2+C|+\\frac{2}{\\sqrt{-C}}ln|\\frac{x-\\sqrt{-C}}{x+\\sqrt{-C}}|+C_1~~,C<0
+            \\end{cases}$`}</Latex><br />
+            其中<Latex>{`$C_1$`}</Latex>为任意常数
+          </TabPage>
+        </Solve>
       </ol>
     </DaisyProsePage>
   )

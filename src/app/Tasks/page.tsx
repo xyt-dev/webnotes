@@ -6,7 +6,7 @@ export default function TablePage() {
         <DaisyTable heads={["Tasks", "Time"]} indexed>
           <tr>
             <td>肖1000 10题 + 复习知识点</td>
-            <td>1h</td>
+            <td>0.5h</td>
           </tr>
           <tr>
             <td>阅读的逻辑 1篇 + 单词</td>
@@ -25,6 +25,8 @@ export default function TablePage() {
         OS: 16节
         机组: 27节
         计网: 27节
+        <br />
+        傅立叶级数<br />
     </div>
   )
 }

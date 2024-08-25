@@ -268,18 +268,32 @@ export default function Solve1000() {
             <li>
               <details>
                 <summary className="cursor-pointer"><strong>微分方程: </strong></summary>
-                <li>在一阶线性微分方程公式中，若 <Latex>{`$\\int{{p}dx}=\\ln|\\varphi(x)|$`}</Latex> ，绝对值可去掉</li>
-                <li>欧拉公式:
-                  <Img src="Images/Math/欧拉公式.png" />
-                </li>
-                <li>二阶齐次微分方程解的证明:
-                  <Img src="Images/Math/齐次微分方程解的证明1.png" />
-                  <Img src="Images/Math/齐次微分方程解的证明2.png" />
-                </li>
-                <li>非齐次微分方程的特解形式<br />
-                  (该表显示了当微分方程右侧的f(x)为多项式、<Latex>{`$Ae^{\\alpha x}$`}</Latex>、正弦、余弦, 或一个或多个这些类型函数的乘积或和的方法, 该方法可能不适用于其他情形(不在讨论范围中) )
-                  <Img src="Images/Math/非齐次微分方程特解形式.png" />
-                </li>
+                <ul>
+                  <li>在一阶线性微分方程公式中，若 <Latex>{`$\\int{{p(x)}dx}=\\ln|\\varphi(x)|$`}</Latex> ，绝对值可去掉; <br /> <Latex>{`$P(x)=\\int{{p(x)}dx}$`}</Latex> 不需要 +C</li>
+                  <li>伯努利方程:
+                    形如 <Latex>{`$y'+p(x)y=q(x)y^n~(n\\neq 0, 1)
+                  \\\\ =>~~y^{-n}y'+p(x)y^{1-n}=q(x)
+                  \\\\ 令~z=y^{1-n},~z' = (1-n)y^{-n}y'
+                  \\\\ =>~~\\frac{1}{1-n}z'+p(x)z=q(x)
+                  $`}</Latex>
+                  </li>
+                  <li>欧拉公式:
+                    <Img src="Images/Math/欧拉公式.png" />
+                  </li>
+                  <li>二阶常系数齐次线性微分方程解的证明:
+                    <Img src="Images/Math/齐次微分方程解的证明1.png" />
+                    <Img src="Images/Math/齐次微分方程解的证明2.png" />
+                  </li>
+                  <li>二阶常系数非齐次线性微分方程的特解形式<br />
+                    (该表显示了当微分方程右侧的 f(x)[自由项] 为多项式、<Latex>{`$Ae^{\\alpha x}$`}</Latex>、正弦、余弦, 或一个或多个这些类型函数的乘积或和的方法, 该方法可能不适用于其他情形(不在讨论范围中) )
+                    <Img src="Images/Math/非齐次微分方程特解形式.png" />
+                  </li>
+                  <li>欧拉方程(二阶): <br />
+                    对于 <Latex>{`$x^2\\frac{d^2y}{dx^2}+px\\frac{dy}{dx}+qy=f(x)$`}, 其中p, q为常数</Latex>
+                    <Latex>{`$\\\\ 令x=e^t,~t=lnx
+                    \\\\ \\Rightarrow \\frac{d^2y}{dx^2}+(p-1)\\frac{dy}{dt}+qy=f(e^t)$`}</Latex>
+                  </li>
+                </ul>
               </details>
             </li>
           </ul>
