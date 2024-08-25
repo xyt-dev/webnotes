@@ -258,13 +258,30 @@ export default function Solve1000() {
             <li><strong>积分中值定理(注意使用条件):</strong>
               <Img src="Images/Math/积分中值定理.png" />
             </li>
-            <li>[178] 
+            <li>[178]
               <ul>
                 <li> <strong>可导函数极值点处导数值为0 =&gt; 导函数无零点 -&gt; 函数单调连续无极值点</strong><br /> </li>
                 <li> <strong>一点处连续+去心邻域(不要求该点可导)内可导+导函数在左右邻域变号 -&gt; 该点为极值点 =&gt; 函数无极值点 -&gt; 函数无任一点满足前述左侧条件 (连续导函数则无穿过x轴的零点)</strong> </li>
               </ul>
             </li>
-            <li>[179] 变量可分离</li>
+            <li>[179] 变量可分离型</li>
+            <li>
+              <details>
+                <summary className="cursor-pointer"><strong>微分方程: </strong></summary>
+                <li>在一阶线性微分方程公式中，若 <Latex>{`$\\int{{p}dx}=\\ln|\\varphi(x)|$`}</Latex> ，绝对值可去掉</li>
+                <li>欧拉公式:
+                  <Img src="Images/Math/欧拉公式.png" />
+                </li>
+                <li>二阶齐次微分方程解的证明:
+                  <Img src="Images/Math/齐次微分方程解的证明1.png" />
+                  <Img src="Images/Math/齐次微分方程解的证明2.png" />
+                </li>
+                <li>非齐次微分方程的特解形式<br />
+                  (该表显示了当微分方程右侧的f(x)为多项式、<Latex>{`$Ae^{\\alpha x}$`}</Latex>、正弦、余弦, 或一个或多个这些类型函数的乘积或和的方法, 该方法可能不适用于其他情形(不在讨论范围中) )
+                  <Img src="Images/Math/非齐次微分方程特解形式.png" />
+                </li>
+              </details>
+            </li>
           </ul>
         </div>
       </TextBox>

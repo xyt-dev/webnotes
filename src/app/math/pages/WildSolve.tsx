@@ -94,6 +94,25 @@ export default function WildSolve() {
             换元x=tanu, 然后使用区间再现公式, 与原积分相加构造更简单的积分
           </TabPage>
         </Solve>
+
+        <Solve tags={["微分方程"]}>
+          <TabPage tabName="题目" defaultChecked>
+            <Latex>{`$\\frac{dy}{dx}-cos^2(y)cos(x)=0,~~y(0)=\\frac{5\\pi}{4}$`}</Latex>
+          </TabPage>
+          <TabPage tabName="题解">
+            <Latex>{`$tany=sinx+1~~或~~y=arctan(sinx+1) + \\pi$`}</Latex>
+          </TabPage>
+        </Solve>
+
+        <Solve tags={["微分方程"]}>
+          <TabPage tabName="题目" defaultChecked>
+            <Latex>{`$y'=\\frac{y(1-x)}{x}$`}</Latex>
+          </TabPage>
+          <TabPage tabName="题解">
+            注意y=0的特殊解<br />
+            答案: <Latex>{`$y=Cxe^{-x},~其中C为任意常数$`}</Latex>
+          </TabPage>
+        </Solve>
       </ol>
     </DaisyProsePage>
   )
