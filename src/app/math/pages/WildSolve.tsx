@@ -129,6 +129,32 @@ export default function WildSolve() {
             其中<Latex>{`$C_1$`}</Latex>为任意常数
           </TabPage>
         </Solve>
+
+        <Solve tags={["定积分"]}>
+          <TabPage tabName="题目" defaultChecked>
+            <Img src="Images/Math/wildsolve/7.png" />
+          </TabPage>
+          <TabPage tabName="题解">
+            所用知识点: <br />
+            <ol>
+              <li>
+                <Latex>{`$\\int_{-a}^a f(x)dx=\\int_0^a [f(x)+f(-x)]dx$`}</Latex>
+              </li>
+              <li>
+                f(x)为奇函数或偶函数时, <Latex>{`$\\int_a^x f(t)dt$`}的奇偶性</Latex>: <br />
+                奇 =&gt; 偶; 偶 && a=0 =&gt; 奇; 偶 && a&ne;0 =&gt; 不经过原点
+              </li>
+              <li>
+                <Latex>{`$arctanx + arctan\\frac{1}{x}$`}</Latex>(导数为0) <br />
+                <Latex>{`$arctanx + arctan\\frac{1}{x} = \\begin{cases}\\frac{\\pi}{2}, x>0 \\\\ -\\frac{\\pi}{2}, x<0\\end{cases}$`}</Latex>
+              </li>
+              <li>
+                区间再现 =&gt; <Latex>{`$\\int_0^{\\pi} xf(sinx)dx = \\frac{\\pi}{2}\\int_0^{\\pi}f(sinx)dx $`}</Latex>
+              </li>
+            </ol>
+            答案: <Latex>{`$\\frac{\\pi^3}{8}$`}</Latex>
+          </TabPage>
+        </Solve>
       </ol>
     </DaisyProsePage>
   )

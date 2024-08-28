@@ -172,6 +172,11 @@ export default function Solve1000() {
               Method1: <Latex>{`$\\int_0^{1,2,3,4}f(x)dx$`}</Latex>可以尝试换元 sint或cost 使用点火公式 <br />
               Method2: <Latex>{`$\\int\\sqrt{1-x^2}dx=-\\frac{1}{3x}d((1-x^2)^{\\frac{3}{2}})$`}</Latex>
             </li>
+            <li><strong>对称区间(不一定关于原点)的定积分: </strong><br />
+              1. 偶倍奇零, 但注意反常积分不一定符合(因为可能发散, 且趋近一个点或无穷远处的发散值是没有抵消这种说法的, 因为趋近速度可以不相同)<br />
+              如图, 第一个发散, 第二个为0: <Img src="Images/Math/对称区间反常积分.png" width={400}/>
+              2. 偶倍奇零的来源[公式]: <Latex>{`$\\int_{-a}^a f(x)dx=\\int_0^a [f(x)+f(-x)]dx$`}</Latex> <br />
+            </li>
             <li>[120] <Latex>{`$\\frac{1}{\\sqrt{x}}dx=d(2\\sqrt{x})~~\\int lnx dx=xlnx-x+C$`}</Latex></li>
             <li>[123] 切点给一阶导数值暗示分布积分; 找到显然解还要证明零点唯一</li>
             <li>[124] 绕y轴旋转的旋转体体积</li>
@@ -264,7 +269,6 @@ export default function Solve1000() {
                 <li> <strong>一点处连续+去心邻域(不要求该点可导)内可导+导函数在左右邻域变号 -&gt; 该点为极值点 =&gt; 函数无极值点 -&gt; 函数无任一点满足前述左侧条件 (连续导函数则无穿过x轴的零点)</strong> </li>
               </ul>
             </li>
-            <li>[179] 变量可分离型</li>
             <li>
               <details>
                 <summary className="cursor-pointer"><strong>微分方程: </strong></summary>
@@ -291,11 +295,16 @@ export default function Solve1000() {
                   <li>欧拉方程(二阶): <br />
                     对于 <Latex>{`$x^2\\frac{d^2y}{dx^2}+px\\frac{dy}{dx}+qy=f(x)$`}, 其中p, q为常数</Latex>
                     <Latex>{`$\\\\ 令x=e^t,~t=lnx
-                    \\\\ \\Rightarrow \\frac{d^2y}{dx^2}+(p-1)\\frac{dy}{dt}+qy=f(e^t)$`}</Latex>
+                    \\\\ \\Rightarrow \\frac{d^2y}{dt^2}+(p-1)\\frac{dy}{dt}+qy=f(e^t)$`}</Latex>
                   </li>
                 </ul>
               </details>
             </li>
+            <li>[178~186] 微分方程</li>
+            <br />
+            <li>收敛级数每一项都要有界吗?</li>
+            <li>p级数和p积分</li>
+            <li>调和级数发散的证明</li>
           </ul>
         </div>
       </TextBox>

@@ -2,7 +2,7 @@ import DaisyCode from "@/components/DaisyCode"
 
 export default function EnglishPage() {
   return (
-    <div className="prose daisy-prose max-w-[1000px] leading-[35px] mx-auto pt-6"> 
+    <div className="prose daisy-prose max-w-[1000px] leading-[35px] mx-auto pt-6">
       <h1>Configs</h1>
       <h2>CPP刷题MAKEFILE</h2>
       <DaisyCode>
@@ -41,136 +41,137 @@ export default function EnglishPage() {
       </DaisyCode>
       <h2>Hyprland配置</h2>
       <p>
-        配置双显示器<br/>
-        # monitor=monitor名称, 分辨率@刷新率,位置,缩放比例<br/>
-        monitor=eDP-1,preffered,0x0,1<br/>
-        monitor=DP-1,1920x1200@60Hz,0x1080,1<br/>
-        <br/>
-        # 分配workspace到monitor<br/>
-        workspace=1, monitor:eDP-1<br/>
-        workspace=2, monitor:eDP-1<br/>
-        workspace=3, monitor:DP-1<br/>
-        <br/>
-        配置默认程序<br/>
-        $terminal = kitty<br/>
-        $fileManager = dolphin<br/>
-        $menu = wofi -show drun<br/>
-        <br/>
-        配置窗体<br/>
-        general &#123;<br/>
-        # 间距<br/>
-        gaps_in = 5<br/>
-        gaps_out = 60<br/>
-        <br/>
-        # 边框宽度<br/>
-        border_size = 2<br/>
-        …<br/>
-        &#125;<br/>
-        <br/>
-        decoration &#123;<br/>
-        # 透明度<br/>
-        active_opacity = 0.95<br/>
-        inactive_opacity = 0.80<br/>
-        …<br/>
-        &#125;<br/>
-        <br/>
-        blur &#123;<br/>
-        # 毛玻璃效果<br/>
-        enabled = false<br/>
-        …<br/>
-        &#125;<br/>
-        <br/>
-        # 配置按键重复延迟和速率<br/>
-        Input &#123;<br/>
-        repeat_rate = 50 # 重复速率<br/>
-        repeat_delay = 220 # 延迟<br/>
-         …<br/>
-        &#125;<br/>
-        <br/>
-        # 应用自动启动<br/>
-        exec = killall -q fcitx5; fcitx5; # 输入法<br/>
-        exec = killall -q clash; clash; # 魔法<br/>
-        exec = killall -q swaybg; swaybg -i path/to/picture.png; # 背景图片(不先关闭swaybg可能在更新配置后导致内存溢出)<br/>
-        exec = killall -q waybar; waybar; # 状态栏<br/>
-        # 网络服务在systemd中, 应该能自动连接WiFi, 蓝牙同理<br/>
-        <br/>
-        # 防止应用模糊<br/>
-        xwayland &#123;<br/>
-        force_zero_scaling = true<br/>
-        &#125;<br/>
-        <br/>
-        # 键位绑定<br/>
-        bind = $mainMod, K, exec, $terminal<br/>
-        bind = $mainMod, N, exec, neovide<br/>
-        bind = $mainMod SHIFT, Q, killactive,<br/>
-        bind = $mainMod, Escape, exit,<br/>
-        bind = $mainMod, E, exec, $fileManager<br/>
-        bind = $mainMod, V, togglefloating,<br/>
-        bind = $mainMod, R, exec, $menu<br/>
-        bind = $mainMod, P, pseudo, # dwindle<br/>
-        bind = $mainMod, J, togglesplit, # dwindle<br/>
-        # Move focus with mainMod + CTRL + [hjkl]<br/>
-        bind = $mainMod CTRL, h, movefocus, l<br/>
-        bind = $mainMod CTRL, l, movefocus, r<br/>
-        bind = $mainMod CTRL, k, movefocus, u<br/>
-        bind = $mainMod CTRL, j, movefocus, d<br/>
-        # Switch workspaces with ALT + [0-9]<br/>
-        bind = ALT, 1, workspace, 1<br/>
-        bind = ALT, 2, workspace, 2<br/>
-        bind = ALT, 3, workspace, 3<br/>
-        bind = ALT, 4, workspace, 4<br/>
-        bind = ALT, 5, workspace, 5<br/>
-        bind = ALT, 6, workspace, 6<br/>
-        bind = ALT, 7, workspace, 7<br/>
-        bind = ALT, 8, workspace, 8<br/>
-        bind = ALT, 9, workspace, 9<br/>
-        bind = ALT, 0, workspace, 10<br/>
-        <br/>
-        # Move active window to a workspace with mainMod + ALT + [0-9]<br/>
-        bind = $mainMod ALT, 1, movetoworkspace, 1<br/>
-        bind = $mainMod ALT, 2, movetoworkspace, 2<br/>
-        bind = $mainMod ALT, 3, movetoworkspace, 3<br/>
-        bind = $mainMod ALT, 4, movetoworkspace, 4<br/>
-        bind = $mainMod ALT, 5, movetoworkspace, 5<br/>
-        bind = $mainMod ALT, 6, movetoworkspace, 6<br/>
-        bind = $mainMod ALT, 7, movetoworkspace, 7<br/>
-        bind = $mainMod ALT, 8, movetoworkspace, 8<br/>
-        bind = $mainMod ALT, 9, movetoworkspace, 9<br/>
-        bind = $mainMod ALT, 0, movetoworkspace, 10<br/>
-        bind = $mainMod CTRL, left, resizeactive, -50 0<br/>
-        bind = $mainMod CTRL, right, resizeactive, 50 0<br/>
-        bind = $mainMod CTRL, up, resizeactive, 0 -50<br/>
-        bind = $mainMod CTRL, down, resizeactive, 0 50<br/>
+        配置双显示器<br />
+        # monitor=monitor名称, 分辨率@刷新率,位置,缩放比例<br />
+        monitor=eDP-1,preffered,0x0,1<br />
+        monitor=DP-1,1920x1200@60Hz,0x1080,1<br />
+        <br />
+        # 分配workspace到monitor<br />
+        workspace=1, monitor:eDP-1<br />
+        workspace=2, monitor:eDP-1<br />
+        workspace=3, monitor:DP-1<br />
+        <br />
+        配置默认程序<br />
+        $terminal = kitty<br />
+        $fileManager = dolphin<br />
+        $menu = wofi -show drun<br />
+        <br />
+        配置窗体<br />
+        general &#123;<br />
+        # 间距<br />
+        gaps_in = 5<br />
+        gaps_out = 60<br />
+        <br />
+        # 边框宽度<br />
+        border_size = 2<br />
+        …<br />
+        &#125;<br />
+        <br />
+        decoration &#123;<br />
+        # 透明度<br />
+        active_opacity = 0.97<br />
+        inactive_opacity = 0.90<br />
+        …<br />
+        &#125;<br />
+        <br />
+        blur &#123;<br />
+        # 毛玻璃效果<br />
+        enabled = false<br />
+        …<br />
+        &#125;<br />
+        <br />
+        # 配置按键重复延迟和速率<br />
+        Input &#123;<br />
+        repeat_rate = 60 # 重复速率<br />
+        repeat_delay = 200 # 延迟<br />
+        …<br />
+        &#125;<br />
+        <br />
+        # 应用自动启动<br />
+        exec = killall -q fcitx5; fcitx5; # 输入法<br />
+        exec = killall -q clash; clash; # 魔法<br />
+        exec = killall -q swaybg; swaybg -i path/to/picture.png; # 背景图片(不先关闭swaybg可能在更新配置后导致内存溢出)<br />
+        exec = killall -q waybar; waybar; # 状态栏<br />
+        # 网络服务在systemd中, 应该能自动连接WiFi, 蓝牙同理<br />
+        <br />
+        # 防止应用模糊<br />
+        xwayland &#123;<br />
+        force_zero_scaling = true<br />
+        &#125;<br />
+        <br />
+        # 键位绑定<br />
+        bind = $mainMod, K, exec, $terminal<br />
+        bind = $mainMod, N, exec, neovide<br />
+        bind = $mainMod SHIFT, Q, killactive,<br />
+        bind = $mainMod, Escape, exit,<br />
+        bind = $mainMod, E, exec, $fileManager<br />
+        bind = $mainMod, V, togglefloating,<br />
+        bind = $mainMod, R, exec, $menu<br />
+        bind = $mainMod, P, pseudo, # dwindle<br />
+        bind = $mainMod, J, togglesplit, # dwindle<br />
+        # Move focus with mainMod + CTRL + [hjkl]<br />
+        bind = $mainMod CTRL, h, movefocus, l<br />
+        bind = $mainMod CTRL, l, movefocus, r<br />
+        bind = $mainMod CTRL, k, movefocus, u<br />
+        bind = $mainMod CTRL, j, movefocus, d<br />
+        # Switch workspaces with ALT + [0-9]<br />
+        bind = ALT, 1, workspace, 1<br />
+        bind = ALT, 2, workspace, 2<br />
+        bind = ALT, 3, workspace, 3<br />
+        bind = ALT, 4, workspace, 4<br />
+        bind = ALT, 5, workspace, 5<br />
+        bind = ALT, 6, workspace, 6<br />
+        bind = ALT, 7, workspace, 7<br />
+        bind = ALT, 8, workspace, 8<br />
+        bind = ALT, 9, workspace, 9<br />
+        bind = ALT, 0, workspace, 10<br />
+        <br />
+        # Move active window to a workspace with mainMod + ALT + [0-9]<br />
+        bind = $mainMod ALT, 1, movetoworkspace, 1<br />
+        bind = $mainMod ALT, 2, movetoworkspace, 2<br />
+        bind = $mainMod ALT, 3, movetoworkspace, 3<br />
+        bind = $mainMod ALT, 4, movetoworkspace, 4<br />
+        bind = $mainMod ALT, 5, movetoworkspace, 5<br />
+        bind = $mainMod ALT, 6, movetoworkspace, 6<br />
+        bind = $mainMod ALT, 7, movetoworkspace, 7<br />
+        bind = $mainMod ALT, 8, movetoworkspace, 8<br />
+        bind = $mainMod ALT, 9, movetoworkspace, 9<br />
+        bind = $mainMod ALT, 0, movetoworkspace, 10<br />
+        bind = $mainMod CTRL, left, resizeactive, -50 0<br />
+        bind = $mainMod CTRL, right, resizeactive, 50 0<br />
+        bind = $mainMod CTRL, up, resizeactive, 0 -50<br />
+        bind = $mainMod CTRL, down, resizeactive, 0 50<br />
         # Move window
-        bind = CTRL ALT, h, movewindow, l<br/>
-        bind = CTRL ALT, l, movewindow, r<br/>
-        bind = CTRL ALT, k, movewindow, u<br/>
-        bind = CTRL ALT, j, movewindow, d<br/>
-        <br/>
-        # Example special workspace (scratcpad)<br/>
-        # bind = $mainMod, S, togglespecialworkspace, magic<br/>
-        # bind = $mainMod SHIFT, S, movetoworkspace, special:magic<br/>
-        <br/>
-        # Scroll through existing workspaces with mainMod + scroll<br/>
-        bind = $mainMod, mouse_down, workspace, e+1<br/>
-        bind = $mainMod, mouse_up, workspace, e-1<br/>
-        <br/>
-        # Move/resize windows with mainMod + LMB/RMB and dragging<br/>
-        bindm = $mainMod, mouse:272, movewindow<br/>
-        bindm = $mainMod, mouse:273, resizewindow<br/>
-        <br/>
-        # chrome启动需要附带参数启用代理<br/>
-        bind = $mainMod SHIFT, C, exec, google-chrome-stable -proxy-server=”127.0.0.1:7890”<br/>
-        bind = $mainMod SHIFT, N, exec, neovide<br/>
-        # 截图: 需要安装grim和slurp<br/>
-        bind = $mainMod SHIFT, 4, exec, grim -g "$(slurp)" - | wl-copy<br/>
-        # make fcitx5 more stable<br/>
-        windowrule=pseudo,fcitx;<br/>
+        bind = CTRL ALT, h, movewindow, l<br />
+        bind = CTRL ALT, l, movewindow, r<br />
+        bind = CTRL ALT, k, movewindow, u<br />
+        bind = CTRL ALT, j, movewindow, d<br />
+        <br />
+        # Example special workspace (scratcpad)<br />
+        # bind = $mainMod, S, togglespecialworkspace, magic<br />
+        # bind = $mainMod SHIFT, S, movetoworkspace, special:magic<br />
+        <br />
+        # Scroll through existing workspaces with mainMod + scroll<br />
+        bind = $mainMod, mouse_down, workspace, e+1<br />
+        bind = $mainMod, mouse_up, workspace, e-1<br />
+        <br />
+        # Move/resize windows with mainMod + LMB/RMB and dragging<br />
+        bindm = $mainMod, mouse:272, movewindow<br />
+        bindm = $mainMod, mouse:273, resizewindow<br />
+        <br />
+        # chrome启动需要附带参数启用代理<br />
+        bind = $mainMod SHIFT, C, exec, google-chrome-stable -proxy-server=”127.0.0.1:7890”<br />
+        bind = $mainMod SHIFT, N, exec, neovide<br />
+        <br />
+        # 截图: 需要安装grim和slurp<br />
+        bind = $mainMod SHIFT, 4, exec, grim -g "$(slurp)" - | wl-copy<br />
+        # make fcitx5 more stable<br />
+        windowrule=pseudo,fcitx;<br />
       </p>
       <h3>代理</h3>
       <p>
-        export http_proxy=http://127.0.0.1:7890<br/>
-        export https_proxy=http://127.0.0.1:7890 # 注意，应都用"http://", 否则可能有SSL相关问题<br/>
+        export http_proxy=http://127.0.0.1:7890<br />
+        export https_proxy=http://127.0.0.1:7890 # 注意，应都用"http://", 否则可能有SSL相关问题<br />
       </p>
       <p>
         <a href='http://clash.razord.top'>http://clash.razord.top</a> 可进入clash的前端界面
@@ -181,10 +182,10 @@ export default function EnglishPage() {
         git config --global https.proxy http://127.0.0.1:7890
       </p>
       <h2>VSCode Config</h2>
-      <li>ArchLinux 下使用 yay -S visual-studio-code-bin 以安装正常版本 VSCode<br/></li>
-      <li>code -r [path] 可以在原窗口切换到新工作目录<br/></li>
-      <li>配置所用插件: Gruvbox Theme, Vim, Apc Customize UI++, Material Icon Theme/Catppuccin Icons,<br/>
-                      Error Lens, Code Spell Checker, Project Manager</li>
+      <li>ArchLinux 下使用 yay -S visual-studio-code-bin 以安装正常版本 VSCode<br /></li>
+      <li>code -r [path] 可以在原窗口切换到新工作目录<br /></li>
+      <li>配置所用插件: Gruvbox Theme, Vim, Apc Customize UI++, Material Icon Theme/Catppuccin Icons,<br />
+        Error Lens, Code Spell Checker, Project Manager</li>
       <li>给Apc修改权限: sudo chown -R $(whoami) /opt/visual-studio-code</li>
       <h3>settings.json</h3>
       <DaisyCode>
@@ -268,7 +269,7 @@ export default function EnglishPage() {
         <span>"vim.normalModeKeyBindingsNonRecursive": [  // Esc remove highlight</span>
         <span>    &#123;</span>
         <span>        "before": ["&lt;Esc&gt;"],</span>
-        <span>        "commands": [":nohlsearch"]</span> 
+        <span>        "commands": [":nohlsearch"]</span>
         <span>    &#125;</span>
         <span>],</span>
         <span>"http.proxy": "http://127.0.0.1:7890",</span>
@@ -461,23 +462,30 @@ export default function EnglishPage() {
       <h2>ranger 配置</h2>
       <h3>rc.conf:</h3>
       <p>
-        set show_hidden true<br/>
-        set preview_images true<br/>
-        set preview_images_method kitty<br/>
+        set show_hidden true<br />
+        set preview_images true<br />
+        set preview_images_method kitty<br />
       </p>
       <h3>rifle.conf:</h3>
       <p>
-        mime ^text, label editor = nvim -- "$@"<br/>
-        !mime ^text, label editor, ext |sml|json|csv|tex|py|pl|rb|js|sh|php = nvim -- "$@"<br/>
+        mime ^text, label editor = nvim -- "$@"<br />
+        !mime ^text, label editor, ext |sml|json|csv|tex|py|pl|rb|js|sh|php = nvim -- "$@"<br />
       </p>
       <h2>yazi 配置</h2>
       <h3>yazi.toml:</h3>
       <p>
-        [opener] <br/>
-        edit = [ <br/>
-          &nbsp;&nbsp;&#123; run = 'nvim "$@"', block = true, for = "unix" &#125;, <br/>
-          &nbsp;&nbsp;&#123; run = "code %*",   block = true, for = "windows" &#125;, <br/>
-        ] <br/>
+        [opener] <br />
+        edit = [ <br />
+        &nbsp;&nbsp;&#123; run = 'nvim "$@"', block = true, for = "unix" &#125;, <br />
+        &nbsp;&nbsp;&#123; run = "code %*",   block = true, for = "windows" &#125;, <br />
+        ] <br />
+      </p>
+      <h2>其他配置</h2>
+      <h3>Env: </h3>
+      <p>
+        export MANPAGER="nvim +Man!" <br />
+        alias suspend="systemctl suspend" <br />
+        alias reload="hyprctl reload" <br />
       </p>
     </div>
   )
