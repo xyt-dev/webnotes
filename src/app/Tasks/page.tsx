@@ -1,32 +1,45 @@
-import DaisyTable from "@/components/DaisyTable"
-export default function TablePage() {
+"use client"
+import DaisySidebar, { DaisySidebarLeaf, DaisySidebarNode as Node } from "@/components/DaisySidebar";
+import React, { useEffect, useState } from "react";
+import TablePage from "./pages/Task";
+import PCTable from "./pages/PC";
+
+export default function DaisyPages() {
+  const pages: { [key: string]: React.ReactNode } = {
+    "Task": TablePage(),
+    "PCTable": PCTable(),
+  }
+  const [pageRenderingName, setPageRenderingName] = useState("")
+  useEffect(() => {
+      const lastPage = localStorage.getItem("lastPage");
+      lastPage && pages[lastPage] ? setPageRenderingName(lastPage) : setPageRenderingName("$");
+  });
+  useEffect(() => {
+    if (pageRenderingName !== "") {
+      const savedPosition = localStorage.getItem("scrollPosition");
+      if (savedPosition) {
+        window.scrollTo(0, parseInt(savedPosition, 10));
+      }
+      const handleScroll = () => {
+        localStorage.setItem("scrollPosition", window.scrollY.toString());
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  })
+  function Leaf({ children, pageName }: { children: string, pageName: string }) {
+    return (
+      <DaisySidebarLeaf setPageRendering={() => { setPageRenderingName(pageName); localStorage.setItem("lastPage", pageName) }} isSelected={pageRenderingName === pageName}>{children}</DaisySidebarLeaf>
+    )
+  }
   return (
-    <div className="prose daisy-prose max-w-[1500px] leading-[35px] mx-auto pt-6">
-      <h1 className="text-center">Tasks</h1>
-        <DaisyTable heads={["Tasks", "Time"]} indexed>
-          <tr>
-            <td>肖1000 10题 + 复习知识点</td>
-            <td>0.5h</td>
-          </tr>
-          <tr>
-            <td>阅读的逻辑 1篇 + 单词</td>
-            <td>1h</td>
-          </tr>
-          <tr>
-            <td>数学20题</td>
-            <td>3.5h</td>
-          </tr>
-          <tr>
-            <td>408两节</td>
-            <td>2h</td>
-          </tr>
-        </DaisyTable>
-        DataStructure: 29节
-        OS: 16节
-        机组: 27节
-        计网: 27节
-        <br />
-        傅立叶级数<br />
-    </div>
+    <DaisySidebar page={pages[pageRenderingName]}>
+      <Node summary="Tasks">
+        <Leaf pageName="Task">Task</Leaf>
+        <Leaf pageName="PCTable">PC</Leaf>
+      </Node>
+    </DaisySidebar>
   )
 }

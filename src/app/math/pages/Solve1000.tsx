@@ -174,7 +174,7 @@ export default function Solve1000() {
             </li>
             <li><strong>对称区间(不一定关于原点)的定积分: </strong><br />
               1. 偶倍奇零, 但注意反常积分不一定符合(因为可能发散, 且趋近一个点或无穷远处的发散值是没有抵消这种说法的, 因为趋近速度可以不相同)<br />
-              如图, 第一个发散, 第二个为0: <Img src="Images/Math/对称区间反常积分.png" width={400}/>
+              如图, 第一个发散, 第二个为0: <Img src="Images/Math/对称区间反常积分.png" width={400} />
               2. 偶倍奇零的来源[公式]: <Latex>{`$\\int_{-a}^a f(x)dx=\\int_0^a [f(x)+f(-x)]dx$`}</Latex> <br />
             </li>
             <li>[120] <Latex>{`$\\frac{1}{\\sqrt{x}}dx=d(2\\sqrt{x})~~\\int lnx dx=xlnx-x+C$`}</Latex></li>
@@ -300,11 +300,29 @@ export default function Solve1000() {
                 </ul>
               </details>
             </li>
-            <li>[178~186] 微分方程</li>
-            <br />
-            <li>收敛级数每一项都要有界吗?</li>
-            <li>p级数和p积分</li>
-            <li>调和级数发散的证明</li>
+            <li>[179~186] 微分方程</li>
+            <li>
+              <details>
+                <summary className="cursor-pointer"><strong>级数相关证明: </strong></summary>
+                <ul>
+                  <li>级数绝对收敛 -&gt; 级数收敛:
+                    <Img src="Images/Math/绝对收敛推收敛证明.png" />
+                  </li>
+                  <li>幂级数敛散域判断:
+                    <Img src="Images/Math/幂级数敛散域.png" />
+                    注意: 条件收敛点只可能在 x=R 或 x=-R 处
+                  </li>
+                  <li>无穷级数与无穷乘积:
+                    <Img src="Images/Math/无穷级数与无穷乘积.png" />
+                  </li>
+                  <li>Raabe定理: </li>
+                  <li><Latex>{`$(1+x)^a$`}</Latex>的麦克劳林级数及其收敛域:
+                    <Img src="Images/Math/(1+x)^a.png" width={500} />
+                    <Img src="Images/Math/(1+x)^aField.png" />
+                  </li>
+                </ul>
+              </details>
+            </li>
           </ul>
         </div>
       </TextBox>
