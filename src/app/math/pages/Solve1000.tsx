@@ -336,6 +336,11 @@ export default function Solve1000() {
             <li>[198] (1) 微分方程的解去绝对值时注意符合特殊点取值条件 <br />
               (2) <Latex>{`$\\sum_{n=a}^{\\infty}x^n=\\frac{x^a}{1-x}=\\frac{1}{1-x}-1-x-...-x^{a-1}$`}</Latex></li>
             <li>[199] 凑几何级数+先导后积法; 注意提<Latex>{`$\\frac{1}{x}$`}</Latex>后还要讨论x=0的情况</li>
+            <li>傅里叶级数:
+              <Img src="Images/Math/傅里叶级数.png" width={700} />
+            </li>
+            <li>[200] <strong>余弦级数作偶延拓, 正弦级数作奇延拓</strong></li>
+            <li>[201] 先计算周期, 正弦级数作奇延拓, 利用周期函数性质, 根据狄利克雷收敛定理计算间断点处 和函数S(x) 的值</li>
           </ul>
         </div>
       </TextBox>
