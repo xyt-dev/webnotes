@@ -323,6 +323,19 @@ export default function Solve1000() {
                 </ul>
               </details>
             </li>
+            <li>[188] 先证明级数是正项级数; 利用p级数与级数比较审敛</li>
+            <li><strong>[190] 利用函数最值证明级数恒正或恒负, 此时级数收敛则绝对收敛; 比较判别法 结合 |a&plusmn;b| &le; |a| &plusmn; |b| 证明目标级数绝对收敛</strong></li>
+            <li>[191] 比较判别法; 莱布尼兹判别法</li>
+            <li>[192] <Latex>{`$\\sum_{n=1}^\\infty[f(u_{n+1})-f(u_n)]=lim_{n\\rightarrow \\infty}[f(u_{n})-f(u_1)]$`}</Latex></li>
+            <li>[193] (1) 变量可分离型 (2) 简单放缩</li>
+            <li>[194] 求收敛半径和收敛区间(注意和收敛域的区别)</li>
+            <li><strong>[195]</strong> 求非幂函数的收敛域; <strong>注意: <Latex>{`$lim_{n\\rightarrow \\infty}\\frac{a_{n+1}}{a_n}=1 且 \\frac{a_{n+1}}{a_n}>1 则级数发散$`}</Latex></strong></li>
+            <li><Latex>{`$x\\rightarrow\\infty~~~f(x)=1~~~g(x)=e$`}</Latex><br /><Img src="Images/Math/f(x)=e.png" width={500} /></li>
+            <li><strong>[196]</strong> 求导 -&gt; 泰勒级数 -&gt; 级数积分; 积分注意要加上常数; <br /> 积分 -&gt;泰勒级数 -&gt; 级数求导 <Latex>{`$\\sum$`}</Latex>中有常数项, 求导记得去掉常数项(求和符号下标可能变化); <Latex>{`$0^0=1$`}</Latex></li>
+            <li>[197] ln(1+x) 的泰勒级数</li>
+            <li>[198] (1) 微分方程的解去绝对值时注意符合特殊点取值条件 <br />
+              (2) <Latex>{`$\\sum_{n=a}^{\\infty}x^n=\\frac{x^a}{1-x}=\\frac{1}{1-x}-1-x-...-x^{a-1}$`}</Latex></li>
+            <li>[199] 凑几何级数+先导后积法; 注意提<Latex>{`$\\frac{1}{x}$`}</Latex>后还要讨论x=0的情况</li>
           </ul>
         </div>
       </TextBox>

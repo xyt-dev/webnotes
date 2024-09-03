@@ -5,12 +5,14 @@ import Solve1000 from "./pages/Solve1000";
 import Link from "next/link";
 import WildSolve from "./pages/WildSolve";
 import LatexSymbols from "./pages/LatexSymbols";
+import OtherPage from "./pages/Other";
 
 export default function DaisyPages() {
   const pages: { [key: string]: React.ReactNode } = {
     "Solve1000": Solve1000(),
     "WildSolve": WildSolve(),
     "LatexSymbols": LatexSymbols(),
+    "Other": OtherPage(),
   }
   const [pageRenderingName, setPageRenderingName] = useState("")
   useEffect(() => {
@@ -41,6 +43,7 @@ export default function DaisyPages() {
     <DaisySidebar page={pages[pageRenderingName]}>
       <Leaf pageName="Solve1000">张宇1000题</Leaf>
       <Leaf pageName="WildSolve">野题</Leaf>
+      <Leaf pageName="Other">其他</Leaf>
       <Leaf pageName="LatexSymbols">Latex符号大全</Leaf>
       <li><Link href='https://xy6.notion.site' legacyBehavior><a target="_blank" rel="noopener noreferrer">Notion笔记</a></Link></li>
     </DaisySidebar>
