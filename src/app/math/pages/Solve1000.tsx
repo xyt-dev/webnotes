@@ -341,6 +341,35 @@ export default function Solve1000() {
             </li>
             <li>[200] <strong>余弦级数作偶延拓, 正弦级数作奇延拓</strong></li>
             <li>[201] 先计算周期, 正弦级数作奇延拓, 利用周期函数性质, 根据狄利克雷收敛定理计算间断点处 和函数S(x) 的值</li>
+            <li>[203] 伯努利方程; 带特殊值计算C</li>
+            <li>
+              <details>
+                <summary className="cursor-pointer">点到平面距离公式: </summary>
+                <Img src="Images/Math/点到平面距离公式.png" width={600} />
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary className="cursor-pointer">格林公式证明图解: </summary>
+                <Img src="Images/Math/向量场三大公式/1.png" width={600} />  
+                <Space width={5}/>边界上曲线积分近似为无限个内部小格子的边界曲线积分
+                <Img src="Images/Math/向量场三大公式/2.png" width={600} />  
+                <Space width={5}/>又可以得到每个小格子边界曲线积分与向量函数的二重积分关系:
+                <Img src="Images/Math/向量场三大公式/3.png" width={600} />  
+                <Space width={5}/>(逆用牛顿莱布尼兹公式)
+                <Img src="Images/Math/向量场三大公式/4.png" width={600} />  
+                证明2: 
+                <Img src="Images/Math/向量场三大公式/5.png" width={600} />  
+              </details>
+              <details>
+                <summary className="cursor-pointer">高斯公式证明图解: </summary>
+                <Img src="Images/Math/向量场三大公式/6.png" width={700} />  
+              </details>
+              <details>
+                <summary className="cursor-pointer">斯托克斯公式证明图解: </summary>
+                <Img src="Images/Math/向量场三大公式/7.png" width={700} />  
+              </details>
+            </li>
           </ul>
         </div>
       </TextBox>
