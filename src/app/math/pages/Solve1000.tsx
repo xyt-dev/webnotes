@@ -342,6 +342,16 @@ export default function Solve1000() {
             <li>[200] <strong>余弦级数作偶延拓, 正弦级数作奇延拓</strong></li>
             <li>[201] 先计算周期, 正弦级数作奇延拓, 利用周期函数性质, 根据狄利克雷收敛定理计算间断点处 和函数S(x) 的值</li>
             <li>[203] 伯努利方程; 带特殊值计算C</li>
+            <li>[204] 可微+极限 -&gt; <strong>二元函数函数可微的定义与性质</strong></li>
+            <li>[205] 二元函数与xOy平面交线方程: F(x)=f(x, y(x)) = 0; 链式求导法则, 隐函数求导的逆用</li>
+            <li>[206] 求过已知两点与已知曲面相切的平面</li>
+            <li>[207] 求一点处法向量然后得到该点处切面方程</li>
+            <li>[208] 以M为顶点, 曲线C为准线, 作锥面方程; <strong>(逆用参数式直线方程)</strong></li>
+            <li>[209] 方向导数的定义 <strong>注意: 方向导数中 <Latex>{`$t \\rightarrow 0^+$`}</Latex></strong></li>
+            <li>[210] <strong>沿着梯度方向的方向导数最大，且最大值为梯度的模</strong></li>
+            <li>[211] 已知梯度大小和方向求参数</li>
+            <li><strong>[212]</strong> 坐标轴正方向的方向导数相当于偏导; 两个偏导均含有同一变元的未知函数如f(x), 两个偏导求同一个原函数, 带特值看<Latex>{`$\\psi(x)$`}</Latex>是否为常数, 之后可通过解一阶线性微分方程求解 </li>
+            <li><strong>[215]</strong> 三维形心坐标需要三重积分计算, 三重积分中的二重积分又可以用已知的二维平面中的形心坐标速算</li>
             <li>
               <details>
                 <summary className="cursor-pointer">点到平面距离公式: </summary>
@@ -367,6 +377,7 @@ export default function Solve1000() {
               </details>
               <details>
                 <summary className="cursor-pointer">斯托克斯公式证明图解: </summary>
+                斯托克斯公式其实就是三维空间闭合曲线分别投影到三个坐标面上的格林公式<br />(注意<strong>zx</strong>的顺序)
                 <Img src="Images/Math/向量场三大公式/7.png" width={700} />  
               </details>
             </li>
