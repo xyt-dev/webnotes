@@ -1,7 +1,8 @@
 "use client"
 import DaisySidebar, { DaisySidebarLeaf, DaisySidebarNode as Node } from "@/components/DaisySidebar";
 import React, { useEffect, useState } from "react";
-import Solve1000 from "./pages/Solve1000";
+import AdvancedMath1 from "./pages/Solve1000/AdvancedMath1";
+import LinearAlgebra1 from "./pages/Solve1000/LinearAlgebra1";
 import Link from "next/link";
 import WildSolve from "./pages/WildSolve";
 import LatexSymbols from "./pages/LatexSymbols";
@@ -9,10 +10,11 @@ import OtherPage from "./pages/Other";
 
 export default function DaisyPages() {
   const pages: { [key: string]: React.ReactNode } = {
-    "Solve1000": Solve1000(),
+    "AdvancedMath1": AdvancedMath1(),
     "WildSolve": WildSolve(),
     "LatexSymbols": LatexSymbols(),
     "Other": OtherPage(),
+    "LinearAlgebra1": LinearAlgebra1(),
   }
   const [pageRenderingName, setPageRenderingName] = useState("")
   useEffect(() => {
@@ -41,7 +43,12 @@ export default function DaisyPages() {
   }
   return (
     <DaisySidebar page={pages[pageRenderingName]}>
-      <Leaf pageName="Solve1000">张宇1000题</Leaf>
+      <Node summary="张宇1000题">
+        <Node summary="基础">
+          <Leaf pageName="AdvancedMath1">高等数学</Leaf>
+          <Leaf pageName="LinearAlgebra1">线性代数</Leaf>
+        </Node>
+      </Node>
       <Leaf pageName="WildSolve">野题</Leaf>
       <Leaf pageName="Other">其他</Leaf>
       <Leaf pageName="LatexSymbols">Latex符号大全</Leaf>

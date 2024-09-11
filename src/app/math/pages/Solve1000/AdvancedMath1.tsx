@@ -10,12 +10,11 @@ function Img({ src, width }: { src: string, width?: number }) {
   )
 }
 
-export default function Solve1000() {
+export default function AdvancedMath1() {
   return (
     <div className={`w-[100%] mx-auto`}>
       <TextBox>
-        <Title1><div className="text-rose-500 underline">张宇1000题</div></Title1>
-        <Title2><div className="pb-6">高等数学</div></Title2>
+        <Title1><div className="pb-6 text-rose-500 underline">高等数学</div></Title1>
         <div className="leading-9 prose daisy-prose">
           <ul>
             <li>[1] 函数伸缩平移可逆变换, 凑函数方程组, 解出f(x)</li>
@@ -352,6 +351,11 @@ export default function Solve1000() {
             <li>[211] 已知梯度大小和方向求参数</li>
             <li><strong>[212]</strong> 坐标轴正方向的方向导数相当于偏导; 两个偏导均含有同一变元的未知函数如f(x), 两个偏导求同一个原函数, 带特值看<Latex>{`$\\psi(x)$`}</Latex>是否为常数, 之后可通过解一阶线性微分方程求解 </li>
             <li><strong>[215]</strong> 三维形心坐标需要三重积分计算, 三重积分中的二重积分又可以用已知的二维平面中的形心坐标速算</li>
+            <li><strong>[216]</strong> 轮换对称性的应用</li>
+            <li><strong>两平面方程联立消去一个变元可以得到所交得空间曲线在对应坐标轴平面上的投影</strong></li>
+            <li>[217, <strong>218</strong>] 曲面截曲面求积分, 看清是哪个曲面被截, dS就应该是哪个曲面上的; 投影到合适坐标平面, 以投影到xOy平面为例: <Latex>{`$dS=\\sqrt{1+(z'_x)^2+(z'_y)^2}d\\sigma$`}</Latex>; 
+              <br /><strong>二重积分换元(Jacobian行列式)后使用极坐标计算</strong></li>
+            <li><strong>[219] [计算]</strong></li>
             <li>
               <details>
                 <summary className="cursor-pointer">点到平面距离公式: </summary>
@@ -381,6 +385,13 @@ export default function Solve1000() {
                 <Img src="Images/Math/向量场三大公式/7.png" width={700} />  
               </details>
             </li>
+            <li><strong>使用三大公式时注意是否有非连续区域(奇点)</strong></li>
+            <li>[221] 格林公式应用; <strong>积分函数的值与积分区域方程有一定关系</strong></li>
+            <li><strong>[222] (2) 注意间断点(奇点)! 挖去包含间断点的合适区域使用格林公式</strong></li>
+            <li>[223] 补面使用高斯公式; 对称性</li>
+            <li><strong>[225] 如果用高斯公式，偏导会有奇点(不连续区域), 注意奇点(不连续区域)!; 注意微元符号! dxdy 和 dS 的区别</strong></li>
+            <li><strong>[226]</strong> 逆向思维, 分量在三个坐标轴上积分 -&gt; 整体在空间曲面(平面)<Latex>{`$\\Sigma$`}</Latex>上积分, dydz,dzdx,dxdy -&gt; dS</li>
+            <li><strong>[227]</strong> 斯托克斯公式, dydz,dzdx,dxdy -&gt; dS 从而转化为曲面积分; 形心公式</li>
           </ul>
         </div>
       </TextBox>
