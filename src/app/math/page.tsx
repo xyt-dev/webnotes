@@ -3,6 +3,7 @@ import DaisySidebar, { DaisySidebarLeaf, DaisySidebarNode as Node } from "@/comp
 import React, { useEffect, useState } from "react";
 import AdvancedMath1 from "./pages/Solve1000/AdvancedMath1";
 import LinearAlgebra1 from "./pages/Solve1000/LinearAlgebra1";
+import Statistics1 from "./pages/Solve1000/Statistics1";
 import Link from "next/link";
 import WildSolve from "./pages/WildSolve";
 import LatexSymbols from "./pages/LatexSymbols";
@@ -11,10 +12,11 @@ import OtherPage from "./pages/Other";
 export default function DaisyPages() {
   const pages: { [key: string]: React.ReactNode } = {
     "AdvancedMath1": AdvancedMath1(),
+    "LinearAlgebra1": LinearAlgebra1(),
+    "Statistics1": Statistics1(),
     "WildSolve": WildSolve(),
     "LatexSymbols": LatexSymbols(),
     "Other": OtherPage(),
-    "LinearAlgebra1": LinearAlgebra1(),
   }
   const [pageRenderingName, setPageRenderingName] = useState("")
   useEffect(() => {
@@ -47,6 +49,7 @@ export default function DaisyPages() {
         <Node summary="基础">
           <Leaf pageName="AdvancedMath1">高等数学</Leaf>
           <Leaf pageName="LinearAlgebra1">线性代数</Leaf>
+          <Leaf pageName="Statistics1">概率论与数理统计</Leaf>
         </Node>
       </Node>
       <Leaf pageName="WildSolve">野题</Leaf>
