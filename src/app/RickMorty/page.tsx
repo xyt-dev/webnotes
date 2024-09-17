@@ -1,4 +1,5 @@
 import TextBox from "@/components/RawTextBox"
+import { Title1 } from "@/components/RawTextBox"
 function Episode({href, children}: {href: string, children: any}) {
   return (
     <a className={"text-blue-500 hover:text-blue-700 text-lg block w-fit mx-auto"} href={href}>{children}</a>
@@ -8,6 +9,7 @@ export default function RickMortyPage() {
   return (
     <div className={`w-[100%] mx-auto`}>
       <TextBox>
+        <div className="w-[100%] text-green-500 italic text-center font-bold text-[2rem] pb-6 pt-3">Rick & Morty</div>
         <Episode href="https://drive.google.com/file/d/1oypGZckYusBc8dLOPBvz6vkgNFg-wpSb/view?usp=drive_link">第一集</Episode> {/* 1-1 */}
         <Episode href="https://drive.google.com/file/d/1-qxwTX51hEdowGHQjqzt9EiXgikyBSLb/view?usp=drive_link">第二集</Episode> {/* 1-4 */}
         <Episode href="https://drive.google.com/file/d/1-cgZnuAgdq5hNNHIIx3yzcbEnzm044Py/view?usp=drive_link">第三集</Episode> {/* 1-4 */}
