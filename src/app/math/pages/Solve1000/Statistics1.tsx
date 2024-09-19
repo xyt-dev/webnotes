@@ -45,6 +45,16 @@ export default function Statistics1() {
             <li>[307] 条件概率</li>
             <li>[308] 独立性的关系(<strong>独立: 在全集中的比例和在相独立事件中的比例都相同</strong>)</li>
             <li>[309, 310] 独立性与互斥性相关计算</li>
+            <li><strong>随机变量: <Latex>{`$X(\\omega)$`}</Latex>, 其中 <Latex>{`$X$`}</Latex> 是随机变量, 其实质是一个函数, 将事件 <Latex>{`$\\omega$`}</Latex> (样本点的集合)映射到对应数值 <Latex>{`$X(\\omega)$`}</Latex>, 或简写为 <Latex>{`$X$`}</Latex></strong></li>
+            <li>泊松分布: <Img src="Images/Math/poisson分布.png"/></li>
+            <li>[311, <strong>312</strong>] 二项分布; 若 <Latex>{`$X+Y=n, X\\sim B(n, p)$`}</Latex> 则 <Latex>{`$Y=n-X\\sim B(n, 1-p)$`}</Latex> (因为 P(x=k) = P(y=n-k)) <br />
+              如果 X~B(n,p) 和 Y~B(m,p) 相互独立, 则 X+Y~B(n+m,p), 但注意题[312]中 X 和 Y 不是相互独立的</li>
+            <li>[313] 正态函数标准化</li>
+            <li>[314] <Latex>{`$X\\sim N(\\mu, \\sigma^2)$`}</Latex> 概率密度函数有唯一驻点 <Latex>{`$(\\mu, \\frac{1}{\\sqrt{2\\pi}\\sigma})$`}</Latex></li>
+            <li>[315] 串联机器+指数分布</li>
+            <li>[316] *威布尔分布</li>
+            <li>[317] 均匀分布</li>
+            <li>[318, 319] 未知分布的随机变量转换为已知分布的随机变量</li>
           </ul>
         </div>
       </TextBox>

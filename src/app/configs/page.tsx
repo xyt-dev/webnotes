@@ -51,12 +51,13 @@ export default function EnglishPage() {
         workspace=2, monitor:eDP-1<br />
         workspace=3, monitor:DP-1<br />
         <br />
-        配置默认程序<br />
+        # 配置默认程序<br />
         $terminal = kitty<br />
-        $fileManager = dolphin<br />
+        # dolphin 总是不能正确选择应用程序打开文件<br />
+        $fileManager = nautilus<br />
         $menu = wofi -show drun<br />
         <br />
-        配置窗体<br />
+        # 配置窗体<br />
         general &#123;<br />
         # 间距<br />
         gaps_in = 5<br />

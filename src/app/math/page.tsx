@@ -51,6 +51,10 @@ export default function DaisyPages() {
           <Leaf pageName="LinearAlgebra1">线性代数</Leaf>
           <Leaf pageName="Statistics1">概率论与数理统计</Leaf>
         </Node>
+        <Node summary="张宇1000题[PDF]">
+          <li><Link href='https://drive.google.com/file/d/1xQUsR3oNJlhdS9AWqDvkiZXZQO1HbAwq/view?usp=drive_link' legacyBehavior><a target="_blank" rel="noopener noreferrer">张宇1000题[习题册]</a></Link></li>
+          <li><Link href='https://drive.google.com/file/d/1rKJW2aFD8FIRp3yW1W9-5WOc9P3_tO3j/view?usp=drive_link' legacyBehavior><a target="_blank" rel="noopener noreferrer">张宇1000题[解析册]</a></Link></li>
+        </Node>
       </Node>
       <Leaf pageName="WildSolve">野题</Leaf>
       <Leaf pageName="Other">其他</Leaf>

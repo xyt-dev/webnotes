@@ -155,6 +155,27 @@ export default function WildSolve() {
             答案: <Latex>{`$\\frac{\\pi^3}{8}$`}</Latex>
           </TabPage>
         </Solve>
+
+        <Solve tags={["带参数的积分"]}>
+          <TabPage tabName="题目" defaultChecked>
+            <Img src="Images/Math/wildsolve/8.png" />
+          </TabPage>
+          <TabPage tabName="题解">
+            化累次积分后交换积分次序求解 <br />
+            答案: <Latex>{`$\\ln\\frac{b+1}{a+1}$`}</Latex>
+          </TabPage>
+        </Solve>
+
+        <Solve tags={["极限麻人专用"]}>
+          <TabPage tabName="题目" defaultChecked>
+            <Latex>{`$lim_{x\\rightarrow+\\infty}\\frac{e^x}{(1+\\frac{1}{x})^{x^2}}$`}</Latex>
+          </TabPage>
+          <TabPage tabName="题解">
+            你以为答案是1? 不定式不能拆开单独求极限! <br /> 
+            可以尝试单独求极限, 但如果结果是不定式则反推不能单独求极限! <br />
+            正确答案: <Latex>{`$lim_{x\\rightarrow+\\infty}\\frac{e^x}{(1+\\frac{1}{x})^{x^2}}=e^{x-x^2\\ln{(1+\\frac{1}{x})}}=e^{x-x^2(\\frac{1}{x}-\\frac{1}{2x^2}+o(1))}=e^{\\frac{1}{2}}$`}</Latex>
+          </TabPage>
+        </Solve>
       </ol>
     </DaisyProsePage>
   )
