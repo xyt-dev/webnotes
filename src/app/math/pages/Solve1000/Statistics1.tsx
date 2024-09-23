@@ -57,6 +57,8 @@ export default function Statistics1() {
             <li>[317] 均匀分布</li>
             <li><strong>[318, 319] 未知分布的随机变量转换为已知分布的随机变量</strong></li>
             <li>[320] 随机变量 Y, Z 都关于随机变量 X, Y+Z 也只关于 X</li>
+            <li className="font-bold">概率密度的定义: 若非负可积函数f(x)或f(x,y)从负无穷到x或(x, y)点处的积分等于概率分布函数F(x)或F(x,y), 则称f(x)或f(x,y)为概率密度函数; 概率密度表达的意义是概率在某一点处对于对应微元的比例系数</li>
+            <li className="font-bold">二维概率分布为连续型时, 联合概率密度就相当于无限个无限维向量组成的矩阵; 当两个随机变量相互独立时, 矩阵的秩=1, 边缘概率密度分别为一个无限维向量, 分别表示了行向量和列向量中分量的比例, 且乘积为对应点处联合概率密度</li>
             <li><strong>[321]</strong> 随机变量 X 在 (a,b) 上随机取值 相当于 X~U(a,b); 已知 X 边缘概率密度 和 Y|X 条件概率密度, 可求联合概率密度 f(x,y) 和 Y 的边缘概率密度 (同时要注意概率密度的定义范围)</li>
             <li>[323] 不要混淆; 注意独立性</li>
             <li className="font-bold">卷积公式: <br /><Latex>{`$Z=X+Y:~~$`}</Latex> <Latex>{`$f(z)=\\int_{-\\infty}^{+\\infty}{f(x, z-x)dx}$`}</Latex> <br />
@@ -83,6 +85,8 @@ export default function Statistics1() {
             <li>[327] (1) 二维条件概率密度函数是二元函数, 定义域是二维区域, 该题中二维区域可以用 <Latex>{`$|y|<x<1$`}</Latex> 表示</li>
             <li><strong>[328]</strong>  分类讨论积分; 积分变量写 u/v 或 s/t<Img src="Images/Math/二维联合概率密度.png"/></li>
             <li><strong>[329]</strong> 方法一: 积分求分布函数 <Latex>{`$F_Z(z)$`}</Latex>, 然后求导得概率密度函数; <strong>方法二: 使用卷积公式, 积分区间是处于正概率密度区域内边界线在x轴上投影</strong></li>
+            <li><strong>[330]</strong> 离散型 + 连续性 -&gt; 连续型 <strong>全概率公式(对离散型随机变量全集分解)</strong></li>
+            <li><strong>[331]</strong> (1) 使用边缘概率密度函数的归一性讨论求解参数 (2) 使用 Z=AX+BY 的拓展卷积公式, 积分区间是处于正概率密度区域内边界线在x轴上投影, 分情况讨论</li>
           </ul>
         </div>
       </TextBox>
