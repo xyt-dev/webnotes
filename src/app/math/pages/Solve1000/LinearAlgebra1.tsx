@@ -59,7 +59,6 @@ export default function LinearAlgebra1() {
             <li>[252~255] 使用行变换(或列变换)化阶梯矩阵</li>
             <li>[257,258] 向量组等价的定义</li>
             <li>[259] 施密特正交化(只求正交向量组不需要求正交单位向量<Latex>{`$\\eta$`}</Latex>(两种版本的公式))</li>
-            <li><a className="text-blue-500 hover:text-blue-700 no-underline" target="_blank" href="https://zhuanlan.zhihu.com/p/52808762">正态分布函数推导</a></li>
           </ul>
         </div>
       </TextBox>
