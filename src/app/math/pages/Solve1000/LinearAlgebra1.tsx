@@ -59,6 +59,10 @@ export default function LinearAlgebra1() {
             <li>[252~255] 使用行变换(或列变换)化阶梯矩阵</li>
             <li>[257,258] 向量组等价的定义</li>
             <li>[259] 施密特正交化(只求正交向量组不需要求正交单位向量<Latex>{`$\\eta$`}</Latex>(两种版本的公式))</li>
+            <li className="font-bold">[260] 概念+逻辑 <Latex>{`$A_{12}\\neq 0 \\Rightarrow \\alpha_1,\\alpha_3,\\alpha_4$`}</Latex> 线性无关, <Latex>{`$r(A)\\ge 3$`}</Latex>, 又A不可逆 <Latex>{`$\\Rightarrow r(A)=3 \\Rightarrow r(A^*)=1, r(S)=3$`}</Latex>
+            , 即 <Latex>{`$A^*x=0$`}</Latex> 的解空间由3个线性无关向量构成. 又 <Latex>{`$A^*A=|A|E=O$`}</Latex>, 所以 <Latex>{`$\\alpha_1,\\alpha_3,\\alpha_4 $`}</Latex> 正好是 <Latex>{`$A^*x=0$`}</Latex> 的3个线性无关解向量</li>
+            <li>[261] 相当于系数矩阵左乘一个可逆矩阵A, 然后A可以消掉</li>
+            <li><strong>注意: S=n-r 中 n=系数矩阵的列数, 即线性方程组中的未知数的个数, 无论系数矩阵的行数是否大于列数。</strong></li>
           </ul>
         </div>
       </TextBox>

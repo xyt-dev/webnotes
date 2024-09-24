@@ -70,8 +70,8 @@ export default function EnglishPage() {
         <br />
         decoration &#123;<br />
         # 透明度<br />
-        active_opacity = 0.97<br />
-        inactive_opacity = 0.90<br />
+        active_opacity = 1<br />
+        inactive_opacity = 1<br />
         …<br />
         &#125;<br />
         <br />
@@ -182,6 +182,10 @@ export default function EnglishPage() {
         git config --global http.proxy http://127.0.0.1:7890 <br />
         git config --global https.proxy http://127.0.0.1:7890
       </p>
+      <h2>Kitty Config</h2>
+      font_size 16<br />
+      font_family JetBrainsMono Nerd Font<br />
+      background_opacity 0.8<br />
       <h2>VSCode Config</h2>
       <li>ArchLinux 下使用 yay -S visual-studio-code-bin 以安装正常版本 VSCode<br /></li>
       <li>code -r [path] 可以在原窗口切换到新工作目录<br /></li>
@@ -421,6 +425,7 @@ export default function EnglishPage() {
         <span>&#123;</span>
         <span>  "key": "shift+k",</span>
         <span>  "command": "editor.action.showHover",</span>
+        <span>  "when": "vim.mode == 'Normal'", </span>
         <span>&#125;,</span>
         <span>&#123;</span>
         <span>  "key": "ctrl+n",</span>

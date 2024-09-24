@@ -1,0 +1,1 @@
+fd . --type d --hidden --exclude .git -X dust --depth=3
