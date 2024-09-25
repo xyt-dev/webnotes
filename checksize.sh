@@ -1,1 +1,2 @@
-fd . --type d --hidden --exclude .git -X dust --depth=3
+fd . --hidden -X dust --depth=1
+cloc src

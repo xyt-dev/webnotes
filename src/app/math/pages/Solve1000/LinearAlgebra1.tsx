@@ -33,7 +33,7 @@ export default function LinearAlgebra1() {
               <Img src="/Images/Math/行秩等于列秩.png" />
             </li>
             <li><strong>对于方阵A、B有: <Latex>{`$|AB|=|A||B|$`}</Latex><br />
-              证明: 若A或B不满秩, 则<Latex>{`$|AB|=|A||B|=0$`}</Latex>; 否则方阵可逆且可由单位矩阵E经过一系列初等行变换得到, 作任意初等行变换等价于左乘一个初等矩阵, 其行列式的值等于原值乘1、(-1)、或常数c. 
+              证明: 若A或B不满秩, 则<Latex>{`$|AB|=|A||B|=0$`}</Latex>; 否则方阵可逆且可由单位矩阵E经过一系列初等行变换得到, 作任意初等行变换等价于左乘一个初等矩阵, 其行列式的值等于原值乘1、(-1)、或常数c.
               <Latex>{`$~~ |AB|=|E_1E_2 \\cdots E_kEB|=c_1c_2 \\cdots c_k|E||EB|=|E_1E_2 \\cdots E_kE||EB|=|A||B|$`}</Latex></strong><br />
               注: 一般 <Latex>{`$|A+B|\\neq |A|+|B|$`}</Latex>
             </li>
@@ -52,17 +52,43 @@ export default function LinearAlgebra1() {
             <li><strong>r(A)=r(A^TA) 证明: </strong><br />
               <Latex>{`$1. Ax=0 \\Rightarrow A^TAx=0 \\\\
                 2. A^TAx=0 \\Rightarrow x^TA^TAx=0 \\Rightarrow (Ax)^T(Ax)=0 \\Rightarrow Ax=0$`}</Latex><br />
-                所以 1,2 两个方程同解, 解空间的秩相同<br />
-                <Latex>{`$r(A)=n-r(null(A))=n-r(null(A^T))=r(A^TA)$`}</Latex>
+              所以 1,2 两个方程同解, 解空间的秩相同<br />
+              <Latex>{`$r(A)=n-r(null(A))=n-r(null(A^T))=r(A^TA)$`}</Latex>
             </li>
             <li><strong>行变换不会改变列向量的线性关系 (列变换应该也可以检验整个列向量组相不相关，但会改变具体的线性相关性, 解方程组不能用列变换)</strong></li>
             <li>[252~255] 使用行变换(或列变换)化阶梯矩阵</li>
             <li>[257,258] 向量组等价的定义</li>
             <li>[259] 施密特正交化(只求正交向量组不需要求正交单位向量<Latex>{`$\\eta$`}</Latex>(两种版本的公式))</li>
             <li className="font-bold">[260] 概念+逻辑 <Latex>{`$A_{12}\\neq 0 \\Rightarrow \\alpha_1,\\alpha_3,\\alpha_4$`}</Latex> 线性无关, <Latex>{`$r(A)\\ge 3$`}</Latex>, 又A不可逆 <Latex>{`$\\Rightarrow r(A)=3 \\Rightarrow r(A^*)=1, r(S)=3$`}</Latex>
-            , 即 <Latex>{`$A^*x=0$`}</Latex> 的解空间由3个线性无关向量构成. 又 <Latex>{`$A^*A=|A|E=O$`}</Latex>, 所以 <Latex>{`$\\alpha_1,\\alpha_3,\\alpha_4 $`}</Latex> 正好是 <Latex>{`$A^*x=0$`}</Latex> 的3个线性无关解向量</li>
+              , 即 <Latex>{`$A^*x=0$`}</Latex> 的解空间由3个线性无关向量构成. 又 <Latex>{`$A^*A=|A|E=O$`}</Latex>, 所以 <Latex>{`$\\alpha_1,\\alpha_3,\\alpha_4 $`}</Latex> 正好是 <Latex>{`$A^*x=0$`}</Latex> 的3个线性无关解向量</li>
             <li>[261] 相当于系数矩阵左乘一个可逆矩阵A, 然后A可以消掉</li>
-            <li><strong>注意: S=n-r 中 n=系数矩阵的列数, 即线性方程组中的未知数的个数, 无论系数矩阵的行数是否大于列数。</strong></li>
+            <li><strong>S=n-r <Space width={1} /> 注意其中 n = 系数矩阵的列数, 即线性方程组中的未知数的个数, 无论系数矩阵的行数是否大于列数。</strong></li>
+            <li className="font-bold">基础解系是指方程组Ax=0的解集的极大线性无关组, 满足三个条件：<br />
+              (1)均是方程组Ax=0的解;<br />
+              (2)线性无关;<br />
+              (3)方程组的任意解均可由基础解系线性表出.
+            </li>
+            <li className="font-bold">有解的条件:
+              <ul>
+                <li> <Latex>{`$ r(A) \\neq r([A, b]) $  即  $r(A) + 1 = r([A, b]) $，方程组无解`}</Latex> </li>
+                <li> <Latex>{`$ r(A) = r([A, b]) = n $ ，方程组有唯一解`}</Latex> </li>
+                <li> <Latex>{`$ r(A) = r([A, b]) = r < n $，方程组有无穷多解`}</Latex> </li> 其中 n=系数矩阵的列数
+              </ul>
+            </li>
+            <li><strong>特解一定和齐次解线性无关, 反证法证明很简单</strong></li>
+            <li className="font-bold">[262] (1) 向量组线性无关 <Latex>{`$\\Leftrightarrow$`}</Latex> 向量组表出零向量, 则系数一定全部为0 (即不存在不全为零的系数组合, 也就是解向量组成的矩阵的秩r等于向量个数n); 设系数反向推出线性无关<br />
+            (2) <Latex>{`$Ax=b~$的任意解向量$~\\eta^*~$可表示为: $~\\eta^*=\\eta+\\lambda_0\\xi_1+\\lambda_2\\xi_2+\\cdots+\\lambda_{n-r}\\xi_{n-r}$ (其中$~\\eta~$是特解, $~\\xi_{1\\cdots(n-r)}~$为基础解系)`}</Latex><br />此题背下来</li>
+            <li className="font-bold">[263] 不同特解相减得到对应齐次方程组的非零解</li>
+            <li className="font-bold"><strong>[264] 非齐次方程组的线性无关解的个数等于 n-r+1; </strong><br />
+              (1) 方法一: 行向量线性相关, 设系数直接求解. 方法二: 增广矩阵作初等行变换, 得到行阶梯矩阵<br />
+              (2) (1)中使用方法二化为行阶梯增广矩阵, 然后继续作行变换将其中一个极大线性无关组正分量组成的方阵化为对角矩阵, 容易计算通解<br />
+              (3) 具有相同<span className="underline underline-offset-[3px]">齐次</span>解
+              <br />此题背下来
+            </li>
+            <li>[265] 行变换不改变列相关性, 列变换不改变行相关性</li>
+            <li className="font-bold">[266] <Latex>{`$A^2=0$ 说明A的列向量是Ax=0的解向量, 被包含于其零空间中, 于是 $n=r(A)+S\\ge r(A)+r(A)\\Rightarrow r(A)\\le \\frac{n}{2}$`}</Latex></li>
+            <li>[267] <Latex>{`$S\\ge 3-1=2, r(A)=n-S\\le n-2$`}</Latex></li>
+            <li className="font-bold">[268] 任意n个线性无关向量可表出<span className="underline underline-offset-[3px]">其构成的n为向量空间中的</span>任意n维向量; <br />通解由n个线性无关向量组成 -&gt; 表出通解的n个线性无关向量也可以表出任意n维向量, 区别在于构成通解的特解向量系数为1, 所以方程组的系数矩阵乘特解和齐次解构成n维空间中的任意向量得到的都是 <Latex>{`$k\\vec{b}$`}</Latex>. 特别地, 对于秩等于1的系数矩阵其整个向量空间就是特解和齐次解构成的向量空间</li>
           </ul>
         </div>
       </TextBox>
