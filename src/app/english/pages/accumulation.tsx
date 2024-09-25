@@ -82,7 +82,7 @@ export default function EnglishAccumulation() {
           <td>ethic</td> <td>n. [~s]道德准则; 伦理标准</td>
           <td></td>
           <td>
-            In a rare <strong>unanimous ruling</strong>, the US Supreme Court has <strong>overturned</strong>
+            In a rare <strong>unanimous ruling</strong>, the US Supreme Court has <strong>overturned </strong>
             the <strong>corruption conviction</strong> of a former Virginia governor. But it did so while
             <strong>holding its nose at the ethics of his conduct</strong>, which included accepting gifts
             such as a Rolex watch and a Ferrari <strong>automobile</strong> from a company seeking access to government.
@@ -96,7 +96,7 @@ export default function EnglishAccumulation() {
         </tr>
         <tr>
           <td>deem</td> <td>v. [不用于进行时]认为,视为; 觉得</td>
-          <td>be deemed adj.(作补语, 描述主语的状态)</td>
+          <td>be deemed ... adj.(作补语, 描述主语的状态)</td>
         </tr>
         <tr>
           <td>circulation</td> <td>n. [报刊的]发行</td>
@@ -275,10 +275,10 @@ export default function EnglishAccumulation() {
             Many Americans <strong>regard</strong> the jury system <strong>as</strong> a concrete expression of
             crucial democratic values, including the principles that all citizens who meet the minimal qualifications
             of age and <strong>literacy</strong> are equally <strong>competent</strong> to serve on juries;
-            that <strong>jurors</strong> should be selected randomly from <strong>a representative cross section</strong>
-            of the community; that no citizen should be denied the right to serve on a jury <strong>on account of</strong>
-            race, religion, sex, or <strong>national origin</strong>; that <strong>defendants are entitled to trial</strong>
-            by their <strong>peers</strong>; and that <strong>verdicts</strong> should <strong>represent</strong>
+            that <strong>jurors</strong> should be selected randomly from <strong>a representative cross section </strong>
+            of the community; that no citizen should be denied the right to serve on a jury <strong>on account of </strong>
+            race, religion, sex, or <strong>national origin</strong>; that <strong>defendants are entitled to trial </strong>
+            by their <strong>peers</strong>; and that <strong>verdicts</strong> should <strong>represent </strong>
             the <strong>conscience</strong> of the community and not just the letter of the law.
           </td>
         </tr>

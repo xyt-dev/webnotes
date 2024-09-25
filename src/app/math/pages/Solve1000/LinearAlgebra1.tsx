@@ -85,10 +85,21 @@ export default function LinearAlgebra1() {
               (3) 具有相同<span className="underline underline-offset-[3px]">齐次</span>解
               <br />此题背下来
             </li>
+            <li className="font-bold">基础解的个数一般就是n-r+1, 只不过齐次时所有特解(任意一组极大线性无关组的解)都坍缩为零解，所以线性无关的解的个数-1=n-r</li>
             <li>[265] 行变换不改变列相关性, 列变换不改变行相关性</li>
             <li className="font-bold">[266] <Latex>{`$A^2=0$ 说明A的列向量是Ax=0的解向量, 被包含于其零空间中, 于是 $n=r(A)+S\\ge r(A)+r(A)\\Rightarrow r(A)\\le \\frac{n}{2}$`}</Latex></li>
             <li>[267] <Latex>{`$S\\ge 3-1=2, r(A)=n-S\\le n-2$`}</Latex></li>
-            <li className="font-bold">[268] 任意n个线性无关向量可表出<span className="underline underline-offset-[3px]">其构成的n为向量空间中的</span>任意n维向量; <br />通解由n个线性无关向量组成 -&gt; 表出通解的n个线性无关向量也可以表出任意n维向量, 区别在于构成通解的特解向量系数为1, 所以方程组的系数矩阵乘特解和齐次解构成n维空间中的任意向量得到的都是 <Latex>{`$k\\vec{b}$`}</Latex>. 特别地, 对于秩等于1的系数矩阵其整个向量空间就是特解和齐次解构成的向量空间</li>
+            <li className="font-bold">[268] 任意n个线性无关向量可表出<span className="underline underline-offset-[3px]">其构成的n为向量空间中的</span>任意n维向量; <br />通解由n个线性无关向量组成 -&gt; 表出通解的n个线性无关向量也可以表出其空间中任意n维向量, 其中构成通解的特解向量系数为1, 所以方程组的系数矩阵 乘 特解和齐次解所能表出的n维空间中的任意向量得到的都是 <Latex>{`$k\\vec{b}$`}</Latex>. <br />
+              特别地, 对于秩等于1的系数矩阵任意 <Latex>{`$\\vec{x}$`}</Latex> 所处整个向量空间就是特解和齐次解系表出的向量空间, 即 <Latex>{`$A\\vec{x}=k\\vec{b}$`}</Latex>. (其实很好理解, 因为系数矩阵中各基向量都在一条直线上) <br />
+              所以可以发现, 
+            </li>
+            <li>[269] 增广矩阵带参数分情况讨论计算通解; <strong>系数矩阵相同共用齐次解</strong></li>
+            <li className="font-bold">[270] <Latex>{`$r(A)=r(B)=r(\\begin{bmatrix} A \\\\ B \\end{bmatrix})$`}</Latex> <Latex>{`$\\Leftrightarrow$`}</Latex> A 和 B 中行向量所处空间维数相同, 且不包含对方无法表出的向量 <Latex>{`$\\Leftrightarrow$`}</Latex> 即 A 和 B 的行向量组能互相表出 <Latex>{`$\\Leftrightarrow$`}</Latex> A 和 B 的行向量组是等价向量组.
+                <br />此时存在矩阵 <Latex>{`$C, D$ 使 $A=DB, B=CA$`}</Latex>, 易知 <Latex>{`$A\\vec{x}=\\vec{0}, \\\\ B\\vec{x}=\\vec{0}, \\begin{bmatrix} A \\\\ B \\end{bmatrix}\\vec{x}=\\vec{0}$`}</Latex> 是同解方程组. (行变换不改变列向量的线性关系) <br />
+                如果系数矩阵 A 和 B 的列向量组是等价向量组, 不能说明其齐次方程组(右乘 <Latex>{`$\\vec{x}$`}</Latex>)同解, 因为其行向量组合并后秩可能增大, 但其转置后行向量组为等价向量组, 方程组同解.
+            </li>
+            <li><strong>[271]</strong> 看行向量组是否可以<strong>相互</strong>线性表出(三秩是否相等); 抽象矩阵行变换只能<strong>左乘</strong>矩阵, 且<strong>一般只能乘矩阵不能"除"矩阵(需要矩阵元素可逆)</strong></li>
+            <li><strong>[272]</strong> 看清楚是三个平面公共交点, 即没有一个点同时满足三个平面方程, 即讨论参数令方程组无解</li>
           </ul>
         </div>
       </TextBox>
