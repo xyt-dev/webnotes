@@ -100,6 +100,7 @@ export default function LinearAlgebra1() {
             </li>
             <li><strong>[271]</strong> 看行向量组是否可以<strong>相互</strong>线性表出(三秩是否相等); 抽象矩阵行变换只能<strong>左乘</strong>矩阵, 且<strong>一般只能乘矩阵不能"除"矩阵(需要矩阵元素可逆)</strong></li>
             <li><strong>[272]</strong> 看清楚是三个平面公共交点, 即没有一个点同时满足三个平面方程, 即讨论参数令方程组无解</li>
+            <li>[273] <Latex>{`$AB=O$ 则 $r(A)+r(B) \\le n$(A的列数), 因为B的列向量都是$A\\vec{x}=\\vec{0}$的解`}</Latex></li>
           </ul>
         </div>
       </TextBox>
