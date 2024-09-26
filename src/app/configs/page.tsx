@@ -61,11 +61,11 @@ export default function EnglishPage() {
         # 配置窗体<br />
         general &#123;<br />
         # 间距<br />
-        gaps_in = 5<br />
-        gaps_out = 60<br />
+        gaps_in = 3<br />
+        gaps_out = 7<br />
         <br />
         # 边框宽度<br />
-        border_size = 2<br />
+        border_size = 3<br />
         …<br />
         &#125;<br />
         <br />
@@ -588,11 +588,11 @@ export default function EnglishPage() {
             },
             "memory": {
               "format": "<span foreground='#9ece6a'></span> {}%",
-              "on-click": "htop"
+              "on-click": "kitty htop"
             },
             "cpu": {
               "format": "<span foreground='#ff005f'> </span>{usage}%",
-              "on-click": "htop"
+              "on-click": "kitty htop"
             },
             "temperature": {
               "critical-threshold": 80,
@@ -630,10 +630,10 @@ export default function EnglishPage() {
             background: transparent;
           }
           #custom-arch, #workspaces {
-            border-radius: 10px;
+            border-radius: 15px;
             background-color: #191a24;
             color: #c0caf5;
-            margin-top: 15px;
+            margin-top: 7px;
             margin-right: 15px;
             padding-top: 1px;
             padding-left: 10px;
@@ -641,7 +641,7 @@ export default function EnglishPage() {
           }
           #custom-arch {
             font-size: 20px;
-            margin-left: 15px;
+            margin-left: 10px;
             padding-right: 16px;
           }
           #workspaces button {
@@ -655,13 +655,16 @@ export default function EnglishPage() {
             color: #ff0066;
           }
           #clock, #temperature, #cpu, #pulseaudio, #network, #battery , #tray, #memory ,#custom-playerctl, #custom-blueberry {
-            border-radius: 10px;
+            border-radius: 15px;
             background-color: #191a24;
             color: #c0caf5;
-            margin-top: 15px;
+            margin-top: 7px;
             padding-left: 9px;
             padding-right: 9px;
             margin-right: 15px;
+          }
+          #clock {
+            margin-right: 10px;
           }
           @keyframes blink {
             to {
