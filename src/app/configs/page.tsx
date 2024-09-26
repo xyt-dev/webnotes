@@ -55,7 +55,8 @@ export default function EnglishPage() {
         $terminal = kitty<br />
         # dolphin 总是不能正确选择应用程序打开文件<br />
         $fileManager = nautilus<br />
-        $menu = wofi -show drun<br />
+        # $menu = rofi -show drun -show-icons  # 使用 rofi-wayland <br />
+        $menu = ~/.config/rofi/launchers/type-6/launcher.sh # choose theme <br />
         <br />
         # 配置窗体<br />
         general &#123;<br />
@@ -492,6 +493,196 @@ export default function EnglishPage() {
         export MANPAGER="nvim +Man!" <br />
         alias suspend="systemctl suspend" <br />
         alias reload="hyprctl reload" <br />
+      </p>
+      <h2>rofi.rasi: </h2>
+      <p className="whitespace-pre-line">
+        {`使用 https://github.com/adi1090x/rofi.git , hyprland 启动rofi时直接启动对应主题的 launcher.sh 脚本即可.
+          进入对应 .rofi 文件可以微调配置, 比如字体大小, 长宽, 还有背景图片[doge]等`}
+      </p>
+      <h2>waybar</h2>
+      <p className="whitespace-pre-line">
+        {`基于 https://github.com/knightfallxz/Hyprland-Dots.git 配置
+          waybar/config.jsonc: 
+          {
+            "layer": "top",
+            "height": 10,
+            "margin-top": 0,
+            "margin-left": 0,
+            "margin-bottom": 0,
+            "margin-right": 0,
+            "spacing": 0,
+            "modules-left": ["custom/arch", "custom/separator", "hyprland/workspaces", "custom/separator" , "cpu", "memory", "temperature"],
+            "modules-center": ["custom/playerctl" ],
+            "modules-right": ["tray", "battery", "pulseaudio",  "network", "custom/blueberry", "clock", "battery"],
+            "custom/arch": {
+              "format": "  ",
+              "on-click": "~/.config/rofi/launchers/type-6/launcher.sh" // choose rofi theme
+            },
+            "hyprland/workspaces": {
+              "all-outputs": true,
+              "active-only": false,
+              "on-click": "activate",
+              "format": "{icon}",
+              "on-scroll-up": "hyprctl dispatch workspace e+1",
+              "on-scroll-down": "hyprctl dispatch workspace e-1",
+              "format-icons": {
+                "1": " ",
+                "2": " ",
+                "3": " ",
+                "4": " ",
+                "5": " ",
+                "6": " ",
+                "7": " ",
+                "8": " ",
+                "9": " ",
+                "urgent": " ",
+                "active": " ",
+                "default": " "
+              }
+            },
+            "clock": {
+              "format": "<span color='#b69bf1'> </span>{:%H:%M}",
+              "format-alt": "<span foreground='#b69bf1'> </span><span>{:%I:%M %p %a %d}</span>",
+              "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+            },
+            "battery": {
+              "bat": "BAT0",
+              "interval": 10,
+              "states": {
+                "warning": 30,
+                "critical": 15
+              },
+              "format": " {icon} {capacity}%",
+              "format-charging": "󰂄 {capacity}%",
+              "format-icons": ["", "", "", "", "", "", "", "", "", ""],
+              "max-length": 25,
+              "tooltip": false
+            },
+            "custom/separator": {
+              "format": " "
+            },
+            "custom/blueberry": {
+              "format": "  ",
+              "on-click": "blueberry"
+            },
+            "network": {
+              "interface": "wlo1",
+              "format": "{ifname}",
+              "format-wifi": "<span color='#90cdfa'>  </span>{essid}({signalStrength}%)",
+              "format-ethernet": "{ipaddr}/{cidr} ",
+              "format-disconnected": "<span color='#ff005f'>󰖪 </span>No Network",
+              "on-click": "kitty nmtui"
+            },
+            "pulseaudio": {
+              "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+              "format": "<span color='#f7768e'> </span> {volume}%",
+              "format-muted": "<span color='#f7768e'>ﱝ</span>",
+              "format-icons": {
+              "headphone": " ",
+              "hands-free": "",
+              "headset": " ",
+              "phone": " ",
+              "portable": " ",
+              "car": " ",
+              "default": ["奔"]
+            },
+            "memory": {
+              "format": "<span foreground='#9ece6a'></span> {}%",
+              "on-click": "htop"
+            },
+            "cpu": {
+              "format": "<span foreground='#ff005f'> </span>{usage}%",
+              "on-click": "htop"
+            },
+            "temperature": {
+              "critical-threshold": 80,
+              "format": "<span foreground='#5d73ca'></span> {temperatureC}°C"
+            },
+            "tray": {
+              "icon-size": 20,
+              "reverse-direction": true,
+              "spacing": 6
+            },
+            "custom/playerctl": {
+              "format": "<span>{}</span>  {icon} ",
+              "return-type": "json",
+              "max-length": 100,
+              "format-icons": {
+                "Paused": "<span foreground='#bb9af7'> </span>",
+                "Playing": "<span foreground='#bb9af7'> </span>"
+              },
+              "escape": true,
+              "exec": "playerctl -a metadata --format '{\"alt\": \"{{status}}\", \"text\": \"  {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\",  }' -F",
+              "on-click-middle": "playerctl previous",
+              "on-click": "playerctl play-pause",
+              "on-click-right": "playerctl next"
+            }
+          }
+          style.css:
+          * {
+            border: none;
+            font-family: 'JetBrainsMono Nerd Font' , 'Symbols Only';
+            font-size: 16px;
+            font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+            min-height: 26px;
+          }
+          window#waybar {
+            background: transparent;
+          }
+          #custom-arch, #workspaces {
+            border-radius: 10px;
+            background-color: #191a24;
+            color: #c0caf5;
+            margin-top: 15px;
+            margin-right: 15px;
+            padding-top: 1px;
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+          #custom-arch {
+            font-size: 20px;
+            margin-left: 15px;
+            padding-right: 16px;
+          }
+          #workspaces button {
+            background: #191a24;
+            color: #c0caf5;
+          }
+          #workspaces button.active {
+            color: #2ac3de;
+          }
+          #workspaces button.urgent {
+            color: #ff0066;
+          }
+          #clock, #temperature, #cpu, #pulseaudio, #network, #battery , #tray, #memory ,#custom-playerctl, #custom-blueberry {
+            border-radius: 10px;
+            background-color: #191a24;
+            color: #c0caf5;
+            margin-top: 15px;
+            padding-left: 9px;
+            padding-right: 9px;
+            margin-right: 15px;
+          }
+          @keyframes blink {
+            to {
+              background-color: #ffffff;
+              color: black;
+            }
+          }
+          #battery.warning:not(.charging) {
+            background: #f38ba8;
+            color: white;
+            animation-name: blink;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+          }
+          #tray{
+            padding-right: 8px;
+            padding-left: 10px;
+          }
+        `}
       </p>
     </div>
   )
