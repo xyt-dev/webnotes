@@ -52,7 +52,8 @@ export default function EnglishPage() {
         workspace=3, monitor:DP-1<br />
         <br />
         # 配置默认程序<br />
-        $terminal = kitty<br />
+        # $terminal = kitty  # kitty 和 fcitx5 有 bug 打开 kitty fcitx5 在其它窗口就无法正常聚焦使用<br />
+        $terminal = wezterm  # 安装 wezterm-git 版本才能用<br />
         # dolphin 总是不能正确选择应用程序打开文件<br />
         $fileManager = nautilus<br />
         # $menu = rofi -show drun -show-icons  # 使用 rofi-wayland <br />
@@ -187,6 +188,38 @@ export default function EnglishPage() {
       font_size 16<br />
       font_family JetBrainsMono Nerd Font<br />
       background_opacity 0.8<br />
+      <h2>WezTerm Config (wezterm.lua)</h2>
+      <p className="whitespace-pre-line">
+        {`
+          local wezterm = require("wezterm")
+          local act = wezterm.action
+          local config = {
+            font_size = 16,
+            font = wezterm.font("JetBrainsMono Nerd Font", {weight = "Regular"}),
+            color_scheme = "GruvboxDarkHard",
+
+            use_fancy_tab_bar = false,
+            hide_tab_bar_if_only_one_tab = true,
+            show_new_tab_button_in_tab_bar = false,
+            window_background_opacity = 0.8,
+            text_background_opacity = 0.8,
+            
+            window_padding = {
+              left = 20,
+              right = 20,
+              top = 5,
+              bottom = 5,
+            },
+
+            keys = {
+              { key = 'l', mods = 'CTRL', action = act.ActivateTabRelative(1) },
+              { key = 'h', mods = 'CTRL', action = act.ActivateTabRelative(-1) },
+            },
+          }
+
+          return config
+        `}
+      </p>
       <h2>VSCode Config</h2>
       <li>ArchLinux 下使用 yay -S visual-studio-code-bin 以安装正常版本 VSCode<br /></li>
       <li>code -r [path] 可以在原窗口切换到新工作目录<br /></li>
