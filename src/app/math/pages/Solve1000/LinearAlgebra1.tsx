@@ -100,9 +100,16 @@ export default function LinearAlgebra1() {
             </li>
             <li><strong>[271]</strong> 看行向量组是否可以<strong>相互</strong>线性表出(三秩是否相等); 抽象矩阵行变换只能<strong>左乘</strong>矩阵, 且<strong>一般只能乘矩阵不能"除"矩阵(需要矩阵元素可逆)</strong></li>
             <li><strong>[272]</strong> 看清楚是三个平面公共交点, 即没有一个点同时满足三个平面方程, 即讨论参数令方程组无解</li>
-            <li>[273] <Latex>{`$AB=O$ 则 $r(A)+r(B) \\le n$(A的列数(min\{A的列数, A的行数\})), 因为B的列向量都是$A\\vec{x}=\\vec{0}$的解`}</Latex></li>
-            <li className="font-bold"><Latex>{`若$\\lambda$是$A$的特征值, 当$A$可逆时, $\\frac{1}{\\lambda}$是$A^{-1}$的特征值`}</Latex></li>
-            <li>A 可逆则所有特征值不为0, 否则至少一个特征值为0</li>
+            <li>[273] <strong><Latex>{`$AB=O$ 则 $r(A)+r(B) \\le n$(A的列数(min\{A的列数, A的行数\})), 因为B的列向量都是$A\\vec{x}=\\vec{0}$的解`}</Latex></strong></li>
+            <li className="font-bold"><Latex>{`若$\\lambda$是$A$的特征值, 当$A$可逆时, $\\frac{1}{\\lambda}$是$A^{-1}$的特征值; 可知 A 可逆则所有特征值不为 0, 否则至少一个特征值为 0`}</Latex></li>
+            <li className="font-bold">
+              <Latex>{`对于任意 n 阶矩阵 A, $|A-\\lambda E|$ 为 $\\lambda$ 的 n 次多项式, 即: $ \\\\ |A-\\lambda E| = (-1)^{n}(\\lambda^n + c_1\\lambda^{n-1} + \\cdots + c_{n}) \\\\$
+                由代数基本定理知: $\\\\$ 上式  $= (-1)^{n}(\\lambda-\\lambda_1)(\\lambda-\\lambda_2)\\cdots(\\lambda-\\lambda_n)$ (其中 $\\lambda_j$ 在复数域上)`}</Latex><br />
+              <Latex>{`其中 $(-1)^{n-1}(\\lambda_1+\\lambda_2+\\cdots+\\lambda_n)\\lambda^{n-1}=(-1)^{n-1}(a_1+a_2+\\cdots+a_n)\\lambda^{n-1} \\\\$ 即 n-1次项 的系数相等, 所以 $\\lambda_1+\\lambda_2+\\cdots+\\lambda_n=tr(A)$`}</Latex><br />
+              <Latex>{`令 $\\lambda=0$ 发现: 常数项 $(-1)^{n}c_n=\\lambda_1\\lambda_2\\cdots\\lambda_n=|A|$`}</Latex><br />
+              这也可以推知: 若 A 可逆则所有特征值不为 0, 否则至少一个特征值为 0
+            </li>
+            <li className="font-bold"><Latex>{`若 $\\lambda_m$ 有 k 个线性无关的特征向量, 则它至少是 k 重特征值, 所以 k 重特征值至多 k 个线性无关特征向量, 即特征值的代数重数总是大于等于几何重数, 当特征值的几何重数小于代数重数时, 矩阵不能相似对角化 $\\\\$ 例: $\\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$`}</Latex></li>
           </ul>
         </div>
       </TextBox>
