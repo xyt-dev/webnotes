@@ -176,6 +176,15 @@ export default function WildSolve() {
             正确答案: <Latex>{`$lim_{x\\rightarrow+\\infty}\\frac{e^x}{(1+\\frac{1}{x})^{x^2}}=e^{x-x^2\\ln{(1+\\frac{1}{x})}}=e^{x-x^2(\\frac{1}{x}-\\frac{1}{2x^2}+o(1))}=e^{\\frac{1}{2}}$`}</Latex>
           </TabPage>
         </Solve>
+
+        <Solve tags={["渐近线"]}>
+          <TabPage tabName="题目" defaultChecked>
+            <Img src="Images/Math/wildsolve/9.png" />
+          </TabPage>
+          <TabPage tabName="题解">
+            <Img src="Images/Math/wildsolve/9_solve.png" />
+          </TabPage>
+        </Solve>
       </ol>
     </DaisyProsePage>
   )
