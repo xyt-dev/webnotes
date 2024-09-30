@@ -49,11 +49,12 @@ export default function LinearAlgebra1() {
             <li>[247] <Latex>{`$[E_{ij}(k)]^{-1}=E_{ij}(-k), ~E_{ij}(k)$`}</Latex>表示原单位矩阵E的第i行第j列为k <br />行← 列→</li>
             <li>[248] AB=O -&gt; r(A)+r(B)&le;n</li>
             <li><strong>[249]</strong> 分块<strong>方阵</strong>矩阵, 一行/列乘一个矩阵加到另一行/列 (就像矩阵形式的初等变换); <strong>矩阵乘一个满秩矩阵秩不变; r(A)=r(A^TA)</strong></li>
-            <li><strong>r(A)=r(A^TA) 证明: </strong><br />
+            <li className="font-bold"><strong>r(A)=r(A^TA) 证明: </strong><br />
               <Latex>{`$1. Ax=0 \\Rightarrow A^TAx=0 \\\\
                 2. A^TAx=0 \\Rightarrow x^TA^TAx=0 \\Rightarrow (Ax)^T(Ax)=0 \\Rightarrow Ax=0$`}</Latex><br />
               所以 1,2 两个方程同解, 解空间的秩相同<br />
-              <Latex>{`$r(A)=n-r(null(A))=n-r(null(A^T))=r(A^TA)$`}</Latex>
+              <Latex>{`$r(A)=n-r(null(A))=n-r(null(A^TA))=r(A^TA)$`}</Latex><br />
+              可知, 对于实对称矩阵: <Latex>{`$~A^T=A, ~r(A)=r(A^2)=\\cdots=r(A^n)$`}</Latex>
             </li>
             <li><strong>行变换不会改变列向量的线性关系 (列变换应该也可以检验整个列向量组相不相关，但会改变具体的线性相关性, 解方程组不能用列变换)</strong></li>
             <li>[252~255] 使用行变换(或列变换)化阶梯矩阵</li>
@@ -112,24 +113,43 @@ export default function LinearAlgebra1() {
               这也可以推知: 若 A 可逆则所有特征值不为 0, 否则至少一个特征值为 0
             </li>
             <li className="font-bold"><Latex>{`若 $\\lambda_m$ 有 k 个线性无关的特征向量, 则它至少是 k 重特征值, 所以 k 重特征值至多 k 个线性无关特征向量, 即特征值的代数重数总是大于等于几何重数;
-              当某个特征值的几何重数小于代数重数时, 矩阵线性无关的特征向量数量 $<n$, 矩阵不能相似对角化, 所以`}</Latex><span className="underline underline-offset-[3px]"><Latex>{`矩阵可相似对角化 $\\Leftrightarrow$ 矩阵有 $n$ 个线性无关的特征向量.`}</Latex></span> <br />
-              <Latex>{`例: $\\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$`}</Latex><br />
+              当某个特征值的几何重数小于代数重数时, 矩阵线性无关的特征向量数量 $<n$, 矩阵不能相似对角化.`}</Latex> <br />
+              所以: <span className="underline underline-offset-[3px]"><Latex>{`矩阵可相似对角化 $\\Leftrightarrow$ 矩阵有 $n$ 个线性无关的特征向量 $\\Leftrightarrow$ 每个k重特征值都有k个线性无关的特征向量`}</Latex></span> <br />
+              <Latex>{`例: $\\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$`}</Latex>
               <a className="text-blue-500 hover:text-blue-700 no-underline" target="_blank" href="https://www.zhihu.com/question/22548386">相关证明</a>
             </li>
             <li className="font-bold">线性相关的特征向量特征值一定相同, 所以不同特征值的特征向量一定线性无关</li>
+            <li className="font-bold">实对称矩阵必能正交相似对角化.<Space width={2}/>
+              <a className="text-blue-500 hover:text-blue-700 no-underline" target="_blank" href="https://blog.csdn.net/weixin_40064300/article/details/130806583">证明</a> <br />
+              实对称矩阵不同特征值对应的特征向量一定相正交.<Space width={2}/>证明: <br /><Latex>{`$A\\xi_1 = \\lambda_1\\xi_1 ~ A\\xi_2 = \\lambda_2\\xi_2, ~ \\xi_1^T A \\xi_2 = \\lambda_2 \\xi_1^T \\xi_2 = (A\\xi_1)^T\\xi_2 = \\lambda_1\\xi_1^T\\xi_2 \\\\$ 又 $ \\lambda_1\\neq\\lambda_2 \\Rightarrow \\xi_1^T\\xi_2 = 0$`}</Latex><br />
+              同一特征值的线性无关特征向量当然可以不正交, 但能进行施密特正交化
+            </li>
             <li className="font-bold">存在<span className="underline underline-offset-[3px]">可逆矩阵</span>  <Latex>{`$P$ 使得 $P^{-1}AP=B$`}</Latex> 则称 <Latex>{`$A, B$`}</Latex> 为相似矩阵 <br />
               相似的性质: 反身性(与自身相似)、对称性、传递性 <br />
               相似矩阵的性质: <br />
               <ul>
                 <li><Latex>{`$r(A)=r(P^{-1}AP)=r(B)$`}</Latex></li>
                 <li><Latex>{`$|B|=|P^{-1}AP|=|A|$`}</Latex></li>
-                <li><Latex>{`$|B-\\lambda E| = |P^{-1}(A-\\lambda E)P| = |A-\\lambda E| \\Rightarrow$ 特征多项式恒等, 特征值相同, $tr(A)=tr(B)$`}</Latex></li>
+                <li>
+                  <Latex>{`$|B-\\lambda E| = |P^{-1}(A-\\lambda E)P| = |A-\\lambda E| \\Rightarrow$ 特征多项式恒等, 特征值相同, $tr(A)=tr(B)$`}</Latex> <br />
+                  注: 特征值相同 + 可均可相似对角化 <Latex>{`$\\Rightarrow$`}</Latex> 矩阵相似
+                </li>
                 <li><Latex>{`$B$ 的对应特征向量为 $P^{-1}\\xi$`}</Latex></li>
                 <li><Latex>{`$B^{M}=P^{-1}A^MP, ~ A^M\\sim B^M, ~ f(A)\\sim f(B) ~ (f(x)$为多项式$),\\\\ f(B)$ 和 $B^M$ 对应特征向量当然仍为 $P^{-1}\\xi,~$对应特征值为 $\\lambda^{M}$`}</Latex></li>
                 <li><Latex>{`若 $A$ 可逆 $, B^{-1}=P^{-1}A^{-1}P, ~ A^{-1}\\sim B^{-1}$, 同理有: $\\\\ (A^{-1})^M\\sim (B^{-1})^M, ~ f(A^{-1})\\sim f(B^{-1})$`}</Latex></li>
                 <li><Latex>{`$A^T\\sim B^T$, 特征值与转置前相同, 特征向量需要具体计算`}</Latex></li>
                 <li><Latex>{`$A^*\\sim B^*$`}</Latex></li>
               </ul>
+            </li>
+            <li>[274] A 有特征值 0, 说明 |A-0E| = 0, 即 |A| = 0, |AB| = |A||B| = 0, 观察行列式, 按最后一列展开</li>
+            <li>[275] <Latex>{`$r(A - \\lambda E) = n ~ -$ 代数重数 (注意这里 $\\lambda$ 是特征值, 不是特征多项式的变量)`}</Latex></li>
+            <li>[276] <Latex>{`$\\alpha_1 ~ \\alpha_2 ~ \\alpha_3$`}</Latex> 线性无关, 要使新的特征向量组线性无关, 只需保证右乘矩阵后满秩, <strong>同时还要注意特征向量要对应特征值 (特征值相同的特征向量线性组合后才仍是特征向量, 同时特征值不变)</strong><br />
+              <strong>不同特征值对应的特征向量的线性组合一般不是特征向量 (除非讨论两个特征值且其中一个是 0)</strong>
+            </li>
+            <li className="font-bold">矩阵合同: 对 n 阶方阵 A、B, 存在可逆矩阵C, 有 <Latex>{`$B=C^TAC$`}</Latex> , 则称A与B合同, 记为 <Latex>{`$A\\simeq B$`}</Latex>. 合同变换实际上只是改变基向量的表示方式, 不改变惯性指数.</li>
+            <li className="font-bold"><Latex>{`矩阵等价 $\\Rightarrow$ 秩相同 $\\\\$ 矩阵合同 $\\Rightarrow$ 秩 + 正负惯性指数相同 $\\\\$ 矩阵相似 $\\Rightarrow$ 秩 + 正负惯性指数 + 特征值相同`}</Latex></li>
+            <li className="font-bold">对于秩为 1 的矩阵 A 有: <Latex>{`$tr(A)\\neq 0 \\Leftrightarrow A$ 能够相似对角化`}</Latex> </li>
+            <li className="font-bold">[278] 实对称矩阵一定能正交相似对角化, 由相似的传递性知: <Latex>{`实对称矩阵特征值相同 $\\Leftrightarrow$ 矩阵相似`}</Latex>. 所以实对称矩阵不相似则特征值一定不完全相同
             </li>
           </ul>
         </div>
