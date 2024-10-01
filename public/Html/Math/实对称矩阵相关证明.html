@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实对称矩阵相关证明</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+            onload="renderMathInElement(document.body);"></script>
+</head>
+<body>
+
+<h2>引理 1：实对称矩阵的特征值都是实数</h2>
+
+<p>
+设 \( A \) 为 \( n \) 阶实对称阵，\( \lambda_0 \in \mathbb{C} \) 是 \( A \) 的任一特征值，\( \alpha = (a_1, a_2, \cdots, a_n)^T \in \mathbb{C}^n \) 是对应的特征向量，即 \( A\alpha = \lambda_0 \alpha \)。<br>
+上式两边同时左乘 \( \overline{\alpha}^T \)（即 \( \alpha \) 的共轭），则有：
+</p>
+
+\[
+\overline{\alpha}^T A \alpha = \lambda_0 \overline{\alpha}^T \alpha
+\]
+
+<p>
+由于 \( \alpha \) 是特征向量，所以 \( \overline{\alpha}^T \alpha = ||\alpha|| > 0 \)。<br>
+注意到 \( A \) 是实对称阵，因此 \( \overline{A} = A \)，所以有：
+</p>
+
+\[
+\overline{\overline{\alpha}^T A \alpha} = \alpha^T A \overline{\alpha}
+\]
+
+<p>
+由于 \( A \) 是实对称矩阵，显然有：
+</p>
+
+\[
+\alpha^T A \overline{\alpha} = \overline{\alpha}^T A \alpha
+\]
+
+<p>
+由此可得 \( \overline{\alpha}^T A \alpha \) 是一个实数。<br>
+从而，\( \lambda_0 = \frac{\overline{\alpha}^T A \alpha}{\overline{\alpha}^T \alpha} \) 也是实数。
+</p>
+
+<h2>引理 2：设 \( A \) 为 \( n \) 阶实对称阵，则 \( r(A) = r(A^2) = r(A^3) = \cdots \)</h2>
+
+<p>
+先证明 \( r(A^T A) = r(A) \)。<br>
+若 \( x \) 是 \( A x = 0 \) 的解，显然 \( x \) 也是 \( A^T A x = 0 \) 的解。<br>
+若 \( x \) 是 \( A^T A x = 0 \) 的解，两边同乘 \( x^T \)，就有：
+</p>
+
+\[
+x^T A^T A x = 0
+\]
+
+<p>
+即 \( (A x)^T A x = 0 \)，即 \( ||A x|| = 0 \)，也就是说 \( A x = 0 \)。<br>
+由此可以得到 \( A^T A x = 0 \) 与 \( A x = 0 \) 是同解的，所以 \( A^T A x = 0 \) 与 \( A x = 0 \) 维度相同，假设维度都是 \( r \)，所以 \( r(A^T A) \) 与 \( r(A) \) 都是 \( n - r \) 维。<br>
+又 \( A \) 是实对称矩阵，即 \( A^T = A \)，所以：
+</p>
+
+\[
+r(A) = r(A^T A) = r(A^2)
+\]
+
+<p>
+进一步我们就有：
+</p>
+
+\[
+r(A) = r(A^2) = r(A^4) = \cdots = r(A^{2n})
+\]
+
+<p>
+又根据 \( r(AB) \leq r(A) \)，可得：
+</p>
+
+\[
+r(A^{2(n-1)}) \leq r(A^{2n-1}) \leq r(A^{2n})
+\]
+
+<p>
+所以最终得到：
+</p>
+
+\[
+r(A) = r(A^2) = r(A^3) = r(A^4) = \cdots
+\]
+
+<h2>引理 3：设 \( A \) 为 \( n \) 阶实对称阵，则 \( \ker(A) \cap \text{im}(A) = \emptyset \) 并且 \( \ker(A) = \ker(A^2) = \ker(A^3) = \cdots \)</h2>
+
+<p>
+关于 \( \ker(A) \) 和 \( \text{im}(A) \) 的解释：首先，矩阵 \( A \) 的像空间（image）是矩阵 \( A \) 所有列向量的线性组合，也就是 \( A \) 的列空间。<br>
+然后，矩阵 \( A \) 的核空间（kernel）是方程 \( A x = 0 \) 的解集（即齐次方程组的全部解），也就是 \( A \) 的零空间。<br>
+矩阵 \( A \) 的列空间和零空间中的向量是相互正交的，肯定不线性相关，所以它们的交集自然是空集。
+</p>
+
+<p>
+由引理 2 的证明，\( A x = 0 \) 与 \( A^T A x = 0 \) 同解，而对于实对称矩阵，\( A \) 与 \( A^2 \) 同解。可以推广到 \( A \)、\( A^2 \)、\( A^3 \)、\(\cdots\) 同解。<br>
+因此，自然有：
+</p>
+
+\[
+\ker(A) = \ker(A^2) = \ker(A^3) = \cdots
+\]
+
+<h2>定理：实对称矩阵必可相似对角化</h2>
+
+<p>证明：</p>
+
+<h3>当 \( n = 1 \) 时：</h3>
+
+<p>
+\[
+A = \begin{bmatrix} a_{11} \end{bmatrix}, \quad E = \begin{bmatrix} 1 \end{bmatrix}, \quad E^{-1} A E = A = \Lambda
+\]
+</p>
+
+<h3>假设 \( n = k - 1 \) 时成立：</h3>
+
+<p>当 \( n = k \) 时，假设其中一个特征值为 \( \lambda_1 \)，由引理1可知，\( \lambda_1 \) 必为实数，可以找到它对应的特征向量中的一个单位向量 \( \eta_1 \)。</p>
+
+<p>另外，可以找到一个正交阵 \( T = (\eta_1, \eta_2, \cdots, \eta_n) \)。</p>
+
+<p>
+\[
+T^{-1} A T = (T^{-1}A \eta_1, T^{-1}A \eta_2, \cdots, T^{-1} A \eta_n)
+\]
+</p>
+
+<p>其中，\( A \eta_1 = \lambda_1 \eta_1 \)，所以 \( T^{-1} A T \) 可以表示为：</p>
+
+<p>
+\[
+T^{-1} A T = (T^{-1} \lambda_1 \eta_1, T^{-1}A \eta_2, \cdots, T^{-1} A \eta_n)
+\]
+</p>
+
+<p>根据正交矩阵的定义，\( T^{-1} T = E \)，即：</p>
+
+<p>
+\[
+(T^{-1} \eta_1, T^{-1} \eta_2, \cdots, T^{-1} \eta_n) = E
+\]
+</p>
+
+<p>由此可得：</p>
+
+<p>
+\[
+T^{-1} \eta_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}, \quad T^{-1} \eta_2 = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}, \quad \cdots, \quad T^{-1} \eta_n = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}
+\]
+</p>
+
+<p>则：</p>
+
+<p>
+\[
+T^{-1} A T = \left(T^{-1} \lambda_1 \eta_1, T^{-1} A \eta_2, \cdots, T^{-1} A \eta_n \right) = \left( \lambda_1 T^{-1} \eta_1, T^{-1} A \eta_2, \cdots, T^{-1} A \eta_n \right) = 
+\begin{bmatrix} 
+\lambda_1 & \alpha_2 & \cdots & \alpha_n \\
+0 & & & \\
+\vdots & & P_{n-1} & \\
+0 & & & \\
+\end{bmatrix}
+\]
+</p>
+
+<p>由于 \( A \) 为实对称矩阵，所以 \( A^T = A \)，由于 \( T \) 为正交矩阵，所以 \( T^{-1} = T^T \)，则：</p>
+
+<p>
+\[
+(T^{-1} A T)^T = T^T A T (T^{-1})^T = T^{-1} A (T^T)^T = T^{-1} A T
+\]
+</p>
+
+<p>也就是 \( T^{-1} A T \) 也是实对称矩阵，所以向量 \( (\alpha_2, \cdots, \alpha_n) = 0 \)，且 \( P \) 为 \( n - 1 \) 阶实对称矩阵。</p>
+
+<p>根据假设，存在可逆矩阵 \( T_2 \) 使得 \( T_2^{-1} P T_2 = \Lambda_{n-1} \)。</p>
+
+<p>所以我们可以找到一个可逆矩阵 \( T_f \)（\( T_f \) 必然可逆，因为 \( |T_f| = |T_2| \neq 0 \)）：</p>
+
+<p>
+\[
+T_f = T \begin{bmatrix} 
+1 & 0 & \cdots & 0 \\ 
+0 & & & \\ 
+\vdots & & T_2 \\ 
+0 & & & \\
+\end{bmatrix}
+\]
+</p>
+
+<p>其中 \( T_f \) 是一个 \( n \times n \) 方阵。其逆矩阵为：</p>
+
+<p>
+\[
+T_f^{-1} = \begin{bmatrix} 
+1 & 0 & \cdots & 0 \\ 
+0 & & & \\ 
+\vdots & & T_2^{-1} \\ 
+0 & & & \\
+\end{bmatrix} T^{-1}
+\]
+</p>
+
+<p>则：</p>
+
+<p>
+\[
+T_f^{-1} A T_f = \begin{bmatrix} 
+1 & 0 & \cdots & 0 \\ 
+0 & & & \\ 
+\vdots & & T_2^{-1} \\ 
+0 & & & \\
+\end{bmatrix} T^{-1} A T \begin{bmatrix} 
+1 & 0 & \cdots & 0 \\ 
+0 & & & \\ 
+\vdots & & T_2 \\ 
+0 & & & \\
+\end{bmatrix} \\ \\
+\]
+</p>
+
+<p>
+\[
+= \begin{bmatrix} 
+1 & 0 & \cdots & 0 \\ 
+0 & & & \\ 
+\vdots & & T_2^{-1} \\ 
+0 & & & \\
+\end{bmatrix} \begin{bmatrix} 
+\lambda_1 & 0 & \cdots & 0 \\ 
+0 & & & \\ 
+\vdots & & P_{n-1} \\ 
+0 & & & \\
+\end{bmatrix} 
+\begin{bmatrix} 
+1 & 0 & \cdots & 0 \\ 
+0 & & & \\ 
+\vdots & & T_2 \\ 
+0 & & & \\
+\end{bmatrix} \\ \\
+\]
+
+</p>
+\[
+= \begin{bmatrix} 
+\lambda_1 & 0 & \cdots & 0 \\ 
+0 & & & \\ 
+\vdots & & \Lambda_{n-1} \\ 
+0 & & & \\
+\end{bmatrix}
+\]
+</p>
+
+<p>因此，实对称矩阵 \( A \) 可相似对角化。</p>
+
+</body>
+</html>
