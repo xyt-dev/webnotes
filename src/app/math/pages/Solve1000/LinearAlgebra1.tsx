@@ -146,8 +146,12 @@ export default function LinearAlgebra1() {
             <li>[276] <Latex>{`$\\alpha_1 ~ \\alpha_2 ~ \\alpha_3$`}</Latex> 线性无关, 要使新的特征向量组线性无关, 只需保证右乘矩阵后满秩, <strong>同时还要注意特征向量要对应特征值 (特征值相同的特征向量线性组合后才仍是特征向量, 同时特征值不变)</strong><br />
               <strong>不同特征值对应的特征向量的线性组合一般不是特征向量 (除非讨论两个特征值且其中一个是 0)</strong>
             </li>
-            <li className="font-bold">矩阵合同: 对 n 阶方阵 A、B, 存在可逆矩阵C, 有 <Latex>{`$B=C^TAC$`}</Latex> , 则称A与B合同, 记为 <Latex>{`$A\\simeq B$`}</Latex>. 合同变换实际上只是改变基向量的表示方式, 不改变惯性指数.</li>
-            <li className="font-bold"><Latex>{`矩阵等价 $\\Rightarrow$ 秩相同 $\\\\$ 矩阵合同 $\\Rightarrow$ 秩 + 正负惯性指数相同 $\\\\$ 矩阵相似 $\\Rightarrow$ 秩 + 正负惯性指数 + 特征值相同`}</Latex></li>
+            <li><strong>[277]</strong> 将题目所给线性无关向量组组合为矩阵 <Latex>{`$P$`}</Latex>, 且有关系 <Latex>{`$AP=PB \\Rightarrow A=PBP^{-1} \\Rightarrow |A-\\lambda E| = |B-\\lambda E|$`}</Latex>, 从而求出 <Latex>{`$A$`}</Latex> 的特征值</li>
+            <li className="font-bold">矩阵合同: 对 n 阶方阵 A、B, 存在可逆矩阵C, 有 <Latex>{`$B=C^TAC$`}</Latex> , 则称A与B合同, 记为 <Latex>{`$A\\simeq B$`}</Latex>. <br />
+              对于实对称矩阵, 合同变换实际上只是对二次型中 <Latex>{`$\\vec{x}$`}</Latex> 的基向量变换, 相当于对坐标轴进行旋转/伸缩, 不改变惯性指数.</li>
+            <li className="font-bold">惯性定理: 实对称矩阵合同 <Latex>{`$\\Leftrightarrow$`}</Latex> 正、负惯性指数相同. <br /> 
+              由于实对称矩阵一定正交合同(同时也是相似)于对角矩阵, 所以<br />实对称矩阵合同 <Latex>{`$\\Leftrightarrow$`}</Latex> 正、负、零特征值数量相同</li>
+            <li className="font-bold"><Latex>{`矩阵关系小结: (待增加正定矩阵) $\\\\ $ 矩阵等价 $\\Rightarrow$ 秩相同 $\\\\$ 矩阵合同 $\\Rightarrow$ 秩相同 $\\\\$ 实对称矩阵合同 $\\Rightarrow$ 秩 + 正负惯性指数 + 正、负、零特征值数量相同 $\\\\$ 矩阵相似 $\\Rightarrow$ 秩 + 所有特征值相同 $\\\\$ 实对称矩阵相似 $\\Rightarrow$ 秩 + 正负惯性指数 + 所有特征值相同`}</Latex></li>
             <li className="font-bold">对于秩为 1 的矩阵 A 有: <Latex>{`$tr(A)\\neq 0 \\Leftrightarrow A$ 能够相似对角化`}</Latex> </li>
             <li className="font-bold">[278] 实对称矩阵一定能正交相似对角化, 由相似的传递性知: <Latex>{`实对称矩阵特征值相同 $\\Leftrightarrow$ 矩阵相似`}</Latex>. 所以实对称矩阵不相似则特征值一定不完全相同
             </li>
