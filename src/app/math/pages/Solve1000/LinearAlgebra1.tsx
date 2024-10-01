@@ -120,7 +120,7 @@ export default function LinearAlgebra1() {
             </li>
             <li className="font-bold">线性相关的特征向量特征值一定相同, 所以不同特征值的特征向量一定线性无关</li>
             <li className="font-bold">实对称矩阵必能正交相似对角化.<Space width={2}/>
-              <a className="text-blue-500 hover:text-blue-700 no-underline" target="_blank" href="/Html/Math/实对称矩阵相关证明.html">证明</a> <br />
+              <a className="text-blue-500 hover:text-blue-700 no-underline" target="_blank" href="Html/Math/实对称矩阵相关证明.html">证明</a> <br />
               实对称矩阵不同特征值对应的特征向量一定相正交.<Space width={2}/>证明: <br /><Latex>{`$A\\xi_1 = \\lambda_1\\xi_1 ~ A\\xi_2 = \\lambda_2\\xi_2, ~ \\xi_1^T A \\xi_2 = \\lambda_2 \\xi_1^T \\xi_2 = (A\\xi_1)^T\\xi_2 = \\lambda_1\\xi_1^T\\xi_2 \\\\$ 又 $ \\lambda_1\\neq\\lambda_2 \\Rightarrow \\xi_1^T\\xi_2 = 0$`}</Latex><br />
               同一特征值的线性无关特征向量当然可以不正交, 但能进行施密特正交化
             </li>
