@@ -149,10 +149,11 @@ export default function LinearAlgebra1() {
             <li><strong>[277]</strong> 将题目所给线性无关向量组组合为矩阵 <Latex>{`$P$`}</Latex>, 且有关系 <Latex>{`$AP=PB \\Rightarrow A=PBP^{-1} \\Rightarrow |A-\\lambda E| = |B-\\lambda E|$`}</Latex>, 从而求出 <Latex>{`$A$`}</Latex> 的特征值</li>
             <li className="font-bold">矩阵合同: 对 n 阶方阵 A、B, 存在可逆矩阵C, 有 <Latex>{`$B=C^TAC$`}</Latex> , 则称A与B合同, 记为 <Latex>{`$A\\simeq B$`}</Latex>. <br />
               对于实对称矩阵, 合同变换实际上只是对二次型中 <Latex>{`$\\vec{x}$`}</Latex> 的基向量变换, 相当于对坐标轴进行旋转/伸缩, 不改变惯性指数.</li>
-            <li className="font-bold">惯性定理: 实对称矩阵合同 <Latex>{`$\\Leftrightarrow$`}</Latex> 正、负惯性指数相同. <br />
-              由于实对称矩阵一定正交合同(同时也是相似)于对角矩阵, 所以<br />实对称矩阵合同 <Latex>{`$\\Leftrightarrow$`}</Latex> 正、负、零特征值数量相同</li>
+            <li className="font-bold">惯性定理: <br />
+              由于实对称矩阵一定正交合同(同时也是相似)于对角矩阵, 对角矩阵又合同于对应规范型矩阵, 又合同变换不改变正负惯性指数, 所以: <br />
+              实对称矩阵合同 <Latex>{`$\\Leftrightarrow$`}</Latex> 合同于同一规范型矩阵 <Latex>{`$\\Leftrightarrow$`}</Latex>  正、负惯性指数相同 <Latex>{`$\\Leftrightarrow$`}</Latex> 正、负、零特征值数量相同
+            </li>
             <li className="font-bold"><Latex>{`矩阵关系小结: (待增加正定矩阵) $\\\\ $ 矩阵等价 $\\Rightarrow$ 秩相同 $\\\\$ 矩阵合同 $\\Rightarrow$ 秩相同 $\\\\$ 实对称矩阵合同 $\\Rightarrow$ 秩 + 正负惯性指数 + 正、负、零特征值数量相同 $\\\\$ 矩阵相似 $\\Rightarrow$ 秩 + 所有特征值相同 $\\\\$ 实对称矩阵相似 $\\Rightarrow$ 秩 + 正负惯性指数 + 所有特征值相同`}</Latex></li>
-            <li className="font-bold">对于秩为 1 的矩阵 A 有: <Latex>{`$tr(A)\\neq 0 \\Leftrightarrow A$ 能够相似对角化`}</Latex> </li>
             <li className="font-bold">[278] 实对称矩阵一定能正交相似对角化, 由相似的传递性知: <Latex>{`实对称矩阵特征值相同 $\\Leftrightarrow$ 矩阵相似`}</Latex>. 所以实对称矩阵不相似则特征值一定不完全相同 </li>
             <li>[279] 检查重特征值的代数重数和几何重数是否相等</li>
             <li>[281] <strong>齐次方程组的 非零解 都是特征值 0 的特征向量</strong>.<br /> 方法一: 线性无关解向量构成矩阵 P 且可逆, 知 <Latex>{`$AP=B, A=BP^{-1}$`}</Latex> <br />
@@ -186,10 +187,22 @@ export default function LinearAlgebra1() {
             <li>[290] <Latex>{`$Q_1^TAQ_1=Q_2^TBQ_2=\\Lambda \\Rightarrow Q_2Q_1^TAQ_1Q_2^T=\\Lambda, Q=Q_1Q_2^T$`}</Latex> [注意: 特征向量和特征值位置要对应, 尤其此类题中特征向量摆放顺序要一致, 求特征向量时最好做个特征值的记号]</li>
             <li className="font-bold">正定矩阵一定是可逆矩阵, 即满秩方阵</li>
             <li className="font-bold">[291] (1) 求二次型 = 0 的解, 将二次型化为平方和形式, 所有平方项均为 0, 相当于求解齐次方程组 <br />
-              (2) 二次型恒正(对任意非0向量), 说明其矩阵为正定矩阵. 且正定说明二次型满秩, 规范型为 <Latex>{`$z_1^2+z_2^2+\\cdots+z_n$`}</Latex>. <br />
+              (2) [计算] 二次型恒正(对任意非0向量), 说明其矩阵为正定矩阵. 且正定说明二次型满秩, 规范型为 <Latex>{`$z_1^2+z_2^2+\\cdots+z_n$`}</Latex>. <br />
               此类题套路: 一般参数为某一个特定值时方程组系数矩阵秩等于0, 从而有非零解, 否则只有零解, 对任意非零向量恒正, 即为正定二次型. 正定二次型的规范型可直接写出, 一般情况(参数为该特定值时)正常求解特征值, 知道特征值正负数量(正负惯性指数)后直接写出. <br />
-              为什么 <Latex>{`$\\vec{x}$`}</Latex> 只有零解时就为正定矩阵: 要使二次型为 0, 需要 <Latex>{`$\\vec{x}=Q\\vec{y}=\\vec{0}$`}</Latex>, 因为基变换矩阵(以及实对称矩阵的特征矩阵)满秩, 所以 <Latex>{`$\\vec{y}=\\vec{0}, \\vec{z}=\\vec{0}$`}</Latex>
+              为什么 <Latex>{`$\\vec{x}$`}</Latex> 只有零解时就为正定矩阵: 要使二次型为 0, 需要 <Latex>{`$\\vec{x}=Q\\vec{y}=\\vec{0}$`}</Latex>, 因为基变换矩阵(以及实对称矩阵的特征矩阵)满秩, 于是 <Latex>{`$\\vec{y}=\\vec{0}, \\vec{z}=\\vec{0}$`}</Latex>
             </li>
+            <li className="font-bold">只要 A 为实矩阵, <Latex>{`$X^TAX$`}</Latex> 就是一个二次型. 事实上, 任何非对称矩阵都能分解为一个对称矩阵和一个反对称矩阵: <Latex>{`$A=\\frac{A+A^T}{2}+\\frac{A-A^T}{2}$, 于是 $X^TAX=X^T\\frac{A+A^T}{2}X$`}</Latex></li>
+            <li><strong>[292]</strong> (1) 先将非对称矩阵转化为对称矩阵, <strong>方阵 A 的秩为 1 说明有一个 (n-1) 重特征值 0 (且特征值 0 一定有 (n-1) 个线性无关特征向量), 剩下一个特征值 = tr(A); <br />
+              (2) 标准化后, <Latex>{`$X=QY, x_0^2+x_2^2+\\cdots+x_n^2 = X^TX=Y^TQ^TQY = Y^TY = y_1^2+y_2^2+\\cdots+y_n^2$`}</Latex></strong></li>
+            <li className="font-bold">由上一条可知: 对于秩为 1 的方阵 A, <Latex>{`$tr(A)\\neq 0 \\Leftrightarrow A$ 能够相似对角化`}</Latex> </li>
+            <li>[293] (2) <strong>对称矩阵的合同矩阵当然也是对称矩阵</strong></li>
+            <li><strong>[294] 矩阵合同秩当然相同; 合同的实对称矩阵特征值不一定相同, 即不一定能化为同一标准型, 但一定能化为同一规范型 
+              <Latex>{`$\\\\C^TAC=D^TBD=Z, ~~~(D^{-1})^TC^TACD^{-1}=B, ~~~P=CD^{-1}$`}</Latex></strong></li>
+            <li><strong>[297]</strong> <Latex>{`$B = (A+C)^k$, 已知 B 和 C $\\rightarrow B = P\\Lambda P^{-1} = P(\\Lambda ^{'})^k P^{-1} = (P\\Lambda ^{'}P^{-1})^k, ~~~A=P\\Lambda ^{'}P^{-1}-C$ (其中 $\\Lambda^{'}$ 中元素正负号可以由题目所给其它条件得知)`}</Latex> </li>
+            <li className="font-bold">计算 <Latex>{`$|A-\\lambda E|$`}</Latex> 是最常规操作, 不要硬算填满的行列式. 先观察是否有其它快捷办法获取特征值, 如果必须计算行列式, 尝试将两个元素消为 0 肯定会简单许多, 一般变为 H 型或 [将某一行/某一列消为一个元素, 此时又立刻可将所在列/行的其它元素也变为 0(常用)], 注意交换间隔为 k 的行/列要乘 <Latex>{`$(-1)^{k}$`}</Latex>.
+              注意如果只用行变换化简, 这样化简后的矩阵还能代入具体特征值接着用于计算特征向量. 特征矩阵可能不唯一, 代入特征向量验算正确即可. 注意特征值和对应特征向量位置要一致.
+            </li>
+            <li>[299] 柱面、单叶双曲面、双叶双曲面、锥面的二次型</li>
           </ul>
         </div>
       </TextBox>
