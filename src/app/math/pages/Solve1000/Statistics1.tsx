@@ -59,7 +59,7 @@ export default function Statistics1() {
             <li>[320] 随机变量 Y, Z 都关于随机变量 X, Y+Z 也只关于 X</li>
             <li className="font-bold">概率密度的定义: 若非负可积函数f(x)或f(x,y)从负无穷到x或(x, y)点处的积分等于概率分布函数F(x)或F(x,y), 则称f(x)或f(x,y)为概率密度函数; 概率密度表达的意义是概率在某一点处对于对应微元的比例系数</li>
             <li className="font-bold">
-              记随机变量分布函数为 F(x), 令 <Latex>{`$f(x)=\\begin{cases}F'(x), F(x)的可导区间 \\\\ 0, 其他\\end{cases}$`}</Latex>, 若 f(x) 非负且在 R 上可积且积分收敛到 1, 则由微积分基本定理可知 <Latex>{`$\\int_{-\\infty}^{x}f(t)dt=F(x)-F(-\\infty)=F(x)$`}</Latex>.
+              记随机变量分布函数为 F(x), 令 <Latex>{`$f(x)=\\begin{cases}F'(x), F(x)的可导区间 \\\\ 0, 其他\\end{cases}$`}</Latex>, 若 f(x) 在 R 上可积 (广义黎曼可积) (分布函数能够保证 f(x) 非负且 R 上积分为 1), 则由微积分基本定理可知 <Latex>{`$\\int_{-\\infty}^{x}f(t)dt=F(x)-F(-\\infty)=F(x)$`}</Latex> (各连续区间加起来).
               也就是说, 在 F(x) 的可导区间内, 其导函数就是概率密度函数在该区间内的分段表达式.
             </li>
             <li className="font-bold">二维概率分布为连续型时, 联合概率密度就相当于无限个无限维向量组成的矩阵; 当两个随机变量相互独立时, 矩阵的秩=1, 边缘概率密度分别为一个无限维向量, 分别表示了行向量和列向量中分量的比例, 且乘积为对应点处联合概率密度</li>
@@ -113,13 +113,20 @@ export default function Statistics1() {
             </details></li>
             <li><Latex>{`$\\rho_{XY}=0 \\Leftrightarrow \\rho_{YX}=0 \\Leftrightarrow Cov(X,Y)=0 \\Leftrightarrow Cov(Y,X)=0 \\\\ \\Leftrightarrow E(XY)=E(X)E(Y) \\Leftrightarrow D(X+Y)=D(X)+D(Y)$`}</Latex></li>
             <li><Latex>{`$max\\{X, Y\\}=\\frac{1}{2}(X+Y+|X-Y|) \\\\ min\\{X, Y\\}=\\frac{1}{2}(X+Y-|X-Y|)$`}</Latex></li>
+            <li><strong>[335]</strong> Z 服从标准正态分布, <Latex>{`$E(|Z|)=\\sqrt{\\frac{2}{\\pi}}$`}</Latex></li>
+            <li>[336] 由于 F(x) 是单调递增函数(即使不严格单调递增也能用) <br /><strong>于是: <Latex>{`$P\\{F(x)\\le a\\}=P\\{x\\le F^{-1}(a)\\}=F(F^{-1}(a))=a$`}</Latex></strong></li>
+            <li>[339] 加绝对值</li>
+            <li><strong>[340] 几何概型的基本方法: 画图</strong></li>
+            <li className="font-bold">[341] (背下来, 正态分布) 配方, 凑正态概率密度函数; 正态分布函数记为 <Latex>{`$\\Phi(x)$`}</Latex>, 并且 <Latex>{`$\\Phi(x)+\\Phi(-x)=1$`}</Latex></li>
             <li className="font-bold">
               中心极限定理: 对于任意分布的独立的随机变量 <Latex>{`$X_1, X_2, ~\\cdots, X_n$`}</Latex>, 如果各随机变量的方差均为有限正数，且满足林德伯格条件, 则 <Latex>{`$ n\\rightarrow \\infty \\\\ \\frac{(X_1 + X_2 + \\cdots + X_n) - (\\mu_1 + \\mu_2 + \\cdots + \\mu_n)}{\\sqrt{\\sigma_1^2 + \\sigma_2^2 + \\cdots + \\sigma_n^2}}$`}</Latex> 趋近于标准正态分布 <br />
               只需要知道 独立同分布(且方差为有限正数)的随机变量之和 满足中心极限定理.
             </li>
-            <li><strong>[335]</strong> Z 服从标准正态分布, <Latex>{`$E(|Z|)=\\sqrt{\\frac{2}{\\pi}}$`}</Latex></li>
-            <li>[336] 由于 F(x) 是单调递增函数(即使不严格单调递增也能用) <br /><strong>于是: <Latex>{`$P\\{F(x)\\le a\\}=P\\{x\\le F^{-1}(a)\\}=F(F^{-1}(a))=a$`}</Latex></strong></li>
-            <li>[339] 加绝对值</li>
+            <li className="font-bold">[342] 正态分布 <Latex>{`$\\rightarrow$`}</Latex> 标准正态分布 <Latex>{`$\\rightarrow$`}</Latex> 卡方分布; 注意: <Latex>{`$2X$`}</Latex> 不是两个独立同分布随机变量之和</li>
+            <li>[343] (1) 分情况计算概率, <strong>当讨论多个随机变量的组合时, 一定要同时注意各随机变量的独立性和取值范围</strong></li>
+            <li className="font-bold">[344, 345] 求Cov(X,Y) <Space width={1} /> 方法一: <Latex>{`$Cov(X,Y)=\\frac{D(X+Y)-D(X)-D(Y)}{2}\\\\$`}</Latex>X、Y、X+Y 的分布均可知使用方法一 <br /> 方法二: <Latex>{`$Cov(X,Y)=E(XY)-E(X)E(Y)$`}</Latex></li>
+            <li className="font-bold">[346] <Latex>{`$Cov(aX+bY, X) = aDX + bCov(X, Y)$`}</Latex></li>
+            <li className="font-bold">[347] 二维正态分布的概率密度公式</li>
           </ul>
         </div>
       </TextBox>
