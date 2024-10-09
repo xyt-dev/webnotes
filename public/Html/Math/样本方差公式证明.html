@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>样本方差证明</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+            onload="renderMathInElement(document.body);"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 0px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .math-block {
+            margin: 15px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>证明：为什么使用 \(n-1\) 作为分母可以修正样本方差对总体方差估计的偏差</h2>
+
+<p>设样本 \(X_1, X_2, \dots, X_n\) 是独立同分布的随机变量，均值为 \(\mu\)，方差为 \(\sigma^2\)：</p>
+
+<div class="math-block">
+    \( \mathbb{E}[X_i] = \mu, \quad \text{D}(X_i) = \sigma^2 \)
+</div>
+
+<p>样本均值 \(\bar{X}\) 和样本方差 \(s^2\) 定义为：</p>
+
+<div class="math-block">
+    \( \bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i, \quad S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2 \)
+</div>
+
+<p>易得: </p>
+
+<div class="math-block">
+    \( \mathbb{E}[\bar{X}] = \mu, \quad \text{D}(\bar{X}) = \frac{\sigma^2}{n} \)
+</div>
+
+<div class="math-block">
+    \( \sum_{i=1}^{n} (X_i - \bar{X})^2 = \sum_{i=1}^{n} (X_i - \mu)^2 - n(\bar{X} - \mu)^2 \)
+</div>
+
+<p>其中: </p>
+
+<div class="math-block">
+    \( \mathbb{E}\left[\sum_{i=1}^{n} (X_i - \mu)^2\right] = \sum_{i=1}^{n}D(X_i) = n\sigma^2 \)
+</div>
+
+<div class="math-block">
+    \( \mathbb{E}[n(\bar{X} - \mu)^2] = n\cdot\text{D}(\bar{X}) = n\cdot\frac{\sigma^2}{n} = \sigma^2 \)
+</div>
+
+<p>于是: </p>
+
+<div class="math-block">
+    \( \mathbb{E}[S^2] = \frac{1}{n-1} \left( n\sigma^2 - \sigma^2 \right) = \sigma^2 \)
+</div>
+
+<p>因此，样本方差 \(S^2\) 是总体方差 \(\sigma^2\) 的无偏估计量。</p>
+
+</body>
+</html>

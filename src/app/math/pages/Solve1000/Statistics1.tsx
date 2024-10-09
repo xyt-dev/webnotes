@@ -140,7 +140,15 @@ export default function Statistics1() {
             <li className="font-bold">大数定律的理解: <Latex>{`若 $ lim_{n\\rightarrow \\infty}\\sum_{i=1}^nEX_i$ 为有限值, 则 $\\sum_{i=1}^nX_i $ 是概率集中于有限值的正态分布的随机变量, 于是 $P\\{lim_{n\\rightarrow \\infty}\\frac{1}{n}\\sum_{i=1}^nX_i=0\\}=1 \\\\$
               否则 $\\sum_{i=1}^nX_i$ 是概率集中于无穷 (期望为 n 的无穷大) 的正态分布的随机变量, 即使 $\\sum_{i=1}^nX_i$ 实际值偏离期望也集中于等价无穷大 (因为标准差是 n 的低阶无穷大($\\sqrt{n}$) ), 于是 $P\\{lim_{n\\rightarrow \\infty}\\frac{1}{n}\\sum_{i=1}^nX_i = \\frac{1}{n}\\sum_{i=1}^nEX_i\\}=1$
             `}</Latex></li>
-            <li className="font-bold">卡方分布的方差证明: <Img src="Images/Math/卡方分布的方差证明.png" /></li>
+            <li><details>
+              <summary className="cursor-pointer font-bold">卡方分布的方差证明: </summary>
+              <Img src="Images/Math/卡方分布的方差证明.png" />
+            </details></li>
+            <li className="font-bold">使用 n-1 作为分母可以修正样本方差对总体方差估计的偏差: 
+              <a className="text-blue-500 hover:text-blue-700 no-underline" href="Html/Math/样本方差公式证明.html" target="_blank"> 证明 </a>
+            </li>
+            <li className="font-bold"><Latex>{`$\\sum_{i=1}^{n} \\left( \\frac{X_i - \\bar{X}}{\\sigma} \\right)^2 = \\sum_{i=1}^{n} \\left( \\frac{X_i - \\mu - (\\bar{X} - \\mu)}{\\sigma}  \\right)^2 = \\sum_{i=1}^{n} \\left( Z_i - \\bar{Z} \\right)^2$`}</Latex> 是一个二次型, 可以化为规范性, 其有一个零惯性指数和 (n-1) 个正惯性指数, 又 <Latex>{`$Z_i$`}</Latex> 为相互独立的服从标准正态分布的随机变量, 所以服从 <Latex>{`$\\chi ^2 (n-1)$`}</Latex></li>
+            <li className="font-bold"><Latex>{`$\\frac{\\bar{X} - \\mu}{\\frac{S}{\\sqrt{n}}} = \\frac{\\bar{X} - \\mu}{\\frac{\\sigma\\sqrt{\\frac{\\chi^2(n-1)}{n-1}}}{\\sqrt{n}}} \\sim t(n-1)$`}</Latex></li>
           </ul>
         </div>
       </TextBox>
