@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正态总体的样本均值与样本方差独立性证明</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: auto;
+            padding: 0 10px;
+            max-width: 800px;
+        }
+        h1 {
+            font-size: 30px;
+            text-align: center;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .katex {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>正态总体的样本均值与样本方差的独立性证明</h1>
+
+    <p>要证明样本均值与样本方差相独立, 即要证明 \( \bar{X} \)  和 \( \frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar{X})^2 \) 为相互独立的随机变量, 于是只需证明 \( \bar{X} \) 和 \( X_i-\bar{X} \) 均相互独立即可. </p>
+
+    <p>又 \(X_i\) 属于正态总体, 由二维正态分布概率密度公式知, \(Cov(X,Y)=0 \Leftrightarrow X \) 与 \(Y\) 独立, 于是只需证明: </p>
+
+    <div>
+        \[
+        \text{Cov}(\bar{X}, X_i - \bar{X}) = 0
+        \]
+    </div>
+
+    <p>即样本均值 \( \bar{X} \) 和样本点偏差 \( X_i - \bar{X} \) 的协方差为 0.</p>
+
+    <p style="font-weight: bold;">现在我们计算样本均值 \( \bar{X} \) 和样本点偏差 \( X_i - \bar{X} \) 的协方差：</p>
+
+    <div>
+        \[
+        \text{Cov}(\bar{X}, X_i - \bar{X}) = \text{Cov}\left( \frac{1}{n} \sum_{j=1}^{n} X_j, X_i - \bar{X} \right)
+        \]
+    </div>
+
+    <div>
+        \[
+        = \frac{1}{n} \sum_{j=1}^{n} \text{Cov}(X_j, X_i - \bar{X})
+        \]
+    </div>
+
+    <p>其中</p>
+
+    <div>
+        \[
+        \text{Cov}(X_j, X_i - \bar{X}) = \text{Cov}(X_j, X_i) - \text{Cov}(X_j, \bar{X})
+        \]
+    </div>
+
+    <p>由于 \( X_1, X_2, \dots, X_n \) 是独立同分布的随机变量，且来自正态分布 \( N(\mu, \sigma^2) \), 于是</p>
+
+    <div>
+        \[
+        \text{Cov}(X_j, X_i) =
+        \begin{cases} 
+        \sigma^2, & \text{if } i = j \\
+        0, & \text{if } i \neq j
+        \end{cases}
+        \]
+    </div>
+
+    <div>
+        \[
+        \text{Cov}(X_j, \bar{X}) = \text{Cov}\left(X_j, \frac{1}{n} \sum_{k=1}^{n} X_k \right) = \frac{1}{n} \sum_{k=1}^{n} \text{Cov}(X_j, X_k) = \frac{1}{n} \cdot \sigma^2
+        \]
+    </div>
+
+    <p>对于 \( j = i \) 的情况：</p>
+
+    <div>
+        \[
+        \text{Cov}(X_j, X_i - \bar{X}) = \sigma^2 - \frac{1}{n} \cdot \sigma^2 = \left(1 - \frac{1}{n}\right) \sigma^2
+        \]
+    </div>
+
+    <p>对于 \( j \neq i \) 的情况：</p>
+
+    <div>
+        \[
+        \text{Cov}(X_j, X_i - \bar{X}) = 0 - \frac{1}{n} \cdot \sigma^2 = -\frac{1}{n} \cdot \sigma^2
+        \]
+    </div>
+
+    <p>代入原式得：</p>
+
+    <div>
+        \[
+        \text{Cov}(\bar{X}, X_i - \bar{X}) = \frac{1}{n} \left( \left(1 - \frac{1}{n}\right) \sigma^2 + (n-1) \left( -\frac{1}{n} \sigma^2 \right) \right) = \frac{1}{n} \left( \frac{n-1}{n} \sigma^2 - \frac{n-1}{n} \sigma^2 \right) = 0
+        \]
+    </div>
+
+    <p style="font-weight: bold; margin-bottom: 2rem">所以, 正态总体的样本均值与样本方差是相互独立的随机变量</p>
+
+</body>
+</html>

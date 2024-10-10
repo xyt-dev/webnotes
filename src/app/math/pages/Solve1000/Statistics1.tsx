@@ -74,7 +74,7 @@ export default function Statistics1() {
               拓展(自己算的): <br />
               <Latex>{`$Z=AX+BY (B\\neq 0):~~$`}</Latex> <Latex>{`$f(z)=\\int_{-\\infty}^{+\\infty}{\\frac{1}{|B|}f(x, \\frac{z-Ax}{B})dx}$`}</Latex> <br />
             </li>
-            <li><strong>正态分布随机变量的和: <Img src="Images/Math/正态分布推广结论例子.png" /><Img src="Images/Math/正态分布推广结论.png" />(N个正态分布随机变量的和同理)</strong></li>
+            <li><strong>正态分布随机变量的和: <Img src="Images/Math/正态分布推广结论例子.png" /><Img src="Images/Math/正态分布推广结论.png" />重要: 正态分布随机变量的线性组合仍然是正态分布的随机变量</strong></li>
             <li><strong>[325] 方法一: 使用以上结论 <br />
               方法二: <Latex>{`$F_Z=P\\{-z\\le X-Y\\le z\\}$`}</Latex> <br />
               z &gt; 0 时, <Latex>{`$f_Z=\\frac{1}{\\pi}\\int_{-\\infty}^{+\\infty}e^{-x^2}e^{-(x+z)^2}dx+\\frac{1}{\\pi}\\int_{-\\infty}^{+\\infty}e^{-x^2}e^{-(x-z)^2}dx
@@ -85,6 +85,7 @@ export default function Statistics1() {
             </strong></li>
             <li><strong>[326]</strong> <strong>(1) 二维正态分布的条件概率密度函数和边缘概率密度函数都是正态分布</strong>; 使用归一性或代入正态分布概率密度函数求解 <br />
               <strong>(2) 边缘概率密度和条件概率密度可以同时为不同的正态分布(分布相互独立互不影响); 条件概率密度比值 = 边缘概率密度比值</strong> <br />
+              <Img src="Images/Math/条件概率密度比值同边缘概率密度比值.png" />
               (3) (2)保证了(3)计算结果唯一</li>
             <li>[327] (1) 二维条件概率密度函数是二元函数, 定义域是二维区域, 该题中二维区域可以用 <Latex>{`$|y|<x<1$`}</Latex> 表示</li>
             <li><strong>[328]</strong>  分类讨论积分; 积分变量写 u/v 或 s/t<Img src="Images/Math/二维联合概率密度.png" /></li>
@@ -123,7 +124,7 @@ export default function Statistics1() {
             <li className="font-bold">[344, 345, 348] 求Cov(X,Y) <Space width={1} /> 方法一: <Latex>{`$Cov(X,Y)=\\frac{D(X+Y)-D(X)-D(Y)}{2}\\\\$`}</Latex>X、Y、X+Y 的分布均可知使用方法一 <br /> 方法二: <Latex>{`$Cov(X,Y)=E(XY)-E(X)E(Y)$`}</Latex></li>
             <li className="font-bold">[346] <Latex>{`$Cov(aX+bY, X) = aDX + bCov(X, Y)$`}</Latex></li>
             <li className="font-bold">[347] 二维正态分布的概率密度公式</li>
-            <li className="font-bold">两个正态分布的随机变量不相关 <Latex>{`$\\Leftrightarrow$`}</Latex> 两个随机变量相互独立 </li>
+            <li className="font-bold">由二维正态分布的概率密度公式可知: 两个正态分布的随机变量不相关 <Latex>{`$\\Leftrightarrow$`}</Latex> 两个随机变量相互独立 <Img src="Images/Math/二维正态分布概率密度公式.png" /></li>
             <li className="font-bold">[349] (此题背下来) (1) 组合随机变量算概率密度总结: 首先看独立性! <br /> 
               离散型 + 离散型: 直接看分布律 <br />
               连续型 + 连续型: 卷积公式 (注意投影范围) <br />
@@ -149,6 +150,10 @@ export default function Statistics1() {
             </li>
             <li className="font-bold"><Latex>{`$\\sum_{i=1}^{n} \\left( \\frac{X_i - \\bar{X}}{\\sigma} \\right)^2 = \\sum_{i=1}^{n} \\left( \\frac{X_i - \\mu - (\\bar{X} - \\mu)}{\\sigma}  \\right)^2 = \\sum_{i=1}^{n} \\left( Z_i - \\bar{Z} \\right)^2$`}</Latex> 是一个二次型, 可以化为规范性, 其有一个零惯性指数和 (n-1) 个正惯性指数, 又 <Latex>{`$Z_i$`}</Latex> 为相互独立的服从标准正态分布的随机变量, 所以服从 <Latex>{`$\\chi ^2 (n-1)$`}</Latex></li>
             <li className="font-bold"><Latex>{`$\\frac{\\bar{X} - \\mu}{\\frac{S}{\\sqrt{n}}} = \\frac{\\bar{X} - \\mu}{\\frac{\\sigma\\sqrt{\\frac{\\chi^2(n-1)}{n-1}}}{\\sqrt{n}}} \\sim t(n-1)$`}</Latex></li>
+            <li>[356, 357] 快速判断分布</li>
+            <li className="font-bold">[358] <Latex>{`$X \\sim t(n)$ 则 $X^2 \\sim \\frac{\\chi^2(1)}{\\chi^2(n)/n} = F(1, n)$`}</Latex>; <br />对于偶函数分布, 通过 <Latex>{`$P\\{X>c\\}$ 或 $P\\{X<c\\}$ 与 $\\frac{1}{2}$ 比较判断 c 点位置, 进而判断 $P\\{|X|<c\\}$`}</Latex></li>
+            <li className="font-bold">[359] 正态总体的样本均值与样本方差是相互独立的 <a className="text-blue-500 hover:text-blue-700 no-underline" href="Html/Math/正态总体的样本均值与样本方差独立性证明.html" target="_blank"> 证明 </a></li>
+              
           </ul>
         </div>
       </TextBox>
