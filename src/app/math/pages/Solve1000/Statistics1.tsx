@@ -135,12 +135,12 @@ export default function Statistics1() {
               中心极限定理: 对于任意分布的独立的随机变量 <Latex>{`$X_1, X_2, ~\\cdots, X_n$`}</Latex>, 如果各随机变量的方差均为有限正数，且满足林德伯格条件, 则 <Latex>{`$ n\\rightarrow \\infty \\\\ \\frac{(X_1 + X_2 + \\cdots + X_n) - (\\mu_1 + \\mu_2 + \\cdots + \\mu_n)}{\\sqrt{\\sigma_1^2 + \\sigma_2^2 + \\cdots + \\sigma_n^2}}$`}</Latex> 趋近于标准正态分布 <br />
               只需要知道 独立同分布(且方差为有限正数)的随机变量之和 满足中心极限定理.
             </li>
-            <li className="font-bold"><Latex>{`简单随机样本 $\\Rightarrow$ 独立同分布`}</Latex>, 各随机变量分布与总体 X(模板随机变量) 相同</li>
-            <li>[350~] 大数定理, 中心极限定理</li>
-            <li>[355] 切比雪夫不等式</li>
             <li className="font-bold">大数定律的理解: <Latex>{`若 $ lim_{n\\rightarrow \\infty}\\sum_{i=1}^nEX_i$ 为有限值, 则 $\\sum_{i=1}^nX_i $ 是概率集中于有限值的正态分布的随机变量, 于是 $P\\{lim_{n\\rightarrow \\infty}\\frac{1}{n}\\sum_{i=1}^nX_i=0\\}=1 \\\\$
               否则 $\\sum_{i=1}^nX_i$ 是概率集中于无穷 (期望为 n 的无穷大) 的正态分布的随机变量, 即使 $\\sum_{i=1}^nX_i$ 实际值偏离期望也集中于等价无穷大 (因为标准差是 n 的低阶无穷大($\\sqrt{n}$) ), 于是 $P\\{lim_{n\\rightarrow \\infty}\\frac{1}{n}\\sum_{i=1}^nX_i = \\frac{1}{n}\\sum_{i=1}^nEX_i\\}=1$
             `}</Latex></li>
+            <li className="font-bold"><Latex>{`简单随机样本 $\\Rightarrow$ 独立同分布`}</Latex>, 各随机变量分布与总体 X(模板随机变量) 相同</li>
+            <li>[350~] 大数定律, 中心极限定理</li>
+            <li>[355] 切比雪夫不等式</li>
             <li><details>
               <summary className="cursor-pointer font-bold">卡方分布的方差证明: </summary>
               <Img src="Images/Math/卡方分布的方差证明.png" />
@@ -153,7 +153,9 @@ export default function Statistics1() {
             <li>[356, 357] 快速判断分布</li>
             <li className="font-bold">[358] <Latex>{`$X \\sim t(n)$ 则 $X^2 \\sim \\frac{\\chi^2(1)}{\\chi^2(n)/n} = F(1, n)$`}</Latex>; <br />对于偶函数分布, 通过 <Latex>{`$P\\{X>c\\}$ 或 $P\\{X<c\\}$ 与 $\\frac{1}{2}$ 比较判断 c 点位置, 进而判断 $P\\{|X|<c\\}$`}</Latex></li>
             <li className="font-bold">[359] 正态总体的样本均值与样本方差是相互独立的 <a className="text-blue-500 hover:text-blue-700 no-underline" href="Html/Math/正态总体的样本均值与样本方差独立性证明.html" target="_blank"> 证明 </a></li>
-              
+            <li className="font-bold">矩估计: 由大数定律可知, 当 n 趋于无穷大时, 一阶原点矩 = 期望, 二阶中心矩 = 方差 (一阶中心矩恒为 0); 已知分布时, 可知参数与期望 / 方差 等 的关系, 又 n 足够大时, 矩 <Latex>{`$\\approx$`}</Latex> 期望 / 方差 等, 因此可通过矩估计法反求参数. 求多个参数列方程组求解 (理论上可列出无数多个方程, 可估计无数多个参数). 估计参数符号记得加帽子.</li> 
+            <li className="font-bold">最大似然估计: 事件发生概率/概率密度为 <Latex>{`$f(\\theta)$`}</Latex>, 当事件是小概率事件时, 其参数使其概率/概率密度为最大值的可能性最大, 所以求其最大值点作为参数估计值. (注意: 前提是符合实际情况, 注意参数的取值范围!) 估计参数符号记得加帽子.</li>
+            <li><strong>[360~363]</strong> 矩估计与最大似然估计; <strong>参数的估计值关于样本, 所以参数估计值也是随机变量; 其统计量可以关于该参数真实值([363])</strong></li>
           </ul>
         </div>
       </TextBox>

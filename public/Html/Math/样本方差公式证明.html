@@ -17,7 +17,7 @@
             margin: auto;
         }
         .math-block {
-            margin: 15px 0;
+            margin: 20px 0;
             text-align: center;
         }
     </style>
@@ -27,7 +27,7 @@
 
 <h2>证明：为什么使用 \(n-1\) 作为分母可以修正样本方差对总体方差估计的偏差</h2>
 
-<p>设样本 \(X_1, X_2, \dots, X_n\) 是独立同分布的随机变量，均值为 \(\mu\)，方差为 \(\sigma^2\)：</p>
+<p>设样本 \(X_1, X_2, \dots, X_n\) 是独立同分布的随机变量，均值为 \(\mu\)，方差为 \(\sigma^2\): </p>
 
 <div class="math-block">
     \( \mathbb{E}[X_i] = \mu, \quad \text{D}(X_i) = \sigma^2 \)
@@ -66,6 +66,8 @@
 </div>
 
 <p>因此，样本方差 \(S^2\) 是总体方差 \(\sigma^2\) 的无偏估计量。</p>
+
+<p>此外, \( \frac{1}{n}E[\sum_{i=1}^{n} (X_i - \bar{X})^2] = \frac{n-1}{n}\sigma^2 \) <br /> 说明 n 趋于无穷大时 \( \frac{1}{n}\sum_{i=1}^{n} (X_i - \bar{X})^2 \) 可用于估计总体方差 \(\sigma^2\)。</p>
 
 </body>
 </html>
