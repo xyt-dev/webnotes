@@ -155,7 +155,10 @@ export default function Statistics1() {
             <li className="font-bold">[359] 正态总体的样本均值与样本方差是相互独立的 <a className="text-blue-500 hover:text-blue-700 no-underline" href="Html/Math/正态总体的样本均值与样本方差独立性证明.html" target="_blank"> 证明 </a></li>
             <li className="font-bold">矩估计: 由大数定律可知, 当 n 趋于无穷大时, 一阶原点矩 = 期望, 二阶中心矩 = 方差 (一阶中心矩恒为 0); 已知分布时, 可知参数与期望 / 方差 等 的关系, 又 n 足够大时, 矩 <Latex>{`$\\approx$`}</Latex> 期望 / 方差 等, 因此可通过矩估计法反求参数. 求多个参数列方程组求解 (理论上可列出无数多个方程, 可估计无数多个参数). 估计参数符号记得加帽子.</li> 
             <li className="font-bold">最大似然估计: 事件发生概率/概率密度为 <Latex>{`$f(\\theta)$`}</Latex>, 当事件是小概率事件时, 其参数使其概率/概率密度为最大值的可能性最大, 所以求其最大值点作为参数估计值. (注意: 前提是符合实际情况, 注意参数的取值范围!) 估计参数符号记得加帽子.</li>
-            <li><strong>[360~363]</strong> 矩估计与最大似然估计; <strong>参数的估计值关于样本, 所以参数估计值也是随机变量; 其统计量可以关于该参数真实值([363])</strong></li>
+            <li><strong>[360~366]</strong> 矩估计与最大似然估计; <strong>参数的估计值关于样本, 所以参数估计值也是随机变量; 其统计量可以关于该参数真实值([363])</strong></li>
+            <li className="font-bold">[364, 365, 371] 首先求矩估计量或最大似然估计量; 估计量(估计量也是随机变量)的期望等于什么, 就是什么的无偏估计量</li>
+            <li className="font-bold">[365] 观察分布列, 看是否符合某种分布, 概率 P 是否能表示为 X 取值的函数关系</li>
+            <li className="font-bold">[368] 令 <Latex>{`$F(x)=P(X \\le x)$`}</Latex>, 对于其简单随机样本 <Latex>{`$X_1, X_2, \\cdots, X_n$`}</Latex>, <Latex>{`$P(min\\{X_1, X_2, \\cdots, X_n \\} \\le x )=1-P(min\\{X_1, X_2, \\cdots, X_n \\} > x)=1-P(X_1 > x)P(X_2 > x)\\cdots P(X_n > x)=1-[1-F(x)]^n$`}</Latex></li>
           </ul>
         </div>
       </TextBox>
