@@ -13,7 +13,9 @@ export default function HomePage() {
             <details open>
               <summary>CS</summary>
               <ul>
+                <li><Link href="/CS/DataStructure">数据结构</Link></li>
                 <li><Link href="/CS/OS">操作系统</Link></li>
+                <li><Link href="/CS/Architecture">计算机组成原理</Link></li>
                 <li><Link href="/CS/Network">计算机网络</Link></li>
               </ul>
             </details>

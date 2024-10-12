@@ -148,7 +148,8 @@ export default function Statistics1() {
             <li className="font-bold">使用 n-1 作为分母可以修正样本方差对总体方差估计的偏差: 
               <a className="text-blue-500 hover:text-blue-700 no-underline" href="Html/Math/样本方差公式证明.html" target="_blank"> 证明 </a>
             </li>
-            <li className="font-bold"><Latex>{`$\\sum_{i=1}^{n} \\left( \\frac{X_i - \\bar{X}}{\\sigma} \\right)^2 = \\sum_{i=1}^{n} \\left( \\frac{X_i - \\mu - (\\bar{X} - \\mu)}{\\sigma}  \\right)^2 = \\sum_{i=1}^{n} \\left( Z_i - \\bar{Z} \\right)^2$`}</Latex> 是一个二次型, 可以化为规范性, 其有一个零惯性指数和 (n-1) 个正惯性指数, 又 <Latex>{`$Z_i$`}</Latex> 为相互独立的服从标准正态分布的随机变量, 所以服从 <Latex>{`$\\chi ^2 (n-1)$`}</Latex></li>
+            <li className="font-bold"><Latex>{`$\\sum_{i=1}^{n} \\left( \\frac{X_i - \\bar{X}}{\\sigma} \\right)^2 = \\sum_{i=1}^{n} \\left( \\frac{X_i - \\mu - (\\bar{X} - \\mu)}{\\sigma}  \\right)^2 = \\sum_{i=1}^{n} \\left( Z_i - \\bar{Z} \\right)^2$`}</Latex> 是一个二次型, 可以化为规范性, 其有一个零惯性指数和 (n-1) 个正惯性指数, 又 <Latex>{`$Z_i$`}</Latex>
+              为相互独立的服从标准正态分布的随机变量, 所以服从 <Latex>{`$\\chi ^2 (n-1)$`}</Latex></li>
             <li className="font-bold"><Latex>{`$\\frac{\\bar{X} - \\mu}{\\frac{S}{\\sqrt{n}}} = \\frac{\\bar{X} - \\mu}{\\frac{\\sigma\\sqrt{\\frac{\\chi^2(n-1)}{n-1}}}{\\sqrt{n}}} \\sim t(n-1)$`}</Latex></li>
             <li>[356, 357] 快速判断分布</li>
             <li className="font-bold">[358] <Latex>{`$X \\sim t(n)$ 则 $X^2 \\sim \\frac{\\chi^2(1)}{\\chi^2(n)/n} = F(1, n)$`}</Latex>; <br />对于偶函数分布, 通过 <Latex>{`$P\\{X>c\\}$ 或 $P\\{X<c\\}$ 与 $\\frac{1}{2}$ 比较判断 c 点位置, 进而判断 $P\\{|X|<c\\}$`}</Latex></li>
@@ -159,6 +160,7 @@ export default function Statistics1() {
             <li className="font-bold">[364, 365, 371] 首先求矩估计量或最大似然估计量; 估计量(估计量也是随机变量)的期望等于什么, 就是什么的无偏估计量</li>
             <li className="font-bold">[365] 观察分布列, 看是否符合某种分布, 概率 P 是否能表示为 X 取值的函数关系</li>
             <li className="font-bold">[368] 令 <Latex>{`$F(x)=P(X \\le x)$`}</Latex>, 对于其简单随机样本 <Latex>{`$X_1, X_2, \\cdots, X_n$`}</Latex>, <Latex>{`$P(min\\{X_1, X_2, \\cdots, X_n \\} \\le x )=1-P(min\\{X_1, X_2, \\cdots, X_n \\} > x)=1-P(X_1 > x)P(X_2 > x)\\cdots P(X_n > x)=1-[1-F(x)]^n$`}</Latex></li>
+            <li><strong>[367, 369, 370]</strong> 假设检验</li>
           </ul>
         </div>
       </TextBox>

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import AdvancedMath1 from "./pages/Solve1000/AdvancedMath1";
 import LinearAlgebra1 from "./pages/Solve1000/LinearAlgebra1";
 import Statistics1 from "./pages/Solve1000/Statistics1";
+import EnhanceMath1 from "./pages/Solve1000/Enhance/EnhanceMath1";
 import Link from "next/link";
 import WildSolve from "./pages/WildSolve";
 import LatexSymbols from "./pages/LatexSymbols";
@@ -14,6 +15,7 @@ export default function DaisyPages() {
     "AdvancedMath1": AdvancedMath1(),
     "LinearAlgebra1": LinearAlgebra1(),
     "Statistics1": Statistics1(),
+    "EnhanceMath1": EnhanceMath1(),
     "WildSolve": WildSolve(),
     "LatexSymbols": LatexSymbols(),
     "Other": OtherPage(),
@@ -51,6 +53,7 @@ export default function DaisyPages() {
           <Leaf pageName="LinearAlgebra1">线性代数</Leaf>
           <Leaf pageName="Statistics1">概率论与数理统计</Leaf>
         </Node>
+        <Leaf pageName="EnhanceMath1">强化题</Leaf>
         <Node summary="张宇1000题[PDF]">
           <li><Link href='https://drive.google.com/file/d/1xQUsR3oNJlhdS9AWqDvkiZXZQO1HbAwq/view?usp=drive_link' legacyBehavior><a target="_blank" rel="noopener noreferrer">张宇1000题[习题册]</a></Link></li>
           <li><Link href='https://drive.google.com/file/d/1rKJW2aFD8FIRp3yW1W9-5WOc9P3_tO3j/view?usp=drive_link' legacyBehavior><a target="_blank" rel="noopener noreferrer">张宇1000题[解析册]</a></Link></li>
