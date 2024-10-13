@@ -1,9 +1,11 @@
 "use client"
 import DaisySidebar, { DaisySidebarLeaf, DaisySidebarNode as Node } from "@/components/DaisySidebar";
 import React, { useEffect, useState } from "react";
+import Chapter1 from "./pages/Chapter1";
 
 export default function DataStructurePage() {
   const pages: { [key: string]: React.ReactNode } = {
+    "Chapter1": Chapter1(),
   }
   const [pageRenderingName, setPageRenderingName] = useState("")
   useEffect(() => {
@@ -32,7 +34,7 @@ export default function DataStructurePage() {
   }
   return (
     <DaisySidebar page={pages[pageRenderingName]}>
-      <Leaf pageName="firstPage">第一页</Leaf>
+      <Leaf pageName="Chapter1">绪论</Leaf>
     </DaisySidebar>
   )
 }
