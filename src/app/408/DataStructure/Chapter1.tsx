@@ -38,12 +38,12 @@ export default function Chapter1() {
       </p>
       <p>
         逻辑结构包括: <strong>一对一(线性)、一对多(树)、多对多(图)、集合</strong> <br />
-        存储结构包括: <strong>顺序存储</strong>结构、<strong>链式存储</strong>结构、散列存储结构、索引存储结构 <br />
+        存储结构包括: <strong>顺序存储</strong>结构、<strong>链式存储</strong>结构、<strong>索引存储</strong>结构、<strong>散列存储</strong>结构 (<strong>注: 顺序存储要求逻辑上相邻的元素在物理位置上也在相邻存储单元</strong>) <br />
         <Img src="Images/408/DataStructure/数据结构的逻辑结构.png" width={600} />
       </p>
       <p>
-        <strong>线性表</strong>描述一种<strong>逻辑结构</strong>, 其数据元素之间具有一对一的线性关系, 即每个元素(除了第一个和最后一个元素外)都有<strong>唯一的前驱和后继</strong>.
-        包括顺序表(数组), 链表, 栈和队列(特殊的线性表) 等. <br />
+        <strong>线性表</strong>描述一种<strong>逻辑结构</strong>, 其数据元素之间具有一对一的线性关系, 即每个元素(除了第一个和最后一个元素外)都有<strong>唯一的前驱和后继</strong>. 
+        包括顺序表(数组), 链表, 栈和队列(特殊的线性表) 等. (一个线性表要求只有<strong>有限</strong>个数据元素) <br />
         <strong>顺序表, 链表</strong>等 既描述了<strong>逻辑结构</strong>, 又描述了<strong>存储结构</strong>. <br />
         <strong>有序表</strong>是指关键字有序的线性表, 仅描述数据元素之间的<strong>逻辑关系</strong>.
       </p>

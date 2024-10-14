@@ -2,10 +2,12 @@
 import DaisySidebar, { DaisySidebarLeaf, DaisySidebarNode as Node } from "@/components/DaisySidebar";
 import React, { useEffect, useState } from "react";
 import Chapter1 from "./DataStructure/Chapter1";
+import Chapter2 from "./DataStructure/Chapter2";
 
 export default function DataStructurePage() {
   const pages: { [key: string]: React.ReactNode } = {
     "Chapter1": Chapter1(),
+    "Chapter2": Chapter2(),
   }
   const [pageRenderingName, setPageRenderingName] = useState("")
   useEffect(() => {
@@ -36,6 +38,7 @@ export default function DataStructurePage() {
     <DaisySidebar page={pages[pageRenderingName]}>
       <Node summary="数据结构">
         <Leaf pageName="Chapter1">绪论</Leaf>
+        <Leaf pageName="Chapter2">线性表</Leaf>
       </Node>
     </DaisySidebar>
   )
