@@ -15,10 +15,10 @@ export default function Chapter1() {
     li.classList.add('m-0.5');
   });
   return (
-    <div className="prose daisy-prose p-6 pl-12 max-w-[1250px]">
+    <div className="prose daisy-prose p-6 max-w-[1500px]">
       <h2>数据与数据结构</h2>
       <h3>基本概念</h3>
-      <p>
+      <p className="font-bold">
         数据: 信息的载体, 能输入到计算机中并被识别和处理的符号的集合. (0 和 1 及其组成的其他数据)<br />
         <strong>数据元素: 数据的基本单位, 通常作为一个整体处理, 可有多个数据项组成. </strong><br />
         数据项: 构成数据元素的不可分割的最小单位, 如 一个整数、一个字符串. <br />
@@ -92,7 +92,7 @@ export default function Chapter1() {
         <strong>例题: </strong>
         <Img src="Images/408/DataStructure/1_2_10.png" width={700} align="left" />
         <Latex>{`令 $k=\\lfloor log_2(n) \\rfloor$, 即 $log_2(n) - 1 \\lt k \\le log_2(n)$, 于是 $2^k \\le n < 2^{k+1}$, 
-          设 $n$ 进行 $t$ 次 向下取整的除 $2$ 操作后等于 $1$, 易知 $k \\le t \\lt k+1$. 又 $t$ 为整数, 所以递归深度 $t=k=\\lfloor log_2(n) \\rfloor \\le log_2(n)$. 此题选 C.
+          设$n$进行$t$次 向下取整的除$2$ 操作后等于$1$, 易知 $k \\le t \\lt k+1$. 又 $t$ 为整数, 所以递归深度 $t=k=\\lfloor log_2(n) \\rfloor \\le log_2(n)$. 此题选 C.
           $\\\\$ 若递归时执行两次 Func(), 则执行次数为 $2^{\\lfloor log_2(n) \\rfloor} \\le n$.`}</Latex>
         <Img src="Images/408/DataStructure/1_2_11.png" width={800} align="left" />
         <Latex>{`假设循环内语句执行次数为 $k$, 则 $2^{k+1} \\ge n/2$ 且 $2^k < n/2$, 即 $log_2n-2 \\le k < log_2n-1 < log_2n$, 此题选 A.`}</Latex>

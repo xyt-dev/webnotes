@@ -392,9 +392,10 @@ export default function AdvancedMath1() {
             <li><strong>[225] 如果用高斯公式，偏导会有奇点(不连续区域), 注意奇点(不连续区域)!; 注意微元符号! dxdy 和 dS 的区别</strong></li>
             <li><strong>[226]</strong> 逆向思维, 分量在三个坐标轴上积分 -&gt; 整体在空间曲面(平面)<Latex>{`$\\Sigma$`}</Latex>上积分, dydz,dzdx,dxdy -&gt; dS</li>
             <li><strong>[227]</strong> 斯托克斯公式, dydz,dzdx,dxdy -&gt; dS 从而转化为曲面积分; 形心公式</li>
-            <li className="font-bold">泰勒公式能用狗的证明: <br /><Latex>{`$f(t) = f(t_0) + \\frac{df}{dt}|_{t_0}(t - t_0) + \\frac{d^2f}{dt^2 \\cdot 2!}|_{t_0}(t - t_0)^2$ $+ \\cdots $
+            <li className="font-bold">泰勒公式 f(狗) 和 f(x) 相同的证明: <br /><Latex>{`$f(t) = f(t_0) + \\frac{df}{dt}|_{t_0}(t - t_0) + \\frac{d^2f}{dt^2 \\cdot 2!}|_{t_0}(t - t_0)^2$ $+ \\cdots $
               其中 t 为 x 的函数, 满足 $t = t_0 + \\frac{dt}{dx}|_{x_0}(x-x_0) + $$\\frac{d^2t}{dx^2}|_{x_0}(x-x_0)^2 + \\cdots ~~ $ 将 t 代入一式可证, 例如对于平方项, 
-              $\\frac{d^2f}{dx^2}|_{x_0}=\\frac{d}{dx}(\\frac{df}{dt}\\cdot\\frac{dt}{dx})|_{x_0}=\\frac{d^2f}{dt^2}|_{t_0}\\cdot(\\frac{dt}{dx})^2|_{x_0}+\\frac{df}{dt}|_{t_0}\\cdot\\frac{d^2t}{dx^2}|_{x_0}$, 此时已经证明了展开式展开至平方项完全等价`}</Latex></li>
+              $\\frac{d^2f}{dx^2}|_{x_0}=\\frac{d}{dx}(\\frac{df}{dt}\\cdot\\frac{dt}{dx})|_{x_0}=\\frac{d^2f}{dt^2}|_{t_0}\\cdot(\\frac{dt}{dx})^2|_{x_0}+\\frac{df}{dt}|_{t_0}\\cdot\\frac{d^2t}{dx^2}|_{x_0}$, 此时已经证明了展开式展开至平方项完全等价. $\\\\$ 
+              继续这样证明无限项好像比较繁琐, 其实泰勒公式本身就说明了无论对什么 g(x) 展开都是同一函数, 所以肯定相同.`}</Latex></li>
           </ul>
         </div>
       </TextBox>
