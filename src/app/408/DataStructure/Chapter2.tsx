@@ -10,18 +10,18 @@ function Img({ src, width, align}: { src: string, width?: number, align?: string
 }
 
 export default function Chapter2() {
-  const listItems = document.querySelectorAll('#sm-list li');
-  listItems.forEach((li) => {
-    li.classList.add('m-0.5');
-  });
+  // const listItems = document.querySelectorAll('#sm-list li');
+  // listItems.forEach((li) => {
+  //   li.classList.add('m-0.5');
+  // });
   return (
     <div className="prose daisy-prose p-6 max-w-[1200px]">
       <h3>顺序表</h3>
       <p>
         优点: 1. 随机访问, 查找时间 O(1); <br />
-        <Space width={4.6} /> 2. 存储密度高, 每个节点只存放数据元素本身. <br />
+        <Space width={5.2} /> 2. 存储密度高, 每个节点只存放数据元素本身. <br />
         缺点: 1. 插入和删除操作需要移动大量元素, 均为 O(n); (若无需保持元素间顺序则可以为 O(1) ) <br />
-        <Space width={4.6} /> 2. 需要分配连续存储空间, 不够灵活. (动态分配的数组占满时需要重新分配空间) <br />
+        <Space width={5.2} /> 2. 需要分配连续存储空间, 不够灵活. (动态分配的数组占满时需要重新分配空间) <br />
         此外, 按位序查找为 O(1), 按值查找为 O(n).
       </p>
       <p>注意线性表中元素位序从1开始.</p>

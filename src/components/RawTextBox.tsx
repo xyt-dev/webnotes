@@ -1,5 +1,4 @@
 import { ReactNode } from "react"
-import {/*  merienda, */ kalam /* , noto_sans_jp */, zen_maru_gothic,  } from "@/fonts/fonts"
 import './font.css'
 
 export function Title1({children}: {children?: ReactNode}) {

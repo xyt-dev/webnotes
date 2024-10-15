@@ -10,10 +10,10 @@ function Img({ src, width, align}: { src: string, width?: number, align?: string
 }
 
 export default function Chapter1() {
-  const listItems = document.querySelectorAll('#sm-list li');
-  listItems.forEach((li) => {
-    li.classList.add('m-0.5');
-  });
+  // const listItems = document.querySelectorAll('#sm-list li');
+  // listItems.forEach((li) => {
+  //   li.classList.add('m-0.5');
+  // });
   return (
     <div className="prose daisy-prose p-6 max-w-[1500px]">
       <h2>数据与数据结构</h2>
