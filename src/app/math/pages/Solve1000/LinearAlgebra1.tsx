@@ -30,7 +30,7 @@ export default function LinearAlgebra1() {
             </li>
             <li><strong>反对称矩阵的主对角线元素为0</strong></li>
             <li><strong>矩阵行秩=列秩证明: </strong>
-              <Img src="/Images/Math/行秩等于列秩.png" />
+              <Img src="Images/Math/行秩等于列秩.png" />
             </li>
             <li><strong>对于方阵A、B有: <Latex>{`$|AB|=|A||B|$`}</Latex><br />
               证明: 若A或B不满秩, 则<Latex>{`$|AB|=|A||B|=0$`}</Latex>; 否则方阵可逆且可由单位矩阵E经过一系列初等行变换得到, 作任意初等行变换等价于左乘一个初等矩阵, 其行列式的值等于原值乘1、(-1)、或常数c.

@@ -10,10 +10,6 @@ function Img({ src, width, align}: { src: string, width?: number, align?: string
 }
 
 export default function Chapter1() {
-  // const listItems = document.querySelectorAll('#sm-list li');
-  // listItems.forEach((li) => {
-  //   li.classList.add('m-0.5');
-  // });
   return (
     <div className="prose daisy-prose p-6 max-w-[1500px]">
       <h2>数据与数据结构</h2>
@@ -90,13 +86,13 @@ export default function Chapter1() {
       <div className="font-bold">注: <Latex>{`$O(a^n) < O(n!) < O(n^n)$`}</Latex></div>
       <p>
         <strong>例题: </strong>
-        <Img src="Images/408/DataStructure/1_2_10.png" width={700} align="left" />
+        <Img src="Images/408/DataStructure/Exercises/1_2_10.png" width={700} align="left" />
         <Latex>{`令 $k=\\lfloor log_2(n) \\rfloor$, 即 $log_2(n) - 1 \\lt k \\le log_2(n)$, 于是 $2^k \\le n < 2^{k+1}$, 
-          设$n$进行$t$次 向下取整的除$2$ 操作后等于$1$, 易知 $k \\le t \\lt k+1$. 又 $t$ 为整数, 所以递归深度 $t=k=\\lfloor log_2(n) \\rfloor \\le log_2(n)$. 此题选 C.
+          设$n$进行$t$次向下取整的除$2$操作后等于$1$, 易知 $k \\le t \\lt k+1$. 又 $t$ 为整数, 所以递归深度 $t=k=\\lfloor log_2(n) \\rfloor \\le log_2(n)$. 此题选 C.
           $\\\\$ 若递归时执行两次 Func(), 则执行次数为 $2^{\\lfloor log_2(n) \\rfloor} \\le n$.`}</Latex>
-        <Img src="Images/408/DataStructure/1_2_11.png" width={800} align="left" />
+        <Img src="Images/408/DataStructure/Exercises/1_2_11.png" width={800} align="left" />
         <Latex>{`假设循环内语句执行次数为 $k$, 则 $2^{k+1} \\ge n/2$ 且 $2^k < n/2$, 即 $log_2n-2 \\le k < log_2n-1 < log_2n$, 此题选 A.`}</Latex>
-        <Img src="Images/408/DataStructure/1_2_16.png" width={700} align="left" />
+        <Img src="Images/408/DataStructure/Exercises/1_2_16.png" width={700} align="left" />
         <Latex>{`假设外层循环进入 $t$ 次, 内层循环进入 $k$ 次, 则 $2^t \\ge n, 2^{t-1} < n$, 即 $t < log_2n+1$ 此时内层循环执行次数为 $\\\\1+2+4+8+\\cdots+2^t=2^t-1<2n-1$`}</Latex>
       </p>
     </div>

@@ -6,7 +6,6 @@ import "../components/font.css"
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
-const lora = Lora({ subsets: ["latin"] });
 const noto_serif_sc = Noto_Serif_SC({ subsets: ["latin"], weight: "500" });
 // JetBrainsMono_Vivosans
 // Inter_Vivosans
