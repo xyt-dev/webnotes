@@ -2,7 +2,7 @@ import Latex from "react-latex-next"
 import 'katex/dist/katex.min.css'; // 导入 KaTeX 样式
 import Space from "@/components/Space";
 
-function Img({ src, width, align}: { src: string, width?: number, align?: string }) {
+function Img({src, width, align}: { src: string, width?: number, align?: string }) {
   if (align !== "left") align = "mx-auto"
   return (
      <img className={`mt-1 mb-1 ${align}`} src={src} alt="image" width={width} />
@@ -18,6 +18,7 @@ export default function Chapter2() {
         {Img({ src: "Images/408/DataStructure/静态分配的顺序表结构.png", width: 600, align: "left" })}
         {Img({ src: "Images/408/DataStructure/动态分配的顺序表结构.png", width: 600, align: "left" })}
       </p>
+      <h2><span></span></h2>
       <p>
         优点: 1. 随机访问, 按位序查找时间为O(1); (按值查找为O(n), 有序时使用二分查找可优化为O(logn)) <br />
         <Space width={5.2} /> 2. 存储密度高, 每个节点只存放数据元素本身. <br />
@@ -72,7 +73,7 @@ export default function Chapter2() {
         {Img({ src: "Images/408/DataStructure/单链表节点结构.png", width: 400, align: "left" })}
       </p>
       <blockquote>
-        如果需要删除当前结点, 如果当前结点有后继结点, 则不需要从头遍历.<br />
+        如果需要删除当前结点, 如果当前结点有后继结点, 则不需要从头遍历.(如果当前结点是单链表表尾结点, 则需要从头遍历)<br />
         方法: 用后继结点的值覆盖当前结点的值, 然后按一般方法删除后继结点. <br />
         在当前结点前插入新结点同理, 且不需要有后继结点. <br />
       </blockquote>
@@ -81,7 +82,7 @@ export default function Chapter2() {
         {Img({ src: "Images/408/DataStructure/双链表节点结构.png", width: 400, align: "left" })}
       </p>
       <p>插入和删除结点操作: 
-        {Img({ src: "Images/408/DataStructure/双链表插入和删除.png", width: 500, align: "left" })}
+        {Img({ src: "Images/408/DataStructure/双链表插入和删除.png", width: 600, align: "left" })}
       </p>
       <p>引入原因: 克服单链表无法直接访问结点前驱的缺点 (插入, 删除操作时)</p>
       <h3>循环链表</h3>
@@ -89,7 +90,13 @@ export default function Chapter2() {
         循环链表没有指针域为NULL的结点, 判空条件是看头结点的指针是否指向其自身. <br />
         (循环双链表头结点的prior指针和next指针都指向其自身)
       </p>
-      <p>循环链表常使用尾指针, 因为通过尾指针可以快速进行头尾操作, 而头指针无法快速进行尾部操作.</p>
+      <p>循环链表常使用尾指针, 因为通过尾指针可以快速进行头尾操作(通过尾结点可以快速得到头结点), 而头指针无法快速进行尾部操作.</p>
+      <blockquote>
+        <ul>
+          <li>带头/尾结点指针的循环双链表能实现O(1)的头插, 头删, 尾插, 尾删操作.</li>
+          <li>循环链表经过n次p=p-&gt;next操作后回到原结点, 则n的所有因数都可能是该循环链表的长度(包含头结点).</li>
+        </ul>
+      </blockquote>
       <h3>静态链表</h3>
       <p>静态链表C语言定义:
         {Img({ src: "Images/408/DataStructure/静态链表结构.png", width: 400, align: "left" })}
@@ -99,10 +106,19 @@ export default function Chapter2() {
         静态链表初始化时需要预先分配一块连续的内存空间, 这一点同顺序表; 且静态链表以 next==-1 作为其结束标志. <br />
         静态链表其余操作及优缺点同链表.
       </p>
-      <details>
+      <details open>
         <summary className="cursor-pointer font-bold w-fit text-lg">例题</summary>
-        <Img src="Images/408/DataStructure/Exercises/2_3_4.png" width={500} align="left" />
-        <Space width={1} /> I. 顺序表是线性逻辑结构, 顺序存储=数组, 可以存放其他逻辑结构; II. 尾指针无法删除表尾元素; V. 带尾指针的循环链表很适合表示队列, 因为正好可以O(1)删除表头元素, O(1)插入表尾元素.
+        <Img src="Images/408/DataStructure/Exercises/2_3_4.png" width={700} align="left" />
+        <Space width={1} /> I. 顺序表是线性逻辑结构, 而顺序存储=数组, 可以存放其他逻辑结构; II. <strong>尾指针无法O(1)删除单链表或循环单链表表尾元素</strong>(对于循环单链表, 值覆盖法会导致表尾指针变成头结点指针); 
+          V. 带尾指针的循环链表很适合表示队列, 因为正好可以O(1)删除队头元素, O(1)插入队尾元素. (尾指针可以删除循环链表示的队列的队尾元素(当其同时是队首元素时), 删除后头结点指针自然会指向其自身) 答案选D.
+        <Img src="Images/408/DataStructure/Exercises/2_3_17.png" width={700} align="left" />
+        <Space width={1} /> 结点A和B分别由指针p和q指示, 但结点C仅能由p-&gt;next间接指示, 因此在改变p-&gt;next之前, 要先将q-&gt;next指向结点C. <br />
+          (如果先进行操作1、3, 则操作4应该为: p-&gt;next-&gt;next-&gt;prior=q) 答案选A.
+        <Img src="Images/408/DataStructure/Exercises/2_3_34.png" width={700} align="left" />
+        <Img src="Images/408/DataStructure/Exercises/Solve_2_3_34.png" width={700} align="left" />
+        <Img src="Images/408/DataStructure/Exercises/Solve_2_3_34(2).png" width={700} align="left" />
+        <Img src="Images/408/DataStructure/Exercises/2_3_03.png" width={700} align="left" />
+        <Img src="Images/408/DataStructure/Exercises/Solve_2_3_03.png" width={600} align="left" />
       </details>
     </div>
   )

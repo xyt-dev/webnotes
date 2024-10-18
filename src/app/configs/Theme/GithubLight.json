@@ -1,0 +1,80 @@
+{
+  "editor.semanticTokenColorCustomizations": {
+    "[GitHub Light]": {
+      "rules": {
+        "function": {
+          "foreground": "#d20f39",
+          "fontStyle": "italic"
+        },
+        "method": {
+          "foreground": "#d20f39",
+          "fontStyle": "italic"
+        },
+        "macro": {
+          "foreground": "#0000ff"
+        },
+        "type": {
+          "foreground": "#267f99"
+        },
+        "class": {
+          "foreground": "#267f99"
+        },
+        "parameter": {
+          "foreground": "#001080"
+        }
+      }
+    }
+  },
+  "editor.tokenColorCustomizations": {
+    "[GitHub Light]": {
+      "functions": "#0000ff",
+      "numbers": "#098658",
+      "keywords": "#0000ff",
+      "strings": "#a31616",
+      "textMateRules": [
+        {
+          "scope": "punctuation.definition.string",
+          "settings": {
+            "foreground": "#a31616"
+          }
+        },
+        {
+          "scope": "keyword.control",
+          "settings": {
+            "foreground": "#af00dc"
+          }
+        },
+        {
+          "scope": "keyword",
+          "settings": {
+            "foreground": "#0000ff"
+          }
+        },
+        {
+          "scope": "variable.other",
+          "settings": {
+            "foreground": "#001080"
+          }
+        },
+        {
+          "scope": "keyword.operator",
+          "settings": {
+            "foreground": "#001080"
+          }
+        },
+        {
+          "scope": "entity",
+          "settings": {
+            "foreground": "#6639ef"
+          }
+        },
+        {
+          "scope": "entity.name.tag",
+          "settings": {
+            "foreground": "#267f99"
+          }
+        }
+      ]
+    }
+  }
+}

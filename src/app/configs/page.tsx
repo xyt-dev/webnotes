@@ -270,10 +270,10 @@ export default function EnglishPage() {
         <span>    ]</span>
         <span>  &#125;</span>
         <span>&#125;,</span>
-        <span>"editor.fontSize": 16,</span>
-        <span>"editor.fontWeight": "500",</span>
+        <span>"editor.fontSize": 17,</span>
+        <span>"editor.fontWeight": "400",</span>
         <span>"terminal.integrated.fontSize": 15,</span>
-        <span>"editor.fontFamily": "JetBrainsMono Nerd Font",</span>
+        <span>"editor.fontFamily": "'JetBrainsMono Nerd Font', 'vivo Sans'",</span>
         <span>"editor.fontLigatures": true,</span>
         <span>"terminal.integrated.defaultProfile.linux": "zsh",</span>
         <span>"editor.cursorBlinking": "smooth",</span>
@@ -319,7 +319,7 @@ export default function EnglishPage() {
         <span>"terminal.external.linuxExec": "kitty",</span>
         <span>"editor.linkedEditing": true,  // html tag linked edit</span>
         <span>// ui</span>
-        <span>"window.zoomLevel": 2,  // 行高: 7mm </span>
+        <span>"window.zoomLevel": 1.5,  // (行高: 7mm) </span>
         <span>"window.titleBarStyle": "native",  // custom</span>
         <span>"window.menuBarVisibility": "compact",</span>
         <span>"window.customMenuBarAltFocus": false,</span>
