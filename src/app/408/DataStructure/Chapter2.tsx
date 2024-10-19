@@ -129,7 +129,14 @@ export default function Chapter2() {
           <Img src="Images/408/DataStructure/Exercises/Solve_2_3_34(2).png" width={700} align="left" />
           <hr className="m-3 ml-[-6px]" />
           <Img src="Images/408/DataStructure/Exercises/2_3_03.png" width={700} align="left" />
-          <Img src="Images/408/DataStructure/Exercises/Solve_2_3_03.png" width={700} align="left" />
+          <Img src="Images/408/DataStructure/Exercises/Solve_2_3_03.png" width={650} align="left" />
+          <hr className="m-3 ml-[-6px]" />
+          <Img src="Images/408/DataStructure/Exercises/2_3_020.png" width={700} align="left" />
+          <Img src="Images/408/DataStructure/Exercises/Solve_2_3_020.png" width={900} align="left" />
+          <hr className="m-3 ml-[-6px]" />
+          <Img src="Images/408/DataStructure/Exercises/2_3_015.png" width={560} align="left" />
+          <Img src="Images/408/DataStructure/Exercises/Solve_2_3_015(1).png" width={700} align="left" />
+          <Img src="Images/408/DataStructure/Exercises/Solve_2_3_015(2).png" width={700} align="left" />
         </div>
       </details>
     </div>
