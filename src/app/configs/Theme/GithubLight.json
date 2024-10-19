@@ -11,7 +11,7 @@
           "fontStyle": "italic"
         },
         "macro": {
-          "foreground": "#0000ff"
+          "foreground": "#005cc5"
         },
         "type": {
           "foreground": "#267f99"
@@ -59,7 +59,7 @@
         {
           "scope": "keyword.operator",
           "settings": {
-            "foreground": "#001080"
+            "foreground": "#282828"
           }
         },
         {

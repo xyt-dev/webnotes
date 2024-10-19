@@ -5,6 +5,7 @@ typedef int ElemType;
 typedef struct DNode {
   ElemType data;
   struct DNode *prior, *next;
+  const int a;
 } DNode, *DLinkList;
 
 typedef struct LNode {
@@ -20,8 +21,8 @@ typedef struct {
 
 // 方法一: 头插法
 LinkList Reverse1(LinkList L) {
-  LNode *p, *r; // p 为工作指针, r 为 p 的后继, 防止断链
   assert(L);
+  LNode *p, *r; // p 为工作指针, r 为 p 的后继, 防止断链
   p = L->next;
   L->next = NULL; 
   while (p != NULL) {
@@ -35,7 +36,8 @@ LinkList Reverse1(LinkList L) {
 
 // 方法二: 结点指针反转
 LinkList Reverse2(LinkList L) {
-  LNode *pre, *p = L->next, *r=p->next;
+  assert(L);
+  LNode *pre, *p = L->next, *r = p->next;
   p->next = NULL;
   while (r != NULL) {
     pre = p;
@@ -46,6 +48,30 @@ LinkList Reverse2(LinkList L) {
   L->next = p;
   return L;
 }
+
+// 20
+void changeList(LNode *h) {
+  SLinkList L;
+  LNode *p, *q, *r, *s;
+  p = q = h;
+  while (q->next != NULL && s->data == 1) {
+    p = p->next;
+    q = q->next;
+    if (q->next != NULL) q = q->next;
+    q = p->next; // q 指向后半段首结点
+    p->next = NULL; // 借用 p 暂时作为后半段链表的头结点
+    while (q != NULL) {
+      r = q->next;
+      q->next = p->next;
+      p->next = q;
+      q = r;
+    }
+    s = h;
+    q = p->next;
+
+  }
+}
+
 
 int main(int a, char *argv[]) {
   DLinkList  p, q;

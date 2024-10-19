@@ -34,22 +34,29 @@ export default function Chapter2() {
         顺序表(线性表)要求元素间必须存在前驱和后继关系(物理上一定全部相邻), 而数组存放的树、图等数据结构的数据元素间可以没有前驱后继等逻辑关系, 元素间还可以有空元素间隔(物理上可互不相邻). 所以逻辑结构不一定相同. <br />
       </p>
       <blockquote>线性表O(n)内去重, 使用哈希表. (空间复杂度为O(n))</blockquote>
-      <details>
+      <details open>
         <summary className="cursor-pointer font-bold w-fit text-lg">例题</summary>
         <div className="pl-6">
           <Img src="Images/408/DataStructure/Exercises/2_2_2.png" width={800} align="left" />
           <Space width={1} />由上述顺序表与数组的区别和联系可知, 此题选C. <br />
+          <hr className="m-3 ml-[-6px]" />
           <Img src="Images/408/DataStructure/Exercises/2_2_8.png" width={800} align="left" />
           <Img src="Images/408/DataStructure/Exercises/Solve_2_2_8.png" width={800} align="left" />
+          <hr className="m-3 ml-[-6px]" />
           <Img src="Images/408/DataStructure/Exercises/2_2_10.png" width={800} align="left" />
           <Img src="Images/408/DataStructure/Exercises/Solve_2_2_10.png" width={800} align="left" />
+          <hr className="m-3 ml-[-6px]" />
           <Img src="Images/408/DataStructure/Exercises/2_2_11.png" width={800} align="left" />
           <Img src="Images/408/DataStructure/Exercises/Solve_2_2_11.png" width={800} align="left" />
-          <Space width={1} />(其中元素个数为偶数时, d2=m2 而非 d2=m2-1 是为了继续让下一个中位点偏右; 只需要让两个中位点左边和右边元素个数加起来相等即可)
+          <Space width={1} />(其中元素个数为偶数时, d2=m2 而非 d2=m2-1 是为了继续让下一个中位点偏右; 只需要让两个中位点左边和右边元素个数加起来相等即可)<br />
+          <hr className="m-3 ml-[-6px]" />
           <Img src="Images/408/DataStructure/Exercises/2_2_12.png" width={800} align="left" />
           <Img src="Images/408/DataStructure/Exercises/Solve_2_2_12.png" width={800} align="left" />
+          <hr className="m-3 ml-[-6px]" />
           <Img src="Images/408/DataStructure/Exercises/2_2_13.png" width={800} align="left" />
           <Img src="Images/408/DataStructure/Exercises/Solve_2_2_13.png" width={800} align="left" />
+          <Space width={1} />哈希表一般用于值被限制在一定范围内的情况, 此题本质上是未出现的最小值的取值范围被限制在了[1,n+1]. <br />
+          <hr className="m-3 ml-[-6px]" />
           <Img src="Images/408/DataStructure/Exercises/2_2_14.png" width={800} align="left" />
           <Img src="Images/408/DataStructure/Exercises/Solve_2_2_14.png" width={800} align="left" />
           <Img src="Images/408/DataStructure/Exercises/Solve_2_2_14(2).png" width={800} align="left" />
@@ -108,17 +115,22 @@ export default function Chapter2() {
       </p>
       <details open>
         <summary className="cursor-pointer font-bold w-fit text-lg">例题</summary>
-        <Img src="Images/408/DataStructure/Exercises/2_3_4.png" width={700} align="left" />
-        <Space width={1} /> I. 顺序表是线性逻辑结构, 而顺序存储=数组, 可以存放其他逻辑结构; II. <strong>尾指针无法O(1)删除单链表或循环单链表表尾元素</strong>(对于循环单链表, 值覆盖法会导致表尾指针变成头结点指针); 
-          V. 带尾指针的循环链表很适合表示队列, 因为正好可以O(1)删除队头元素, O(1)插入队尾元素. (尾指针可以删除循环链表示的队列的队尾元素(当其同时是队首元素时), 删除后头结点指针自然会指向其自身) 答案选D.
-        <Img src="Images/408/DataStructure/Exercises/2_3_17.png" width={700} align="left" />
-        <Space width={1} /> 结点A和B分别由指针p和q指示, 但结点C仅能由p-&gt;next间接指示, 因此在改变p-&gt;next之前, 要先将q-&gt;next指向结点C. <br />
-          (如果先进行操作1、3, 则操作4应该为: p-&gt;next-&gt;next-&gt;prior=q) 答案选A.
-        <Img src="Images/408/DataStructure/Exercises/2_3_34.png" width={700} align="left" />
-        <Img src="Images/408/DataStructure/Exercises/Solve_2_3_34.png" width={700} align="left" />
-        <Img src="Images/408/DataStructure/Exercises/Solve_2_3_34(2).png" width={700} align="left" />
-        <Img src="Images/408/DataStructure/Exercises/2_3_03.png" width={700} align="left" />
-        <Img src="Images/408/DataStructure/Exercises/Solve_2_3_03.png" width={600} align="left" />
+        <div className="pl-6">
+          <Img src="Images/408/DataStructure/Exercises/2_3_4.png" width={700} align="left" />
+          <Space width={1} /> I. 顺序表是线性逻辑结构, 而顺序存储=数组, 可以存放其他逻辑结构; II. <strong>尾指针无法O(1)删除单链表或循环单链表表尾元素</strong>(对于循环单链表, 值覆盖法会导致表尾指针变成头结点指针); 
+            V. 带尾指针的循环链表很适合表示队列, 因为正好可以O(1)删除队头元素, O(1)插入队尾元素. (尾指针可以删除循环链表示的队列的队尾元素(当其同时是队首元素时), 删除后头结点指针自然会指向其自身) 答案选D.
+          <hr className="m-3 ml-[-6px]" />
+          <Img src="Images/408/DataStructure/Exercises/2_3_17.png" width={700} align="left" />
+          <Space width={1} /> 结点A和B分别由指针p和q指示, 但结点C仅能由p-&gt;next间接指示, 因此在改变p-&gt;next之前, 要先将q-&gt;next指向结点C. <br />
+            (如果先进行操作1、3, 则操作4应该为: p-&gt;next-&gt;next-&gt;prior=q) 答案选A.
+          <hr className="m-3 ml-[-6px]" />
+          <Img src="Images/408/DataStructure/Exercises/2_3_34.png" width={700} align="left" />
+          <Img src="Images/408/DataStructure/Exercises/Solve_2_3_34.png" width={700} align="left" />
+          <Img src="Images/408/DataStructure/Exercises/Solve_2_3_34(2).png" width={700} align="left" />
+          <hr className="m-3 ml-[-6px]" />
+          <Img src="Images/408/DataStructure/Exercises/2_3_03.png" width={700} align="left" />
+          <Img src="Images/408/DataStructure/Exercises/Solve_2_3_03.png" width={700} align="left" />
+        </div>
       </details>
     </div>
   )
