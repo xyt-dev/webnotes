@@ -46,7 +46,7 @@ export default function Chapter2() {
           <li className="pl-0">判断第j个入栈元素是否可以是第k个出栈元素 等价于 判断第k个出栈元素是否可以是第j个入栈元素; 已知出栈序列判断入栈序列合法性 等价于 已知入栈序列判断出栈序列合法性 [且一定可以判断合法性]. (问题转化)</li>
         </ul></strong>
         <div className="pl-[1rem]">
-          例题: <br />
+          <strong>例题: </strong><br />
           {Img({src:"Images/408/DataStructure/Exercises/3_1_14to23.png", width: 700, align: "left" })}
           {Img({src:"Images/408/DataStructure/Exercises/3_1_28to29.png", width: 700, align: "left" })}
           根据上述方法可知答案为: D A D D D <Space width={1} /> C C A C C <Space width={1} /> B C.<br />
@@ -55,7 +55,7 @@ export default function Chapter2() {
         </div>
       </p>
       <details open>
-        <summary className="cursor-pointer font-bold w-fit text-lg">其他例题</summary>
+        <summary className="cursor-pointer w-fit font-bold">其他例题</summary>
         <div className="pl-6">
           {Img({src:"Images/408/DataStructure/Exercises/3_1_13.png", width: 600, align: "left" })}
           {Img({src:"Images/408/DataStructure/Exercises/Solve_3_1_13.png", width: 400, align: "left" })}
@@ -73,14 +73,14 @@ export default function Chapter2() {
         队列的顺序存储:
         {Img({src:"Images/408/DataStructure/队列的顺序存储.png", width: 400, align: "left" })}
         队列的顺序存储要使用循环队列.(防止假溢出) <br />
-        <blockquote className="mt-1 mb-10">
+        <blockquote className="mt-1 mb-10 not-italic">
           <span className="text-[#005cc5]">操作</span><br />
           指针进一: Q.front = (Q.front + 1) % MaxSize; <br />
           <Space width={9} /> Q.rear = (Q.rear + 1) % MaxSize; <br />
           计算队列长度: Length = (Q.rear + MaxSize - Q.front) % MaxSize; <br />
           判断队满/队空: <br />
           <div className="pl-[1rem]">
-            <a href="Images/408/DataStructure/队列少入队一个元素方便判满.png" target="_blank">方法一: 入队时少用一个队列单元. </a><br />
+            <a href="Images/408/DataStructure/队列少入队一个元素方便判满.png" target="_blank" className="no-underline hover:text-[#005cc5]">方法一: 入队时少用一个队列单元. </a><br />
             <Space width={2} />判断队空: Q.front == Q.rear <br />
             <Space width={2} />判断队满: (Q.rear + 1) % MaxSize == Q.front 或 size == MaxSize <br />
             方法二: 维护一个 size 变量. <br />
@@ -90,7 +90,7 @@ export default function Chapter2() {
             <Space width={2} />判断队空: Q.front == Q.rear && tag == 0 <br />
             <Space width={2} />判断队满: Q.front == Q.rear && tag == 1 <br />
           </div>
-          出队入队采用<strong>先读/写值再更新指针</strong>的操作.(因为初始状态时 Q.front=Q.rear, 且队列非空时要让 Q.front 指向队首元素)
+          出队入队<span className="underline underline-offset-[0.2rem]">一般</span>采用 先读/写值再更新指针 的操作.(初始状态时 Q.front=Q.rear, 且队列非空时使 Q.front 指向队首元素)
         </blockquote>
       </p>
       <p>
@@ -101,10 +101,67 @@ export default function Chapter2() {
       </p>
       <p>
         双端队列: 两端都可以进行插入和删除操作的线性表, 还包括输入受限和输出受限的双端队列. <br />
-        {Img({src:"Images/408/DataStructure/受限双端队列.png", width: 560, align: "left" })}
-        双端队列也不能输出任意排列顺序的序列.(证明[自己想的]: 令输出序列首先输出最大序号, 则双端队列中元素序号一定为一端大一端小 或 两端大中间小, 
-          于是输出序列一段只可能出现一个递减或递增序列 或 两个递减序列的交叉序列 或 一个递减序列和一个递增序列的交叉序列, 而不可能出现如更多个递减或递增序列的交叉序列) <br />
-        题目一般只需代入验证序列是否合法.
+        {Img({src:"Images/408/DataStructure/受限双端队列.png", width: 600, align: "left" })}
+        <div className="w-[600px] text-center">(输入受限双端队列) <Space width={15} /> (输出受限双端队列)</div>
+        双端队列也不能输出任意排列顺序的序列. <span className="text-[0.9rem]">(证明[自己想的]: <strong className="text-base">允许两端入队的双端队列中元素序号一定为一端大一端小 或 两端大中间小</strong>, 令输出序列首先输出最大序号,
+          可知输出序列一段只可能出现一个递减或递增序列 或 两个递减序列的交叉序列 或 一个递减序列和一个递增序列的交叉序列, 而不可能出现更多个递减或递增序列的交叉序列(eg. f a c b d e))</span> <br />
+        题目一般只需代入验证输出序列是否合法. <strong>跳跃的输出序号说明跳过的序号同时存在队列中, 而且有限制的双端队列能保证这些序号入队后 在队列中的顺序(输入受限) 或 从队列中输出的顺序(输出受限)不变.</strong>
+      </p>
+      <details open>
+        <summary className="cursor-pointer w-fit font-bold">例题</summary>
+        <div className="pl-6">
+          {Img({src:"Images/408/DataStructure/Exercises/3_2_6.png", width: 700, align: "left" })}
+          {Img({src:"Images/408/DataStructure/Exercises/Solve_3_2_6.png", width: 760, align: "left" })}
+          可见顺序存储的队列也可以采用 先更新指针再读/写值 的操作, 且采用此操作时队满/队空的判断条件也相同. <br />
+          <hr className="m-3 ml-[-6px]" />
+          {Img({src:"Images/408/DataStructure/Exercises/3_2_20.png", width: 700, align: "left" })}
+          输出d时a,b,c在队列中, 一端出队则队列中是什么序列出队就是什么序列, 而两端入队不可能在队列中得到序列b,c,a. 答案: C.
+          <hr className="m-3 ml-[-6px]" />
+          {Img({src:"Images/408/DataStructure/Exercises/3_2_21.png", width: 700, align: "left" })}
+          显然答案为: B. 可见此时队列为空的判断条件为 (rear+1)%MaxSize == front.
+          <hr className="m-3 ml-[-6px]" />
+          {Img({src:"Images/408/DataStructure/Exercises/3_2_22.png", width: 700, align: "left" })}
+          通过指针是否指向队列中的元素判断入队和出队操作方式. 题中为双端队列, 两个指针均可进行出入队操作. 显然end2入队先写再移, 出队先移再读; end1入队先移再写, 出队先读再移. 于是可知判断队空和队满条件为选项A.
+          <hr className="m-3 ml-[-6px]" />
+          {Img({src:"Images/408/DataStructure/Exercises/3_2_04.png", width: 700, align: "left" })}
+          {Img({src:"Images/408/DataStructure/Exercises/3_2_04(2).png", width: 500, align: "left" })}
+          使用带头尾指针的循环单链表, 初始时front和rear都指向同一个空闲结点, 入队出队操作使用先读写数据再移动指针方式.
+          {Img({src:"Images/408/DataStructure/Exercises/Solve_3_2_04.png", width: 600, align: "left" })}
+        </div>
+      </details>
+
+      <h3>栈和队列的应用</h3>
+      <p>
+        计算表达式:
+        <ul className="m-0 pl-[2rem]">
+          <li className="m-0 pl-0">首先将中缀表达式转换为后缀表达式.(遍历中缀表达式, 同时使用一个栈保存优先级连续递增的运算符)</li>
+          <ol className="m-0 pl-[2rem]">
+            <li className="m-0 pl-0">遍历到操作数直接加入后缀表达式.</li>
+            <li className="m-0 pl-0">遍历到运算符时, 将栈中所有优先级大于等于当前运算符的运算符弹出, 加入后缀表达式, 直到遇到一个优先级小于其的运算符或'('时将其入栈. (这些运算要先进行计算得到一个整体的值)</li>
+            <li className="m-0 pl-0">遍历到'('则直接入栈; 遍历到')'则依次弹出栈中运算符直到遇到'(', 然后直接将'('丢弃.</li>
+            <li className="m-0 pl-0">遍历完成后将栈中剩余的运算符依次全部弹出, 加入后缀表达式.</li>
+          </ol>
+          <li className="m-0 pl-0">计算后缀表达式: 遍历后缀表达式, 遇到操作数压入操作数栈, 遇到运算符则弹出栈顶两个操作数进行运算, 并将结果压入操作数栈. 最后操作数栈中剩下的唯一元素即为表达式的值.</li>
+          <li className="m-0 pl-0">以上两步可同时进行.(可将第一步和第二步看作生产者和消费者)</li>
+        </ul>
+      </p>
+      <p>
+        其他应用: <br/>
+        栈: 函数调用(递归调用) <Latex>{`$\\cdots$`}</Latex> <br />
+        队列: 树的层序遍历、作缓冲区、cpu调度 <Latex>{`$\\cdots$`}</Latex>
+      </p>
+      <p>
+        <ul>
+          <li className="m-0 pl-0">栈用于树的深度优先遍历, 队列适用于树的层序遍历. 函数调用基于函数调用栈, 其递归调用树当然是深度优先遍历.</li>
+        </ul>
+      </p>
+
+
+      <h3>数组</h3>
+      <p>
+        地址与数组下标关系: (对于数组a[M][N]) <br />
+        行优先存储: LOC(a[j][k])=LOC(a[0][0])+(j*N+k)*sizeof(ElemType) <br />
+        列优先存储: LOC(a[j][k])=LOC(a[0][0])+(k*M+j)*sizeof(ElemType) <br />
       </p>
     </div>
   )
