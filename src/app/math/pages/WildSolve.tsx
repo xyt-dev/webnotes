@@ -185,6 +185,20 @@ export default function WildSolve() {
             <Img src="Images/Math/wildsolve/9_solve.png" />
           </TabPage>
         </Solve>
+
+        <Solve tags={["二重积分"]}>
+          <TabPage tabName="题目" defaultChecked>
+            <Latex>{`求$\\iint_{x^2+y^2\\le 1}e^x cosy dxdy$`}</Latex>.
+          </TabPage>
+          <TabPage tabName="题解">
+            转换为极坐标, <Latex>{`原式$=\\int_0^1rdr\\int_0^{2\\pi}e^{rcos\\theta}cos(rsin\\theta)d\\theta$`}</Latex>, <br />
+            <Latex>{`其中令$F(r)=\\int_0^{2\\pi}e^{rcos\\theta}cos(rsin\\theta)d\\theta$`}</Latex>, <br />
+            <Latex>{`对函数求导并化简得$F^{'}(r)=\\frac{1}{r}\\int_0^{2\\pi}\\frac{d}{d\\theta}[e^{rcos\\theta}sin(rsin\\theta)]d\\theta$, 
+              $\\\\$然后对$\\theta$求定积分可知当$r\\neq 0$时$F^{'}(r)恒为0$`}</Latex> <br />
+            <Latex>{`将$r=0$代入$F^{'}(r)$未化简的式子, 同样得到$F'(0)=0.\\\\$ 于是证明了$F^{'}(r)$恒为0, 可知$F(r)$为常数$2\\pi$`}</Latex>. <br />
+            于是原积分值 <Latex>{`$=~\\pi$`}</Latex>
+          </TabPage>
+        </Solve>
       </ol>
     </DaisyProsePage>
   )

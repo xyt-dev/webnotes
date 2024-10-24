@@ -12,7 +12,7 @@ function Img({src, width, align}: { src: string, width?: number, align?: string 
 export default function Chapter2() {
   return (
     <div className="prose daisy-prose p-6 max-w-[1300px]">
-      <h2>栈、队列和数组</h2>
+      <h2 className="text-3xl">栈、队列和数组</h2>
       <h3>栈</h3>
       <p>
         <Latex>{`卡特兰数$^*$`}</Latex>: 当有n个元素入栈时, 出栈元素的不同排列个数. <br />
@@ -65,6 +65,8 @@ export default function Chapter2() {
           <hr className="m-3 ml-[-6px]" />
           {Img({src:"Images/408/DataStructure/Exercises/3_1_04.png", width: 700, align: "left" })}
           {Img({src:"Images/408/DataStructure/Exercises/Solve_3_1_04.png", width: 600, align: "left" })}
+          <hr className="m-3 ml-[-6px]" />
+          {Img({src:"Images/408/DataStructure/Exercises/3_supplement.png", width: 760, align: "left" })}
         </div>
       </details>
 
@@ -155,14 +157,45 @@ export default function Chapter2() {
           <li className="m-0 pl-0">栈用于树的深度优先遍历, 队列适用于树的层序遍历. 函数调用基于函数调用栈, 其递归调用树当然是深度优先遍历.</li>
         </ul>
       </p>
-
+      <details open>
+        <summary className="cursor-pointer w-fit font-bold">例题</summary>
+        <div className="pl-6">
+          {Img({src:"Images/408/DataStructure/Exercises/3_3_4.png", width: 700, align: "left" })}
+          {Img({src:"Images/408/DataStructure/Exercises/3_3_7.png", width: 700, align: "left" })}
+          {Img({src:"Images/408/DataStructure/Exercises/3_3_14.png", width: 700, align: "left" })}
+          {Img({src:"Images/408/DataStructure/Exercises/3_3_16.png", width: 700, align: "left" })}
+          {Img({src:"Images/408/DataStructure/Exercises/3_3_18.png", width: 700, align: "left" })}
+          答案: B C B C B.
+        </div>
+      </details>
 
       <h3>数组</h3>
       <p>
-        地址与数组下标关系: (对于数组a[M][N]) <br />
-        行优先存储: LOC(a[j][k])=LOC(a[0][0])+(j*N+k)*sizeof(ElemType) <br />
-        列优先存储: LOC(a[j][k])=LOC(a[0][0])+(k*M+j)*sizeof(ElemType) <br />
+        地址与数组下标关系: (对于数组a[N][M]) <br />
+        行优先存储: LOC(a[j][k])=LOC(a[0][0])+(j*M+k)*sizeof(ElemType) <br />
+        列优先存储: LOC(a[j][k])=LOC(a[0][0])+(k*N+j)*sizeof(ElemType) <br />
       </p>
+      <p>
+        数组下标k与矩阵元素下标的关系: (对于矩阵元素<Latex>{`$a_{i,j}$`}</Latex>) <br />
+        下三角矩阵: <Latex>{`$k=\\begin{cases} \\frac{i(i-1)}{2}+j-1, ~~ i\\ge j \\\\ \\frac{n(n+1)}{2}, ~~ i<j \\end{cases} $`}</Latex> <br />
+        <div className="h-[0.6rem]" />
+        上三角矩阵: <Latex>{`$k=\\begin{cases} \\frac{(i-1)(2n-i+2)}{2}+j-i, ~~ i\\le j \\\\ \\frac{n(n+1)}{2}, ~~ i>j \\end{cases} $`}</Latex> <br />
+        <div className="h-[0.3rem]" />
+        三对角矩阵: 已知矩阵元素下标: <Latex>{`$k=2i+j-3$`}</Latex> <br />
+        <Space width={12.5} />已知数组下标k: <Latex>{`$ i=\\lfloor (k+1)/3 \\rfloor + 1 ~, ~~ j = k-2i+3$`}</Latex>
+      </p>
+      <p>
+        稀疏矩阵: 使用三元组 (i,j,a[i][j]) 存储非零元素. 除三元组表外还要保存系数矩阵的行数、列数、(非零元素个数). <br />
+      </p>
+      <details open>
+        <summary className="cursor-pointer w-fit font-bold">例题</summary>
+        <div className="pl-6">
+          {Img({src:"Images/408/DataStructure/Exercises/3_4_3to9.png", width: 700, align: "left" })}
+          (5(2). 三对角矩阵)
+          答案: A D A B C B B. <br />
+          矩阵相关题型: 一看矩阵类型, 二看行/列优先存储(默认行优先), 三看数组下标范围(矩阵元素下标范围也要注意)
+        </div>
+      </details>
     </div>
   )
 }

@@ -12,7 +12,7 @@ function Img({ src, width, align}: { src: string, width?: number, align?: string
 export default function Chapter1() {
   return (
     <div className="prose daisy-prose p-6 max-w-[1500px]">
-      <h2>数据与数据结构</h2>
+      <h2 className="text-3xl">数据与数据结构</h2>
       <h3>基本概念</h3>
       <p className="font-bold">
         数据: 信息的载体, 能输入到计算机中并被识别和处理的符号的集合. (0 和 1 及其组成的其他数据)<br />

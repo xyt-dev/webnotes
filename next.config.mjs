@@ -2,19 +2,19 @@
 const isGithubActions = process.env.GITHUB_ACTIONS || false;
 let _assetPrefix = "";
 let _basePath = "";
-let _output = undefined
+let _output = "export"
 
 if (isGithubActions) {
   const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
   _assetPrefix = `/${repo}/`;
   _basePath = `/${repo}`;
-  _output = "export";
+  // _output = "export";
 }
 
 const nextConfig = {
   assetPrefix: _assetPrefix,
   basePath: _basePath,
-  output: _output
+  output: _output,
 };
 
 export default nextConfig;

@@ -12,7 +12,7 @@ function Img({src, width, align}: { src: string, width?: number, align?: string 
 export default function Chapter2() {
   return (
     <div className="prose daisy-prose p-6 max-w-[1200px]">
-      <h2>顺序表</h2>
+      <h2 className="text-3xl">顺序表</h2>
       <p>
         顺序表C语言定义:
         {Img({ src: "Images/408/DataStructure/静态分配的顺序表结构.png", width: 600, align: "left" })}
