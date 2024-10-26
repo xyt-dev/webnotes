@@ -57,7 +57,7 @@ export default function Chapter2() {
         若n为<strong>奇数</strong>, 则其每个分支结点都有两个孩子结点(只有度为0或2的结点, 属于正则二叉树).<br />
       </p>
       <>
-        由 <Latex>{`$n_0 = n_2 + 1$ 以及 $n=n_0+n_1+n_2$ 得到 $n=n_1+2n_2+1$`}</Latex>, 可知<Latex>{`$n$为奇数时$n_1=0$, $n$为偶数时$n_1=1$`}</Latex>. <br />
+        由<Latex>{`$n_0 = n_2 + 1$以及$n=n_0+n_1+n_2$得到$n=n_1+2n_2+1$`}</Latex>(二叉树); 可知<Latex>{`$n$为奇数时$n_1=0$, $n$为偶数时$n_1=1$(完全二叉树)`}</Latex>. <br />
         可知: 对于满二叉树或完全二叉树中编号为 j 的结点, 若 <Latex>{`$j \\le \\lfloor \\frac{n}{2} \\rfloor$`}</Latex> 则为分支结点, 否则为叶子结点.
         即完全二叉树有<Latex>{`$\\lfloor \\frac{n}{2} \\rfloor$个分支结点和$n - \\lfloor \\frac{n}{2} \\rfloor$个叶子结点`}</Latex>. 
       </>
@@ -77,9 +77,55 @@ export default function Chapter2() {
         <ul>
           <li>树的性质自然也适用于二叉树, 二叉树的性质还包括之前提到的树的性质.</li>
           <li>树可以没有结点(空树), 但图不能没有顶点.</li>
-          <li>度为2的有序树不能说是二叉树, 虽然二叉树是有序树, 但当一个分支结点只有一个子结点时, 二叉树需要明确指出该结点是左子结点还是右子结点, 而度为2的有序树无所谓.</li>
+          <li>度为2的有序树不能说是二叉树, 虽然二叉树是有序树, 但当一个分支结点只有一个子结点时, 二叉树需要明确指出该结点是左子结点还是右子结点, 而度为2的有序树无所谓. (<Latex>{`$m$`}</Latex>叉树是需要明确指出子树的位置的)</li>
         </ul>
       </blockquote>
+      <details open>
+        <summary className="cursor-pointer w-fit font-bold text-lg">例题</summary>
+        <div className="pl-6">
+          {Img({src: "Images/408/DataStructure/Exercises/5_1_3.png", width: 600, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_1_7.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_1_9.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_2_5to6.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_2_8to9.png", width: 600, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_2_18to22.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          答案: A D B B D <Space width={1} /> C C A A C <Space width={1} /> C B
+          {Img({src: "Images/408/DataStructure/Exercises/5_2_addition1.png", width: 500, align: "left", className: "m-0 mt-1"})}
+          答案: 最小值 = <Latex>{`$2^5-1+6 = 37$`}</Latex>; 最大值 = <Latex>{`$2^7-1-6\\cdot 2 = 115$`}</Latex>. <br />
+          {Img({src: "Images/408/DataStructure/Exercises/5_2_addition2.png", width: 500, align: "left", className: "m-0 mt-1"})}
+          答案: <Latex>{`$h=\\lceil \\log_2(n+1) \\rceil = \\lceil \\log_2(2n_0+n_1) \\rceil. ~~ n_1=1$时, $h=\\lceil \\log_2(2n_0+1) \\rceil$; $ n_1=0$时, $h=\\lceil \\log_2(n_0) \\rceil + 1$`}</Latex>
+          {Img({src: "Images/408/DataStructure/Exercises/5_2_addition12.png", width: 620, align: "left", className: "m-0 mt-1"})}
+          答案: 由树的性质知 <Latex>{`$n=m+n_0=mk+1$`}</Latex>, 得 <Latex>{`$n_0=m(k-1)+1$`}</Latex>
+          {Img({src: "Images/408/DataStructure/Exercises/5_2_addition3.png", width: 620, align: "left", className: "m-0 mt-1"})}
+          对于完全<Latex>{`$m$`}</Latex>叉树, 设结点j位于第h层, 结点j的第k个子节点编号 <Latex>{`$=\\frac{m^h-1}{m-1}+(j-1-\\frac{m^{h-1}-1}{m-1})\\times m + k=m(j-1)+1+k$ $(1 \\le k \\le m)$`}</Latex>.
+          于是 <Latex>{`$0 \\le 1+k-2 \\lt m$`}</Latex>, 得结点j的父节点编号 <Latex>{`$=\\lfloor \\frac{j-2}{m} \\rfloor + 1 ~ (j > 1)$`}</Latex>. 结点j存在右兄弟结点, 
+          即结点j不是其父节点的第<Latex>{`$m$`}</Latex>个子结点, 于是j满足: <Latex>{`$(j-1)\\%m\\ne 0$`}</Latex>, 其右兄弟结点编号自然为j+1.
+        </div>
+
+        <h3 className="text-2xl">二叉树遍历与线索二叉树</h3>
+        <p>
+          二叉树遍历: 前序遍历(NLR), 中序遍历(LNR), 后序遍历(LRN). <br />
+          以上三种遍历算法递归遍历左、右子树顺序相同, 只是访问根节点顺序不同, 每个结点都只访问一次, 时间复杂度均为O(n). <br />
+          <span className="text-[1.05rem] text-[#005cc5]">[方法]</span>快速写出遍历序列: 画出二叉树链式结构图, 从根节点左侧开始, 用曲线逆时针围绕二叉树结构图外侧描线(至根节点右侧), 曲线分别经过各结点左侧、下侧、右侧;
+            先序遍历时经过结点左侧时输出结点信息, 中序遍历时经过结点下侧时输出结点信息, 后序遍历时经过结点右侧时输出结点信息. <br />
+          遍历算法描述: <br />
+          {Img({src: "Images/408/DataStructure/遍历二叉树.png", width: 560, align: "left", className: "m-0 mb-1"})}
+          <span className="text-[1.05rem] text-[#005cc5]">注: </span>
+          按后序非递归遍历二叉树, 访问一个结点p时, 栈中的结点恰好是结点p的所有祖先结点序列.
+        </p>
+        <p>
+          中序遍历序列 + 先序|后序|层序遍历序列 可以唯一确定(构造)一棵二叉树. <br />
+          先序|后序|层序遍历序列都能确定第一个根节点, 但后续结点位于左子树还是右子树都要结合中序遍历序列才能确定. <br />
+        </p>          
+        <p>
+          线索二叉树: 含n个结点的二叉树中, 有n+1个空指针域, 利用这些空指针域来存放指向其前驱或后继, 这样就能想遍历单链表一样方便的遍历二叉树.
+          二叉树结点结构如下: <br />
+          {Img({src: "Images/408/DataStructure/线索二叉树结构.png", width: 400, align: "left", className: "m-0 mb-1"})}
+          以中序遍历为例, 构造线索二叉树算法如下: <br />
+          {Img({src: "Images/408/DataStructure/中序遍历构造线索二叉树.png", width: 600, align: "left", className: "m-0 mb-1"})}
+        </p>
+           
+      </details>
     </div>
   )
 }
