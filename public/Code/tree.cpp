@@ -63,9 +63,7 @@ void push(SqStack &S, BiTree &e) {}
 void pop(SqStack &S, BiTree &e) {}
 void getTop(SqStack &S, BiTree &e) {}
 
-void visit(BiTree T) {
-  // 访问当前结点
-}
+void visit(BiTree T) {}
 
 
 // 递归遍历二叉树
@@ -152,17 +150,18 @@ typedef struct ThreadNode {
   ThreadNode *lchild, *rchild;
   int ltag, rtag; // 左、右线索标志
 } ThreadNode, *ThreadTree;
+void visit(ThreadNode *p) {}
 
 // 中序遍历对二叉树进行线索化
 void InOrderThread(ThreadTree &p, ThreadTree &pre) {
   if (p != NULL) {
     InOrderThread(p->lchild, pre);
     if (p->lchild == NULL) {
-      p->lchild = pre;
+      p->lchild = pre; // 建立当前结点的前驱线索
       p->ltag = 1;
     }
     if (pre != NULL && pre->rchild == NULL) {
-      pre->rchild = p;
+      pre->rchild = p; // 建立前驱结点的后继线索
       pre->rtag = 1;
     }
     pre = p;
@@ -176,4 +175,18 @@ void CreateInOrderThread(ThreadTree T) {
     pre->rchild = NULL;
     pre->rtag = 1;
   }
+}
+
+// 遍历中序线索二叉树
+ThreadNode *FirstNode(ThreadNode *p) {
+  while (p->ltag != 1) p = p->lchild;
+  return p;
+}
+ThreadNode *NextNode(ThreadNode *p) {
+  if (p->rtag == 0) return FirstNode(p->rchild);
+  else return p->rchild;
+}
+void InOrderThreadTraverse(ThreadTree T) {
+  for (ThreadNode *p = FirstNode(T); p != NULL; p = NextNode(p))
+    visit(p);
 }
