@@ -101,46 +101,75 @@ export default function Chapter2() {
           于是 <Latex>{`$0 \\le 1+k-2 \\lt m$`}</Latex>, 得结点j的父节点编号 <Latex>{`$=\\lfloor \\frac{j-2}{m} \\rfloor + 1 ~ (j > 1)$`}</Latex>. 结点j存在右兄弟结点, 
           即结点j不是其父节点的第<Latex>{`$m$`}</Latex>个子结点, 于是j满足: <Latex>{`$(j-1)\\%m\\ne 0$`}</Latex>, 其右兄弟结点编号自然为j+1.
         </div>
+      </details>
 
-        <h3 className="text-2xl">二叉树遍历与线索二叉树</h3>
-        <p>
-          二叉树遍历: 前序遍历(NLR), 中序遍历(LNR), 后序遍历(LRN). <br />
-          <span className="text-[#005cc5]">无右子树(去掉R) <Latex>{`$\\Leftrightarrow$`}</Latex> 中序和后序遍历序列相同, 无左子树(去掉L) <Latex>{`$\\Leftrightarrow$`}</Latex> 中序和前序遍历序列相同.</span> <br />
-          以上三种遍历算法递归遍历左、右子树顺序相同, 只是访问根节点顺序不同, 每个结点都只访问一次, 时间复杂度均为O(n). <br />
-          <span className="text-[#005cc5]">画图法快速确定三种遍历序列: </span>画出二叉树链式结构图, 从根节点左侧开始, 用曲线逆时针围绕二叉树结构图外侧描线(至根节点右侧), 曲线分别经过各结点左侧、下侧、右侧;
-            先序遍历时经过结点左侧时输出结点信息, 中序遍历时经过结点下侧时输出结点信息, 后序遍历时经过结点右侧时输出结点信息. <br />
-            <span className="text-[#005cc5]">中序遍历也相当于从左往右按列序遍历</span>, 起始结点是最左节点, 终止结点是最右节点; 前序遍历起始结点是根节点, 终止结点是<span className="text-[#005cc5]">最右叶子节点</span>; 
-            后序遍历起始结点是<span className="text-[#005cc5]">最左叶子节点</span>, 终止结点是根节点. 由于三种遍历顺序都是先访问左子树后访问右子树, <span className="text-[#005cc5]">由此可知三种遍历序列中对于同一层的结点访问顺序都相同, 
-            均为从左至右访问. 如果两个结点之间不是祖孙关系则两个结点必然分别位于某一结点的左右子树上, 在三种遍历顺序中的二者访问顺序都相同; 所以如果两个结点在两种遍历顺序中的访问顺序相反, 则两个结点之间一定为祖孙关系.</span> <br />
-          遍历算法描述: <br />
-          {Img({src: "Images/408/DataStructure/遍历二叉树.png", width: 560, align: "left", className: "m-0 mb-1"})}
-          <span className="text-[1.05rem] text-[#005cc5]">注: </span>
-          按后序非递归遍历二叉树, 访问一个结点p时, 栈中的结点恰好是结点p的所有祖先结点序列. (先序和中序应该也可以, 只需要判断是否从右子结点返回从而判断子树是否全部访问)
-        </p>
-        <p>
-          中序遍历序列 + 先序|后序|层序遍历序列 可以唯一确定(构造)一棵二叉树. <br />
-          先序|后序|层序遍历序列都能确定第一个根节点, 但后续结点位于左子树还是右子树都要结合中序遍历序列才能确定. <br />
-          另一个遍历序列能将中序遍历序列划分为左右子树, 但左右子树的顺序可能不满足另一个遍历序列, 所以不是任意中序序列都能与另一遍历序列唯一确定一棵二叉树. <br />
-        </p>          
-        <p>
-          线索二叉树: 含n个结点的二叉树中, 有n+1个空指针域, 利用这些空指针域来存放指向其前驱或后继, 这样就能想遍历单链表一样方便的遍历二叉树.
-          二叉树结点结构如下: <br />
-          {Img({src: "Images/408/DataStructure/线索二叉树结构.png", width: 400, align: "left", className: "m-0 mb-1"})}
-          以中序遍历为例, 构造线索二叉树算法如下: <br />
-          {Img({src: "Images/408/DataStructure/构造中序线索二叉树.png", width: 600, align: "left", className: "m-0 mb-1"})}
-          建立先序线索二叉树和建立后序线索二叉树的算法类似, 只需变动调用线索化左右子树递归函数的位置即可. <br />
-          <div className="h-2"></div>
-          对于中序线索二叉树的结点, 其左子树不为空则其前驱为其左子树的最右结点, 其右子树不为空则其后继为其右子树的最左结点. <br />
-          所以中序线索二叉树的优点是每一个节点都能沿指针找到其前驱和后继. 遍历中序线索二叉树算法如下: <br />
-          {Img({src: "Images/408/DataStructure/遍历中序线索二叉树.png", width: 720, align: "left", className: "m-0 mb-1"})}
-          而对于先序和后序线索二叉树, 结点的先序前驱结点和后序后继结点可能是其父节点或位于其兄弟子树上, 不能直接通过链域找到.(说明后序线索树正向遍历和先序线索树逆向遍历仍需要栈的支持) <br />
-          <div className="h-2"></div>
-          带头结点的中序线索二叉树: 方便从前往后或从后往前对二叉树进行遍历, 如图:  
-          {Img({src: "Images/408/DataStructure/带头结点的中序线索二叉树.png", width: 500, align: "left", className: "m-0 mb-1"})}
-        </p>
-        <blockquote>
-          二叉树是逻辑结构, 线索二叉树是物理结构. <br />
-        </blockquote>
+      <h3 className="text-2xl">二叉树遍历与线索二叉树</h3>
+      <p>
+        二叉树遍历: 前序遍历(NLR), 中序遍历(LNR), 后序遍历(LRN). <br />
+        <span className="text-[#005cc5]">无右子树(去掉R) <Latex>{`$\\Leftrightarrow$`}</Latex> 中序和后序遍历序列相同, 无左子树(去掉L) <Latex>{`$\\Leftrightarrow$`}</Latex> 中序和前序遍历序列相同.</span> <br />
+        以上三种遍历算法递归遍历左、右子树顺序相同, 只是访问根节点顺序不同, 每个结点都只访问一次, 时间复杂度均为O(n). <br />
+        <span className="text-[#005cc5]">画图法快速确定三种遍历序列: </span>画出二叉树链式结构图, 从根节点左侧开始, 用曲线逆时针围绕二叉树结构图外侧描线(至根节点右侧), 曲线分别经过各结点左侧、下侧、右侧;
+          先序遍历时经过结点左侧时输出结点信息, 中序遍历时经过结点下侧时输出结点信息, 后序遍历时经过结点右侧时输出结点信息. <br />
+          <span className="text-[#005cc5]">中序遍历也相当于从左往右按列序遍历</span>, 起始结点是最左节点, 终止结点是最右节点; 前序遍历起始结点是根节点, 终止结点是<span className="text-[#005cc5]">最右叶子节点</span>; 
+          后序遍历起始结点是<span className="text-[#005cc5]">最左叶子节点</span>, 终止结点是根节点. 由于三种遍历顺序都是先访问左子树后访问右子树, <span className="text-[#005cc5]">由此可知三种遍历序列中对于同一层的结点访问顺序都相同, 
+          均为从左至右访问. 如果两个结点之间不是祖孙关系则两个结点必然分别位于某一结点的左右子树上, 在三种遍历顺序中的二者访问顺序都相同; 所以如果两个结点在两种遍历顺序中的访问顺序相反, 则两个结点之间一定为祖孙关系, 且可以根据序列可以判断子孙节点在哪个子树上.</span> <br />
+        遍历算法描述: <br />
+        {Img({src: "Images/408/DataStructure/遍历二叉树.png", width: 560, align: "left", className: "m-0 mb-1"})}
+        <span className="text-[1.05rem] text-[#005cc5]">注: </span>
+        按后序非递归遍历二叉树, 访问一个结点p时, 栈中的结点恰好是结点p的所有祖先结点序列. (先序和中序应该也可以, 只需要判断是否从右子结点返回从而判断子树是否全部访问)
+      </p>
+      <p>
+        中序遍历序列 + 先序|后序|层序遍历序列 可以唯一确定(构造)一棵二叉树. <br />
+        先序|后序|层序遍历序列都能确定第一个根节点, 但后续结点位于左子树还是右子树都要结合中序遍历序列才能确定. <br />
+        另一个遍历序列能将中序遍历序列划分为左右子树, 但左右子树的顺序可能不满足另一个遍历序列, 所以不是任意中序序列都能与另一遍历序列唯一确定一棵二叉树. <br />
+      </p>          
+      <blockquote>
+        前序序列和中序序列的关系相当于以前序序列为入栈次序，以中序序列为出栈次序. <br />
+      </blockquote>
+      <p>
+        线索二叉树: 含n个结点的二叉树中, 有n+1个空指针域, 利用这些空指针域来存放指向其前驱或后继, 这样就能想遍历单链表一样方便的遍历二叉树.
+        二叉树结点结构如下: <br />
+        {Img({src: "Images/408/DataStructure/线索二叉树结构.png", width: 400, align: "left", className: "m-0 mb-1"})}
+        以中序遍历为例, 构造线索二叉树算法如下: <br />
+        {Img({src: "Images/408/DataStructure/构造中序线索二叉树.png", width: 600, align: "left", className: "m-0 mb-1"})}
+        建立先序线索二叉树和建立后序线索二叉树的算法类似, 只需变动调用线索化左右子树递归函数的位置即可. <br />
+        <div className="h-2"></div>
+        对于中序线索二叉树的结点, 其左子树不为空则其前驱为其左子树的最右结点, 其右子树不为空则其后继为其右子树的最左结点. <br />
+        所以中序线索二叉树的优点是每一个节点都能沿指针找到其前驱和后继. 遍历中序线索二叉树算法如下: <br />
+        {Img({src: "Images/408/DataStructure/遍历中序线索二叉树.png", width: 720, align: "left", className: "m-0 mb-1"})}
+        而对于先序和后序线索二叉树, 结点的先序前驱结点和后序后继结点可能是其父节点或位于其兄弟子树上, 不能直接通过链域找到.(说明后序线索树正向遍历和先序线索树逆向遍历仍需要栈的支持) <br />
+        <div className="h-2"></div>
+        带头结点的中序线索二叉树: 方便从前往后或从后往前对二叉树进行遍历, 如图:  
+        {Img({src: "Images/408/DataStructure/带头结点的中序线索二叉树.png", width: 500, align: "left", className: "m-0 mb-1"})}
+      </p>
+      <blockquote>
+        二叉树是逻辑结构, 线索二叉树是物理结构. <br />
+      </blockquote>
+      <details open>
+        <summary className="cursor-pointer w-fit font-bold text-lg">例题</summary>
+        <div className="pl-6">
+          {Img({src: "Images/408/DataStructure/Exercises/5_3_1to2.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_3_17.png", width: 660, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_3_21.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_3_26to27.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_3_31to32.png", width: 650, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_3_35to36.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_3_39.png", width: 600, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_3_41to42.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          答案: C C D C D <Space width={1} /> D C B C A <Space width={1} /> B B B
+          {Img({src: "Images/408/DataStructure/Exercises/5_3_01to02.png", width: 670, align: "left", className: "m-0 mt-1"})}
+          答案: <br />
+          1. 先序序列与后序序列相反即与后序序列的逆序相同, 即对于树中任意一个结点满足 NLR=NRL, 所以任意一个结点的L或R都有一个为空, 于是每一层只会有一个结点, 该二叉树的形态是高度等于结点个数. <br />
+          2. 先序序列与后序序列相同, 即对于树中任意一个结点满足 NLR=LRN, 于是L和R均为空, 该二叉树只有一个根节点. <br />
+          {Img({src: "Images/408/DataStructure/Exercises/5_3_017.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          答案: <br />
+          {Img({src: "Images/408/DataStructure/Exercises/Solve_5_3_017.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/Solve_5_3_017_2.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          (注: 以上算法未考虑度为1的结点, 但该边界条件不是此题给分点)
+          {Img({src: "Images/408/DataStructure/Exercises/5_3_018.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          答案: <br />
+          {Img({src: "Images/408/DataStructure/Exercises/Solve_5_3_018.png", width: 600, align: "left", className: "m-0 mt-1"})}
+        </div>
       </details>
     </div>
   )

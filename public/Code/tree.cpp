@@ -190,3 +190,21 @@ void InOrderThreadTraverse(ThreadTree T) {
   for (ThreadNode *p = FirstNode(T); p != NULL; p = NextNode(p))
     visit(p);
 }
+
+typedef struct BTreeNode {
+  char data[10];
+  BTreeNode *lchild, *rchild;
+} BTree;
+void BTreeToExp(BTree *root, int depth) {
+  if (root == NULL) return;
+  if (root->lchild == NULL && root->rchild == NULL)
+    printf("%s", root->data);
+  else {
+    if (depth > 1) printf("(");
+    BTreeToExp(root->lchild, depth + 1);
+    printf("%s", root->data);
+    BTreeToExp(root->rchild, depth + 1);
+    if (depth > 1) printf(")");
+  }
+}
+// 初始: BTreeToExp(root, 1);
