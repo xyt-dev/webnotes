@@ -208,3 +208,19 @@ void BTreeToExp(BTree *root, int depth) {
   }
 }
 // 初始: BTreeToExp(root, 1);
+
+# define MAX_TREE_SIZE 100
+typedef struct {
+  ElemType data[MAX_TREE_SIZE];
+  int parent;
+} PTNode;
+typedef struct {
+  PTNode nodes[MAX_TREE_SIZE];
+  int n; // 当前节点数
+} PTree;
+
+typedef struct CSNode {
+  ElemType data;
+  struct CSNode *firstchild;  // 指向第一个孩子节点
+  struct CSNode *nextsibling; // 指向其右边第一个兄弟节点
+} CSNode, *CSTree;

@@ -164,13 +164,43 @@ export default function Chapter2() {
           {Img({src: "Images/408/DataStructure/Exercises/5_3_017.png", width: 700, align: "left", className: "m-0 mt-1"})}
           答案: <br />
           {Img({src: "Images/408/DataStructure/Exercises/Solve_5_3_017.png", width: 700, align: "left", className: "m-0 mt-1"})}
-          {Img({src: "Images/408/DataStructure/Exercises/Solve_5_3_017_2.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/Solve_5_3_017_2.png", width: 600, align: "left", className: "m-0 mt-1"})}
           (注: 以上算法未考虑度为1的结点, 但该边界条件不是此题给分点)
           {Img({src: "Images/408/DataStructure/Exercises/5_3_018.png", width: 700, align: "left", className: "m-0 mt-1"})}
           答案: <br />
           {Img({src: "Images/408/DataStructure/Exercises/Solve_5_3_018.png", width: 600, align: "left", className: "m-0 mt-1"})}
         </div>
       </details>
+
+      <h3 className="text-2xl">树、森林</h3>
+      <p>
+        树的双亲表示法: 一般使用顺序存储.
+        {Img({src: "Images/408/DataStructure/树的双亲表示法.png", width: 430, align: "left", className: "m-0"})}
+        可以O(1)找到每个结点的双亲结点, 但找子节点需要O(n)遍历. <br />
+        <div className="h-2"></div>
+        树的孩子表示法: 使用n个单链表存放n个结点的孩子节点, 单链表的头指针一般用数组存放. <br />
+        {Img({src: "Images/408/DataStructure/树的孩子表示法.png", width: 400, align: "left", className: "m-0"})}
+        可以O(k)(k为度数)找到对应孩子结点, 但找双亲节点需要O(n)遍历. <br />
+        <div className="h-2"></div>
+        树的孩子兄弟表示法: 又称二叉树表示法, 使用二叉链表作为树的存储结构. <br />
+        {Img({src: "Images/408/DataStructure/树的孩子兄弟表示法.png", width: 600, align: "left", className: "m-0"})}
+        表示更加灵活, 便于实现树转换为二叉树的操作.(还可以给每个结点增加一个父节点指针) <br />
+      </p>
+      <p>
+        树转换为二叉树: 每个结点的左指针指向其第一个孩子结点, 右指针指向其在树中的相邻右兄弟结点.(根节点没有右子树)(逆向操作可将二叉树转换为树) <br />
+        森林转换为二叉树: 现将每棵树转换为二叉树, 再将所有二叉树的根节点视为兄弟结点用右链域连接起来.(第一棵树的根节点成为所有树的根节点) <br />
+        二叉树转换为森林: 断开二叉树根节点的右链域, 直到所有二叉树根节点都没有右子树. <br />
+        于是树、二叉树、森林可相互转换: <br />
+        {Img({src: "Images/408/DataStructure/树二叉树森林.png", width: 600, align: "left", className: "m-0"})}
+      </p>
+      <p>
+        树的遍历: <br />
+        先根遍历: 与对应二叉树的先序遍历相同. (类似二叉树的先序遍历) <br />
+        后根遍历: 与对应二叉树的<strong>中序</strong>遍历相同. (类似二叉树的<strong>后序</strong>遍历) <br />
+        森林的遍历: <br />
+        先序遍历森林: 与对应二叉树的先序遍历相同. <br />
+        中序遍历森林: 与对应二叉树的中序遍历相同.(每棵树的根都是最后访问, 所以也可以理解为后根遍历) <br />
+      </p>
     </div>
   )
 }
