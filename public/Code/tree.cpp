@@ -211,7 +211,7 @@ void BTreeToExp(BTree *root, int depth) {
 
 # define MAX_TREE_SIZE 100
 typedef struct {
-  ElemType data[MAX_TREE_SIZE];
+  ElemType data;
   int parent;
 } PTNode;
 typedef struct {

@@ -175,7 +175,7 @@ export default function Chapter2() {
       <h3 className="text-2xl">树、森林</h3>
       <p>
         树的双亲表示法: 一般使用顺序存储.
-        {Img({src: "Images/408/DataStructure/树的双亲表示法.png", width: 430, align: "left", className: "m-0"})}
+        {Img({src: "Images/408/DataStructure/树的双亲表示法.png", width: 400, align: "left", className: "m-0"})}
         可以O(1)找到每个结点的双亲结点, 但找子节点需要O(n)遍历. <br />
         <div className="h-2"></div>
         树的孩子表示法: 使用n个单链表存放n个结点的孩子节点, 单链表的头指针一般用数组存放. <br />
@@ -190,7 +190,7 @@ export default function Chapter2() {
         树转换为二叉树: 每个结点的左指针指向其第一个孩子结点, 右指针指向其在树中的相邻右兄弟结点.(根节点没有右子树)(逆向操作可将二叉树转换为树) <br />
         森林转换为二叉树: 现将每棵树转换为二叉树, 再将所有二叉树的根节点视为兄弟结点用右链域连接起来.(第一棵树的根节点成为所有树的根节点) <br />
         二叉树转换为森林: 断开二叉树根节点的右链域, 直到所有二叉树根节点都没有右子树. <br />
-        于是树、二叉树、森林可相互转换: <br />
+        于是树的森林、二叉树的森林、二叉树可相互转换: <br />
         {Img({src: "Images/408/DataStructure/树二叉树森林.png", width: 600, align: "left", className: "m-0"})}
       </p>
       <p>
@@ -200,7 +200,89 @@ export default function Chapter2() {
         森林的遍历: <br />
         先序遍历森林: 与对应二叉树的先序遍历相同. <br />
         中序遍历森林: 与对应二叉树的中序遍历相同.(每棵树的根都是最后访问, 所以也可以理解为后根遍历) <br />
+        所以 树的先根遍历序列+树的后根遍历序列/森林的先序遍历序列+森林的中序遍历序列 可以唯一确定 一棵树/一个森林. <br />
       </p>
+      <p className="text-[#001080]">
+        "将一棵树转换为二叉树"其实就是用孩子兄弟表示法表示这棵树. 孩子兄弟表示法中, <br />
+        空的左指针域个数 = 树的叶子结点个数; (左指针域为空说明该节点没有子树) <br />
+        空的右指针域个数 = 非叶子结点个数 + 1. (每个非叶子结点的最右孩子的右指针域都为空, 且根节点没有右兄弟)<br />
+      </p>
+      <details open>
+        <summary className="cursor-pointer w-fit font-bold text-lg">例题</summary>
+        <div className="pl-6">
+          {Img({src: "Images/408/DataStructure/Exercises/5_4_1.png", width: 600, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_4_8to10.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_4_13to15.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_4_18.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          答案: D C B B B <Space width={1} /> B D C
+          {Img({src: "Images/408/DataStructure/Exercises/5_4_05.png", width: 560, align: "left", className: "m-0 mt-1"})}
+          答案: 
+          {Img({src: "Images/408/DataStructure/Exercises/Solve_5_4_05.png", width: 700, align: "left", className: "m-0 mt-1"})}
+        </div>
+      </details>
+
+      <h3 className="text-2xl">哈夫曼树</h3>
+      <p>
+        路径长度: 路径上的边数; <br />
+        结点的带权路径长度: 从树根到一个结点的路径长度 <Latex>{`$\\boldsymbol{\\cdot}$`}</Latex> 该节点上的权值; <br />
+        树的带权路径长度(WPL): 树中所有叶子结点的带权路径长度之和. <br />
+        (令分支结点的权值为其子树根节点的权值之和, 则 WPL = 所有分支节点的权值之和) <br />
+        哈夫曼树: WPL最小的二叉树, 又称最优二叉树. <br />
+      </p>
+      <p>
+        给定ｎ个权值为别为 w1,w2,...,wn 的结点, 构造一棵哈夫曼树:<br />
+        1) 这ｎ个结点分别作为ｎ棵仅含一个结点的二叉树，构成森林Ｆ. <br />
+        2) 构造一个新结点，从Ｆ中选取两棵根结点权值最小的树作为新结点的左、右子树，新结点的权值为左、右子树上根结点的权值之和. <br />
+        3) Ｆ中删除刚才选出的两棵树，同时将新得到的树加入Ｆ中. <br />
+        4) 重复步骤(2)、(3), 直到Ｆ中只剩下一棵树为止. <br />
+        <div className="h-1" />
+        从上述构造过程中可以看出哈夫曼树具有如下<strong>特点：</strong> <br />
+        １）每个初始结点都作为叶结点，且权值越小的结点到根结点的路径长度越长. <br />
+        ２）每次构造都选择２棵树作为新结点的孩子，因此哈夫曼树中不存在度为１的结点. <br />
+        ３）构造过程中共新建了ｎ－１个结点(<Latex>{`$n_2=n_0-1$`}</Latex>)，因此哈夫曼树的结点总数为２ｎ－１.
+      </p>
+      <p>
+        哈夫曼编码: <br />
+        哈夫曼树中一般约定结点的左分支表示0、右分支表示1, 使用从根到叶子结点路径上的分支标记组成的序列作为叶子结点的编码, 此方式称为哈夫曼编码. 这显然符合<span className="text-[#005cc5]">前缀码没有一个编码是其他编码的前缀</span>的条件.<br />
+      </p>
+      <p>
+        一个度为2的含有n个叶子结点的哈夫曼树高度范围是<Latex>{`$[\\lceil\\log_2n\\rceil, n]$`}</Latex>. <br />
+      </p>
+      <blockquote>
+        由于构造过程中两个树的左右位置不固定, 且可能有多个根结点权值相同, 因此哈夫曼树的构造不是唯一的; 但WPL一定是唯一的. <br />
+        对字符使用哈夫曼编码, 将字符的出现频度作为其结点权值, 则其对应哈夫曼树的WPL为所有字符的二进制编码的长度. <br />
+        <span className="text-[#001080]">度为m的哈夫曼树就是正则m叉树.</span> <br />
+      </blockquote>
+
+      <h3 className="text-2xl">并查集</h3>
+      <p>
+        通常使用树的双亲表示法(数组顺序存储). 初始化时每个元素自成一个单元素集合, 每个集合用一棵树表示, 所有表示集合的树构成表示全集合的森林.
+        要得到两个集合的并集, 只需让其中一个集合的根结点指向另一个集合的根结点. <br />
+      </p>
+      <p>
+        并查集的实现: <br />
+        {Img({src: "Images/408/DataStructure/并查集的实现.png", width: 630, align: "left", className: "m-0"})}
+        (经过该优化的实现, 集合树的高度平均不超过O(a(n)), 最大不超过O(<Latex>{`$\\log_2n$`}</Latex>). 其中a(n)是一个增长极其缓慢的函数(通常<Latex>{`$\\le 4$`}</Latex>)) <br />
+      </p>
+      <blockquote>
+        <span className="text-[#001080]">并查集可以检测图中的环路和图的连通性.</span> <br />
+      </blockquote>
+
+      <details open>
+        <summary className="cursor-pointer w-fit font-bold text-lg">例题</summary>
+        <div className="pl-6">
+          {Img({src: "Images/408/DataStructure/Exercises/5_5_4to6.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_5_9.png", width: 600, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_5_12.png", width: 650, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_5_16.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_5_18.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/5_5_21to22.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          答案: C B C C D <Space width={1} /> D A D B
+          {Img({src: "Images/408/DataStructure/Exercises/5_5_03.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          答案:
+          {Img({src: "Images/408/DataStructure/Exercises/Solve_5_5_03.png", width: 700, align: "left", className: "m-0"})}
+        </div>
+      </details>
     </div>
   )
 }
