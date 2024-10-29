@@ -76,7 +76,7 @@ export default function Chapter6() {
         </div>
       </details>
 
-      <h3 className="text-2xl">图的存储及基本操作</h3>
+      <h3 className="text-2xl">图的存储</h3>
       <p>
         <span className="text-lg">邻接矩阵法</span>
         {Img({src: "Images/408/DataStructure/邻接矩阵结构.png", width: 500, align: "left", className: "m-0 mt-1"})}
@@ -85,9 +85,13 @@ export default function Chapter6() {
         <div className="h-2" />
         邻接矩阵空间复杂度为O(|V|^2), 适合存放稠密图. <br />
         无向图的邻接矩阵一定是对称矩阵, 可以使用压缩存储存放上(或下)三角矩阵. 其第j行(或第j列)中非零元素个数是顶点j的度. <br />
-        有向图第j行中非零(非<Latex>{`$\\infty$`}</Latex>)元素个数是顶点j的出度, 第j列中非零(非<Latex>{`$\\infty$`}</Latex>)元素个数是顶点j的入度. 所以遍历顶点所有边需要O(|V|). <br />
+        有向图第j行中非零且非<Latex>{`$\\infty$`}</Latex>元素个数是顶点j的出度, 第j列中非零且非<Latex>{`$\\infty$`}</Latex>元素个数是顶点j的入度. 所以遍历顶点所有边需要O(|V|). <br />
         邻接矩阵查找两个顶点的边, 时间复杂度为O(1), 适合查找操作; 遍历图中每条边需要遍历整个矩阵, 时间复杂度为O(|V|^2), 不适合遍历操作. <br />
-        (<Latex>{`$A^n[j][k]$`}</Latex>是顶点j到顶点k长度为n的路径数目(非重点))
+        <blockquote className="mt-3 mb-3 text-[#001080] border-l-blue-700">
+          <Latex>{`$A^n[j][k]$`}</Latex>是顶点j到顶点k长度为n的路径数目. <br />
+          <div className="h-2" />
+          若邻接矩阵对角线及其以下(或以上)的元素全为0, 则图中一定不存在环路, 拓扑序列一定存在. <br />
+        </blockquote>
       </p>
       <p>
         <span className="text-lg">邻接表法</span>
@@ -96,9 +100,58 @@ export default function Chapter6() {
         (邻接表表示不唯一, 即同一顶点的各边结点链接次序任意)
         <div className="h-2" />
         G为无向图, 则所需的存储空间为O(|V|+2|E|)(每条边在邻接表中对称出现两次); G为有向图, 则所需的存储空间为O(|V|+|E|). 适合存放稀疏图. <br />
-        邻接表遍历图中每条边需要O(|V|+|E|), 一般比邻接矩阵快, 更适合遍历操作. 查找两个顶点的边所需时间最大为O(|V|), 不适合查找操作. <br />
-        对于有向图, 邻接表遍历一个顶点的出度只需要遍历其边表, 时间复杂度最大为O(|V|) (无向图同理); 而遍历一个顶点的入度需要遍历整个邻接表, 时间复杂度为O(|V|+|E|). <br />
+        邻接表遍历图中每条边需要O(|V|+|E|)或O(|V|+2|E|), 一般比邻接矩阵快, 更适合遍历操作. 查找两个顶点的边所需时间最大为O(|V|), 不适合查找操作. <br />
+        对于有向图, 邻接表遍历一个顶点的出度只需要遍历其边表, 时间复杂度最大为O(|V|) (无向图同理); 而遍历一个顶点的入度需要遍历整个邻接表, 时间复杂度为O(|V|+|E|). 
+        <span className="mt-2 mb-3 text-[#001080] border-l-blue-700 italic"> (删出边O(|V|), 删入边O(|V|+|E|))</span>
       </p>
+      <p>
+        <span className="text-lg">十字链表法</span> <br />
+        为了能够同时快速找到有向图顶点的出边和入边, 可使用十字链表法存储有向图. <br />
+        有向图的每个顶点和每条弧分别用一个顶点结点和一个弧结点来表示: 
+        {Img({src: "Images/408/DataStructure/十字链表结点结构.png", width: 700, align: "left", className: "m-0"})}
+        tailvex: 弧尾编号; headvex: 弧头编号; hlink: 指向弧头相同的下一个结点; <br />tlink: 指向弧尾相同的下一个结点; info: 弧的相关信息. <br />
+        data: 顶点相关信息; firstin: 指向以该顶点为弧头的第一个节点; firstout: 指向以该顶点为弧尾的第一个结点. <br />
+        <div className="h-2" />
+        其中各顶点结点使用顺序存储, 各弧结点使用链式存储. 插入弧结点时, 根据弧结点的 tailvex 和 headvex 分别找到其弧尾所在顶点结点和弧头所在顶点结点, 然后同时将该弧结点插入(头插法) tailvex 结点的 firstout 链表和 headvex 结点的 firstin 链表. <br />
+        十字链表结构示例:
+        {Img({src: "Images/408/DataStructure/十字链表结构.png", width: 700, align: "left", className: "m-0"})}
+        可知: 图中同一行弧结点弧尾相同(同一顶点出边), 同一列弧结点弧头相同(同一顶点入边). <br />
+        有向图的十字链表表示不唯一, 但如果令同一行弧结点按<Latex>{`$headvex$`}</Latex>的顺序排列, 则弧结点<Latex>{`($m$行, $n$列)是从顶点$V_m$指向顶点$V_n$的弧结点.`}</Latex> <br />
+      </p>
+      <p>
+        <span className="text-lg">邻接多重表法</span> <br />
+        使用邻接表存放无向图时, 插入和删除边等操作都需要操作两个链表. 为了让一条边只需存放于一个结点中, 可使用邻接多重表法. <br />
+        其中每个顶点和每条边分别用一个顶点结点和一个边结点来表示 
+        {Img({src: "Images/408/DataStructure/邻接多重表顶点结点结构.png", width: 400, align: "left", className: "m-0"})}
+        data: 顶点相关信息; firstedge: 指向第一条依附于该顶点的边结点.
+        {Img({src: "Images/408/DataStructure/邻接多重表边结点结构.png", width: 620, align: "left", className: "m-0"})}
+        ivex/jvex: 该边连接的两个顶点编号; info: 边的相关信息. <br />
+        ilink: 指向下一条依附于顶点ivex的边结点; jlink: 指向下一条依附于顶点jvex的边结点. <br />
+        <div className="h-2" />
+        与十字链表法类似, 邻接多重表中各顶点结点使用顺序存储, 各边结点使用链式存储. 插入边结点时, 根据边结点的 ivex 和 jvex 找到其连接的两个顶点结点, 然后同时将该边结点插入(头插法) ivex 结点的 firstedge 链表和 jvex 结点的 firstedge 链表. <br />
+      </p>
+      <p>
+        <div className="h-2" />
+        {Img({src: "Images/408/DataStructure/图的四种存储方式总结.png", width: 900, align: "left", className: "m-0"})}
+      </p>
+      <details open>
+        <summary className="cursor-pointer w-fit font-bold text-lg">例题</summary>
+        <div className="pl-6">
+          {Img({src: "Images/408/DataStructure/Exercises/6_2_1to2.png", width: 720, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/6_2_11to12.png", width: 650, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/6_2_14.png", width: 720, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/6_2_18.png", width: 650, align: "left", className: "m-0 mt-1"})}
+          答案: B C C B C C
+          <hr className="m-3 ml-[-6px]" />
+          {Img({src: "Images/408/DataStructure/Exercises/6_2_05.png", width: 460, align: "left", className: "m-0 mt-1"})}
+          答案: 
+          {Img({src: "Images/408/DataStructure/Exercises/Solve_6_2_05.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          <hr className="m-3 ml-[-6px]" />
+          {Img({src: "Images/408/DataStructure/Exercises/6_2_07.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          答案: 
+          {Img({src: "Images/408/DataStructure/Exercises/Solve_6_2_07.png", width: 700, align: "left", className: "m-0 mt-1"})}
+        </div>
+      </details>
     </div>
   )
 }
