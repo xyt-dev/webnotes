@@ -9,7 +9,7 @@ function Img({src, width, align}: { src: string, width?: number, align?: string 
   ) 
 }
 
-export default function Chapter2() {
+export default function Chapter4() {
   return (
     <div className="prose daisy-prose p-6 max-w-[1300px]">
       <h2 className="text-3xl">字符串</h2>

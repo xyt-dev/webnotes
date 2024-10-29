@@ -15,7 +15,7 @@ function Indent({n=2}: {n?:number}) {
   )
 }
 
-export default function Chapter2() {
+export default function Chapter5() {
   return (
     <div className="prose daisy-prose p-6 max-w-[1300px]">
       <h2 className="text-3xl">树</h2>

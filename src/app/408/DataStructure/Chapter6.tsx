@@ -1,0 +1,104 @@
+import Latex from "react-latex-next"
+import 'katex/dist/katex.min.css'; // 导入 KaTeX 样式
+import Space from "@/components/Space";
+
+function Img({ src, width, align, className }: { src: string, width?: number, align?: string, className?: string }) {
+  if (align !== "left") align = "mx-auto"
+  return (
+    <img className={`${className} ${align} `} src={src} alt="image" width={width} />
+  )
+}
+
+function Indent({ n = 2 }: { n?: number }) {
+  return (
+    <span style={{ display: 'inline-block', height: '1rem', width: `${n}rem` }} />
+  )
+}
+
+export default function Chapter6() {
+  return (
+    <div className="prose daisy-prose p-6 max-w-[1300px]">
+      <h2 className="text-3xl">图</h2>
+      <h3 className="text-2xl">基本概念</h3>
+      <p className="leading-normal">
+        有向图(弧)、无向图(边). <strong>[图的顶点集合不为空]</strong> <br />
+        <div className="h-2" />
+        简单图: 不存在重复边、不存在自环. <strong>(否则为多重图, 以下只讨论简单图)</strong> <br />
+        <div className="h-2" />
+        完全图: 又称简单完全图. <Latex>{`$|E|=\\frac{n(n-1)}{2}$`}</Latex> 的无向图称为完全图; <Latex>{`$|E|=n(n-1)$`}</Latex> 的有向图称为有向完全图. 完全图的任意两顶点间都存在一条边, 有向完全图的任意两顶点间都存在方向相反的两条弧. <br />
+        <div className="h-2" />
+        子图: 设有两个图G=(V,E)和G'=(V',E'), 其中V'是V的子集, E'是E的子集, 称G'为G的子图. 若满足 V(G')=V(G), 则称G'为G的生成子图.(不是V和E的任何子集都能构成子图, 因为E'中可能存在边的顶点不在V'中)<br />
+        <div className="h-2" />
+        连通、连通图、极大连通子图(连通分量): <strong>无向图</strong>中两个顶点间存在<strong>路径(顶点序列(序列中相邻的两顶点间有边连接))</strong>, 则称两顶点连通; 若图中任意两个顶点都连通则称此图为连通图; 包含尽可能多的顶点和边的连通子图称为极大连通子图, 也称为连通分量. <br />
+        <div className="h-2" />
+        强连通、强连通图、极大强连通子图(强连通分量): <strong>有向图</strong>中两个顶点间存在相互到达对方的路径(两个起点和终点位置相反的顶点序列), 则称两顶点强连通; 若图中任意两个顶点都强连通则称此图为强连通图; 包含尽可能多的顶点和弧的强连通子图称为极大强连通子图, 也称为强连通分量. <br />
+        <div className="h-2" />
+        极小(强)连通子图: 包含一个连通图所有顶点但只包含(强)连通这些顶点的尽可能少的边 的(强)连通子图称为极小(强)连通子图. 对于极小(强)连通子图, 减少任意一条边则会变为非连通图, 加上任意一条边则会形成一个回路(起点和终点相同的路径). 
+        <br />(极大(强)连通子图唯一, 极小(强)连通子图可能不唯一) <br />
+        <blockquote className="mt-3 mb-3">
+          对于含n个顶点的无向图F: 若 E(F) &lt; n-1 则一定不是连通图; 若 E(F) &gt; n-1 则 F 中一定有环路; 若 E(F) &ge; <Latex>{`$\\frac{(n-1)(n-2)}{2}+1$`}</Latex> 则一定为连通图. <br />
+        </blockquote>
+        生成树、生成森林 (无向图): 只有连通图才有生成树, 其等价于<strong>连通图</strong>的极小连通子图(若连通图的顶点数为n, 其生成树有且只有n-1条边); 图的所有连通分量的生成树构成图的生成森林.(若图的顶点数为n, 有k个连通分量, 则其生成森林含有n-k条边) <br />
+        <blockquote className="mt-3 mb-3">
+          非连通情况下边最多的情况: 由n-1个顶点构成一个完全图, 此时再加入一个顶点变成非连通图; 若非连通图中有|E|条边, 令 <Latex>{`$\\frac{n(n-1)}{2}=|E|$`}</Latex>, 则此非连通图至少有 <Latex>{`$\\lceil n\\rceil + 1$`}</Latex> 个顶点. <br />
+          <div className="h-2" />
+          有向图强连通情况下边最少的情况: 由n条弧构成构成一个环路. <br />
+        </blockquote>
+        无向图中顶点的度: 连接于顶点的边数, 记为TD(v). 无向图中顶点的度之和=2|E| (每条边连接两个顶点).(无向图中顶点的入度=出度)<br />
+        <div className="h-2" />
+        有向图中顶点的度: 分为入度和出度, 以顶点为终点/起点的弧数, 记为ID(v)和OD(v), TD(v)=ID(v)+OD(v). 有向图中所有入度之和=所有出度之和=|E|. (每条弧都以一个顶点为起点同时以另一个顶点为终点)<br />
+        <div className="h-2" />
+        带权图(网): 每条边(弧)都有权值.
+        <div className="h-2" />
+        稠密图、稀疏图: 边数很少的图称为稀疏图, 一般满足 |E| &lt; |V|log|V|; 反之称为稠密图. <br />
+        <div className="h-2" />
+        简单路径、简单回路: 顶点不重复出现的路径称为简单路径; 除第一个和最后一个顶点外，其余顶点不重复出现的回路称为简单回路.
+        <div className="h-2" />
+        距离: 两个顶点间的最短路径长度. (若两个顶点间不存在路径, 则记距离为<Latex>{`$\\infty$`}</Latex>)
+        <div className="h-2" />
+        有向树: 一个顶点的入度为0, 其余顶点的入度均为1的有向图称为有向树. <br />
+        <div className="h-2" />
+        图的遍历: 从图中的某一顶点出发, 访问图中所有顶点, 且每个顶点<strong>只访问一次</strong>. <br />
+        <blockquote>
+          图和树的区别是逻辑上的.
+        </blockquote>
+      </p>
+      <details open>
+        <summary className="cursor-pointer w-fit font-bold text-lg">例题</summary>
+        <div className="pl-6">
+          {Img({src: "Images/408/DataStructure/Exercises/6_1_2.png", width: 650, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/6_1_4.png", width: 680, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/6_1_6to11.png", width: 730, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/6_1_12.png", width: 560, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/6_1_13to15.png", width: 680, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/6_1_18.png", width: 730, align: "left", className: "m-0 mt-1"})}
+          答案: D C C A D <Space width={1} /> D D D C B <Space width={1} /> B C B
+        </div>
+      </details>
+
+      <h3 className="text-2xl">图的存储及基本操作</h3>
+      <p>
+        <span className="text-lg">邻接矩阵法</span>
+        {Img({src: "Images/408/DataStructure/邻接矩阵结构.png", width: 500, align: "left", className: "m-0 mt-1"})}
+        (在简单应用中, 顶点信息等均可忽略, 可直接用二维数组作为图的邻接矩阵) <br />
+        (如果EdgeType表示边是否存在, 使用1表示存在0表示不存在; 如果EdgeType表示边的权值, 一般用<Latex>{`$\\infty$`}</Latex>表示边不存在) <br />
+        <div className="h-2" />
+        邻接矩阵空间复杂度为O(|V|^2), 适合存放稠密图. <br />
+        无向图的邻接矩阵一定是对称矩阵, 可以使用压缩存储存放上(或下)三角矩阵. 其第j行(或第j列)中非零元素个数是顶点j的度. <br />
+        有向图第j行中非零(非<Latex>{`$\\infty$`}</Latex>)元素个数是顶点j的出度, 第j列中非零(非<Latex>{`$\\infty$`}</Latex>)元素个数是顶点j的入度. 所以遍历顶点所有边需要O(|V|). <br />
+        邻接矩阵查找两个顶点的边, 时间复杂度为O(1), 适合查找操作; 遍历图中每条边需要遍历整个矩阵, 时间复杂度为O(|V|^2), 不适合遍历操作. <br />
+        (<Latex>{`$A^n[j][k]$`}</Latex>是顶点j到顶点k长度为n的路径数目(非重点))
+      </p>
+      <p>
+        <span className="text-lg">邻接表法</span>
+        {Img({src: "Images/408/DataStructure/邻接表结构.png", width: 500, align: "left", className: "m-0 mt-1"})}
+        (顶点表存放所有顶点信息, 使用顺序存储; 边表存放一个顶点连接的所有边的信息, 使用链式存储) <br />
+        (邻接表表示不唯一, 即同一顶点的各边结点链接次序任意)
+        <div className="h-2" />
+        G为无向图, 则所需的存储空间为O(|V|+2|E|)(每条边在邻接表中对称出现两次); G为有向图, 则所需的存储空间为O(|V|+|E|). 适合存放稀疏图. <br />
+        邻接表遍历图中每条边需要O(|V|+|E|), 一般比邻接矩阵快, 更适合遍历操作. 查找两个顶点的边所需时间最大为O(|V|), 不适合查找操作. <br />
+        对于有向图, 邻接表遍历一个顶点的出度只需要遍历其边表, 时间复杂度最大为O(|V|) (无向图同理); 而遍历一个顶点的入度需要遍历整个邻接表, 时间复杂度为O(|V|+|E|). <br />
+      </p>
+    </div>
+  )
+}
