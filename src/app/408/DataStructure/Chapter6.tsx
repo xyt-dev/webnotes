@@ -152,6 +152,22 @@ export default function Chapter6() {
           {Img({src: "Images/408/DataStructure/Exercises/Solve_6_2_07.png", width: 700, align: "left", className: "m-0 mt-1"})}
         </div>
       </details>
+
+      <h3 className="text-2xl">图的遍历</h3>
+      <p>
+        广度优先遍历: <br />
+        {Img({src: "Images/408/DataStructure/图的BFS算法.png", width: 700, align: "left", className: "m-0"})}
+        <blockquote className="mt-3 mb-3">简述BFS过程: 入队第一个顶点同时访问; 顶点出队同时查找其邻接顶点, 所有邻接顶点入队同时被访问.</blockquote>
+        最大空间复杂度为(O|V|); <br />
+        采用邻接表存储时, 每个顶点至少入队一次, 每条边至少访问一次, 总时间复杂度为O(|V|+|E|); <br />
+        采用邻接矩阵存储时, 每个顶点至少入队一次, 查找每个顶点的邻接点都要遍历邻接矩阵的一行O(|V|), 总时间复杂度为<Latex>{`$O(|V|^2)$`}</Latex>. <br />
+        <div className="h-2" />
+        BFS计算单源最短路径长度: <br />
+        {Img({src: "Images/408/DataStructure/BFS单源最短路径长度.png", width: 760, align: "left", className: "m-0 mb-1"})}
+        <div className="h-2" />
+        广度优先生成树: <br />
+        在广度遍历的过程中, 可以得到一棵遍历树, 称为广度优先生成树. 需要注意的是, 同一个图的邻接矩阵存储表示是唯一的, 所以其广度优先生成树也是唯一的; 但邻接表的存储表示不唯一, 其广度优先生成树不唯一.
+      </p>
     </div>
   )
 }

@@ -37,9 +37,9 @@ bool IsEmpty(SqStack &S) {
 }
 bool IsEmpty(SqQueue &Q) {
   if (Q.front == Q.rear) {
-    return 0;
+    return true;
   }
-  return 1;
+  return false;
 }
 
 void EnQueue(SqQueue &Q, BiTree e) {
