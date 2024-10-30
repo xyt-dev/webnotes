@@ -32,6 +32,7 @@ export default function Chapter6() {
         连通、连通图、极大连通子图(连通分量): <strong>无向图</strong>中两个顶点间存在<strong>路径(顶点序列(序列中相邻的两顶点间有边连接))</strong>, 则称两顶点连通; 若图中任意两个顶点都连通则称此图为连通图; 包含尽可能多的顶点和边的连通子图称为极大连通子图, 也称为连通分量. <br />
         <div className="h-2" />
         强连通、强连通图、极大强连通子图(强连通分量): <strong>有向图</strong>中两个顶点间存在相互到达对方的路径(两个起点和终点位置相反的顶点序列), 则称两顶点强连通; 若图中任意两个顶点都强连通则称此图为强连通图; 包含尽可能多的顶点和弧的强连通子图称为极大强连通子图, 也称为强连通分量. <br />
+        <blockquote className="mt-3 mb-3">强连通图中任意两个顶点都存在与同一环路中. <br /></blockquote>
         <div className="h-2" />
         极小(强)连通子图: 包含一个连通图所有顶点但只包含(强)连通这些顶点的尽可能少的边 的(强)连通子图称为极小(强)连通子图. 对于极小(强)连通子图, 减少任意一条边则会变为非连通图, 加上任意一条边则会形成一个回路(起点和终点相同的路径). 
         <br />(极大(强)连通子图唯一, 极小(强)连通子图可能不唯一) <br />
@@ -158,16 +159,46 @@ export default function Chapter6() {
         广度优先遍历: <br />
         {Img({src: "Images/408/DataStructure/图的BFS算法.png", width: 700, align: "left", className: "m-0"})}
         <blockquote className="mt-3 mb-3">简述BFS过程: 入队第一个顶点同时访问; 顶点出队同时查找其邻接顶点, 所有邻接顶点入队同时被访问.</blockquote>
-        最大空间复杂度为(O|V|); <br />
+        <strong>最大空间复杂度为(O|V|); <br />
         采用邻接表存储时, 每个顶点至少入队一次, 每条边至少访问一次, 总时间复杂度为O(|V|+|E|); <br />
-        采用邻接矩阵存储时, 每个顶点至少入队一次, 查找每个顶点的邻接点都要遍历邻接矩阵的一行O(|V|), 总时间复杂度为<Latex>{`$O(|V|^2)$`}</Latex>. <br />
+        采用邻接矩阵存储时, 每个顶点至少入队一次, 查找每个顶点的邻接点都要遍历邻接矩阵的一行O(|V|), 总时间复杂度为<Latex>{`$O(|V|^2)$`}</Latex>. <br /></strong>
         <div className="h-2" />
         BFS计算单源最短路径长度: <br />
         {Img({src: "Images/408/DataStructure/BFS单源最短路径长度.png", width: 760, align: "left", className: "m-0 mb-1"})}
+        <blockquote className="mt-3 mb-3">BFS只适合求边权值相等的图的单源最短路径长度.</blockquote>
         <div className="h-2" />
         广度优先生成树: <br />
-        在广度遍历的过程中, 可以得到一棵遍历树, 称为广度优先生成树. 需要注意的是, 同一个图的邻接矩阵存储表示是唯一的, 所以其广度优先生成树也是唯一的; 但邻接表的存储表示不唯一, 其广度优先生成树不唯一.
+        在广度遍历的过程中, 会得到一棵遍历树/森林, 称为广度优先生成树/广度优先生成森林. 需要注意的是, 同一个图的邻接矩阵存储表示是唯一的, 所以其广度优先生成树也是唯一的; 但邻接表的存储表示不唯一, 其广度优先生成树不唯一.
       </p>
+      <p>
+        深度优先遍历: <br />
+        {Img({src: "Images/408/DataStructure/图的DFS算法.png", width: 700, align: "left", className: "m-0"})}
+        深度优先遍历的<strong>空间和时间复杂度都与广度优先遍历相同</strong>, 只有对顶点的访问顺序不同. 深度优先遍历同样会得到深度优先生成树/生成森林, 且为先根遍历. (基于邻接表的生成树/生成森林同样不唯一) <br />
+      </p>
+      <blockquote className="mt-3 mb-3">对于连通的非强连通有向图, 一次遍历不一定能访问所有顶点(甚至一次遍历不可能访问到所有顶点). </blockquote>
+      <p className="text-[#001080]"> 
+        <span className="text-lg">判断环路:</span>
+        <div className="h-2"/>
+        对于存在环的一个连通无向图(一个连通分量), 从任意顶点出发, 一定能在DFS的一次搜索过程中检测到环. 注意要特别排除一条路径中下一个顶点指向上一个顶点的情况, 因为无向图中相邻顶点本来就相当于有向图的一个环. (BFS不方便判断第二次遇到的顶点是否为同一条路径中的上一个顶点) <br />
+        <div className="h-2"/>
+        对于不存在环的一个有向图, DFS的一次搜索过程中仍可以遇到访问过的顶点(汇聚点). <br /> 
+        除了visited数组外, 再用一个栈来记录同一条搜索路径中的前缀顶点; 如果从任意顶点v出发二次遇到同一条搜索路径中的顶点(已访问且未出栈的顶点), 则说明存在环路. <br />
+        可以证明, 对于一个有向图, 可以通过一次DFS算法(可以包含n次深度优先搜索过程)判断其是否存在环路. <br />
+      </p>
+      <details open>
+        <summary className="cursor-pointer w-fit font-bold text-lg">例题</summary>
+        <div className="pl-6">
+          {Img({src: "Images/408/DataStructure/Exercises/6_3_2.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          说法正确的是: 第三句.
+          {Img({src: "Images/408/DataStructure/Exercises/6_3_4.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/6_3_6.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          答案: C A C A A A
+          {Img({src: "Images/408/DataStructure/Exercises/6_3_10.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          {Img({src: "Images/408/DataStructure/Exercises/6_3_16to17.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          答案: A B D D
+          <hr className="m-3 ml-[-6px]" />
+        </div>
+      </details>
     </div>
   )
 }
