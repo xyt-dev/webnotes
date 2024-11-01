@@ -120,8 +120,9 @@ void BFSMinDistance(Graph G, int v) {
 }
 
 
+void DFS(MGraph G, int v);
 // DFS:
-bool visited[MaxVertexNum];
+// bool visited[MaxVertexNum];
 void DFSTraverse(Graph G) {
   for (int v = 0; v < G.vexnum; v++)
     visited[v] = false; // 标记所有顶点为未访问
@@ -132,7 +133,7 @@ void DFSTraverse(Graph G) {
 // 基于邻接表:
 void DFS(ALGraph G, int v) {
   visit(v); visited[v] = true;
-  for (ARcNode *p = G.vertices[j].firstarc; p; p = p->nextarc) {
+  for (ArcNode *p = G.vertices[v].firstarc; p; p = p->nextarc) {
     v = p->adjvex;
     if (!visited[v])
       DFS(G, v);

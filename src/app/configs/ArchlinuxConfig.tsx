@@ -170,6 +170,18 @@ export default function ArchLinuxConfig() {
         bind = $mainMod SHIFT, 4, exec, grim -g "$(slurp)" - | wl-copy<br />
         # make fcitx5 more stable<br />
         windowrule=pseudo,fcitx;<br />
+        <br />
+        windowrule = float, title:^(wezterm)$ <br />
+        # zen-browser <br />
+        windowrule = float, title:^(我的足迹)$ <br />
+        windowrule = float, title:^()$ <br />
+        <br />
+        # 光标主题: <br />
+        # 注意: 修改基于gtk的程序光标需要在 ~/.config/gtk-3.0/settings.ini 中设置: gtk-cursor-theme-name=Bibata-Modern-Ice  <br /> 
+        # (gtk程序外观主题也在上述配置文件中设置, 主题文件一般在"/usr/share/themes/") <br />
+        env = HYPRCURSOR_THEME,Bibata-Modern-Ices <br />
+        env = HYPRCURSOR_SIZE,24 <br />
+        exec-once=hyprctl setcursor Bibata-Modern-Ices 24 <br />
       </p>
       <h3>代理</h3>
       <p>
@@ -526,6 +538,8 @@ export default function ArchLinuxConfig() {
         export MANPAGER="nvim +Man!" <br />
         alias suspend="systemctl suspend" <br />
         alias reload="hyprctl reload" <br />
+
+        alias rm="trash" # using trash-cli <br />
       </p>
       <h2>rofi.rasi: </h2>
       <p className="whitespace-pre-line">

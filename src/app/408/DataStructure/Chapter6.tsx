@@ -39,7 +39,7 @@ export default function Chapter6() {
         <blockquote className="mt-3 mb-3">
           对于含n个顶点的无向图F: 若 E(F) &lt; n-1 则一定不是连通图; 若 E(F) &gt; n-1 则 F 中一定有环路; 若 E(F) &ge; <Latex>{`$\\frac{(n-1)(n-2)}{2}+1$`}</Latex> 则一定为连通图. <br />
         </blockquote>
-        生成树、生成森林 (无向图): 只有连通图才有生成树, 其等价于<strong>连通图</strong>的极小连通子图(若连通图的顶点数为n, 其生成树有且只有n-1条边); 图的所有连通分量的生成树构成图的生成森林.(若图的顶点数为n, 有k个连通分量, 则其生成森林含有n-k条边) <br />
+        生成树、生成森林(对于无向图): 只有连通图才能有生成树. <strong>连通图的生成树 = 连通图的极小连通子图</strong>(若连通图的顶点数为n, 其生成树有且只有n-1条边); 图的所有连通分量的生成树构成图的生成森林.(若图的顶点数为n, 有k个连通分量, 则其生成森林含有n-k条边) <br />
         <blockquote className="mt-3 mb-3">
           非连通情况下边最多的情况: 由n-1个顶点构成一个完全图, 此时再加入一个顶点变成非连通图; 若非连通图中有|E|条边, 令 <Latex>{`$\\frac{n(n-1)}{2}=|E|$`}</Latex>, 则此非连通图至少有 <Latex>{`$\\lceil n\\rceil + 1$`}</Latex> 个顶点. <br />
           <div className="h-2" />
@@ -165,7 +165,7 @@ export default function Chapter6() {
         <div className="h-2" />
         BFS计算单源最短路径长度: <br />
         {Img({src: "Images/408/DataStructure/BFS单源最短路径长度.png", width: 760, align: "left", className: "m-0 mb-1"})}
-        <blockquote className="mt-3 mb-3">BFS只适合求边权值相等的图的单源最短路径长度.</blockquote>
+        <blockquote className="mt-3 mb-3">BFS只适合求边权值相等的图的单源最短路径长度(经过最少边数).</blockquote>
         <div className="h-2" />
         广度优先生成树: <br />
         在广度遍历的过程中, 会得到一棵遍历树/森林, 称为广度优先生成树/广度优先生成森林. 需要注意的是, 同一个图的邻接矩阵存储表示是唯一的, 所以其广度优先生成树也是唯一的; 但邻接表的存储表示不唯一, 其广度优先生成树不唯一.
@@ -179,10 +179,10 @@ export default function Chapter6() {
       <p className="text-[#001080]"> 
         <span className="text-lg">判断环路:</span>
         <div className="h-2"/>
-        对于存在环的一个连通无向图(一个连通分量), 从任意顶点出发, 一定能在DFS的一次搜索过程中检测到环. 注意要特别排除一条路径中下一个顶点指向上一个顶点的情况, 因为无向图中相邻顶点本来就相当于有向图的一个环. (BFS不方便判断第二次遇到的顶点是否为同一条路径中的上一个顶点) <br />
+        对于存在环的一个连通无向图(一个连通分量), 从任意顶点出发, 一定能在DFS算法的一次搜索过程中检测到环. 注意要特别排除一条路径中下一个顶点指向上一个顶点的情况, 因为无向图中相邻顶点本来就相当于有向图的一个环. (BFS不方便判断第二次遇到的顶点是否为同一条路径中的上一个顶点) <br />
         <div className="h-2"/>
         对于不存在环的一个有向图, DFS的一次搜索过程中仍可以遇到访问过的顶点(汇聚点). <br /> 
-        除了visited数组外, 再用一个栈来记录同一条搜索路径中的前缀顶点; 如果从任意顶点v出发二次遇到同一条搜索路径中的顶点(已访问且未出栈的顶点), 则说明存在环路. <br />
+        除了visited数组外, 再用一个数组(栈)来记录同一条搜索路径中的前缀顶点; 如果从任意顶点v出发二次遇到同一条搜索路径中的顶点(已访问且未出栈的顶点), 则说明存在环路. <br />
         可以证明, 对于一个有向图, 可以通过一次DFS算法(可以包含n次深度优先搜索过程)判断其是否存在环路. <br />
       </p>
       <details open>
@@ -190,13 +190,25 @@ export default function Chapter6() {
         <div className="pl-6">
           {Img({src: "Images/408/DataStructure/Exercises/6_3_2.png", width: 700, align: "left", className: "m-0 mt-1"})}
           说法正确的是: 第三句.
+          <hr className="m-3 ml-[-6px]" />
           {Img({src: "Images/408/DataStructure/Exercises/6_3_4.png", width: 700, align: "left", className: "m-0 mt-1"})}
           {Img({src: "Images/408/DataStructure/Exercises/6_3_6.png", width: 700, align: "left", className: "m-0 mt-1"})}
           答案: C A C A A A
+          <hr className="m-3 ml-[-6px]" />
           {Img({src: "Images/408/DataStructure/Exercises/6_3_10.png", width: 700, align: "left", className: "m-0 mt-1"})}
           {Img({src: "Images/408/DataStructure/Exercises/6_3_16to17.png", width: 700, align: "left", className: "m-0 mt-1"})}
           答案: A B D D
           <hr className="m-3 ml-[-6px]" />
+          {Img({src: "Images/408/DataStructure/Exercises/6_3_12to14.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          答案: C B A
+          <hr className="m-3 ml-[-6px]" />
+          {Img({src: "Images/408/DataStructure/Exercises/6_3_02.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          答案:
+          {Img({src: "Images/408/DataStructure/Exercises/Solve_6_3_02.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          <hr className="m-3 ml-[-6px]" />
+          {Img({src: "Images/408/DataStructure/Exercises/6_3_03.png", width: 700, align: "left", className: "m-0 mt-1"})}
+          答案:
+          {Img({src: "Images/408/DataStructure/Exercises/Solve_6_3_03.png", width: 700, align: "left", className: "m-0 mt-1"})}
         </div>
       </details>
     </div>
