@@ -179,9 +179,9 @@ export default function ArchLinuxConfig() {
         # 光标主题: <br />
         # 注意: 修改基于gtk的程序光标需要在 ~/.config/gtk-3.0/settings.ini 中设置: gtk-cursor-theme-name=Bibata-Modern-Ice  <br /> 
         # (gtk程序外观主题也在上述配置文件中设置, 主题文件一般在"/usr/share/themes/") <br />
-        env = HYPRCURSOR_THEME,Bibata-Modern-Ices <br />
+        env = HYPRCURSOR_THEME,Bibata-Modern-Ice <br />
         env = HYPRCURSOR_SIZE,24 <br />
-        exec-once=hyprctl setcursor Bibata-Modern-Ices 24 <br />
+        exec-once=hyprctl setcursor Bibata-Modern-Ice 24 <br />
       </p>
       <h3>代理</h3>
       <p>
@@ -732,6 +732,20 @@ export default function ArchLinuxConfig() {
             padding-right: 8px;
             padding-left: 10px;
           }
+        `}
+      </p>
+      <h2>Docker</h2>
+      <p className="whitespace-pre-line">
+        {`
+          docker 设置代理:
+          sudo mkdir -p /etc/systemd/system/docker.service.d
+          sudo vim /etc/systemd/system/docker.service.d/proxy.conf:
+            [Service]
+            Environment="HTTP_PROXY=http://proxy.example.com:8080/"
+            Environment="HTTPS_PROXY=http://proxy.example.com:8080/"
+            Environment="NO_PROXY=localhost,127.0.0.1,.example.com"
+          sudo systemctl daemon-reload
+          sudo systemctl restart docker
         `}
       </p>
       <br />

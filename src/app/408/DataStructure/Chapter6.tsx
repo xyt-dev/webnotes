@@ -211,6 +211,26 @@ export default function Chapter6() {
           {Img({src: "Images/408/DataStructure/Exercises/Solve_6_3_03.png", width: 700, align: "left", className: "m-0 mt-1"})}
         </div>
       </details>
+
+      <h3 className="text-2xl">图的应用</h3>
+      <p>
+        <span className="text-lg font-bold">最小生成树:</span> <br />
+        <div className="h=2" />
+        <span className="font-bold">Prim算法: </span> <br />
+        {Img({src: "Images/408/DataStructure/Prim算法实现.png", width: 560, align: "left", className: "m-0"})}
+        Prim算法的时间复杂度为<Latex>{`$O(|V|^2)$`}</Latex>, 不依赖于|E|所以适合边稠密图. 也使用邻接表+优先队列(最小堆)(同时使用索引pos[]从而O(1)定位优先队列中对应顶点位置方便更新权值), 其时间复杂度为<Latex>{`$O(|E|log|V|)$`}</Latex>. 
+          (Prim算法不需要使用并查集, 因为只需要维护一个集合, 集合元素使用数组记录即可)<br />
+        <div className="h=2" />
+        <span className="font-bold ">Kruskal算法: </span> <br />
+        {Img({src: "Images/408/DataStructure/Kruskal算法实现.png", width: 600, align: "left", className: "m-0"})}
+        Kruskal算法通常使用堆来存放边的集合, 时间复杂度为<Latex>{`$|E|log|E|$`}</Latex>, 适合边稀疏图. (算法可能同时维护有多个集合, 需要使用并查集, 判断两顶点是否属于同一集合平均时间复杂度近似O(1)) <br />
+        <span className="font-bold ">Dijkstra算法: </span> <br />
+        思想: 最短路径长度最短前k个顶点一定不会由当前最短路径长度更长的顶点缩短(权值非负时其他顶点的距离一定更长), 而当前最短路径长度更长的顶点可能经这k个顶点缩短; 
+          其时间复杂度为 <Latex>{`$O(|V|^2)$`}</Latex>.(求解从源点到某个特定顶点的最短距离时间复杂度也相同)
+        <blockquote className="pt-3 pb-3">
+          Prim算法适用于带权无向图, Dijkstra算法适用于<strong>权值非负</strong>的带权有向或无向图.
+        </blockquote>
+      </p>
     </div>
   )
 }

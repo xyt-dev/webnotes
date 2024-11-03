@@ -3,10 +3,12 @@ import DaisySidebar, { DaisySidebarLeaf, DaisySidebarNode as Node } from "@/comp
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import ArchLinuxConfig from "./ArchlinuxConfig";
+import DockerImages from "./DockerImages";
 
 export default function DataStructurePage() {
   const pages: { [key: string]: React.ReactNode } = {
-    "ArchLinuxConfig": <ArchLinuxConfig />
+    "ArchLinuxConfig": <ArchLinuxConfig />,
+    "DockerImages": <DockerImages />,
   }
   const [pageRenderingName, setPageRenderingName] = useState("")
   useEffect(() => {
@@ -36,6 +38,7 @@ export default function DataStructurePage() {
   return (
     <DaisySidebar page={pages[pageRenderingName]}>
       <Leaf pageName="ArchLinuxConfig">ArchLinuxConfig</Leaf>
+      <Leaf pageName="DockerImages">DockerImages</Leaf>
     </DaisySidebar>
   )
 }
