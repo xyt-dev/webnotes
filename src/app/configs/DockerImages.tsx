@@ -15,6 +15,15 @@ export default function DockerImages() {
         -v ~/feet:/photoprism/originals \\
         photoprism/photoprism `}
       </blockquote>
+      <h3>portainer:</h3>
+      <blockquote className="whitespace-pre-line">
+        {` docker run -d 
+          -p 9000:9000 
+          --name portainer 
+          --restart=always 
+          -v /var/run/docker.sock:/var/run/docker.sock 
+          portainer/portainer-ce `}
+      </blockquote>
     </div>
   )
 }

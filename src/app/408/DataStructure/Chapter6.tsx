@@ -224,13 +224,80 @@ export default function Chapter6() {
         <span className="font-bold ">Kruskal算法: </span> <br />
         {Img({src: "Images/408/DataStructure/Kruskal算法实现.png", width: 600, align: "left", className: "m-0"})}
         Kruskal算法通常使用堆来存放边的集合, 时间复杂度为<Latex>{`$|E|log|E|$`}</Latex>, 适合边稀疏图. (算法可能同时维护有多个集合, 需要使用并查集, 判断两顶点是否属于同一集合平均时间复杂度近似O(1)) <br />
-        <span className="font-bold ">Dijkstra算法: </span> <br />
-        思想: 最短路径长度最短前k个顶点一定不会由当前最短路径长度更长的顶点缩短(权值非负时其他顶点的距离一定更长), 而当前最短路径长度更长的顶点可能经这k个顶点缩短; 
-          其时间复杂度为 <Latex>{`$O(|V|^2)$`}</Latex>.(求解从源点到某个特定顶点的最短距离时间复杂度也相同)
-        <blockquote className="pt-3 pb-3">
-          Prim算法适用于带权无向图, Dijkstra算法适用于<strong>权值非负</strong>的带权有向或无向图.
+        <blockquote className="mt-3 mb-3">
+          无向连通图一定有最小生成树, 最小生成树权值之和一定唯一. <br />
+          最小生成树不唯一则无向连通图一定有权值相等的边; 无向连通图没有权值相等的边则最小生成树一定唯一. (无向连通图存在权值相等的边, 最小生成树<strong>不一定</strong>不唯一) 
         </blockquote>
       </p>
+      <p>
+        <span className="text-lg font-bold">最短路径:</span> <br />
+        <span className="font-bold ">Dijkstra算法: </span> <br />
+        思想: 最短路径长度最短前k个顶点一定不会由当前最短路径长度更长的顶点缩短(权值非负时到达非直接相连的顶点的距离一定更长), 而当前最短路径长度更长的顶点可能经这k个顶点缩短; 
+          其时间复杂度为 <Latex>{`$O(|V|^2)$`}</Latex>.(求解从源点到某个特定顶点的最短距离时间复杂度也相同)
+        <blockquote className="mt-1 mb-3">
+          Prim算法适用于带权无向图(无向图才讨论生成树), Dijkstra算法适用于<strong>权值非负</strong>的带权有向或无向图.
+        </blockquote>
+        <span className="font-bold ">Floyd算法: </span> <br />
+        {Img({src: "Images/408/DataStructure/Floyd算法思想.png", width: 700, align: "left", className: "m-0"})}
+        (其中 <Latex>{`$A^{(k)}[i][j]$`}</Latex> 表示从顶点i到顶点j的中间顶点序号小于等于k的最短路径长度) <br />
+        Floyd算法时间复杂度为<Latex>{`$O(|V|^3)$`}</Latex>, 适用于带权有向或无向图, 可以有负权边但不能有负权回路. <br />
+        {Img({src: "Images/408/DataStructure/最短路径算法总结.png", width: 800, align: "left", className: "mt-3"})}
+      </p>
+      <p>
+        <span className="text-lg font-bold">构建表达式的有向无环图(DAG):</span> <br />
+         注意不要有重复的操作数顶点和子树.
+      </p>
+      <p>
+        <span className="text-lg font-bold">AOV网与拓扑排序:</span> <br />
+        AOV网: Activities On Vertex, 即顶点表示活动的网络, 是有向无环图(DAG). <br />
+        拓扑排序过程: <br />
+        1. 从AOV网中选择任意一个入度为0的顶点输出. <br />
+        2. 从网中删除该顶点及其所有出边. <br />
+        3. 重复步骤1、2直到AOV网为空或当前网中不存在入度为0的顶点. (后一种情况说明有向图中一定存在环路)<br />
+        拓扑排序算法实现: <br />
+        {Img({src: "Images/408/DataStructure/拓扑排序算法实现.png", width: 700, align: "left", className: "m-0"})}
+        拓扑排序的时间复杂度: 采用邻接表时为<Latex>{`$O(|V|+|E|)$`}</Latex>, 采用邻接矩阵时为<Latex>{`$O(|V|^2)$`}</Latex>. <br />
+        <div className="h=2" />
+        使用DFS同时记录访问结束时间, 按结束时间从大到小排序同样可以得到一个拓扑排序序列.  <br />
+        (先输出出度为0的顶点 或 按结束时间从小到大排序则是逆拓扑排序)
+        <blockquote className="mt-1 mb-3">
+          邻接矩阵为三角矩阵的图一定存在拓扑排序序列, 存在拓扑排序序列的图的邻接矩阵不一定是三角矩阵, 但能够通过重新编号转换为三角矩阵.
+        </blockquote>
+      </p>
+      <p>
+        <span className="text-lg font-bold">关键路径:</span> <br />
+        AOE网: Activities On Edge, 即边表示活动的网络, 是有向无环图(DAG). <br />
+        关键路径: AOE网中活动可以并行进行, 从源点到汇点可能有不同长度的有向路径, 完成不同路径上活动所需时间不同, 但只有所有活动都完成整个工程才算结束. 
+        <strong>其中具有最大长度的路径称为关键路径</strong>, 关键路径上的活动称为关键活动, 完成整个工程的最短时间取决于关键路径的长度. <br />
+        事件最早发生时间: <br />
+        <div className="pl-2 ml-1 border-l-[3px] border-l-amber-200">
+          <Latex>{`$v_e($源点$)=0$`}</Latex> <br />
+          <Latex>{`$v_e(k)=Max\\{v_e(j)+Weight(v_j, v_k)\\}~(v_k$为$v_j$的任意后继$)$`}</Latex><br />
+          {Img({src: "Images/408/DataStructure/计算Ve.png", width: 750, align: "left", className: "m-0"})}
+        </div>
+        事件最晚发生时间: <br />
+        <div className="pl-2 ml-1 border-l-[3px] border-l-amber-200">
+          <Latex>{`$v_l($汇点$)=v_e($汇点$)$`}</Latex> <br />
+          <Latex>{`$v_l(k)=Min\\{v_l(j)-Weight(v_j, v_k)\\}~(v_k$为$v_j$的任意前驱$)$`}</Latex><br />
+          {Img({src: "Images/408/DataStructure/计算Vl.png", width: 750, align: "left", className: "m-0"})}
+        </div>
+        <Latex>{`对于边<$v_k, v_j$>表示的活动$m:$`}</Latex> <br />
+        <div className="pl-2 ml-1 border-l-[3px] border-l-amber-200">
+          活动最早开始时间: <br />
+          <Latex>{`$e(m)=v_e(k)$`}</Latex> <br />
+          活动最晚开始时间: <br />
+          <Latex>{`$l(m)=v_l(j)-Weight(v_k, v_j)$`}</Latex> <br />
+          活动的时间余量: <br />
+          <Latex>{`$d(m)=l(m)-e(m)$, 其中 $d(m)=0$ 的活动为关键活动`}</Latex> <br />
+        </div>
+        求解关键路径的算法步骤如下: <br />
+        {Img({src: "Images/408/DataStructure/求关键路径算法.png", width: 750, align: "left", className: "m-0"})}
+        <blockquote className="mt-3 mb-3">
+          注: 缩短关键路径可以缩短整体工期. 但关键路径缩短一定程度就会变成非关键路径; 关键路径也可能同时有多条, 需要同时缩短才能缩短工期.
+        </blockquote>
+      </p>
+      <strong>图相关算法时间复杂度总结: </strong><br />
+      {Img({src: "Images/408/DataStructure/图相关算法时间复杂度总结.png", width: 750, align: "left", className: "m-0"})}
     </div>
   )
 }
