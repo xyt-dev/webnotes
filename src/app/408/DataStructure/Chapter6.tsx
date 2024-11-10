@@ -218,7 +218,7 @@ export default function Chapter6() {
         <div className="h=2" />
         <span className="font-bold">Prim算法: </span> <br />
         {Img({src: "Images/408/DataStructure/Prim算法实现.png", width: 560, align: "left", className: "m-0"})}
-        Prim算法的时间复杂度为<Latex>{`$O(|V|^2)$`}</Latex>, 不依赖于|E|所以适合边稠密图. 也使用邻接表+优先队列(最小堆)(同时使用索引pos[]从而O(1)定位优先队列中对应顶点位置方便更新权值), 其时间复杂度为<Latex>{`$O(|E|log|V|)$`}</Latex>. 
+        Prim算法的时间复杂度为<Latex>{`$O(|V|^2)$`}</Latex>, 不依赖于|E|所以适合边稠密图. 也可使用邻接表+优先队列(最小堆)(同时使用索引pos[]从而O(1)定位优先队列中对应顶点位置方便更新权值), 其时间复杂度为<Latex>{`$O(|E|log|V|)$`}</Latex>. 
           (Prim算法不需要使用并查集, 因为只需要维护一个集合, 集合元素使用数组记录即可)<br />
         <div className="h=2" />
         <span className="font-bold ">Kruskal算法: </span> <br />

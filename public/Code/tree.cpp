@@ -10,9 +10,9 @@ typedef struct {
 } SqStack;
 SqStack S;
 
-typedef struct BiTreeNode {
+typedef struct BSTNode {
   ElemType data;
-  BiTreeNode *lchild, *rchild;
+  BSTNode *lchild, *rchild;
 } BiTreeNode, *BiTree;
 
 typedef struct {
