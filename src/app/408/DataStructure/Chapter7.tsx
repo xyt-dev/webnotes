@@ -76,39 +76,53 @@ export default function Chapter7() {
           删除某结点再重新插入该节点, 若删除的不是叶子结点则得到的二叉排序树和原来不同. <br />
           二叉排序树的插入和删除操作的时间复杂度为<Latex>{`$~O(log_2n)$`}</Latex>, 适合作为动态查找表; 二分查找的对象是有序顺序表, 插入和删操作的时间复杂度为<Latex>{`$~O(n)$`}</Latex>, 只适合作为静态查找表. (二分查找判定树唯一, 查找一般平均比二叉排序树快一点)<br />
         </blockquote>
+        <div className="pl-2 border-l-[6px] border-l-amber-200 w-[1500px] font-bold">
+          二叉树终极定理(自己总结): <br />
+          <Latex>{`二叉查找树确定(二叉树确定)$~\\Leftrightarrow~$二叉树的形态+中序序列确定$~\\Leftrightarrow~$二叉树的形态+每个结点的值确定$~\\Leftrightarrow~$二叉树中序序列+先/后/层序序列确定`}</Latex>. <br />
+          将二叉树中任一结点z的左子树上结点视为结点z出栈前入栈的结点, 将结点z的右子树结点视为结点z出栈后入栈的结点, 将二叉树的中序序列视为结点入栈序列, 则二叉树的一个先序序列即为一个出栈序列, 对应一个二叉查找树(一种二叉树的形态), 同时也对应一个后序/层序序列. <br />
+          于是, n个结点构成的二叉查找树(二叉树的形态)有<Latex>{`$~\\frac{1}{n+1}C_{2n}^{n}$(卡特兰数)$~$`}</Latex>种, 中序序列确定时对应不同的先/后/层序序列同样有<Latex>{`$~\\frac{1}{n+1}C_{2n}^{n}~$`}</Latex>种.
+        </div>
       </p>
       <p>
         <div className="text-xl font-bold">平衡二叉树(AVL树)</div>
         为了避免树的高度增长过快而影响二叉排序树性能, 规定插入和删除结点时保证任意结点的左、右子树高度差不超过1, 这样的二叉排序树称为平衡二叉树. <br />
+        <div className="h-3"/>
         平衡二叉树的插入: {`在二叉排序树中插入(或删除)一个结点时，首先检查其插入路径上的结点是否因此次操作而导致不平衡. 若导致了不平衡，则找到插入路径上离插入结点最近的平衡因子绝对值大于１的结点Ａ，再对以Ａ为根的子树(最小不平衡子树)，
           在保持二叉排序树特性的前提下，调整各结点的位置关系，使之重新达到平衡.`} <br />
+        <div className="h-3"/>
         四种调节操作: <br />
         {Img({ src: "Images/408/DataStructure/LL平衡旋转.png", width: 600, align: "left", className: "m-0 mb-1" })}
         {Img({ src: "Images/408/DataStructure/RR平衡旋转.png", width: 600, align: "left", className: "m-0 mb-1" })}
         {Img({ src: "Images/408/DataStructure/LR平衡旋转.png", width: 600, align: "left", className: "m-0 mb-1" })}
         {Img({ src: "Images/408/DataStructure/RL平衡旋转.png", width: 600, align: "left", className: "m-0 mb-1" })}
         <blockquote className="mb-1 mt-1">注: LR和RL旋转时, 新节点究竟是插入C的左子树还是C的右子树不影响旋转过程, 因为其目的是转化为LL/RR的情况. </blockquote>
+        <div className="h-3"/>
         平衡二叉树的删除: <br />
         ① 用二叉排序树的删除操作删除结点w. <br />
         ② 从结点w向上回溯, 尝试找到第一个不平衡的结点z(最小不平衡子树), 对以z为根的子树进行平衡调节. <br />
         ③ 若调节后以z为根的子树高度减少1, 则继续向上回溯尝试找到其第一个不平衡的祖先结点(最多可回溯到根节点). <br />
+        <div className="h-3"/>
         平衡二叉树的查找: <br />
         在平衡二叉树上的查找与二叉排序树相同, 进行关键字的比较次数不超过树的高度. <br />
         以<Latex>{`$~n_h~$表示深度为$~h~$的平衡二叉树中含有的最少结点数, 显然$~n_1=1, n_2=2$, 且$~n_h=n_{h-2}+n_{h-1}+1$, 从而可以推出后续项最少结点数. ($n_3=4, n_4=7, n_5=12 ~\\cdots$)`}</Latex>
+        <blockquote className="mb-2 mt-2">按关键字有序的顺序插入初始为空的平衡二叉树时, 若关键字个数<Latex>{`$~n=2^k-1~$`}</Latex>, 则得到的平衡二叉树一定是一棵满二叉树.</blockquote>
       </p>
       <p>
         <div className="text-xl font-bold">红黑树</div>
         AVL树保持平衡会非常频繁地调整全树整体拓扑结构, 开销较大, 红黑树在AVL树的基础上放宽了条件. <br />
+        <div className="h-3"/>
         一棵红黑树是满足以下红黑性质的二叉排序树: <br />
         ① 每个结点不是红色就是黑色的. <br />
         ② 根结点是黑色的. <br />
         ③ 叶结点(NULL结点)是黑色的. <br />
         ④ 不存在两个相邻的红色结点(即红色结点的父结点和孩子结点均是黑色的). <br />
         ⑤ 对每个结点, 从该结点到任意一个叶结点的简单路径上所含黑色结点的数量相同(黑高bh). <br />
+        <div className="h-3"/>
         红黑树重要结论: <br />
         ① 从根到叶子结点的最长路径不大于最短路径的两倍. (路径最短时全部由黑色节点构成, 路径最长时为黑色节点和红色节点相间构成) <br />
         ② 有n个内部节点的红黑树的高度<Latex>{`$~h\\le 2log_2(n+1)$`}</Latex>. (由于红黑树的黑高<Latex>{`$~bh\\ge h/2$, 于是有: $n\\ge 2^{h/2}-1$`}</Latex>) <br />
         ③ 新插入红黑树中的结点为红色. (如果新插入结点为黑色则此结点所在路径比其他路径多一个黑色节点, 调整较为麻烦) <br />
+        <div className="h-3"/>
         红黑树的插入: <br />
         ① 用二叉排序树插入操作插入结点z, 并将其标记为红色, 若结点z的父结点为黑色, 则无需调整结束. <br />
         ② 若结点z为根节点, 则将z标记为黑色, 结束.(树的bh增加1) <br />
@@ -120,11 +134,38 @@ export default function Chapter7() {
           {Img({ src: "Images/408/DataStructure/红黑树插入情况3.png", width: 750, align: "left", className: "m-0 mb-1" })}
           情况3中z.p和z.p的兄弟节点y都为红色, 将z.p和y着为黑色、z.p.p着为红色, 然后把z.p.p作为新节点z重复第②步或第③步. <br />
         </div>
+        <div className="h-3"/>
         红黑树的删除: <br />
         删除操作也是先执行二叉排序树的删除操作, 总体只有两种情况: 1)待删节点只有右子树或左子树; 2)待删节点没有孩子节点. <br />
         ① 若待删结点只有右子树或左子树, 则待删结点一定为黑色结点, 且子树一定只有一个红色结点. <br />
         ② 若待删结点没有孩子节点, 且该结点为红色, 则直接删除该结点结束. <br />
         ③ 若待删结点没有孩子节点, 且该节点为黑色, 则用NULL结点x取代该结点同时着二重黑色, 然后进行进一步调整(了解). <br />
+        <blockquote className="mb-2 mt-2">
+          红黑树中以黑分支结点为根的子树也为红黑树. <br />
+        </blockquote>
+      </p>
+      <p>
+        <div className="text-xl font-bold">B树</div> 
+        <Latex>{`$m$`}</Latex>阶B树是所有结点的平衡因子均等于0的<Latex>{`$m$`}</Latex>路平衡二叉查找树. <br />
+        <div className="h-3"/>
+        一棵<Latex>{`$m$`}</Latex>阶B树或为空树, 或有如下属性: <br /> 
+        ① 树中每个节点至多有<Latex>{`$m$`}</Latex>棵子树, <Latex>{`$m-1$`}</Latex>个关键字. <br />
+        ② 根结点不是叶结点, 则至少有2棵子树, 即至少有1个关键字.<br />
+        ③ 根结点外的所有非叶结点至少有<Latex>{`$~\\lceil\\frac{m}{2}\\rceil~$`}</Latex>棵子树，即至少有<Latex>{`$~\\lceil\\frac{m}{2}\\rceil-1~$`}</Latex>个关键字.<br />
+        ④ 所有非叶子结点结构: <br />
+          <div className="pl-[1.6rem]">
+            {Img({ src: "Images/408/DataStructure/B树结点结构.png", width: 600, align: "left", className: "m-0 mb-1" })}
+            其中<Latex>{`$~K_j (j=1, 2, \\cdots, n)~$`}</Latex>为结点关键字, 且满足<Latex>{`$~K_1<K_2\\cdots <K_n$`}</Latex>. <Latex>{`$~P_j~$`}</Latex>为指向子树根结点的指针, 
+            且指针<Latex>{`$~P_{j-1}~$`}</Latex>所指子树中所有结点的关键字均小于<Latex>{`$~K_j$`}</Latex>, 指针<Latex>{`$~P_j~$`}</Latex>所指子树中所有结点的关键字均大于<Latex>{`$~K_j$`}</Latex>. 
+            结点中的关键字个数为<Latex>{`$~n(\\lceil\\frac{m}{2}\\rceil-1\\le n \\le m-1)~$`}</Latex>.<br />
+          </div>
+        ⑤ 所有叶子结点都出现在同一层, 叶子结点不带信息, 实际上为虚拟结点(NULL). <br />
+        <div className="h-3"/>
+        B树的查找: <br />
+        从头结点开始, 在结点中查找关键字, 若命中则返回, 否则根据关键字范围找到对应指针指向的结点向下查找, 直到命中关键字或指针为空. 在下一节点中查找前需先将下一结点从磁盘取到内存中, 从磁盘读取的次数即目标结点在B树上的层次数, 层次数决定了查找效率. <br />
+        <div className="h-3"/>
+        B树的高度(磁盘存取次数): <br />
+        <Latex>{`B树中每个结点最多有$m$棵子树, $m-1$个关键字, 所以在一棵高度为$h$的$m$阶B树中关键字的个数应满足$\\\\~n\\le (m-1)(1+m+m^2+\\cdots +m^{h-1})=m^h-1$`}</Latex>. 于是<Latex>{`$~h\\ge log_m(n+1)$`}</Latex>.
       </p>
     </div>
   )
