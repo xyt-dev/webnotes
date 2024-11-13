@@ -9,6 +9,7 @@ import Chapter4 from "./DataStructure/Chapter4";
 import Chapter5 from "./DataStructure/Chapter5";
 import Chapter6 from "./DataStructure/Chapter6";
 import Chapter7 from "./DataStructure/Chapter7";
+import Chapter8 from "./DataStructure/Chapter8";
 
 export default function DataStructurePage() {
   const pages: { [key: string]: React.ReactNode } = {
@@ -19,6 +20,7 @@ export default function DataStructurePage() {
     "Chapter5": Chapter5(),
     "Chapter6": Chapter6(),
     "Chapter7": Chapter7(),
+    "Chapter8": Chapter8(),
   }
   const [pageRenderingName, setPageRenderingName] = useState("")
   useEffect(() => {
@@ -55,6 +57,7 @@ export default function DataStructurePage() {
         <Leaf pageName="Chapter5">树</Leaf>
         <Leaf pageName="Chapter6">图</Leaf>
         <Leaf pageName="Chapter7">查找</Leaf>
+        <Leaf pageName="Chapter8">排序</Leaf>
       </Node>
       <li><Link href='https://xy66.notion.site' legacyBehavior><a target="_blank" rel="noopener noreferrer">Notion笔记</a></Link></li>
     </DaisySidebar>
