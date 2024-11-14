@@ -60,8 +60,20 @@ export default function Chapter8() {
         </blockquote>
         <blockquote className="mb-1 mt-1">
           Partition思想同样适用于快速找到第k小元素: <br />
-          {Img({ src: "Images/408/DataStructure/快速查找第k小元素.png", width: 800, align: "left", className: "m-0 mb-1" })}
+          {Img({ src: "Images/408/DataStructure/快速查找第k小元素.png", width: 790, align: "left", className: "m-0 mb-1" })}
         </blockquote>
+      </p>
+      <p>
+        <h3>选择排序</h3>
+        <span>简单选择排序: </span> <br />
+        {Img({ src: "Images/408/DataStructure/简单选择排序.png", width: 460, align: "left", className: "m-0 mb-1" })}
+        空间复杂度: O(1); 时间复杂度<strong>始终</strong>为: O(<Latex>{`$n^2$`}</Latex>); 该排序算法<strong>不稳定</strong>. <br />  
+        <div className="h-3" />
+        <span>堆排序: </span> <br />
+        n个关键字的序列<Latex>{`$L[1\\cdots n]$`}</Latex>称为堆, 当且仅当其满足如下性质: <br />
+        ① <Latex>{`$L[j] \\ge L[2j] ~$且$~ L[j] \\ge L[2j+1]$`}</Latex> (1 ≤ j ≤ n/2), 称为大顶堆; <br />
+        ② <Latex>{`$L[j] \\le L[2j] ~$且$~ L[j] \\le L[2j+1]$`}</Latex> (1 ≤ j ≤ n/2), 称为小顶堆; <br />
+        {Img({ src: "Images/408/DataStructure/堆排序.png", width: 700, align: "left", className: "mt-1 mb-1" })}
       </p>
     </div>
   )

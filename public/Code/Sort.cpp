@@ -101,3 +101,40 @@ int Kth_elem(int A[], int low, int high, int k) {
     else 
       return Kth_elem(A, low + 1, high_temp, k); // 第k小元素在右半部分
 }
+
+void SelectSort(ElemType A[], int n) {
+  for (int j = 0; j < n - 1; j ++) {
+    int min = j;
+    for (int k = j + 1 ; k < n; k ++)
+      if (A[k] < A[min]) min = k;
+    if (min != j) swap(A[j], A[min]);
+  }
+}
+
+
+
+// 对以k为根的子树进行调整使其成为大顶堆
+void HeadAdjust(ElemType A[], int k, int n) {
+  A[0] = A[k]; // Temp
+  for (int j = 2 * k; j <= n; j *= 2) {
+    if (j < n && A[j] < A[j + 1]) j ++; // j指向子节点中较大的
+    if (A[0] >= A[j]) break; // 结束调整
+    A[k] = A[j];
+    k = j;
+  }
+  A[k] = A[0];
+}
+// 自下而上建立大顶堆
+void BuildMaxHeap(ElemType A[], int n) {
+  for (int j = n / 2; j > 0; j --)
+    HeadAdjust(A, j, n);
+}
+// 堆排序(基于大顶堆排序结果从小到大)
+void HeapSort(ElemType A[], int n) {
+  BuildMaxHeap(A, n);
+  // 每次将堆顶元素交换至堆尾(最终位置), 然后堆大小减1
+  for (int j = n; j > 1; j --) {
+    swap(A[j], A[1]);
+    HeadAdjust(A, 1, j - 1); // 调整, 使剩余j-1个元素仍为大顶堆
+  }
+}
