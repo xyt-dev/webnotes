@@ -74,6 +74,9 @@ export default function Chapter8() {
         ① <Latex>{`$L[j] \\ge L[2j] ~$且$~ L[j] \\ge L[2j+1]$`}</Latex> (1 ≤ j ≤ n/2), 称为大顶堆; <br />
         ② <Latex>{`$L[j] \\le L[2j] ~$且$~ L[j] \\le L[2j+1]$`}</Latex> (1 ≤ j ≤ n/2), 称为小顶堆; <br />
         {Img({ src: "Images/408/DataStructure/堆排序.png", width: 700, align: "left", className: "mt-1 mb-1" })}
+        空间复杂度: O(1); <strong>最大、最小、平均</strong>时间复杂度: O(<Latex>{`$nlog_2n$`}</Latex>); 该排序算法<strong>不稳定</strong>. <br />
+        <strong>适用性: 堆排序仅适用于顺序存储的线性表. </strong> <br />
+        插入操作: 将新节点放至堆的末尾, 然后向上调整, 直到新节点的父节点大于等于新节点. <br />
       </p>
     </div>
   )
