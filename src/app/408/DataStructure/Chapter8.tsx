@@ -73,10 +73,41 @@ export default function Chapter8() {
         n个关键字的序列<Latex>{`$L[1\\cdots n]$`}</Latex>称为堆, 当且仅当其满足如下性质: <br />
         ① <Latex>{`$L[j] \\ge L[2j] ~$且$~ L[j] \\ge L[2j+1]$`}</Latex> (1 ≤ j ≤ n/2), 称为大顶堆; <br />
         ② <Latex>{`$L[j] \\le L[2j] ~$且$~ L[j] \\le L[2j+1]$`}</Latex> (1 ≤ j ≤ n/2), 称为小顶堆; <br />
-        {Img({ src: "Images/408/DataStructure/堆排序.png", width: 700, align: "left", className: "mt-1 mb-1" })}
+        {Img({ src: "Images/408/DataStructure/堆排序.png", width: 670, align: "left", className: "mt-1 mb-1" })}
         空间复杂度: O(1); <strong>最大、最小、平均</strong>时间复杂度: O(<Latex>{`$nlog_2n$`}</Latex>); 该排序算法<strong>不稳定</strong>. <br />
-        <strong>适用性: 堆排序仅适用于顺序存储的线性表. </strong> <br />
+        <strong>适用性: 堆排序仅适用于顺序存储的线性表. </strong>(或双向链表应该也可以) <br />
         插入操作: 将新节点放至堆的末尾, 然后向上调整, 直到新节点的父节点大于等于新节点. <br />
+      </p>
+      <p>
+        <h3>归并排序</h3>
+        {Img({ src: "Images/408/DataStructure/归并排序.png", width: 790, align: "left", className: "m-0 mb-1" })}
+        空间复杂度: O(<Latex>{`$n$`}</Latex>) (复用同一个长度为n的辅助数组); <br />
+        <strong>最大、最小、平均</strong>时间复杂度: O(<Latex>{`$nlog_2n$`}</Latex>) (每趟归并的时间复杂度为O(<Latex>{`$n$`}</Latex>), 共需要进行<Latex>{`$\\lceil log_2n\\rceil$`}</Latex>趟); <br />
+        该排序算法<strong>稳定</strong>. <br />
+        适用性: 适用于顺序存储和链式存储的线性表. <br />
+        <blockquote className="mb-1 mt-1">
+          对N个元素进行k路归并排序, 排序的趟数<Latex>{`$~m=\\lceil log_kN\\rceil$`}</Latex>.
+        </blockquote>
+      </p>
+      <p>
+        <h3>基数排序</h3>
+        基数排序过程示例: <br />
+        {Img({ src: "Images/408/DataStructure/基数排序0.png", width: 600, align: "left", className: "m-0 mb-1" })}
+        {Img({ src: "Images/408/DataStructure/基数排序01.png", width: 600, align: "left", className: "m-0 mb-1" })}
+        {Img({ src: "Images/408/DataStructure/基数排序02.png", width: 600, align: "left", className: "m-0 mb-1" })}
+        {Img({ src: "Images/408/DataStructure/基数排序022.png", width: 600, align: "left", className: "m-0 mb-1" })}
+        基数排序的核心原理在于其<strong>稳定</strong>性, 即当前位大小相同的元素会按更低位的大小顺序排列. (基数排序是一种<strong>不基于比较</strong>的排序算法) <br />
+        <span className="inline-block w-[1500px]">时间复杂度: O(<Latex>{`$d(n+r)$`}</Latex>) (d为最大位数, r为基数, n为待排序元素个数) (需要进行d趟排序, 每趟排序过程为一次 "分配(O(n))"+"收集(O(r))")</span>
+        空间复杂度: O(<Latex>{`$r$`}</Latex>) (辅助存储空间为r个队列, 即r个队头指针和队尾指针(复用)) <br />
+        适用性: 适用于顺序存储和链式存储的线性表. <br />
+      </p>
+      <p>
+        <h3>计数排序</h3>
+        {Img({ src: "Images/408/DataStructure/计数排序.png", width: 760, align: "left", className: "m-0 mb-1" })}
+        计数排序同样是一种<strong>不基于比较</strong>的排序算法. <br />
+        空间复杂度: O(<Latex>{`$n+k$`}</Latex>); 时间复杂度: O(<Latex>{`$n+k$`}</Latex>); 该排序算法<strong>稳定</strong>. <br />
+        (当<Latex>{`$~k>O(nlogn)~$`}</Latex>时其效率不如快速排序和堆排序等排序算法) <br />
+        适用性: 适用于<strong>顺序存储</strong>的线性表, 且序列中的元素须为整数, 同时其范围(0~k-1)不能太大. <br />
       </p>
     </div>
   )

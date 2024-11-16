@@ -163,3 +163,17 @@ void MergeSort(ElemType A[], int low, int high) {
     Merge(A, low, mid, high);
   }
 }
+
+void CountSort(ElemType A[], ElemType B[], int n, int k) {
+  int j, C[k]; // k为元素最大可能值+1
+  for (j = 0; j < k; j ++) C[j] = 0; // 初始化计数数组
+  for (j = 0; j < n; j ++) C[A[j]] ++; // 统计各元素值出现次数
+  for (j = 1; j < k; j ++)
+    C[j] += C[j - 1]; // 前缀和 (C[j]表示小于等于j的元素个数)
+  for (j = n - 1; j >= 0; j --) {
+    // 数组B存放最终排序序列, 其中大小相等元素要占据一段连续空间
+    // 每段预留空间中互不影响地从后往前填入元素(从后往前遍历数组A以保持稳定性)
+    B[C[A[j]] - 1] = A[j];
+    C[A[j]] --;
+  }
+}
