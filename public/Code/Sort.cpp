@@ -1,3 +1,4 @@
+#include <stdlib.h>
 typedef int ElemType;
 
 void InsertSort(ElemType A[], int n) {
@@ -136,5 +137,29 @@ void HeapSort(ElemType A[], int n) {
   for (int j = n; j > 1; j --) {
     swap(A[j], A[1]);
     HeadAdjust(A, 1, j - 1); // 调整, 使剩余j-1个元素仍为大顶堆
+  }
+}
+
+
+
+int n = 1000000;
+
+ElemType *B = (ElemType *)malloc((n + 1)*sizeof(ElemType)); // 辅助空间
+void Merge(ElemType A[], int low ,int mid, int high) {
+  int i, j, k;
+  for (k = low; k <= high; k ++) B[k] = A[k]; // 拷贝
+  for (i = low, j = mid + 1, k = low; i <= mid && j <= high; k ++) {
+    if (B[i] < B[j]) A[k] = B[i ++];
+    else A[k] = B[j ++];
+  }
+  while (i <= mid) A[k ++] = B[i ++];
+  while (j <= high) A[k ++] = B[j ++];
+}
+void MergeSort(ElemType A[], int low, int high) {
+  if (low < high) {
+    int mid = (low + high) / 2;
+    MergeSort(A, low, mid);
+    MergeSort(A, mid + 1, high);
+    Merge(A, low, mid, high);
   }
 }
