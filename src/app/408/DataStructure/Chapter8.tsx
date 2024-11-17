@@ -109,6 +109,16 @@ export default function Chapter8() {
         (当<Latex>{`$~k>O(nlogn)~$`}</Latex>时其效率不如快速排序和堆排序等排序算法) <br />
         适用性: 适用于<strong>顺序存储</strong>的线性表, 且序列中的元素须为整数, 同时其范围(0~k-1)不能太大. <br />
       </p>
+      <p>
+        <h3>八大排序算法总结: </h3>
+        {Img({ src: "Images/408/DataStructure/八大排序算法总结.png", width: 800, align: "left", className: "m-0 mb-1" })}
+        <blockquote className="mb-2 mt-2 w-[1500px]">
+          排序算法的选择要考虑: <br />
+          三算法: 算法的时间复杂度、空间复杂度、稳定性. <br />
+          二数据: 待排序数据的规模、初始状态(是否基本有序). <br />
+          一结构: 待排序数据的存储结构. (存储结构的选择又要考虑单个数据元素规模, 若单个元素规模较大, 则选择链式存储可以在移动元素时降低开销) <br />
+        </blockquote>
+      </p>
     </div>
   )
 }
