@@ -1,6 +1,7 @@
 import Latex from "react-latex-next"
 import 'katex/dist/katex.min.css'; // 导入 KaTeX 样式
 import Space from "@/components/Space";
+import SchedulingAlgosSummary from "./SchedulingAlgosSummary";
 
 function Img({ src, width, align, className }: { src: string, width?: number, align?: string, className?: string }) {
   if (align !== "left") align = "mx-auto"
@@ -38,22 +39,11 @@ export default function OSReview() {
         {Img({ src: "Images/408/OS/五状态模型.png", width: 700, align: "left", className: "m-0 mb-1" })}
         七状态模型: <br />
         {Img({ src: "Images/408/OS/七状态模型.png", width: 700, align: "left", className: "m-0" })}
-        (是否处于挂起态取决于进程是否存在于内存中, <strong>进程PCB要保持在内存中</strong>) <br />
+        (个人理解) 挂起态: 逻辑上保存进程的所有数据和状态, 实际上是否将数据段和代码段换出到磁盘依具体策略而定(比如可以优先换出挂起进程的页), PCB一般保持在内存中不换出. 同时标记挂起态, 暂停对该进程调度直到满足恢复条件. <br />
         <div className="h-1" />
         进程切换(五状态模型): <br />
         {Img({ src: "Images/408/OS/进程切换.png", width: 1000, align: "left", className: "m-0 mb-1" })}
         进程切换原语主要功能总结: 更新PCB信息、创建/删除/移动PCB至对应队列、分配和回收资源. <br />
-        <blockquote className="mb-1 mt-1 ">抢占和时间片用完都相当于只剥夺进程的CPU资源, 而其他资源均满足运行条件, 因此进程进入就绪态. </blockquote>
-        <blockquote className="mb-1 mt-1 ">
-          进程上下文切换与模式切换的区别: <br />
-          中断(系统调用)时用户态和内核态的切换成为模式切换而不是上下文切换, 上下文切换一般指进程(或内核级线程)的上下级切换. <strong>上下文切换只发生在内核态.</strong> <br />
-          <div className="h-1" />
-          调度与切换的区别: <br />
-          调度是指决定资源分配给哪个进程的行为, 是一种决策行为；切换是指实际进行分配的行为, 是执行行为. 一般来说, 先有资源的调度, 然后才有进程的切换. <br />
-          (进程的调度和切换由中断或系统调用驱动) <br />
-          <strong>不能进行调度切换的情况: <br />
-          与硬件密切相关的复杂中断处理程序中; 进程处于内核中的临界区时; 原子操作过程中(原语). <br /></strong>
-        </blockquote>
       </p>
       <p>
         <span className="text-lg font-bold">进程间通信</span> <br />
@@ -110,8 +100,51 @@ export default function OSReview() {
         </div>
       </p>
       <p>
-        {/* continue */}
-        中级调度: 通过更新页表标记位来逻辑上将进程的内存映像换出内存, 包括数据段、代码段. <br /> 
+        <span className="text-lg font-bold">进程调度</span> <br />
+        进程三级调度: <br />
+        高级调度(作业调度): 按一定策略<strong>从外存后备队列中</strong>选择一个作业调入内存, 每个作业只调入一次调出一次, 调入时创建PCB, 调出时删除PCB. (相当于用户让操作系统启动好几个程序, 操作系统来决定先启动哪个)<br />
+        中级调度(内存调度): 按一定策略将进程挂起或重新调入内存. (一般将等待进程挂起, 被挂起的进程PCB组成挂起队列) <br />
+        低级调度(进程调度): 按一定策略从就绪队列中选择一个进程, 为其分配CPU执行. (最基本且必须的调度) <br />
+        (三种调度从上至下频率递增) <br />
+        <div className="h-3" />
+        <blockquote className="mb-1 mt-1 ">
+          进程上下文切换与模式切换的区别: <br />
+          中断(系统调用)时用户态和内核态的切换成为模式切换而不是上下文切换, 上下文切换一般指进程(或内核级线程)的上下文切换. <strong>上下文切换只发生在内核态.</strong> <br />
+        </blockquote>
+        <blockquote className="mb-1 mt-1 ">
+          PSW和PC寄存器在中断时被硬件自动压栈, 进程切换(上下文切换)时内核中的调度程序再PSW和PC及其它所需寄存器保存到对应进程PCB中. (个人理解)<br />
+        </blockquote>
+        <blockquote className="mb-1 mt-1 ">
+          调度与切换的区别: <br />
+          调度是指决定资源分配给哪个进程的行为, 是一种决策行为；切换是指实际进行分配的行为, 是执行行为. 一般来说, 先有资源的调度, 然后才有进程的切换. <br />
+          (进程的调度和切换由中断或系统调用驱动) <br />
+        </blockquote>
+        <blockquote className="mb-1 mt-1 ">
+          进程调度切换情况: <br />
+          <span className="pl-[1rem]"/>主动: 进程正常终止、进程异常终止、主动等待. <br />
+          <span className="pl-[1rem]"/>被动: 时间片用完、硬件中断, 高优先级进程抢占. <br />
+          <strong>不能进行调度切换的情况: <br />
+          与硬件密切相关的复杂中断处理程序中; 进程处于内核数据结构相关的临界区时(<strong className="p-[3px]">不代表</strong>任何临界区都不能进行调度切换); 原子操作过程中(原语). <br /></strong>
+        </blockquote>
+        <blockquote className="mb-1 mt-1 ">
+          <strong>非抢占式调度只能由进程主动放弃CPU, 适合于早期批处理系统. (基于时间片的调度属于抢占式调度)</strong>
+        </blockquote>
+        <blockquote className="mb-1 mt-1 ">抢占和时间片用完都相当于只剥夺进程的CPU资源, 而其他资源均满足运行条件, 因此进程进入就绪态. </blockquote>
+        <blockquote className="mb-1 mt-1 ">
+          引入线程的操作系统中<strong>调度的对象是内核级线程</strong>(原因见上文).
+        </blockquote>
+        <div className="h-3" />
+        <strong>调度算法的评价指标: </strong><br />
+        {Img({ src: "Images/408/OS/CPU利用率.png", width: 490, align: "left", className: "m-0 mt-1" })}
+        {Img({ src: "Images/408/OS/系统吞吐量.png", width: 400, align: "left", className: "m-0 mt-1" })}
+        {Img({ src: "Images/408/OS/周转时间.png", width: 800, align: "left", className: "m-0 mt-1" })}
+        (周转时间=作业在外存后备队列中时间+就绪队列中时间+等待队列中时间+CPU上运行时间)
+        {Img({ src: "Images/408/OS/平均和带权周转时间.png", width: 800, align: "left", className: "m-0 mt-1" })}
+        {Img({ src: "Images/408/OS/等待时间.png", width: 800, align: "left", className: "m-0 mt-1" })}
+        (进程的等待时间=进程在就绪队列中等待的时间(任务的等待时间再+任务在外存后备队列中等待的时间)=周转时间-运行时间-等待时间(外部设备提供服务时间))
+        {Img({ src: "Images/408/OS/响应时间.png", width: 800, align: "left", className: "m-0 mt-1" })}
+        <div className="h-3" />
+        <SchedulingAlgosSummary />
       </p>
     </div>
   )

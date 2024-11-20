@@ -302,6 +302,11 @@ export default function EnglishAccumulation() {
           <td></td>
           <td>The interest on the money is exempt from tax.</td>
         </tr>
+        <tr>
+          <td>utter</td> <td>v. 说(讲话), 发出(声音); adj. 完全的, 彻底的</td>
+          <td></td>
+          <td>That's complete and utter nonsense.</td>
+        </tr>
       </DaisyTable>
     </div>
   )
