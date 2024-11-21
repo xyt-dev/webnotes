@@ -145,6 +145,47 @@ export default function OSReview() {
         {Img({ src: "Images/408/OS/响应时间.png", width: 800, align: "left", className: "m-0 mt-1" })}
         <div className="h-3" />
         <SchedulingAlgosSummary />
+        <div className="h-3" />
+      </p>
+      <p>
+        <span className="text-lg font-bold">同步与互斥</span> <br />
+        为了保证对临界资源的互斥访问, 同时保证系统的整体性能, 要遵循以下原则: <br />
+        <strong>空闲让进、忙则等待、有限等待、让权等待</strong> <br />
+        <div className="h-3" />
+        Peterson算法: 基于双标志法、增加谦让变量turn, <strong>先设置flag再谦让变量turn (均为进程全局变量)</strong> <br />
+        TestAndSet: <br />
+        {Img({ src: "Images/408/OS/TestAndSet.png", width: 650, align: "left", className: "m-0 mt-1" })}
+        Swap: <br />
+        {Img({ src: "Images/408/OS/Swap.png", width: 600, align: "left", className: "m-0 mt-1" })}
+        Peterson算法、TestAndSet、Swap 均没有满足让权等待.  <br />
+        <blockquote className="mb-1 mt-1" ><strong>中断屏蔽法只适用于内核空间、且不适用于多核处理机. (多处理机下中断屏蔽只防止当前CPU被外中断, 不防止其他CPU操作, 内核访问临界资源应该要同时使用中断屏蔽和互斥)</strong></blockquote>
+        <div className="h-3" />
+        信号量(记录型): 
+        {Img({ src: "Images/408/OS/Semaphore.png", width: 550, align: "left", className: "m-0 mt-1" })}
+        <blockquote className="mb-1 mt-1" ><strong>使用PV操作时(还未修改信号量时), 信号量的正值表示当前可用资源数, 信号量负值的绝对值表示当前该信号量等待队列中的进程个数.</strong></blockquote>
+        <blockquote className="mb-1 mt-1 w-[1600px]" ><strong>互斥操作PV之间的代码并不能称之为临界区, 只有其中访问临界资源的代码才成为临界区, PV操作需要“框住”临界区.</strong></blockquote>
+        <div className="h-3" />
+        生产者消费者:
+        {Img({ src: "Images/408/OS/生产者消费者.png", width: 460, align: "left", className: "m-0 mt-1" })}
+        <blockquote className="mb-1 mt-1" ><strong>
+        同步的P操作不能放在互斥的P操作后, 否则在同步的P操作上等待导致无法释放Mutex导致进程死锁. <br />
+        V操作互换一般不影响. <br />
+        临界区应尽可能减少无关代码, 提高系统整体效率(并发度). <br />
+        </strong></blockquote>
+        <div className="h-3" />
+        多生产者消费者:
+        {Img({ src: "Images/408/OS/多生产者消费者.png", width: 700, align: "left", className: "m-0 mt-1" })}
+        <blockquote className="mb-1 mt-1 w-[1600px]" ><strong>图中可以不使用额外Mutex的原因：最大值为1的信号量相当于互斥信号量，同一时间段只可能有一个进程进入运行；若同步信号量大于2，则需要额外的互斥信号量.</strong></blockquote>
+        <div className="h-3" />
+        读者写者:
+        {Img({ src: "Images/408/OS/读者写者.png", width: 700, align: "left", className: "m-0 mt-1" })}
+        <blockquote className="mb-1 mt-1" ><strong>
+        使用count变量后, 无需每个reader线程都P(rw)从而reader可以同时访问资源.
+        reader中的mutex有什么用: 防止多个线程(进程)同时读写count变量(避免全局变量的赋值失去原子性), 同时也避免多个reader线程同时执行 if 判断, 导致部分读者线程被阻塞且可能不被释放. <br />
+        为什么P(rw)可以放在互斥PV内: 因为此处rw信号量由writer释放且writer不会用到mutex, 所以没有死锁问题. <br />
+        </strong></blockquote>
+
+
       </p>
     </div>
   )
