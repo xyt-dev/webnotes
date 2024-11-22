@@ -160,12 +160,12 @@ export default function OSReview() {
         Peterson算法、TestAndSet、Swap 均没有满足让权等待.  <br />
         <blockquote className="mb-1 mt-1" ><strong>中断屏蔽法只适用于内核空间、且不适用于多核处理机. (多处理机下中断屏蔽只防止当前CPU被外中断, 不防止其他CPU操作, 内核访问临界资源应该要同时使用中断屏蔽和互斥)</strong></blockquote>
         <div className="h-3" />
-        信号量(记录型): 
+        信号量(记录型): <br />
         {Img({ src: "Images/408/OS/Semaphore.png", width: 550, align: "left", className: "m-0 mt-1" })}
         <blockquote className="mb-1 mt-1" ><strong>使用PV操作时(还未修改信号量时), 信号量的正值表示当前可用资源数, 信号量负值的绝对值表示当前该信号量等待队列中的进程个数.</strong></blockquote>
         <blockquote className="mb-1 mt-1 w-[1600px]" ><strong>互斥操作PV之间的代码并不能称之为临界区, 只有其中访问临界资源的代码才成为临界区, PV操作需要“框住”临界区.</strong></blockquote>
         <div className="h-3" />
-        生产者消费者:
+        生产者消费者: <br />
         {Img({ src: "Images/408/OS/生产者消费者.png", width: 460, align: "left", className: "m-0 mt-1" })}
         <blockquote className="mb-1 mt-1" ><strong>
         同步的P操作不能放在互斥的P操作后, 否则在同步的P操作上等待导致无法释放Mutex导致进程死锁. <br />
@@ -173,19 +173,38 @@ export default function OSReview() {
         临界区应尽可能减少无关代码, 提高系统整体效率(并发度). <br />
         </strong></blockquote>
         <div className="h-3" />
-        多生产者消费者:
-        {Img({ src: "Images/408/OS/多生产者消费者.png", width: 700, align: "left", className: "m-0 mt-1" })}
+        多生产者消费者: <br />
+        {Img({ src: "Images/408/OS/多生产者消费者.png", width: 700, align: "left", className: "m-0" })}
         <blockquote className="mb-1 mt-1 w-[1600px]" ><strong>图中可以不使用额外Mutex的原因：最大值为1的信号量相当于互斥信号量，同一时间段只可能有一个进程进入运行；若同步信号量大于2，则需要额外的互斥信号量.</strong></blockquote>
         <div className="h-3" />
-        读者写者:
-        {Img({ src: "Images/408/OS/读者写者.png", width: 700, align: "left", className: "m-0 mt-1" })}
+        读者写者: <br />
+        {Img({ src: "Images/408/OS/读者写者.png", width: 700, align: "left", className: "m-0" })}
         <blockquote className="mb-1 mt-1" ><strong>
-        使用count变量后, 无需每个reader线程都P(rw)从而reader可以同时访问资源.
-        reader中的mutex有什么用: 防止多个线程(进程)同时读写count变量(避免全局变量的赋值失去原子性), 同时也避免多个reader线程同时执行 if 判断, 导致部分读者线程被阻塞且可能不被释放. <br />
-        为什么P(rw)可以放在互斥PV内: 因为此处rw信号量由writer释放且writer不会用到mutex, 所以没有死锁问题. <br />
+        使用count变量后, 无需每个reader线程都P(rw)从而使reader可以同时访问资源. <br />
+        reader中的mutex有什么用: 防止多个线程(进程)同时读写count变量(避免全局变量的赋值失去原子性), count的值不正确可能导致部分reader线程被阻塞不释放或同时读写临界区资源. <br />
+        为什么P(rw)放在互斥PV内: 因为此处rw信号量由writer释放且writer不会用到mutex, 所以没有死锁问题; 且应至多只有一个reader线程在rw处等待. <br />
         </strong></blockquote>
-
-
+        上述方法中如果一直有reader线程进入临界区, 则会导致writer线程饥饿, 下面是优化后的方法: <br />
+        {Img({ src: "Images/408/OS/读者写者优化.png", width: 700, align: "left", className: "m-0" })}
+        <blockquote className="mb-1 mt-1" ><strong>
+        增加"写优先"信号量w, 当writer线kj抢到互斥信号量w时(如果还有reader线程在临界区则writer线程在P(rw)处等待), reader线程只出不进.
+        </strong></blockquote>
+        <div className="h-3" />
+        哲学家进餐: <br />
+        {Img({ src: "Images/408/OS/哲学家进餐.png", width: 460, align: "left", className: "m-0" })}
+        <blockquote className="mb-1 mt-1 w-[1600px]" ><strong>
+        如何防止死锁: <br />
+        方法一: 最多允许k-1个哲学家拿筷子.(一定有一个哲学家能拿到两只筷子) <br />
+        方法二: 要求奇数位置哲学家先拿左边筷子再拿右边筷子, 偶数位置哲学家反之.(任一哲学家拿到第一只筷子, 则他与竞争位置的哲学家必有一人能拿到两只筷子) <br />
+        方法三: 将拿左右筷子的动作作为整体互斥执行.(要么不拿, 要么一次性拿两只筷子) <br />
+        方法四: 给筷子按顺序编号, 只能先拿编号小的筷子再拿编号大的筷子.(拿到k-1号筷子的哲学家一定能拿k-2号或k号筷子) <br />
+        </strong></blockquote>
+        <div className="h-3" />
+        管程: <br />
+        一个管程类似于一个类(Class); 管程中的<strong>"入口函数"</strong>(类似于类的方法)由编译器实现<strong>互斥</strong>使用, 管程中的<strong>共享数据</strong>只能通过"入口函数"<strong>互斥</strong>访问;
+        管程中能定义条件(condition)变量, 但注意condition变量不同于信号量, condition变量类似于只是一个等待队列, 使用wait(condition)使当前线程等待, 使用signal(condition)从等待队列中唤醒一个线程, 
+        可在"入口函数"中结合共享数据实现类似信号量的功能进而实现所需同步功能; <br />
+        <strong>注意, 管程中的入口函数共用同一个互斥锁, wait()执行前会自动释放该互斥锁所以不会导致死锁(其中释放互斥锁和进入队列是原子的, 不会错过signal信号)(jyy讲过condition). </strong><br />
       </p>
     </div>
   )
