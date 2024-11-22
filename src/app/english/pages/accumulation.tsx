@@ -1,7 +1,7 @@
 import DaisyTable from "@/components/DaisyTable"
 export default function EnglishAccumulation() {
   return (
-    <div className="prose daisy-prose max-w-[1500px] leading-[35px] mx-auto pt-6">
+    <div className="prose daisy-prose max-w-full leading-[35px] mx-auto pt-6 mr-6">
       <h1 className="text-center">Accumulation</h1>
       <DaisyTable heads={["Word", "Explanation", "Phrase", "Sentence"]} indexed>
         <tr>
@@ -306,6 +306,26 @@ export default function EnglishAccumulation() {
           <td>utter</td> <td>v. 说(讲话), 发出(声音); adj. 完全的, 彻底的</td>
           <td></td>
           <td>That's complete and utter nonsense.</td>
+        </tr>
+        <tr>
+          <td>podcast</td> <td>n. 播客</td>
+        </tr> 
+        <tr>
+          <td>assemble</td> <td>v. (使)集合, (使)聚集; 装配, 组装</td>
+        </tr>
+        <tr>
+          <td>resemble</td> <td>v. 像, 与...相似 </td>
+        </tr>
+        <tr>
+          <td>conceive</td> <td>v. 构想, 设想; 怀孕</td>
+        </tr>
+        <tr>
+          <td>perceive</td> <td>v. 认为, 理解; 察觉, 注意到, 意识到</td>
+          <td><ol>
+              <li>be perceived as ...</li>
+              <li>perceive sth. as ...</li>
+          </ol></td>
+          <td>This discovery was perceived as a major breakthrough.</td>
         </tr>
       </DaisyTable>
     </div>

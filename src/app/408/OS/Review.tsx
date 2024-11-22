@@ -150,7 +150,7 @@ export default function OSReview() {
       <p>
         <span className="text-lg font-bold">同步与互斥</span> <br />
         为了保证对临界资源的互斥访问, 同时保证系统的整体性能, 要遵循以下原则: <br />
-        <strong>空闲让进、忙则等待、有限等待、让权等待</strong> <br />
+        <strong>空闲让进、忙则等待、有限等待、让权等待(非必须)</strong> <br />
         <div className="h-3" />
         Peterson算法: 基于双标志法、增加谦让变量turn, <strong>先设置flag再谦让变量turn (均为进程全局变量)</strong> <br />
         TestAndSet: <br />
@@ -204,7 +204,36 @@ export default function OSReview() {
         一个管程类似于一个类(Class); 管程中的<strong>"入口函数"</strong>(类似于类的方法)由编译器实现<strong>互斥</strong>使用, 管程中的<strong>共享数据</strong>只能通过"入口函数"<strong>互斥</strong>访问;
         管程中能定义条件(condition)变量, 但注意condition变量不同于信号量, condition变量类似于只是一个等待队列, 使用wait(condition)使当前线程等待, 使用signal(condition)从等待队列中唤醒一个线程, 
         可在"入口函数"中结合共享数据实现类似信号量的功能进而实现所需同步功能; <br />
-        <strong>注意, 管程中的入口函数共用同一个互斥锁, wait()执行前会自动释放该互斥锁所以不会导致死锁(其中释放互斥锁和进入队列是原子的, 不会错过signal信号)(jyy讲过condition). </strong><br />
+        <strong>注意, 管程中的入口函数共用同一个互斥锁, wait()执行前会自动释放该互斥锁所以不会导致死锁(其中进入等待队列和释放互斥锁是原子的, 不会错过signal信号); 
+          执行signal()但此进程(线程)还未退出函数时, 被释放的进程(线程)还要等待获取互斥锁才能接着执行. (jyy讲过condition). </strong><br />
+        <div className="h-6" />
+        <strong> 死锁的必要条件: <br />
+        互斥(不能同时访问资源)、非抢占(不能抢占使用资源)、请求+保持(请求其它资源+不主动释放已占用资源)、循环等待(等待其他进程释放资源的等待链形成环路)</strong>
+        <strong> 处理策略: </strong><br />
+        预防死锁: 破坏死锁产生必要条件中的一个或几个. <br />
+        避免死锁: 防止进入不安全状态(可能产生死锁的状态), 从而避免死锁(银行家算法). <br />
+        死锁的检测和解除: 允许死锁发生, 但操作系统负责检测和解除死锁. <br />
+        <div className="h-3" />
+        <strong>预防死锁</strong> <br />
+        <div className="pl-[1rem] ml-[2px] border-l-[3px] border-rose-200">
+          破坏互斥: SPOOLing技术(逻辑上改造成可共享的资源/设备). (大部分情况不能破坏互斥)<br />
+          破坏不剥夺条件: 操作系统帮助抢占必要资源, 一般需要考虑各进程优先级.(实现复杂; 资源的反复分配和释放增大系统开销)<br />
+          破坏保持条件: 进程得不到所需所有资源时要释放所有资源.(容易产生饥饿; 资源的反复分配和释放增大系统开销)<br />
+          破坏请求条件: 可采用静态分配方法, 一次性分配进程所需所有资源.(若运行期间保持资源, 则资源利用率低; 此方法也可能导致一些进程饥饿)<br />
+          破坏循环等待: 可采用顺序资源分配法, 给各资源编号, 各进程必须按编号递增顺序请求资源(原理: 任一时刻总有进程持有当前已分配编号最大的资源, 该进程一定能继续获取资源). 
+          (进程使用资源顺序可能和获取顺序不一致, 导致资源利用率低; 必须按编号大小顺序申请资源, 不便于编程)<br />
+        </div>
+        <div className="h-3" />
+        <strong>避免死锁</strong> <br />
+        <div className="pl-[1rem] ml-[2px] border-l-[3px] border-rose-200">
+          安全序列: 按照这种序列所有进程都一定能顺利完成.  <br />
+          安全状态: 如存在安全序列，则称系统处于安全状态.<br />
+          <strong>安全性算法(计算安全序列+判断安全状态): 当前剩余空闲资源能满足至少一个进程的资源最大需求，该进程完成后释放所分配资源后又能满足剩余进程中至少一个进程的资源最大需求，以此类推若所有进程均可执行完, 则存在安全序列(处于安全状态). 
+            (安全序列不一定唯一) <br /></strong>
+          <strong>银行家算法: </strong>
+          {Img({ src: "Images/408/OS/银行家算法1.png", width: 720, align: "left", className: "m-0" })}
+          {Img({ src: "Images/408/OS/银行家算法2.png", width: 720, align: "left", className: "m-0" })}
+        </div>
       </p>
     </div>
   )
