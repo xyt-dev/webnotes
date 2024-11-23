@@ -207,6 +207,8 @@ export default function OSReview() {
         <strong>注意, 管程中的入口函数共用同一个互斥锁, wait()执行前会自动释放该互斥锁所以不会导致死锁(其中进入等待队列和释放互斥锁是原子的, 不会错过signal信号); 
           执行signal()但此进程(线程)还未退出函数时, 被释放的进程(线程)还要等待获取互斥锁才能接着执行. (jyy讲过condition). </strong><br />
         <div className="h-6" />
+        <strong> 死锁的产生原因: <br />
+        系统资源的竞争+不当的进程推进顺序. </strong>
         <strong> 死锁的必要条件: <br />
         互斥(不能同时访问资源)、非抢占(不能抢占使用资源)、请求+保持(请求其它资源+不主动释放已占用资源)、循环等待(等待其他进程释放资源的等待链形成环路)</strong>
         <strong> 处理策略: </strong><br />
@@ -229,10 +231,25 @@ export default function OSReview() {
           安全序列: 按照这种序列所有进程都一定能顺利完成.  <br />
           安全状态: 如存在安全序列，则称系统处于安全状态.<br />
           <strong>安全性算法(计算安全序列+判断安全状态): 当前剩余空闲资源能满足至少一个进程的资源最大需求，该进程完成后释放所分配资源后又能满足剩余进程中至少一个进程的资源最大需求，以此类推若所有进程均可执行完, 则存在安全序列(处于安全状态). 
-            (安全序列不一定唯一) <br /></strong>
+            (若当前空闲资源满足所有进程尚需资源中的最大值则可直接判断为安全状态) (安全序列不一定唯一) <br /></strong>
           <strong>银行家算法: </strong>
           {Img({ src: "Images/408/OS/银行家算法1.png", width: 720, align: "left", className: "m-0" })}
           {Img({ src: "Images/408/OS/银行家算法2.png", width: 720, align: "left", className: "m-0" })}
+        </div>
+        <blockquote className="mb-1 mt-1" ><strong>
+          银行家算法(安全性算法)只能判断当前系统是否处于安全状态, 不能判断当前系统是否存在死锁. 
+        </strong> </blockquote>
+        <div className="h-3" />
+        <strong>检测和解除死锁</strong> <br />
+        <div className="pl-[1rem] ml-[2px] border-l-[3px] border-rose-200">
+        {Img({ src: "Images/408/OS/资源申请分配图.png", width: 400, align: "left", className: "m-0" })}
+        <strong>检测死锁: <br />
+          在资源分配图中找到不是孤立点且所有请求边资源申请数量都小于对应空闲资源数量的进程，释放其所有请求边和分配边; 
+          <br />按此方法继续若能消除所有的边，则称该图为可完全简化的；若不能完全简化，则说明系统死锁, 此时还连着边的进程就是死锁进程. </strong><br />
+        <strong>解除死锁: </strong><br />
+          方法1: 资源剥夺法: 挂起某些死锁进程, 释放其占有的资源然后分配给其它死锁进程. (同时要注意避免挂起进程饥饿) <br />
+          方法2: 终止进程法: 终止部分或全部死锁进程. (实现简单但代价较大) <br />
+          方法3: 进程回退法: 让一个或多个进程回退至可避免死锁的状态. (需要系统记录进程的历史信息, 设置还原点)<br />
         </div>
       </p>
     </div>
