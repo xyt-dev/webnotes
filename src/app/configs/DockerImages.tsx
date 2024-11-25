@@ -61,7 +61,8 @@ export default function DockerImages() {
          <span className="pl-[3rem]"/> (gitea中仓库为裸仓库, 存放在内部目录"/data/gitea/data/gitea-repositories/用户名/仓库名.git") <br />
         <span className="pl-[3rem]"/> 3.2.(方法2): 直接在gitea中创建一个新的空仓库, 然后从本地仓库push. lfs大文件也会自动push到内部目录的"/data/gitea/data/lfs". <br /> 
         <span className="pl-[3rem]"/> 为避免每次push都要输入用户名密码, 可启用git自动保存用户名密码功能: git config --global credential.helper store <br /> 
-        <span className="pl-[3rem]"/> <strong>配置文件: 注意DOMAIN和ROOT_URL等要写局域网地址/外网地址, 不然局域网/外网不能用git访问. </strong><br /> 
+        <span className="pl-[3rem]"/> 4. <strong>配置文件: 注意DOMAIN和ROOT_URL等要写局域网地址/外网地址, 不然局域网/外网不能用git访问. </strong><br /> 
+        <span className="pl-[3rem]"/> 5. <strong>远程缺失lfs文件可以使用"git lfs push --all origin"强制将本地仓库中的lfs文件推送到远程仓库. </strong><br /> 
       </blockquote>
     </div>
   )
