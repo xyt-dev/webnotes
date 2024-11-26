@@ -337,10 +337,10 @@ export default function EnglishAccumulation() {
           <td>invoke</td> <td>v. 引用, 援引; 祈求</td>
         </tr>
         <tr>
-          <td>revoke</td> <td>撤销, 撤回</td>
+          <td>revoke</td> <td>v. 撤销, 撤回</td>
         </tr>
         <tr>
-          <td>provoke</td> <td>激起, 引起; 刺激, 激励; 挑衅, 激怒(某人)</td>
+          <td>provoke</td> <td>v. 激起, 引起; 刺激, 激励; 挑衅, 激怒(某人)</td>
           <td></td>
           <td>
             1. The article was intended to provoke discussion. <br />
