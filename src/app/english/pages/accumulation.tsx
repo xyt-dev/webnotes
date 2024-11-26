@@ -250,17 +250,18 @@ export default function EnglishAccumulation() {
           <td>conscience</td> <td>n. 良心,良知</td>
         </tr>
         <tr>
-          <td>account</td> <td>n. 账户; 账单; 理由 v. 解释,说明</td>
+          <td>account</td> <td>n. 账户; 账单; 描述, 报道; 理由 v. 解释, 说明; 算作, 视为, 认为</td>
           <td>
             <ol>
-              <li>account for ... &nbsp; 解释...; 占比...<br /></li>
-              <li>on account of ... &nbsp; 由于,因为...; 为了...的缘故; 根据,按照...</li>
+              <li>account for... 解释...; 占比...</li>
+              <li>on account of... 由于,因为...; 为了...的缘故; 根据,按照...</li>
+              <li>of no account 无关紧要</li>
             </ol>
           </td>
           <td>
             <ol>
-              <li>You see how this theory could <strong>account for</strong> the seemingly backward motion of the planet.<br /></li>
-              <li>The social services <strong>account for</strong> a substantial part of public spending.<br /></li>
+              <li>You see how this theory could <strong>account for</strong> the seemingly backward motion of the planet.</li>
+              <li>The social services <strong>account for</strong> a substantial part of public spending.</li>
               <li>In the cloudless night ground temperature decreases <strong>on account of</strong> the heat lost to the space.</li>
             </ol>
           </td>
@@ -321,11 +322,78 @@ export default function EnglishAccumulation() {
         </tr>
         <tr>
           <td>perceive</td> <td>v. 认为, 理解; 察觉, 注意到, 意识到</td>
-          <td><ol>
-              <li>be perceived as ...</li>
-              <li>perceive sth. as ...</li>
-          </ol></td>
+          <td>
+              1. be perceived as ... <br />
+              2. perceive sth. as ...
+          </td>
           <td>This discovery was perceived as a major breakthrough.</td>
+        </tr>
+        <tr>
+          <td>evoke</td> <td>v. 引起, 唤起(情感、记忆、形象)</td>
+          <td></td>
+          <td>It became apparent that smell can evoke strong emotional responses.</td>
+        </tr>
+        <tr>
+          <td>invoke</td> <td>v. 引用, 援引; 祈求</td>
+        </tr>
+        <tr>
+          <td>revoke</td> <td>撤销, 撤回</td>
+        </tr>
+        <tr>
+          <td>provoke</td> <td>激起, 引起; 刺激, 激励; 挑衅, 激怒(某人)</td>
+          <td></td>
+          <td>
+            1. The article was intended to provoke discussion. <br />
+            2. A good teacher should have the ability to provoke students into working harder. <br />
+          </td>
+        </tr>
+        <tr>
+          <td>elicit</td> <td>v. 引出, 得到, 使显现</td>
+        </tr>
+        <tr>
+          <td>explicit</td> <td>adj. 清楚的, 明确的</td>
+        </tr>
+        <tr>
+          <td>implicit</td> <td>adj. 含蓄的; 内含的, 固有的</td>
+          <td></td>
+          <td>
+            1. It was actually an implicit warning to the subordinates not to conduct the military actions they had scheduled. <br />
+            2. The ability to listen is implicit in the teacher's role. <br />
+          </td>
+        </tr>
+        <tr>
+          <td>preserve</td> <td>vt. 保护, 维护; 保留, 维持; 保存(食物)</td>
+        </tr>
+        <tr>
+          <td>reserve</td> <td>vt. 预订; 预留, 贮备; 拥有, 保留(权利)<br />n. 储备(量); 保护区, 受保护土地; 预备队(员)</td>
+          <td>all rights reserved</td>
+        </tr>
+        <tr>
+          <td>conserve</td> <td>vt. 节省, 节约; 保护, 保存</td>
+          <td></td>
+          <td>
+            1. We must conserve endangered meadow lands. <br />
+            2. The factories have closed for the weekend to conserve energy. <br />
+          </td>
+        </tr>
+        <tr>
+          <td>persevere</td> <td>v. 坚持不懈</td>
+        </tr>
+        <tr>
+          <td>repute</td> <td>n. 名誉, 名声</td>
+          <td></td>
+          <td>He was a writer of repute.</td>
+        </tr>
+        <tr>
+          <td>dispute</td> <td>n. 争论, 辩论<br />v. 对...提出质疑; 争论, 辩论</td>
+        </tr>
+        <tr>
+          <td>immerse</td> <td>v. 使沉浸(于); 浸没于(液体)</td>
+          <td></td>
+          <td>Their commitments do not permit them to immerse themselves in current affairs as fully as they might wish.</td>
+        </tr>
+        <tr>
+          <td>immense</td> <td>adj. 极大的, 巨大的; 极好的</td>
         </tr>
       </DaisyTable>
     </div>
