@@ -1,8 +1,9 @@
 import DaisyTable from "@/components/DaisyTable"
-export default function EnglishAccumulation() {
+import EngWord from "@/components/EngWord"
+export default function EnglishWordTable() {
   return (
     <div className="prose daisy-prose max-w-full leading-[35px] mx-auto pt-6 mr-6">
-      <h1 className="text-center">Accumulation</h1>
+      <h1 className="text-center">WordList</h1>
       <DaisyTable heads={["Word", "Explanation", "Phrase", "Sentence"]} indexed>
         <tr>
           <td>gallery</td> <td>n. (艺术作品的)展览; 画廊</td>

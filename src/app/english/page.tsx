@@ -1,14 +1,16 @@
 "use client"
 import DaisySidebar, { DaisySidebarLeaf, DaisySidebarNode as Node } from "@/components/DaisySidebar";
 import React, { useEffect, useState } from "react";
-import EnglishAccumulation from "./pages/accumulation";
+import EnglishWordTable from "./pages/EnglishWordTable";
+import Accumulation from "./pages/Accumulation";
 import ReadingLogic from "./pages/readingLogic";
 import Link from "next/link";
 
 export default function DaisyPages() {
   const pages:{[key: string]: React.ReactNode} = {
     "readingLogic": ReadingLogic(),
-    "accumulation": EnglishAccumulation(),
+    "wordTable": EnglishWordTable(),
+    "accumulation": Accumulation(),
   }
   const [pageRenderingName, setPageRenderingName] = useState("")
   useEffect(() => {
@@ -39,6 +41,7 @@ export default function DaisyPages() {
     <DaisySidebar page={pages[pageRenderingName]}>
       <Leaf pageName="readingLogic">Reading Logic</Leaf>
       <Leaf pageName="accumulation">Accumulation</Leaf>
+      <Leaf pageName="wordTable">WordTable</Leaf>
       <li><Link href='https://drive.google.com/file/d/1dkkugYWYS-0wE0ZVgsiNcBcz_Mjzcq9D/view?usp=drive_link' legacyBehavior><a target="_blank" rel="noopener noreferrer">红宝书</a></Link></li>
     </DaisySidebar>
   )

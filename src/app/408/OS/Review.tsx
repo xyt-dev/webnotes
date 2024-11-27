@@ -272,7 +272,7 @@ export default function OSReview() {
           <strong>运行时动态链接: </strong>程序执行时需要该模块才实际装入(配合动态运行时装入), 边装入边链接(同上). <br />
         </div>
         <blockquote className="mb-1 mt-1" ><strong>
-          <strong>程序中的逻辑地址是链接时确定的, 装入和运行时确定实际装入的物理地址和分页系统的线性逻辑地址(段页式系统装入和运行时对应的页表也可能不确定). (自己理解)</strong>
+          <strong>程序中的逻辑地址是链接时确定的(段号是逻辑地址的一部分), 装入和运行时确定实际装入的物理地址和分页系统的线性逻辑地址(段页式系统装入和运行时对应的页表也可能不确定). (自己理解)</strong>
         </strong></blockquote>
         <blockquote className="mb-1 mt-1" ><strong>
         分不分页对于链接和装载透明; 装载重点在于本模块符号地址的确定, 链接重点在于模块间引用符号地址的确定. 
