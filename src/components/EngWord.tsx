@@ -62,11 +62,11 @@ export default function EngWord({ children, word, wordInfo, highlight }: {childr
     <span className="relative" onClick={setVisibility}>
       <span className="cursor-pointer text-blue-500" ref={parentRef}>{children}</span>
       {isVisible && (
-        <div ref={ref} className="absolute top-full right-full translate-x-full translate-y-1 bg-base-100 border border-base-300 p-[0.6rem] pl-[1rem] rounded-md shadow z-10 whitespace-nowrap" style={style}>
+        <div ref={ref} className="absolute top-full right-full translate-x-full translate-y-1 bg-base-100 border border-base-300 p-[0.5rem] pl-[0.8rem] rounded-md shadow z-10 whitespace-nowrap text-sm w-fit" style={style}>
           <strong>{word}</strong> <br />
           {Object.entries(wordInfo).map(([wordClass, definitions]) => (
             <span key={wordClass} className="mb-2">
-              <strong>{wordClass}. </strong>
+              <strong>{wordClass}{wordClass !== "" && ". "}</strong>
               <span> 
                 {definitions.map((definition, idx) => (
                   <span key={idx} className={idx === highlightIndex && wordClass === highlightWordClass ? 'text-rose-500' : ''}>
