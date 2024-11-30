@@ -304,7 +304,16 @@ export default function OSReview() {
         </strong></blockquote>
         <blockquote className="mb-1 mt-1" ><strong>
           离散分配的优点: 存储空间利用率高, 方便拓展; <br />
-          个人理解: 注意固定的离散分配才没有外部碎片(内存的段式存储属于可变离散分配). <br />
+          个人理解: 注意固定分配才没有外部碎片(内存的段式存储属于可变离散分配). <br />
+        </strong></blockquote>
+        <hr />
+        <blockquote className="mb-1 mt-1" ><strong>
+        计算题注意事项: <br />
+        <ul>
+          <li>编址单位(字? 字节? bit(位图!))、分配单位(多少B?KB?) -&gt; 表项长度(多少B?bit(位图!)?) <br /></li>
+          <li>起始位置(0? 1? 其他位置开始?) <br /></li>
+          <li>逻辑地址OR物理地址? 表指向的地址OR表项所在地址? <br /></li>
+        </ul>
         </strong></blockquote>
       </p>
     </div>
