@@ -240,7 +240,8 @@ export default function ArchLinuxConfig() {
       <li>给Apc修改权限: sudo chown -R $(whoami) /opt/visual-studio-code</li>
       <h3>settings.json</h3>
       <DaisyCode>
-        <span>"workbench.colorTheme": "Gruvbox Dark Hard",</span>
+        <span>// "workbench.colorTheme": "Gruvbox Dark Hard",</span>
+        <span>"workbench.colorTheme": "Catppuccin Macchiato",</span>
         <span>"editor.semanticTokenColorCustomizations": &#123;</span>
         <span>  "[Gruvbox Dark Hard]": &#123;</span>
         <span>    "rules": &#123;</span>
@@ -281,6 +282,13 @@ export default function ArchLinuxConfig() {
         <span>      &#125;</span>
         <span>    ]</span>
         <span>  &#125;</span>
+        <span>&#125;,</span>
+        <span>"workbench.colorCustomizations":  &#123;</span>
+        <span>    // use with catppuccin macchiato theme: </span>
+        <span>    // "editor.background": "#24273a" // catppuccin Macchiato background color</span>
+        <span>    "editor.background": "#222436", // use tokyo night moon (neovim) background color</span>
+        <span>    "editorGutter.background": "#222436",</span>
+        <span>    "tab.activeBackground": "#24273a",</span>
         <span>&#125;,</span>
         <span>"editor.fontSize": 17,</span>
         <span>"editor.fontWeight": "400",</span>
