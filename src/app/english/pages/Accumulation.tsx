@@ -28,9 +28,17 @@ export default function Accumulation() {
         <li>The team launched a <Word word="vigorous" highlight="adj 0">vigorous</Word> campaign to promote their new product.</li>
         <li>
             Modem techniques for producing and shipping food led to greater variety and quantity, including a tremendous increase 
-          in the amount of animal protein and dairy products available, making us more <Word word="vigorous" highlight="adj 1">vigorous</Word>.
+          in the amount of animal protein and <Word word="dairy" highlight="n 0">dairy</Word> products available, making us more <Word word="vigorous" highlight="adj 1">vigorous</Word>.
         </li>
         <li>He became <Word word="accustom" highlight="v 0">accustomed</Word> to waking up early for his morning run.</li>
+        <li>The team will <Word word="commence" highlight="v 0">commence</Word> training for the upcoming <Word word="tournament" highlight="n 0">tournament</Word> next month.</li>
+        <li>The new stadium has an <Word word="immense" highlight="adj 0">immense</Word> capacity, <Word word="accommodate" highlight="vt 1">accommodating</Word> over 100,000 <Word word="spectator" highlight="n 0">spectators</Word>.</li>
+        <li>She's an <Word word="immense" highlight="adj 1">immense</Word> teacher. </li>
+        <li>The carnival parade was a <Word word="magnificent" highlight="adj 1">magnificent</Word> <Word word="spectacle" highlight="n 0">spectacle</Word>. </li>
+        <li>It can be challenging for immigrants to <Word word="assimilate" highlight="v 0">assimilate</Word> into a new culture. </li>
+        <li>To <Word word="assimilate" highlight="v 1">assimilate</Word> new ideas, one must be open to change and willing to learn. </li>
+        <li>The agreement would allow the rebels to be <Word word="incorporate" highlight="v 0">incorporated</Word> into a new national police <Word word="force" highlight="n 1">force</Word>.</li>
+        <li>The ambitious <Word word="entrepreneur" highlight="n 0">entrepreneur</Word> is in the process of <Word word="incorporate" highlight="v 1">incorporating</Word> a new <Word word="corporate" highlight="adj 0">corporate</Word> entity to expand his business ventures into international markets.</li>
       </ul>
       <div className="h-16" />
     </div>

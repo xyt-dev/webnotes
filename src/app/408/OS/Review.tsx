@@ -1,6 +1,5 @@
 import Latex from "react-latex-next"
 import 'katex/dist/katex.min.css'; // 导入 KaTeX 样式
-import Space from "@/components/Space";
 import SchedulingAlgosSummary from "./SchedulingAlgosSummary";
 
 function Img({ src, width, align, className }: { src: string, width?: number, align?: string, className?: string }) {
