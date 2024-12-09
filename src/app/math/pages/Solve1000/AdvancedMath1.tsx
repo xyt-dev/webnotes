@@ -393,9 +393,11 @@ export default function AdvancedMath1() {
             <li><strong>[226]</strong> 逆向思维, 分量在三个坐标轴上积分 -&gt; 整体在空间曲面(平面)<Latex>{`$\\Sigma$`}</Latex>上积分, dydz,dzdx,dxdy -&gt; dS</li>
             <li><strong>[227]</strong> 斯托克斯公式, dydz,dzdx,dxdy -&gt; dS 从而转化为曲面积分; 形心公式</li>
             <li className="font-bold">泰勒公式 f(狗) 和 f(x) 相同的证明: <br /><Latex>{`$f(t) = f(t_0) + \\frac{df}{dt}|_{t_0}(t - t_0) + \\frac{d^2f}{dt^2 \\cdot 2!}|_{t_0}(t - t_0)^2$ $+ \\cdots $
-              其中 t 为 x 的函数, 满足 $t = t_0 + \\frac{dt}{dx}|_{x_0}(x-x_0) + $$\\frac{d^2t}{dx^2}|_{x_0}(x-x_0)^2 + \\cdots ~~ $ 将 t 代入一式可证, 例如对于平方项, 
-              $\\frac{d^2f}{dx^2}|_{x_0}=\\frac{d}{dx}(\\frac{df}{dt}\\cdot\\frac{dt}{dx})|_{x_0}=\\frac{d^2f}{dt^2}|_{t_0}\\cdot(\\frac{dt}{dx})^2|_{x_0}+\\frac{df}{dt}|_{t_0}\\cdot\\frac{d^2t}{dx^2}|_{x_0}$, 此时已经证明了展开式展开至平方项完全等价. $\\\\$ 
-              继续这样证明无限项好像比较繁琐, 其实泰勒公式本身就说明了无论对什么 g(x) 展开都是同一函数, 所以肯定相同.`}</Latex></li>
+              其中 t 为 x 的函数, 满足 $t = t_0 + \\frac{dt}{dx}|_{x_0}(x-x_0) + $$\\frac{d^2t}{dx^2}|_{x_0}(x-x_0)^2 + \\cdots ~~ $ 将 t 代入一式一定得到$(x-a)$的多项式, 
+              其中各次方项系数只能是$f(t(x))$在该点极限的对应无穷小的系数(泰勒公式的证明中证明了这点), 当然一定与直接展开为$(x-a)$的多项式时的各系数均相等.`}
+            </Latex></li>
+            <li>顺带一提: <Latex>{`$\\frac{d^2f}{dx^2}|_{x_0}=\\frac{d}{dx}(\\frac{df}{dt}\\cdot\\frac{dt}{dx})|_{x_0}=
+            \\frac{d^2f}{dt^2}|_{t_0}\\cdot(\\frac{dt}{dx})^2|_{x_0}+\\frac{df}{dt}|_{t_0}\\cdot\\frac{d^2t}{dx^2}|_{x_0}$.`}</Latex></li>
           </ul>
         </div>
       </TextBox>
