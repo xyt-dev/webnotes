@@ -39,6 +39,7 @@ export default function Accumulation() {
         <li>To <Word word="assimilate" highlight="v 1">assimilate</Word> new ideas, one must be open to change and willing to learn. </li>
         <li>The agreement would allow the rebels to be <Word word="incorporate" highlight="v 0">incorporated</Word> into a new national police <Word word="force" highlight="n 1">force</Word>.</li>
         <li>The ambitious <Word word="entrepreneur" highlight="n 0">entrepreneur</Word> is in the process of <Word word="incorporate" highlight="v 1">incorporating</Word> a new <Word word="corporate" highlight="adj 0">corporate</Word> entity to expand his business ventures into international markets.</li>
+        <li>An <Word word="unpretentious" highlight="adj 0">unpretentious</Word> musician with no air of the <Word word="formidable" highlight="adj 0">formidable</Word> conductor about him composes intricate symphonies. </li>
       </ul>
       <div className="h-16" />
     </div>

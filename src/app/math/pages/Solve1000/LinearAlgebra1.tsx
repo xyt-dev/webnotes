@@ -25,7 +25,7 @@ export default function LinearAlgebra1() {
             <li>[233] 方法一: 全部减第n行化为爪型, 斜爪削平爪化为三角型; 方法二: 全部加到第一列使第一列相等, 提出第一列为1, 之后易化为三角型</li>
             <li><strong>[234] 拉普拉斯展开式; 注意余子式和代数余子式的区别; 4阶行列式化三阶行列式; 三阶行列式化H型</strong></li>
             <li><strong>[237]</strong> 方法一: 任意n维列向量<Latex>{`$\\xi$`}</Latex>有 <Latex>{`$A\\xi=0 ~\\Rightarrow~ A=O$`}</Latex>, 可令<Latex>{`$\\xi$`}</Latex>分别为各方向单位向量来证明;<br />
-              <strong>方法二(自己想的):</strong> <Latex>{`$AB=O \\Rightarrow r(A)+r(B)\\le 0$`}</Latex>, 而任意n维列向量 <Latex>{`$\\xi$`}</Latex> 组成的矩阵的秩r(B)可能等于n, 因此 r(A)=0 <br />
+              <strong>方法二(自己想的):</strong> <Latex>{`$AB=O \\Rightarrow r(A)+r(B)\\le n$`}</Latex>, 而任意n维列向量 <Latex>{`$\\xi$`}</Latex> 组成的矩阵的秩r(B)可能等于n, 因此 r(A)=0 <br />
               对于反对称矩阵A: <Latex>{`$\\xi^TA\\xi=(\\xi^TA\\xi)^T=\\xi^TA^T\\xi=-\\xi^TA\\xi ~\\Rightarrow~ \\xi^TA\\xi=0$`}</Latex>
             </li>
             <li><strong>反对称矩阵的主对角线元素为0</strong></li>
@@ -162,13 +162,13 @@ export default function LinearAlgebra1() {
             <li>[282] 伴随矩阵的特征值</li>
             <li>[283] 特征值数量小于 n, 可以代入已知特征值判断重特征值, 更方便的是利用 tr(A) = 特征值之和判断</li>
             <li>[284] 参数讨论是否可相似对角化. 特征值各不相同时可相似对角化, 然后看是否可构造重数特征值, 讨论特殊情况</li>
-            <li className="font-bold">[285] 矩阵 A 能够拆分为两个非方阵的乘积时, 可以交换乘积顺序简化计算: <br /> 
+            <li className="font-bold">[285] 矩阵 A 能够拆分为两个非方阵的乘积时, 可以交换乘积顺序简化计算: <br />
               <Latex>{`$A=BC, |A| = |BC| = |B||C| = |CB|, A^n = B(CB)^{n-1}C \\\\ $ 注: BC 和 CB 的特征值一般不同`}</Latex>
             </li>
             <li className="font-bold">
-              正交向量不需要为单位向量, 但正交矩阵需要各向量正交且为单位向量, 因为正交矩阵要保证任何向量用其进行变换时长度不变, 这需要保证 <Latex>{`$Q^TQ = E$ 从而 $\\xi^T \\xi = (Q\\xi)^T(Q\\xi)$`}</Latex>. 
+              正交向量不需要为单位向量, 但正交矩阵需要各向量正交且为单位向量, 因为正交矩阵要保证任何向量用其进行变换时长度不变, 这需要保证 <Latex>{`$Q^TQ = E$ 从而 $\\xi^T \\xi = (Q\\xi)^T(Q\\xi)$`}</Latex>.
               由 <Latex>{`$Q^TQ=QQ^T=E$`}</Latex> 知, 若正交矩阵列向量为正交单位向量组, 则行向量一定为正交单位向量组.
-            </li> 
+            </li>
             <li className="font-bold">[286]
               {/* n 维向量空间中, 已知 n-k 个线性无关向量, 一定可以再找到 k 个线性无关向量; 任意再找 k 个线性无关向量, 与已知向量均线性无关的任一向量都能由这 k 个线性无关向量表出. <br />
               n 阶方阵中的向量属于 n 维向量空间, 已知 n-k 个线性无关特征向量的实对称矩阵一定还能找到 k 个线性无关特征向量, 与已知 n-k 个特征向量均线性无关的特征向量一定能由这 k 个线性无关特征向量表出. 
@@ -180,7 +180,7 @@ export default function LinearAlgebra1() {
             </li>
             <li className="font-bold">n 维向量空间中, 已知 n-k 个线性无关向量, 一定可以再找到 k 个线性无关向量; 任意再找 k 个线性无关向量, 与已知向量均线性无关的任一向量都能由这 k 个线性无关向量表出.</li>
             <li><strong>[287]</strong> 不带平方项的拉格朗日配方法</li>
-            <li className="font-bold">基变换: <Latex>{`$x=Cy$`}</Latex> 称为过渡矩阵 C 将基 B' 中的坐标 y 转换为基 B 中的坐标 x, 因为两组基要求双射(一一对应), 所以其中的过渡矩阵 C 要求可逆(充分必要条件), 这也说明基变换满足 二次型的秩保持不变 的要求</li> 
+            <li className="font-bold">基变换: <Latex>{`$x=Cy$`}</Latex> 称为过渡矩阵 C 将基 B' 中的坐标 y 转换为基 B 中的坐标 x, 因为两组基要求双射(一一对应), 所以其中的过渡矩阵 C 要求可逆(充分必要条件), 这也说明基变换满足 二次型的秩保持不变 的要求</li>
             <li className="font-bold">二次型一定能化为标准型(实对称矩阵一定能正交对角化), 但拉格朗日配方法不一定能化二次型为标准型(变换矩阵可能不可逆)(见题[288])</li>
             <li><strong>[288]</strong> 方法一: 化为二次型的矩阵形式, 计算行列式; <strong>方法二: 对于该平方和形式, 假设其由 <Latex>{`$\\vec{y}$`}</Latex> 的系数全为 1 的满秩规范二次型变换而来, 易得 <Latex>{`$\\vec{y}=C\\vec{x}$`}</Latex>, 又 <Latex>{`$\\vec{x}$`}</Latex> 的二次型不满秩, 而基变换不会改变二次型的秩, 所以 C 一定不满秩 (C 满秩是基变换的充分必要条件, 不满秩为降维变换)</strong></li>
             <li><strong>[289]</strong> 正交变换 <Latex>{`$\\rightarrow$`}</Latex> 相似, 标准型主对角线上的值即为原二次型矩阵 A 的特征值, 想到: tr(A) = 特征值之和</li>
@@ -196,7 +196,7 @@ export default function LinearAlgebra1() {
               (2) 标准化后, <Latex>{`$X=QY, x_0^2+x_2^2+\\cdots+x_n^2 = X^TX=Y^TQ^TQY = Y^TY = y_1^2+y_2^2+\\cdots+y_n^2$`}</Latex></strong></li>
             <li className="font-bold">由上一条可知: 对于秩为 1 的方阵 A, <Latex>{`$tr(A)\\neq 0 \\Leftrightarrow A$ 能够相似对角化`}</Latex> </li>
             <li>[293] (2) <strong>对称矩阵的合同矩阵当然也是对称矩阵</strong></li>
-            <li><strong>[294] 矩阵合同秩当然相同; 合同的实对称矩阵特征值不一定相同, 即不一定能化为同一标准型, 但一定能化为同一规范型 
+            <li><strong>[294] 矩阵合同秩当然相同; 合同的实对称矩阵特征值不一定相同, 即不一定能化为同一标准型, 但一定能化为同一规范型
               <Latex>{`$\\\\C^TAC=D^TBD=Z, ~~~(D^{-1})^TC^TACD^{-1}=B, ~~~P=CD^{-1}$`}</Latex></strong></li>
             <li><strong>[297]</strong> <Latex>{`$B = (A+C)^k$, 已知 B 和 C $\\rightarrow B = P\\Lambda P^{-1} = P(\\Lambda ^{'})^k P^{-1} = (P\\Lambda ^{'}P^{-1})^k, ~~~A=P\\Lambda ^{'}P^{-1}-C$ (其中 $\\Lambda^{'}$ 中元素正负号可以由题目所给其它条件得知)`}</Latex> </li>
             <li className="font-bold">计算 <Latex>{`$|A-\\lambda E|$`}</Latex> 是最常规操作, 不要硬算填满的行列式. 先观察是否有其它快捷办法获取特征值, 如果必须计算行列式, 尝试将两个元素消为 0 肯定会简单许多, 一般变为 H 型或 [将某一行/某一列消为一个元素, 此时又立刻可将所在列/行的其它元素也变为 0(常用)], 注意交换间隔为 k 的行/列要乘 <Latex>{`$(-1)^{k}$`}</Latex>.
