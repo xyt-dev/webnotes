@@ -1,3 +1,4 @@
+// deprecated
 'use client'
 import React, { ReactNode, useEffect } from "react";
 import hljs from 'highlight.js';
