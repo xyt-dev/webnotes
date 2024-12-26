@@ -1,5 +1,5 @@
 import EngWord from "@/components/EngWord"
-import wordList from "./EnglishWordList.json"
+import wordList from "../EnglishWordList.json"
 const words : Record<string, Record<string, string[]>> = wordList
 function Word({children, word, highlight}:{children:React.ReactNode, word:string, highlight?:string}) {
   return (

@@ -1,3 +1,5 @@
+// import createMDX from '@next/mdx'
+
 /** @type {import('next').NextConfig} */
 const isGithubActions = process.env.GITHUB_ACTIONS || false;
 let _assetPrefix = "";
@@ -16,5 +18,14 @@ const nextConfig = {
   basePath: _basePath,
   output: _output,
 };
+
+// pnpm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+// const withMDX = createMDX({
+//   extension: /\.mdx?$/,
+//   options: {
+//     remarkPlugins: [],
+//     rehypePlugins: [],
+//   },
+// })
 
 export default nextConfig;

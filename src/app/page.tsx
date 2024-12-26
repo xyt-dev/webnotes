@@ -13,6 +13,9 @@ export default function HomePage() {
             <Link href='/408'>408</Link>
           </li>
           <li>
+            <Link href='/xv6'>xv6</Link>
+          </li>
+          <li>
             <Link href='/english'>English</Link>
           </li>
           <li><Link href='/configs'>Configs</Link></li>
