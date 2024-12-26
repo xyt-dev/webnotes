@@ -7,8 +7,6 @@ import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 const noto_serif_sc = Noto_Serif_SC({ subsets: ["latin"], weight: "500" });
-// JetBrainsMono_Vivosans
-// Inter_Vivosans
 
 export const metadata: Metadata = {
   title: "🥳Xy6Blog🥳",
@@ -29,6 +27,7 @@ const vivo_sans = localFont({
   variable: '--font-vivo-sans', // 定义 CSS 变量
 })
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,7 +35,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="cupcake">
-      <body className={`${vivo_sans.variable} ${jetbrains_mono.variable} JetBrainsMono_Vivosans`}> {/* 前两个自动定义存放字体的 CSS 变量, 后一个属性是存放两个字体 CSS 变量的 font-family */}
+      {/*前两个自动定义存放字体的 CSS 变量, 后一个属性是存放两个字体 CSS 变量的 font-family */}
+      <body className={`${vivo_sans.variable} ${jetbrains_mono.variable} JetBrainsMono_Vivosans`}> 
+      {/* <body className={`${jetbrains_mono.className}`}> */}
         <div className="daisy-navbar bg-base-100">
           <Link href='/' className="pl-6">🥳Xy6Blog🥳</Link>
         </div>

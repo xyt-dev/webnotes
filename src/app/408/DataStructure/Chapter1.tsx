@@ -14,7 +14,7 @@ export default function Chapter1() {
     <div className="prose daisy-prose p-6 max-w-[1500px]">
       <h2 className="text-3xl">数据与数据结构</h2>
       <h3>基本概念</h3>
-      <p className="font-bold">
+      <p>
         数据: 信息的载体, 能输入到计算机中并被识别和处理的符号的集合. (0 和 1 及其组成的其他数据)<br />
         <strong>数据元素: 数据的基本单位, 通常作为一个整体处理, 可有多个数据项组成. </strong><br />
         数据项: 构成数据元素的不可分割的最小单位, 如 一个整数、一个字符串. <br />
