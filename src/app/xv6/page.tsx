@@ -35,6 +35,7 @@ export default function DaisyPages() {
   return (
     <DaisySidebar page={pages[pageRenderingName]}>
       <Leaf pageName="Xv6Book">Xv6Book</Leaf>
+      <li><a href="Pdf/xv6book.pdf">Xv6Book.pdf</a></li>
     </DaisySidebar>
   )
 }

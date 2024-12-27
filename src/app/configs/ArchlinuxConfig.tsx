@@ -171,10 +171,11 @@ export default function ArchLinuxConfig() {
         # make fcitx5 more stable<br />
         windowrule=pseudo,fcitx;<br />
         <br />
-        windowrule = float, title:^(wezterm)$ <br />
+        windowrulev2 = float, title:^(wezterm)$ <br />
+        windowrulev2 = float, title:^(.*)(mpv)(.*)$ <br />
         # zen-browser <br />
-        windowrule = float, title:^(我的足迹)$ <br />
-        windowrule = float, title:^()$ <br />
+        windowrulev2 = float, title:^(我的足迹)$ <br />
+        windowrulev2 = float, title:^()$ <br />
         <br />
         # 光标主题: <br />
         # 注意: 修改基于gtk的程序光标需要在 ~/.config/gtk-3.0/settings.ini 中设置: gtk-cursor-theme-name=Bibata-Modern-Ice  <br /> 
