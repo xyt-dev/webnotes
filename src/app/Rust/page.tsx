@@ -1,9 +1,11 @@
 "use client"
 import DaisySidebar, { DaisySidebarLeaf, DaisySidebarNode as Node } from "@/components/DaisySidebar";
 import React, { useEffect, useState } from "react";
+import RustBase from "./pages/RustBase";
 
 export default function DaisyPages() {
   const pages: { [key: string]: React.ReactNode } = {
+    "RustBase": RustBase(),
   }
   const [pageRenderingName, setPageRenderingName] = useState("")
   useEffect(() => {
@@ -32,7 +34,7 @@ export default function DaisyPages() {
   }
   return (
     <DaisySidebar page={pages[pageRenderingName]}>
-      <li><a href="Pdf/xv6book.pdf">Xv6Book.pdf</a></li>
+      <Leaf pageName="RustBase">Rust语言基础</Leaf>
     </DaisySidebar>
   )
 }

@@ -1,0 +1,176 @@
+import EngWord from "@/components/EngWord"
+import wordList from "../../english/EnglishWordList.json"
+import CodeBlock from "@/components/CodeBlock"
+
+const words : Record<string, Record<string, string[]>> = wordList
+function Word({children, word, highlight}:{children:React.ReactNode, word:string, highlight?:string}) {
+  return (
+    <EngWord word={word} wordInfo={words[word]} highlight={highlight}>{children}</EngWord>
+  )
+}
+
+function S({children}: {children?:React.ReactNode}) {
+  return (
+    <div className="leading-normal text-[1.02rem] pb-[0.15rem] pt-[0.3rem]">
+      <strong>{children}</strong>
+    </div>
+  )
+}
+
+function Quote({children, className}: {children?:React.ReactNode, className?:string}) {
+  return (
+    <div className={`border-l-[0.2rem] border-l-amber-200 pl-3 mt-2 mb-2 ${className}`}>
+      {children}
+    </div>
+  )
+}
+
+function Para({children}:{children?:React.ReactNode}) {
+  return (
+    <div className="leading-8 pb-[0.15rem]">
+      {children}
+    </div>
+  )
+}
+
+function Img({src, width, align}: { src: string, width?: number, align?: string }) {
+  if (align !== "left") align = "mx-auto"
+  return (
+     <img className={`mt-1 mb-1 ${align}`} src={src} alt="image" width={width} />
+  ) 
+}
+
+export default function RustBase() {
+  return (
+    <div className="prose daisy-prose max-w-[1600px] leading-[35px] pl-24 pr-12">
+      <div className="h-12" />
+      <h1 className="text-center">Rust语言基础</h1>
+      <h2>初步认识</h2>
+      <h3>创建项目:</h3>
+      <Para>
+        可直接使用rustc编译.rs文件(似乎vscode插件对rust单文件没有语言提示), 更常用"<Word word="cargo" highlight="n 0">cargo</Word> new [Project Name]"创建Rust项目. <br />
+        默认会创建一个.git仓库也可以用参数"--vcs=git"显示指定版本控制系统, 使用"--vcs=none"可指明不使用版本控制系统. <br />
+        同时会自动创建: src目录、cargo.toml文件. (使用"cargo init"也可以创建项目) <br />
+        <Quote>
+          .gitignore中添加"target/"即可忽略target目录及其内容. <br />
+        </Quote>
+        <S>Cargo.toml</S>
+        TOML即Tom's Obvious, Minimal Language, 是Cargo配置文件的格式. <br />
+        第一行: [package]是一个片段(section)标题, 表明下面的语句用来配置一个package. <br />
+        接下来的三行: 设置了Cargo编译程序所需的配置: 项目的名称(name)、项目的版本(version)以及要使用的Rust版本(edition). <br />
+        最后一行: [dependencies]是罗列项目依赖的片段. 在Rust中，package被称为<Word word="crate" highlight="">crate</Word>. <br />
+        <Quote>
+          Cargo期望源文件存放在src目录中, 项目根目录只存放README、license、配置文件和其他跟代码无关的文件, 帮助保持项目干净整洁. <br />
+        </Quote>
+      </Para>
+      <h3>项目的构建和执行: </h3>
+      <Para>
+        可使用"cargo build"构建项目, 然后使用"cargo run"即可运行项目; 也可以直接用"cargo run"一键构建并运行项目.
+        如果项目源文件没有改变, 则"cargo run"不会自动重新构建项目, 而是直接运行项目. <br />
+        默认的构建方法是调试构建(debug build), 会在 target/debug 目录下生成对应可执行文件. <br />
+        首次运行build时，会使Cargo在项目根目录创建一个新文件: Cargo.lock, 这个文件记录项目依赖的实际版本. <br />
+        使用"cargo check"可对源码进行检查, 同时生成(AST、符号表等)中间文件, 但不链接和生成二进制文件, 所以比"cargo build"更快速, 也更常用. <br />
+        使用"cargo build/run --release"来构建要发布的程序, 这会启用一些优化, 同时也需要消耗更长的编译时间. 此外会在 target/release 而不是 target/debug 下生成可执行文件.
+      </Para>
+      <h3>第一个程序: </h3>
+      <Para>
+        <CodeBlock lang="rust" className="w-[800px] m-2">
+          {`use std::io; \nfn main() { \n  let mut guess = String::new(); \n  io::stdin()\n    .read_line(&mut guess)\n    .expect("tldr"); \n  println!("number read: {}", guess); \n}`}
+        </CodeBlock>
+        <S>use 语句</S>
+        默认情况下, Rust设定了若干个会自动导入到每个程序作用域中的标准库内容，这组内容被称为预导入(prelude)内容. <br />
+        <details className="pl-[0.5rem] text-base m-1">
+            <summary className="cursor-pointer w-fit">[预导入内容]</summary>
+            {Img({src:"Rust/prelude.png", width:700, align:"left"})}
+        </details>
+        如果需要使用的类型不在预导入内容中, 就必须使用 use 语句显式地将其引入作用域, 然后即可调用io库中的函数stdin().
+        (如果程序的开头没有使用 use std::io 引入io库，我们仍可以通过把函数调用写成 std::io::stdin() 来使用该函数). <br />
+        <S>变量赋值语句、创建String类型变量</S>
+        Rust中使用 let 语句创建变量同时赋值, 默认是不可变的, 可变变量需要在变量名前使用 mut 修饰.
+        <Quote>Rust中不可变变量有两层含义[自己理解]: 1. 不能对该变量重复赋值(不能修改该变量的内存位置); 2. 不能对该变量创建可变引用(不能修改变量指向内存位置中的内容). </Quote>
+        String是一个标准库提供的字符串类型，它是UTF-8编码的可增长文本块. '::' 语法表明 new 是 String 类型的一个关联函数(associated function). 
+        关联函数是针对某个类型实现的函数, 这个例子中 String::new() 会返回一个 String 类型的新实例(内容为空字符串).
+        <Quote>总的来说, let mut guess = String::new(); 这一行创建了一个可变变量, 当前它绑定到一个新的 String 类型空实例上. </Quote>
+        <S>函数调用、输入/输出</S>
+        stdin()返回一个 std::io::Stdin 类型的实例，Stdin一种代表终端标准输入句柄的类型. <br />
+        .read_line(&mut guess) 调用了标准输入句柄中的 read_line 方法, 其需要 &mut String(String的可变借用) 类型变量作为参数, 其返回一个类型为Result的值. <br />
+        <Quote>注意 &mut 为一个整体, 表示可变借用. </Quote>
+        Result是一种枚举类型(enum), 其值可以是Ok或Err, Result的实例拥有expect方法用于结果处理. 当实例的值为Err时, expect()输出参数中的信息然后终止程序; 当实例的值为Ok时, expect()将Ok的具体值返回(这里是输入到标准输入中的字节数). <br />
+        (不使用expect()也能编译通过, 但会触发 warning: unused `Result` that must be used. ) <br />
+        println! 是一个宏, 能接受传入的参数然后在编译时进行展开.
+        (例如: <CodeBlock lang="rust" inline className="p-0">{`println!("... {} ...", "tldr");`}</CodeBlock> 会展开为 <CodeBlock lang="rust" inline className="p-0">{`std::io::_print(format_args!("... {} ...", "world"));`}</CodeBlock>
+        , 然后再进一步展开...)
+        {`'{}'`}在宏里作为占位符, 表示在其所在位置插入一个值.
+      </Para>
+      <h3>进一步修改: </h3>
+      <S>添加与更新依赖</S>
+      <Para>
+        首先添加一个crate: 在Cargo.toml中的 dependencies section 下添加一行 rand = "0.8.5", "0.8.5" 是 "^0.8.5" 的简称, 表示任何至少是0.8.5但小于0.9.0的版本, Cargo认为这些版本与 0.8.5 版本的公有API相兼容. 
+        (也可以使用"cargo add rand"来添加该crate.) <br />
+        现在使用"cargo build", 此例中虽然只声明了rand一个依赖，但Cargo额外获取了rand所需的其他crates，因为rand依赖它们来正常工作. 引入crates的版本信息和源码会统一缓存在本地registry中(Linux中一般是 ~/.cargo/registry/ 目录).
+        之后Cargo对这些依赖以及本项目文件进行编译, 然后一同构建, 编译的相关产物会放在项目的 target/[debug|release]/deps/ 目录下.<br />
+        如果此时对项目源码进行一般修改(依赖没有变化)再次使用"cargo build", 则Cargo只会重新编译相关文件并更新构建. <br />
+        此外, Cargo还会维护Cargo.lock文件, 如果构建时发现Cargo.lock中已存在对应依赖项, 则Cargo会使用依赖项在Cargo.lock中被指定的版本进行构建, 这使得项目可以准确的重复构建. <br />
+        使用"cargo update", 则Cargo会忽略Cargo.lock文件，并计算出所有符合Cargo.toml声明的最新版本, 然后把这些更新的版本写入Cargo.lock文件.
+        (此例中Cargo会寻找大于 0.8.5 而小于 0.9.0 的版本进行更新; 如需使用0.9.0及以上版本, 则需进行手动更新.)
+      </Para>
+      <S>修改程序</S>
+      <Para>
+        <CodeBlock lang="rust" className="w-[800px] m-2">
+          {`use std::io;
+use std::cmp::Ordering;
+use rand::Rng;
+fn main() {
+	let secret_number = rand::thread_rng().gen_range(1..=1000000);
+	loop {
+		println!("Please input your guess.");
+		let mut guess = String::new();
+		io::stdin()
+			.read_line(&mut guess)
+			.expect("tldr");
+		let guess: u32 = match guess.trim().parse() {
+			Ok(num) => num,
+			Err(_) => continue,
+		};
+		match guess.cmp(&secret_number) {
+			Ordering::Less => println!("Too small!"),
+			Ordering::Greater => println!("Too big!"),
+			Ordering::Equal => {
+				println!("You win!");
+				break;
+			}
+		}
+	}
+}`}
+        </CodeBlock>
+      </Para>
+      <S>引入生成随机数的trait方法</S>
+      <Para>
+        Rust中trait定义一组方法，任何实现该trait的类型都需要提供这些方法的实现. Rng是一个trait，它定义了随机数生成器应实现的方法. 
+        由于Rust支持多种类型实现同一个trait，<strong>以及同一类型的同名方法实现多个trait</strong>, 所以为了避免歧义, 必须在作用域中指明要使用的trait. <br />
+        rand::thread_rng 函数提供实际使用的随机数生成器, 接着调用该随机数生成器的 gen_range 方法. 这个方法由 use rand::Rng 语句引入到作用域的 Rng trait 定义, 
+        其参数可以是一个 RangeInclusive 类型, 这里的 1..=100 就是一个 std::ops::RangeInclusive&lt;i32&gt;类型, 其表示[1,100]内的整数.
+        <Quote>应该use哪个trait以及该从crate中调用哪个方法? Cargo有一个很棒的功能是: 运行"cargo doc --open"命令来构建所有本地依赖提供的文档, 然后使用浏览器查看. </Quote>
+      </Para>
+      <S>类型转换</S>
+      <Para>
+        Rust是强类型(statically typed)语言, 且它要求显式转换不同类型. Rust中数字默认使用i32类型(创建变量时不显式指定变量类型或者没有类型推断信息时, 就创建为默认类型), 此例中secret_number的类型是u32, 
+        而之前从标准输入读取的信息为String类型, 必须显式转换才能与secret_number进行比较. <br />
+        这里使用 <CodeBlock lang="rust" inline className="p-0">{`let guess: u32 = guess.trim().parse().expect("Please type a number!");`}</CodeBlock>, 新创建的变量与之前同名, 
+        这是因为Rust允许用一个新值来隐藏(Shadowing)其之前的值(原先值所在内存的所有权会被转移或丢弃), 这个功能常用于需要转换值的类型之类的场景. 其中trim()用于去除字符串开头和结尾的空白字符(包括读入的回车符\r和换行符\n).
+        parse()能将字符串表示的数字转换为数字变量类型, 其定义中有一个泛型参数对应其返回值(具体的数字变量类型), 需要明确指出对应泛型的实际类型或提供类型推断信息
+        (这里也可以使用<CodeBlock lang="rust" inline className="p-0">{`let guess = guess.trim().parse()::<u32>.expect("Please type a number!");`}</CodeBlock>)
+      </Para>
+      <S>比较输入值与随机数</S>
+      <Para>
+        从标准库引入了一个叫 std::cmp::Ordering 的类型到作用域中, Ordering 是一个枚举, 其成员是 Less、Greater 和 Equal, 对应比较两个值时可能出现的三种结果. <br />
+        cmp 方法用来比较两个值并可以在任何可比较的值上调用, 其参数是被比较值的引用, 此例中把 guess 与 secret_number 做比较, 然后 cmp 方法会返回一个 Ordering 的成员(一个枚举值). <br />
+        一个 match 表达式由待匹配的目标值和分支(arms)构成; 一个分支为 一个模式(pattern) =&gt; 与该模式相匹配时执行的代码. 所有模式必须能覆盖目标值的取值范围("_"通配符可匹配任何取值), 各模式按顺序依次匹配. <br />
+        (赋值语句后跟match语句, 如果执行continue或break, 则不需要返回值, 因为赋值语句不会执行)
+      </Para>
+
+
+      <div className="h-12" />
+    </div>
+  )
+}

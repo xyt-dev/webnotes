@@ -13,7 +13,7 @@ export default function HomePage() {
             <Link href='/408'>408</Link>
           </li>
           <li>
-            <Link href='/xv6'>xv6</Link>
+            <Link href='/Rust'>Rust</Link>
           </li>
           <li>
             <Link href='/english'>English</Link>

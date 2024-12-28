@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import hljs from 'highlight.js';
 import '@catppuccin/highlightjs/css/catppuccin-mocha.css';
 
-// 高亮代码并渲染为 JSX 元素
 const CodeBlock = ({ children, inline, className, lang = 'javascript' }: { children: string, inline?:boolean, className?:string, lang?: string }) => {
   const [highlightedCode, setHighlightedCode] = useState<string>('');
   const language = lang;
@@ -32,7 +31,7 @@ const CodeBlock = ({ children, inline, className, lang = 'javascript' }: { child
     );
   } else {
     return (
-      <pre className={`p-2 pl-6 pr-6 m-0 bg-[#222436] inline ${className}`} >
+      <pre className={`p-[0.36rem] pl-2 pr-2 m-0 bg-[#222436] inline ${className}`} >
         <code className={`leading-normal text-base language-${language} bg-[#222436]`} 
               dangerouslySetInnerHTML={{ __html: highlightedCode }}
         />
