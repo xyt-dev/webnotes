@@ -154,11 +154,11 @@ fn main() {
       </Para>
       <S>类型转换</S>
       <Para>
-        Rust是强类型(statically typed)语言, 且它要求显式转换不同类型. Rust中数字默认使用i32类型(创建变量时不显式指定变量类型或者没有类型推断信息时, 就创建为默认类型), 此例中secret_number的类型是u32, 
+        Rust是强类型(statically typed)语言, 且它要求显式转换不同类型. Rust中数值默认使用i32类型(创建变量时不显式指定变量类型或者没有类型推断信息时, 就创建为默认类型), 此例中secret_number的类型是u32, 
         而之前从标准输入读取的信息为String类型, 必须显式转换才能与secret_number进行比较. <br />
         这里使用 <CodeBlock lang="rust" inline className="p-0">{`let guess: u32 = guess.trim().parse().expect("Please type a number!");`}</CodeBlock>, 新创建的变量与之前同名, 
         这是因为Rust允许用一个新值来隐藏(Shadowing)其之前的值(原先值所在内存的所有权会被转移或丢弃), 这个功能常用于需要转换值的类型之类的场景. 其中trim()用于去除字符串开头和结尾的空白字符(包括读入的回车符\r和换行符\n).
-        parse()能将字符串表示的数字转换为数字变量类型, 其定义中有一个泛型参数对应其返回值(具体的数字变量类型), 需要明确指出对应泛型的实际类型或提供类型推断信息
+        parse()能将字符串表示的数值转换为数值变量类型, 其定义中有一个泛型参数对应其返回值(具体的数值变量类型), 需要明确指出对应泛型的实际类型或提供类型推断信息
         (这里也可以使用<CodeBlock lang="rust" inline className="p-0">{`let guess = guess.trim().parse()::<u32>.expect("Please type a number!");`}</CodeBlock>)
       </Para>
       <S>比较输入值与随机数</S>
@@ -168,6 +168,26 @@ fn main() {
         一个 match 表达式由待匹配的目标值和分支(arms)构成; 一个分支为 一个模式(pattern) =&gt; 与该模式相匹配时执行的代码. 所有模式必须能覆盖目标值的取值范围("_"通配符可匹配任何取值), 各模式按顺序依次匹配. <br />
         (赋值语句后跟match语句, 如果执行continue或break, 则不需要返回值, 因为赋值语句不会执行)
       </Para>
+
+      <h2>Rust基础</h2>
+      <S>变量和常量</S>
+      常量使用const关键字, 不能使用mut修饰. 常量可以在任意作用域内声明(包括全局作用域), 声明时必须指明具体类型且绑定到编译期确定的值, 使用常量相当于内联. <br />
+      let定义的变量虽然也默认不可变, 但只能在局部作用域内声明, 声明时可以暂时不绑定任何值, 可以绑定运行期才能确定的值, 且可自动推断出其类型. <br />
+      <S>字符和字符串</S>
+      Rust中字符类型char为Unicode编码, 一个字符占4字节, 除非通过 b'' 显式指出其为ASCII编码(实际为u8类型); 而字符串是UTF-8编码, ASCII字符在UTF-8编码中占用的是1字节! <br />
+      &str是字符串切片(对字符串数据的引用), 其内部包含一个指针和长度字段, 在64位系统下&str类型变量占16字节. <br />
+      <CodeBlock lang="rust" className="w-[800px] m-2">
+        {`let x = "哈哈哈";\nlet y = "hhh";\nprintln!("{}", std::mem::size_of_val(&x)); // output: 16\nprintln!("{}", std::mem::size_of_val(x)); // output: 9
+println!("{}", std::mem::size_of_val(y)); // output: 3\nprintln!("{}", std::mem::size_of_val(&&x)); // output: 8`}
+      </CodeBlock>
+      注意, &x相当于&&str. 此例说明&str占用内存大小为16字节, x指向的字符串占用内存大小为9字节, y指向的字符串占用内存大小为3字节, &&str占用内存大小为8字节(&&...&str占用内存大小也是8字节). <br />
+      <Quote>可以推测: Rust中引用的实质是一个包含指向目标指针(及其他元数据)的结构. 其中可变引用的指针相当于指针常量, 不可变引用的指针相当于常量指针常量. </Quote>
+      <Quote>注: 布尔类型在Rust中占1字节</Quote>
+      <S>对临时值的引用</S>
+      <CodeBlock lang="rust" className="w-[800px] m-2">
+        {`let x:i32 = 6;\nlet y = &(x as u32);\nprintln!("Address of x: {:p}", &x); // 原变量地址\nprintln!("Address of y: {:p}", y);  // 引用临时值的地址`}
+      </CodeBlock>
+      如上所示, (x as u32)产生一个临时值, 其存放位置不再是x的内存地址, 该临时值的所有权归Rust系统管理, y对其引用会使其周期延长至与y相同.
 
 
       <div className="h-12" />
