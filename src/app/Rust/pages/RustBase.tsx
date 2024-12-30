@@ -173,6 +173,7 @@ fn main() {
       <S>变量和常量</S>
       常量使用const关键字, 不能使用mut修饰. 常量可以在任意作用域内声明(包括全局作用域), 声明时必须指明具体类型且绑定到编译期确定的值, 使用常量相当于内联. <br />
       let定义的变量虽然也默认不可变, 但只能在局部作用域内声明, 声明时可以暂时不绑定任何值, 可以绑定运行期才能确定的值, 且可自动推断出其类型. <br />
+      <Quote><strong>注: 不是mut的变量理论上不具有内部可变性, 因为可变性定义会递归向成员传递.</strong> (除非使用Cell类型(UnsafeCell是Rust唯一允许通过不可变引用修改内部数据的类型)) (GPT理解)</Quote>
       <S>字符和字符串</S>
       Rust中字符类型char为Unicode编码, 一个字符占4字节, 除非通过 b'' 显式指出其为ASCII编码(实际为u8类型); 而字符串是UTF-8编码, ASCII字符在UTF-8编码中占用的是1字节! <br />
       &str是字符串切片(对字符串数据的引用), 其内部包含一个指针和长度字段, 在64位系统下&str类型变量占16字节. <br />
@@ -180,25 +181,25 @@ fn main() {
         {`let x = "哈哈哈";\nlet y = "hhh";\nprintln!("{}", std::mem::size_of_val(&x)); // output: 16\nprintln!("{}", std::mem::size_of_val(x)); // output: 9
 println!("{}", std::mem::size_of_val(y)); // output: 3\nprintln!("{}", std::mem::size_of_val(&&x)); // output: 8`}
       </CodeBlock>
-      注意, &x相当于&&str. 此例说明&str占用内存大小为16字节, x指向的字符串占用内存大小为9字节, y指向的字符串占用内存大小为3字节, &&str占用内存大小为8字节(&&...&str占用内存大小也是8字节). <br />
-      <Quote><strong>可以推测: Rust中引用的实质是一个包含指向目标内存的指针(及其他元数据)的结构. 其中可变引用的指针相当于指针常量, 不可变引用的指针相当于常量指针常量. 可以把引用看做指针, 只不过使用时默认解地址. </strong></Quote>
+      &x类型的为&&str. 此例说明&str占用内存大小为16字节, x指向的字符串占用内存大小为9字节, y指向的字符串占用内存大小为3字节, &&str占用内存大小为8字节(&&...&str占用内存大小也是8字节). <br />
       <Quote>注: 布尔类型在Rust中占1字节</Quote>
+      <Quote><strong>可以推测: Rust中引用的实质是一个包含指向目标内存的指针(及其他元数据)的结构. 其中可变引用的指针相当于指针常量, 不可变引用的指针相当于常量指针常量. 可以把引用看做指针, 
+        其中不可变引用进行操作和计算时会自动解一层引用(可使用运算符'*'手动解引用, 注意解引用运算符'*'优先级比成员访问运算符'.'的优先级低). </strong></Quote>
       <S>对临时值的引用</S>
       <CodeBlock lang="rust" className="w-[800px] m-2">
-        {`let x:i32 = 6;\nlet y = &(x as u32);\nprintln!("Address of x: {:p}", &x); // 原变量地址\nprintln!("Address of y: {:p}", y);  // 临时值的地址`}
+        {`let x: i32 = 6;\nlet y = &(x as u32);\nprintln!("Address of x: {:p}", &x); // 原变量地址\nprintln!("Address of y: {:p}", y);  // 临时值的地址`}
       </CodeBlock>
       如上所示, (x as u32)产生一个临时值, 其存放位置不再是x的内存地址, 该临时值的所有权归Rust系统管理, y对其引用会使其周期延长至与y相同.
+      <CodeBlock lang="rust" className="w-[800px] m-2">
+        {`let s = &String::from("hello");`}
+      </CodeBlock>
+      以上代码同理.
       <S>表达式</S>
       什么是表达式: <strong>有返回值就是表达式</strong>.
       <CodeBlock lang="rust" className="w-[800px] m-2">
         {`let y = {\n  let x = 3;\n  x + 1\n};`}
       </CodeBlock>   
       如上所示, {`'{}'`}及其内部为一个表达式, x + 1 的计算结果应该不会存放在单独的临时区域, 而是直接存放到变量y所有的内存中. 而包含了';'的一定为语句, 语句没有返回值.
-      <S>Rust的"传值"</S>
-      <strong>注意, Rust中"传值"默认传递所有权而不是拷贝, 而且拥有所有权的变量周期结束时会释放该内存.(尤其注意函数传参, 一般传引用或使用clone)</strong> <br />示例代码: 
-      <CodeBlock lang="rust" className="w-[800px] m-2">
-        {`let s = String::from("哈哈哈");\n{\n  let s1 = s; \n}\nprintln!("{}", &s); // error: borrow of moved value: s`}
-      </CodeBlock>
       <S>切片</S>
       切片允许我们引用集合中部分连续的元素序列，而不是引用整个集合, Rust 语言特性内置的 str 和 [u8] 等类型都是切片, 而 [u8;N(固定大小)] 是数组. <br />
       Rust中, 栈的总大小是固定的, 栈变量的大小也必须在编译期就能确定, 因此栈上只能创建固定大小类型的变量. 切片是一种动态大小类型(DST), 因此只能在堆上创建, 然后在栈上创建其引用. <br />
@@ -206,8 +207,17 @@ println!("{}", std::mem::size_of_val(y)); // output: 3\nprintln!("{}", std::mem:
         {`let s = String::from("哈哈哈");\n// let s1 = s[0..3];\n//     ^^ doesn't have a size known at compile-time\nlet s1 = &s[0..3]; // correct, s1: &str`}
       </CodeBlock>
       还要注意, 即使是切片的不同部分, 也不能同时存在可变引用:
-      <CodeBlock lang="rust" className="w-[900px] m-2">
-        {`let mut s = String::from("哈哈哈");\nlet mut s1 = &mut s[0..=2];\nlet mut s2 = &mut s[3..=5]; // cannot borrow 's' as mutable more than once at a time.\nprintln!("{}", s1);`}
+      <CodeBlock lang="rust" className="w-[1000px] m-2">
+        {`let mut s = String::from("哈哈哈");\nlet mut s1 = &mut s[0..=2];\nlet mut s2 = &mut s[3..=5]; // error: cannot borrow 's' as mutable more than once at a time.\nprintln!("{}", s1);`}
+      </CodeBlock>
+      <S>Rust的"传值"(包括传参和返回值)</S>
+      <strong>Rust中"传值"要分情况讨论, 对于实现了Copy trait的类型(如所有基本类型和不可变引用&T, 以及基本类型的元组和数组, 基本类型的数组的数组...)来说传值是自动拷贝(使用Copy语义), 
+        而对于没有实现Copy trait的类型(如String等非基本类型)来说传值是传递所有权(默认是Move语义)而不是拷贝. 
+        而且要注意拥有所有权的变量周期结束时会释放该内存.(尤其对于函数传参要注意是否应该 传引用 / 使用clone手动拷贝 / 通过返回值归还所有权)</strong> 
+      <Quote>注意可变引用 &mut T 是不可以Copy的; <br />Copy是浅拷贝.</Quote>
+      示例代码:
+      <CodeBlock lang="rust" className="w-[800px] m-2">
+        {`let s = String::from("哈哈哈");\n{\n  let s1 = s; \n}\nprintln!("{}", &s); // error: borrow of moved value: s`}
       </CodeBlock>
       <div className="h-12" />
     </div>
