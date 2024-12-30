@@ -11,7 +11,7 @@ function Word({children, word, highlight}:{children:React.ReactNode, word:string
 
 function S({children}: {children?:React.ReactNode}) {
   return (
-    <div className="leading-normal text-[1.02rem] pb-[0.15rem] pt-[0.3rem]">
+    <div className="leading-normal text-[1.1rem] pb-[0.15rem] pt-[0.3rem]">
       <strong>{children}</strong>
     </div>
   )
@@ -181,15 +181,34 @@ fn main() {
 println!("{}", std::mem::size_of_val(y)); // output: 3\nprintln!("{}", std::mem::size_of_val(&&x)); // output: 8`}
       </CodeBlock>
       注意, &x相当于&&str. 此例说明&str占用内存大小为16字节, x指向的字符串占用内存大小为9字节, y指向的字符串占用内存大小为3字节, &&str占用内存大小为8字节(&&...&str占用内存大小也是8字节). <br />
-      <Quote>可以推测: Rust中引用的实质是一个包含指向目标指针(及其他元数据)的结构. 其中可变引用的指针相当于指针常量, 不可变引用的指针相当于常量指针常量. </Quote>
+      <Quote><strong>可以推测: Rust中引用的实质是一个包含指向目标内存的指针(及其他元数据)的结构. 其中可变引用的指针相当于指针常量, 不可变引用的指针相当于常量指针常量. 可以把引用看做指针, 只不过使用时默认解地址. </strong></Quote>
       <Quote>注: 布尔类型在Rust中占1字节</Quote>
       <S>对临时值的引用</S>
       <CodeBlock lang="rust" className="w-[800px] m-2">
-        {`let x:i32 = 6;\nlet y = &(x as u32);\nprintln!("Address of x: {:p}", &x); // 原变量地址\nprintln!("Address of y: {:p}", y);  // 引用临时值的地址`}
+        {`let x:i32 = 6;\nlet y = &(x as u32);\nprintln!("Address of x: {:p}", &x); // 原变量地址\nprintln!("Address of y: {:p}", y);  // 临时值的地址`}
       </CodeBlock>
       如上所示, (x as u32)产生一个临时值, 其存放位置不再是x的内存地址, 该临时值的所有权归Rust系统管理, y对其引用会使其周期延长至与y相同.
-
-
+      <S>表达式</S>
+      什么是表达式: <strong>有返回值就是表达式</strong>.
+      <CodeBlock lang="rust" className="w-[800px] m-2">
+        {`let y = {\n  let x = 3;\n  x + 1\n};`}
+      </CodeBlock>   
+      如上所示, {`'{}'`}及其内部为一个表达式, x + 1 的计算结果应该不会存放在单独的临时区域, 而是直接存放到变量y所有的内存中. 而包含了';'的一定为语句, 语句没有返回值.
+      <S>Rust的"传值"</S>
+      <strong>注意, Rust中"传值"默认传递所有权而不是拷贝, 而且拥有所有权的变量周期结束时会释放该内存.(尤其注意函数传参, 一般传引用或使用clone)</strong> <br />示例代码: 
+      <CodeBlock lang="rust" className="w-[800px] m-2">
+        {`let s = String::from("哈哈哈");\n{\n  let s1 = s; \n}\nprintln!("{}", &s); // error: borrow of moved value: s`}
+      </CodeBlock>
+      <S>切片</S>
+      切片允许我们引用集合中部分连续的元素序列，而不是引用整个集合, Rust 语言特性内置的 str 和 [u8] 等类型都是切片, 而 [u8;N(固定大小)] 是数组. <br />
+      Rust中, 栈的总大小是固定的, 栈变量的大小也必须在编译期就能确定, 因此栈上只能创建固定大小类型的变量. 切片是一种动态大小类型(DST), 因此只能在堆上创建, 然后在栈上创建其引用. <br />
+      <CodeBlock lang="rust" className="w-[800px] m-2">
+        {`let s = String::from("哈哈哈");\n// let s1 = s[0..3];\n//     ^^ doesn't have a size known at compile-time\nlet s1 = &s[0..3]; // correct, s1: &str`}
+      </CodeBlock>
+      还要注意, 即使是切片的不同部分, 也不能同时存在可变引用:
+      <CodeBlock lang="rust" className="w-[900px] m-2">
+        {`let mut s = String::from("哈哈哈");\nlet mut s1 = &mut s[0..=2];\nlet mut s2 = &mut s[3..=5]; // cannot borrow 's' as mutable more than once at a time.\nprintln!("{}", s1);`}
+      </CodeBlock>
       <div className="h-12" />
     </div>
   )
