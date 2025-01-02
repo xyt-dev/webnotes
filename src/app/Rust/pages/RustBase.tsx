@@ -175,16 +175,35 @@ fn main() {
       let定义的变量虽然也默认不可变, 但只能在局部作用域内声明, 声明时可以暂时不绑定任何值, 可以绑定运行期才能确定的值, 且可自动推断出其类型. <br />
       <Quote><strong>注: 不是mut的变量理论上不具有内部可变性, 因为可变性定义会递归向成员传递.</strong> (除非使用Cell类型(UnsafeCell是Rust唯一允许通过不可变引用修改内部数据的类型)) (GPT理解)</Quote>
       <S>字符和字符串</S>
-      Rust中字符类型char为Unicode编码, 一个字符占4字节, 除非通过 b'' 显式指出其为ASCII编码(实际为u8类型); 而字符串是UTF-8编码, ASCII字符在UTF-8编码中占用的是1字节! <br />
+      Rust中字符类型char为Unicode编码, 一个字符占4字节, 除非通过 b'' 显式指出其为ASCII编码(实际为u8类型); 而字符串是UTF-8编码, ASCII字符在UTF-8编码中占用的是1字节. <br />
       &str是字符串切片(对字符串数据的引用), 其内部包含一个指针和长度字段, 在64位系统下&str类型变量占16字节. <br />
+      由于Rust中字符串是UTF-8编码, 字符长度不等, 所以不提供基于地址的下标索引, 同时也要谨慎使用字符串切片(保证边界落在字符边界上). <br />
       <CodeBlock lang="rust" className="w-[800px] m-2">
         {`let x = "哈哈哈";\nlet y = "hhh";\nprintln!("{}", std::mem::size_of_val(&x)); // output: 16\nprintln!("{}", std::mem::size_of_val(x)); // output: 9
 println!("{}", std::mem::size_of_val(y)); // output: 3\nprintln!("{}", std::mem::size_of_val(&&x)); // output: 8`}
       </CodeBlock>
       &x类型的为&&str. 此例说明&str占用内存大小为16字节, x指向的字符串占用内存大小为9字节, y指向的字符串占用内存大小为3字节, &&str占用内存大小为8字节(&&...&str占用内存大小也是8字节). <br />
+      String的底层是一个u8类型的字节数组; 此外注意成员方法调用的隐含参数可以是 self / & self / <strong>mut& self</strong>. 示例如下:
+      <CodeBlock lang="rust" className="w-[800px] m-2">
+        {`fn main() {
+  let mut s = String::from("hello world");
+  let word = first_word(&s); // immutable borrow.
+  s.clear(); // error: mutable borrow occurs here.
+  println!("the first word is: {}", word);
+}
+fn first_word(s: &String) -> &str {
+  &s[..1]
+}
+// s.clear():
+pub fn clear(&mut self) {
+  self.vec.clear()
+}
+`}
+      </CodeBlock>
       <Quote>注: 布尔类型在Rust中占1字节</Quote>
       <Quote><strong>可以推测: Rust中引用的实质是一个包含指向目标内存的指针(及其他元数据)的结构. 其中可变引用的指针相当于指针常量, 不可变引用的指针相当于常量指针常量. 可以把引用看做指针, 
         其中不可变引用进行操作和计算时会自动解一层引用(可使用运算符'*'手动解引用, 注意解引用运算符'*'优先级比成员访问运算符'.'的优先级低). </strong></Quote>
+      <Quote>Rust要求类型转换必须显式转换, 但Rust又提供<strong>自动解引用机制(Auto-deref)</strong>, 可以定义自动解引用机制来作为一种隐式转换机制. </Quote>
       <S>对临时值的引用</S>
       <CodeBlock lang="rust" className="w-[800px] m-2">
         {`let x: i32 = 6;\nlet y = &(x as u32);\nprintln!("Address of x: {:p}", &x); // 原变量地址\nprintln!("Address of y: {:p}", y);  // 临时值的地址`}
@@ -193,7 +212,11 @@ println!("{}", std::mem::size_of_val(y)); // output: 3\nprintln!("{}", std::mem:
       <CodeBlock lang="rust" className="w-[800px] m-2">
         {`let s = &String::from("hello");`}
       </CodeBlock>
-      以上代码同理.
+      以上代码同理. <br />
+      注意: 引用临时值周期自动延长只适用于绑定的声明和初始化同时发生的情况, 如下不能通过编译: 
+      <CodeBlock lang="rust" className="w-[1030px] m-2">
+        {`let s;\ns = &String::from("hello"); // error: creates a temporary value which is freed while still in use.\nprintln!("{}", s);`}
+      </CodeBlock>
       <S>表达式</S>
       什么是表达式: <strong>有返回值就是表达式</strong>.
       <CodeBlock lang="rust" className="w-[800px] m-2">
@@ -210,14 +233,33 @@ println!("{}", std::mem::size_of_val(y)); // output: 3\nprintln!("{}", std::mem:
       <CodeBlock lang="rust" className="w-[1000px] m-2">
         {`let mut s = String::from("哈哈哈");\nlet mut s1 = &mut s[0..=2];\nlet mut s2 = &mut s[3..=5]; // error: cannot borrow 's' as mutable more than once at a time.\nprintln!("{}", s1);`}
       </CodeBlock>
-      <S>Rust的"传值"(包括传参和返回值)</S>
+      <S>Rust的"传值"(包括传参、返回值、for语句传入集合等)</S>
       <strong>Rust中"传值"要分情况讨论, 对于实现了Copy trait的类型(如所有基本类型和不可变引用&T, 以及基本类型的元组和数组, 基本类型的数组的数组...)来说传值是自动拷贝(使用Copy语义), 
-        而对于没有实现Copy trait的类型(如String等非基本类型)来说传值是传递所有权(默认是Move语义)而不是拷贝. 
-        而且要注意拥有所有权的变量周期结束时会释放该内存.(尤其对于函数传参要注意是否应该 传引用 / 使用clone手动拷贝 / 通过返回值归还所有权)</strong> 
+        而对于没有实现Copy trait的类型(如String等非基本类型, 可变引用&mut T)来说传值是传递所有权(默认是Move语义)而不是拷贝. 
+        而且要注意拥有所有权的变量周期结束时会释放该内存.(尤其对于函数传参要注意是否应该 传引用 / 使用clone手动拷贝 / 通过返回值归还所有权)</strong> <br />
+      <strong>注意, 变量被引用(即借用)时, 无论存在可变引用还是不可变引用, 都不能在中途Move所有权. </strong>
       <Quote>注意可变引用 &mut T 是不可以Copy的; <br />Copy是浅拷贝.</Quote>
       示例代码:
       <CodeBlock lang="rust" className="w-[800px] m-2">
         {`let s = String::from("哈哈哈");\n{\n  let s1 = s; \n}\nprintln!("{}", &s); // error: borrow of moved value: s`}
+      </CodeBlock>
+      <S>模式匹配</S>
+      <Quote>一般而言, 只匹配一个条件且忽略其他条件时就用 if let, 否则都用 match.</Quote>
+      模式具有可反驳模式和不可反驳模式, 即看模式是否一定能匹配待匹配的值. 注意, 模式匹配基于的是待匹配值的类型而非其具体值. 如: <br />
+      <CodeBlock lang="rust" className="w-[800px] m-2">
+        {`// 'let' bindings require an "irrefutable pattern".\nlet 42 = 42; // refutable pattern!\nlet Some(a) = Some(42); // refutable pattern!`}
+      </CodeBlock>
+      let语句, 函数传参等在Rust中本质上都属于模式匹配. <br />
+      对于可反驳模式, 可以使用 let-else 语句. <br />
+      模式匹配同时常进行绑定操作, 可以绑定为所有者或绑定为引用(模式中变量名前+ref), 见以下示例:
+      <CodeBlock lang="rust" className="w-[800px] m-2">
+        {`enum Message {\n  Quit,\n  Move { x: i32, y: i32 },\n  Write(String),\n  ChangeColor(i32, i32, i32),\n}\nlet m = Message::Write("哈哈哈".to_string());\nlet m1 = &m;\n// ...
+let &Message::Write(ref s) = m1 else { return; };\nprintln!("{:?}", s);`}
+      </CodeBlock>
+      Rust模式匹配是静态的, 即要求模式在编译期完全确定, 不允许直接使用动态计算的值(如 String). 对于动态的(运行时的)值的匹配, 可以使用"条件守卫". 如: <br />
+      <CodeBlock lang="rust" className="w-[800px] m-2">
+        {`let msg = Message::Write("哈哈哈".to_string());\nmatch msg {\n  Message::Write(ref s) if s == "哈哈哈" =>\n     println!("Matched static string 'haha'!"),
+  _ => println!("No match."),\n}`}
       </CodeBlock>
       <div className="h-12" />
     </div>
