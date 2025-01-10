@@ -4,11 +4,13 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import ArchLinuxConfig from "./ArchlinuxConfig";
 import DockerImages from "./DockerImages";
+import RemoteConfig from "./RemoteConfig";
 
 export default function DataStructurePage() {
   const pages: { [key: string]: React.ReactNode } = {
     "ArchLinuxConfig": <ArchLinuxConfig />,
     "DockerImages": <DockerImages />,
+    "RemoteConfig": <RemoteConfig />,
   }
   const [pageRenderingName, setPageRenderingName] = useState("")
   useEffect(() => {
@@ -39,6 +41,7 @@ export default function DataStructurePage() {
     <DaisySidebar page={pages[pageRenderingName]}>
       <Leaf pageName="ArchLinuxConfig">ArchLinuxConfig</Leaf>
       <Leaf pageName="DockerImages">DockerImages</Leaf>
+      <Leaf pageName="RemoteConfig">RemoteConfig</Leaf>
     </DaisySidebar>
   )
 }

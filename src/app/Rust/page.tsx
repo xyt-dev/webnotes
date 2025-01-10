@@ -1,6 +1,7 @@
 "use client"
 import DaisySidebar, { DaisySidebarLeaf, DaisySidebarNode as Node } from "@/components/DaisySidebar";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import RustBase from "./pages/RustBase";
 
 export default function DaisyPages() {
@@ -35,6 +36,7 @@ export default function DaisyPages() {
   return (
     <DaisySidebar page={pages[pageRenderingName]}>
       <Leaf pageName="RustBase">Rust语言基础</Leaf>
+      <li><Link href='https://course.rs' legacyBehavior><a target="_blank" rel="noopener noreferrer">Rust语言圣经</a></Link></li>
     </DaisySidebar>
   )
 }

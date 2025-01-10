@@ -201,9 +201,10 @@ pub fn clear(&mut self) {
 `}
       </CodeBlock>
       <Quote>注: 布尔类型在Rust中占1字节</Quote>
-      <Quote><strong>可以推测: Rust中引用的实质是一个包含指向目标内存的指针(及其他元数据)的结构. 其中可变引用的指针相当于指针常量, 不可变引用的指针相当于常量指针常量. 可以把引用看做指针, 
-        其中不可变引用进行操作和计算时会自动解一层引用(可使用运算符'*'手动解引用, 注意解引用运算符'*'优先级比成员访问运算符'.'的优先级低). </strong></Quote>
-      <Quote>Rust要求类型转换必须显式转换, 但Rust又提供<strong>自动解引用机制(Auto-deref)</strong>, 可以定义自动解引用机制来作为一种隐式转换机制. </Quote>
+      <Quote><strong>可以推测: Rust中引用的实质是一个包含指向目标内存的指针(及其他元数据)的结构. 可以把引用看做指针(或胖指针), 其中可变引用的指针相当于指针常量, 不可变引用的指针相当于常量指针常量.
+        <br />Rust中访问字段、运算符重载(如<span className="italic">u32+&u32</span>)、方法调用(通过self参数)时可以自动 引用/解引用 以适配 类型(形参类型), 普通函数调用参数没有自动适配. <br />
+        可使用运算符'*'手动解引用, 注意解引用运算符'*'优先级比成员访问运算符'.'的优先级低. </strong></Quote>
+      <Quote>Rust要求类型转换必须显式转换, 但Rust又提供<strong>自动解引用机制(Auto-deref)</strong>, 可以通过自定义自动解引用机制来作为一种隐式转换机制. </Quote>
       <S>对临时值的引用</S>
       <CodeBlock lang="rust" className="w-[800px] m-2">
         {`let x: i32 = 6;\nlet y = &(x as u32);\nprintln!("Address of x: {:p}", &x); // 原变量地址\nprintln!("Address of y: {:p}", y);  // 临时值的地址`}
@@ -251,7 +252,7 @@ pub fn clear(&mut self) {
       </CodeBlock>
       let语句, 函数传参等在Rust中本质上都属于模式匹配. <br />
       对于可反驳模式, 可以使用 let-else 语句. <br />
-      模式匹配同时常进行绑定操作, 可以绑定为所有者或绑定为引用(模式中变量名前+ref), 见以下示例:
+      模式匹配同时常进行绑定操作(即模式可能创建新变量, 且会遮蔽同名变量), 可以绑定为所有者或绑定为引用(模式中的变量名前+ref), 见以下示例:
       <CodeBlock lang="rust" className="w-[800px] m-2">
         {`enum Message {\n  Quit,\n  Move { x: i32, y: i32 },\n  Write(String),\n  ChangeColor(i32, i32, i32),\n}\nlet m = Message::Write("哈哈哈".to_string());\nlet m1 = &m;\n// ...
 let &Message::Write(ref s) = m1 else { return; };\nprintln!("{:?}", s);`}
@@ -261,6 +262,14 @@ let &Message::Write(ref s) = m1 else { return; };\nprintln!("{:?}", s);`}
         {`let msg = Message::Write("哈哈哈".to_string());\nmatch msg {\n  Message::Write(ref s) if s == "哈哈哈" =>\n     println!("Matched static string 'haha'!"),
   _ => println!("No match."),\n}`}
       </CodeBlock>
+      <Quote>matches!(expression, pattern) 可检验模式是否匹配.</Quote>
+      <S>Trait</S>
+      <Quote>对于实现了From&lt;T&gt;的类型，Rust会通过<strong>blanket implementation</strong>方式自动实现Into&lt;T&gt;: <br />
+      <CodeBlock lang="rust" className="w-[800px] m-2">
+        {`impl<T, U> Into<U> for T\nwhere\n  U: From<T>,\n{\n  fn into(self) -> U {\n    U::from(self)\n  }\n}`}
+      </CodeBlock>
+      </Quote>
+      <Quote>数组元素的类型实现了 Copy/Clone Trait, 对应数组也会自动实现 Copy/Clone Trait. (应该是编译器为这两个特殊Trait提供了特殊支持) </Quote>
       <div className="h-12" />
     </div>
   )
