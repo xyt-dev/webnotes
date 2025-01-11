@@ -263,7 +263,12 @@ let &Message::Write(ref s) = m1 else { return; };\nprintln!("{:?}", s);`}
   _ => println!("No match."),\n}`}
       </CodeBlock>
       <Quote>matches!(expression, pattern) 可检验模式是否匹配.</Quote>
-      <S>Trait</S>
+      <S>多态、分发与Trait</S>
+      多态 包括编译时多态和运行时多态, 其核心思想是"同一个接口, 不同的行为". <br />
+      分发(分派, dispatch) 指根据条件将程序的执行“分派”到合适的函数或方法, 是实现多态的主要机制，包括静态分发(编译时决定)和动态分发(运行时决定). 重载在编译时确定, 属于静态分发; 重写在运行时确定, 属于动态分发. 
+        泛型在编译时的单态化属于静态分发(Java泛型没有单态化, 但Java泛型的类型检查和方法绑定发生在编译时, 是静态分发; 之后将类型擦除为其上界, 运行时为动态分发). Rust的dyn Trait为动态分发.
+      <Quote><strong>对类型系统的理解(自己理解): 任何类型都可定义为其数据字段和其支持的操作(方法)的集合, 为了避免无限嵌套循环定义, 要先规定一组基本类型和基本操作(一般为计算机底层天然支持的(如u32、f32等)基本类型及其基本数学运算和逻辑运算), 
+        这些基本类型和基本操作不再含有其他类型和操作, 由该类型系统外部(计算机硬件)直接实现.</strong></Quote>
       <Quote>对于实现了From&lt;T&gt;的类型，Rust会通过<strong>blanket implementation</strong>方式自动实现Into&lt;T&gt;: <br />
       <CodeBlock lang="rust" className="w-[800px] m-2">
         {`impl<T, U> Into<U> for T\nwhere\n  U: From<T>,\n{\n  fn into(self) -> U {\n    U::from(self)\n  }\n}`}
