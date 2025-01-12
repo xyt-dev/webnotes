@@ -32,7 +32,7 @@ const CodeBlock = ({ children, inline, className, lang = 'javascript' }: { child
   } else {
     return (
       <pre className={`p-[0.36rem] pl-2 pr-2 m-0 bg-[#222436] inline ${className}`} >
-        <code className={`leading-normal text-base language-${language} bg-[#222436]`} 
+        <code className={`leading-normal language-${language} bg-[#222436]`} 
               dangerouslySetInnerHTML={{ __html: highlightedCode }}
         />
       </pre>

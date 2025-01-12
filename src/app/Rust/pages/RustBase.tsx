@@ -210,10 +210,10 @@ pub fn clear(&mut self) {
         {`let x: i32 = 6;\nlet y = &(x as u32);\nprintln!("Address of x: {:p}", &x); // 原变量地址\nprintln!("Address of y: {:p}", y);  // 临时值的地址`}
       </CodeBlock>
       如上所示, (x as u32)产生一个临时值, 其存放位置不再是x的内存地址, 该临时值的所有权归Rust系统管理, y对其引用会使其周期延长至与y相同.
+      以下代码同理: <br />
       <CodeBlock lang="rust" className="w-[800px] m-2">
-        {`let s = &String::from("hello");`}
+        {`let s = &String::from("hello");\nfn test(s: &String) { }\ntest(&String::from("hello"))`}
       </CodeBlock>
-      以上代码同理. <br />
       注意: 引用临时值周期自动延长只适用于绑定的声明和初始化同时发生的情况, 如下不能通过编译: 
       <CodeBlock lang="rust" className="w-[1030px] m-2">
         {`let s;\ns = &String::from("hello"); // error: creates a temporary value which is freed while still in use.\nprintln!("{}", s);`}
@@ -266,9 +266,11 @@ let &Message::Write(ref s) = m1 else { return; };\nprintln!("{:?}", s);`}
       <S>多态、分发与Trait</S>
       多态 包括编译时多态和运行时多态, 其核心思想是"同一个接口, 不同的行为". <br />
       分发(分派, dispatch) 指根据条件将程序的执行“分派”到合适的函数或方法, 是实现多态的主要机制，包括静态分发(编译时决定)和动态分发(运行时决定). 重载在编译时确定, 属于静态分发; 重写在运行时确定, 属于动态分发. 
-        泛型在编译时的单态化属于静态分发(Java泛型没有单态化, 但Java泛型的类型检查和方法绑定发生在编译时, 是静态分发; 之后将类型擦除为其上界, 运行时为动态分发). Rust的dyn Trait为动态分发.
-      <Quote><strong>对类型系统的理解(自己理解): 任何类型都可定义为其数据字段和其支持的操作(方法)的集合, 为了避免无限嵌套循环定义, 要先规定一组基本类型和基本操作(一般为计算机底层天然支持的(如u32、f32等)基本类型及其基本数学运算和逻辑运算), 
-        这些基本类型和基本操作不再含有其他类型和操作, 由该类型系统外部(计算机硬件)直接实现.</strong></Quote>
+        泛型在编译时的单态化属于静态分发(Java泛型没有单态化, 但Java泛型的类型检查和方法绑定发生在编译时, 是静态分发; 之后将类型擦除为其上界, 运行时为动态分发). Rust的dyn Trait为动态分发. <br />
+      <strong>对类型系统的理解(自己理解): 任何类型都可定义为其数据字段和其支持的操作(方法)的集合, 为了避免无限嵌套循环定义, 要先规定一组基本类型和基本操作(一般为计算机底层天然支持的(如u32、f32等)基本类型及其基本数学运算和逻辑运算), 
+        这些基本类型和基本操作不再含有其他类型和操作, 由该类型系统外部(最终由计算机硬件)直接实现. <br />Trait是一组抽象操作(即规定了输入参数和输出返回值类型的函数声明)的集合, 其不包含数据字段, 但其impl中隐式包含了这些操作的相关数据字段, 
+        Trait可看作一种抽象类型, 但其具体实现时又可看作一个具体类型, 所以可将 dyn Trait 作为形参或返回值类型. 在动态类型语言中, 此称作"Duck Type"(特征类型). </strong>
+      <TraitVsInterface />
       <Quote>对于实现了From&lt;T&gt;的类型，Rust会通过<strong>blanket implementation</strong>方式自动实现Into&lt;T&gt;: <br />
       <CodeBlock lang="rust" className="w-[800px] m-2">
         {`impl<T, U> Into<U> for T\nwhere\n  U: From<T>,\n{\n  fn into(self) -> U {\n    U::from(self)\n  }\n}`}
@@ -277,5 +279,102 @@ let &Message::Write(ref s) = m1 else { return; };\nprintln!("{:?}", s);`}
       <Quote>数组元素的类型实现了 Copy/Clone Trait, 对应数组也会自动实现 Copy/Clone Trait. (应该是编译器为这两个特殊Trait提供了特殊支持) </Quote>
       <div className="h-12" />
     </div>
+  )
+}
+
+
+
+function TraitVsInterface() {
+  return (
+    <Quote className="border-l-blue-300"><strong>Rust的Trait和Java的Interface比较类似, 但它们之间存在主要以下区别: </strong><br />
+      1. Rust中每个Trait都有独立的命名空间, 可以给同一Struct实现多个Trait且其中方法可以同名; Java也可以给同一Class实现多个Interface但前提是其中方法不能同名. <br />
+      2. Rust的Trait和Java的Interface都可以使用泛型定义. Rust中泛型Trait可以为同一Struct实现不同具体类型的实现; 而Java中由于泛型通过类型擦除实现, 泛型Interface只能给同一Class实现一种类型的实现, 例如以下是<strong>非法</strong>的: <br />
+      <CodeBlock lang="java" className="w-[800px] m-2">
+          {`interface foo<T> {
+  void somemethod(T input);
+}
+class twogenerics implements foo<integer>, foo<string> {
+  // illegal
+  @override
+  public void somemethod(integer input) {
+      system.out.println("called with integer: " + input);
+  }
+  @override
+  public void somemethod(string input) {
+      system.out.println("called with string: " + input);
+  }
+}`}
+        </CodeBlock>
+        而以下<strong>合法</strong>:
+        <CodeBlock lang="rust" className="w-[800px] m-2">
+          {`struct TwoGenerics;
+trait Foo<T> {
+    fn some_method(&self, input: T);
+}
+impl Foo<i32> for TwoGenerics {
+    fn some_method(&self, input: i32) {}
+}
+impl Foo<String> for TwoGenerics {
+    fn some_method(&self, input: String) {}
+}`}
+      </CodeBlock>
+      3. Rust中可以自定义Trait然后给标准库或其他crate中的Struct提供实现, 称为Trait实现扩展; java不支持. <br />
+      4. Rust中Trait可以为泛型类型的所有满足某些约束条件的具体类型选择性地提供实现, 称为条件实现. 例如: 
+        <CodeBlock lang="rust" inline className="w-[800px] m-2">{`impl<T> Clone for Vec<T> where T: Clone {...}`}</CodeBlock>; java泛型不支持条件实现. <br />
+      5. Rust的Trait中可定义关联常量和关联类型, 例如:
+        <CodeBlock lang="rust" className="w-[800px] m-2">
+          {`trait Shape {
+    const SIDES: u32; // 关联常量
+}
+struct Square;
+struct Triangle;
+impl Shape for Square {
+    const SIDES: u32 = 4; // 为 Square 实现关联常量
+}
+impl Shape for Triangle {
+    const SIDES: u32 = 3; // 为 Triangle 实现关联常量
+}
+
+trait Iterator {
+    type Item; // 关联类型
+    fn next(&mut self) -> Option<Self::Item>;
+}
+struct Counter {
+    count: u32,
+}
+impl Iterator for Counter {
+    type Item = u32; // 为 Counter 实现关联类型
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.count < 5 {
+            self.count += 1;
+            Some(self.count)
+        } else {
+            None
+        }
+    }
+}`}
+      </CodeBlock>
+      而Java的Interface只可定义static final常量(不能在实现中修改), 且不支持关联类型, 只能通过泛型实现类似功能, 例如:
+      <CodeBlock lang="java" className="w-[800px] m-2">
+        {`interface Iterator<T> {
+    T next();
+}
+class Counter implements Iterator<Integer> {
+    private int count = 0;
+    @Override
+    public Integer next() {
+        if (count < 5) {
+            count++;
+            return count;
+        } else {
+            return null;
+        }
+    }
+}`}
+      </CodeBlock>
+      6. Rust的Trait中可以有非方法函数(直接经命名空间调用), 且可以被重写; java中可以定义静态函数但不能被重写. <br />
+      7. Java的Interface支持继承(一个接口可以继承另一个接口),  Rust不支持传统意义上的继承. <br />
+      总之, Rust的Trait比Java的Interface更加强大.
+    </Quote>
   )
 }
