@@ -267,9 +267,16 @@ let &Message::Write(ref s) = m1 else { return; };\nprintln!("{:?}", s);`}
       多态 包括编译时多态和运行时多态, 其核心思想是"同一个接口, 不同的行为". <br />
       分发(分派, dispatch) 指根据条件将程序的执行“分派”到合适的函数或方法, 是实现多态的主要机制，包括静态分发(编译时决定)和动态分发(运行时决定). 重载在编译时确定, 属于静态分发; 重写在运行时确定, 属于动态分发. 
         泛型在编译时的单态化属于静态分发(Java泛型没有单态化, 但Java泛型的类型检查和方法绑定发生在编译时, 是静态分发; 之后将类型擦除为其上界, 运行时为动态分发). Rust的dyn Trait为动态分发. <br />
-      <strong>对类型系统的理解(自己理解): 任何类型都可定义为其数据字段和其支持的操作(方法)的集合, 为了避免无限嵌套循环定义, 要先规定一组基本类型和基本操作(一般为计算机底层天然支持的(如u32、f32等)基本类型及其基本数学运算和逻辑运算), 
-        这些基本类型和基本操作不再含有其他类型和操作, 由该类型系统外部(最终由计算机硬件)直接实现. <br />Trait是一组抽象操作(即规定了输入参数和输出返回值类型的函数声明)的集合, 其不包含数据字段, 但其impl中隐式包含了这些操作的相关数据字段, 
-        Trait可看作一种抽象类型, 但其具体实现时又可看作一个具体类型, 所以可将 dyn Trait 作为形参或返回值类型. 在动态类型语言中, 此称作"Duck Type"(特征类型). </strong>
+      <strong>
+        对类型系统的理解(自己理解): 任何类型都可定义为其数据字段和其支持的操作(方法)的集合, 为了避免无限嵌套循环定义, 要先规定一组基本类型和基本操作(一般为计算机底层天然支持的(如u32、f32等)基本类型及其基本数学运算和逻辑运算), 
+        这些基本类型和基本操作不再含有其他类型和操作, 由该类型系统外部(最终由计算机硬件)直接实现. <br />
+        Trait是一组抽象操作(即规定了输入参数和输出返回值类型的函数声明)的集合, 其不包含数据字段, 但其impl中隐式包含了这些操作的相关数据字段, 
+        Trait可看作一种抽象类型, 但其具体实现时又可看作一个具体类型, 所以可将 dyn Trait 作为形参或返回值类型. 在动态类型语言中, 此称作"Duck Type"(特征类型).
+        特征类型的实例称作特征对象, 特征类型是动态类型, 特征对象的具体大小编译时未知, 只能存放在堆中, 然后通过特征对象的引用类型使用. 特征对象的引用类型是一个胖指针, 其包含两部分: <br />
+        1. 一个数据指针: 在运行时指向具体实例; <br />
+        2. 一个或多个虚表指针: 在运行时分别指向具体实例所属实现类型的各个虚表(具体实现类型会在编译时为其实现的每个特征分别构建一个虚表(vtable)), 虚表中存放指向该实现类型中对应特征方法的实际代码的指针. <br />
+        对"虚表"的理解(自己理解): 是可被重写的虚函数所需使用的表(Rust的Trait中定义的函数可以看作虚函数). 将指向需要调用的实际函数的指针整合为一个的连续的指针数组, 方便查找和指针的重用.
+      </strong>
       <TraitVsInterface />
       <Quote>对于实现了From&lt;T&gt;的类型，Rust会通过<strong>blanket implementation</strong>方式自动实现Into&lt;T&gt;: <br />
       <CodeBlock lang="rust" className="w-[800px] m-2">
@@ -293,7 +300,7 @@ function TraitVsInterface() {
           {`interface foo<T> {
   void somemethod(T input);
 }
-class twogenerics implements foo<integer>, foo<string> {
+class Twogenerics implements foo<integer>, foo<string> {
   // illegal
   @override
   public void somemethod(integer input) {
@@ -319,7 +326,7 @@ impl Foo<String> for TwoGenerics {
 }`}
       </CodeBlock>
       3. Rust中可以自定义Trait然后给标准库或其他crate中的Struct提供实现, 称为Trait实现扩展; java不支持. <br />
-      4. Rust中Trait可以为泛型类型的所有满足某些约束条件的具体类型选择性地提供实现, 称为条件实现. 例如: 
+      4. Rust中Trait可以为泛型类型的所有满足某些约束条件的具体类型选择性地提供实现, 称为<strong>条件实现</strong>. 例如: 
         <CodeBlock lang="rust" inline className="w-[800px] m-2">{`impl<T> Clone for Vec<T> where T: Clone {...}`}</CodeBlock>; java泛型不支持条件实现. <br />
       5. Rust的Trait中可定义关联常量和关联类型, 例如:
         <CodeBlock lang="rust" className="w-[800px] m-2">
@@ -374,6 +381,7 @@ class Counter implements Iterator<Integer> {
       </CodeBlock>
       6. Rust的Trait中可以有非方法函数(直接经命名空间调用), 且可以被重写; java中可以定义静态函数但不能被重写. <br />
       7. Java的Interface支持继承(一个接口可以继承另一个接口),  Rust不支持传统意义上的继承. <br />
+      8. Rust的Trait中定义的函数可以看作虚函数, Java的Interface和Class中定义的函数默认<strong>是</strong>虚函数, C++的Class中定义的方法默认<strong>不是</strong>虚函数. <br />
       总之, Rust的Trait比Java的Interface更加强大.
     </Quote>
   )
