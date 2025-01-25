@@ -81,7 +81,7 @@ export default function RustBase() {
         默认情况下, Rust设定了若干个会自动导入到每个程序作用域中的标准库内容，这组内容被称为预导入(prelude)内容. <br />
         <details className="pl-[0.5rem] text-base m-1">
             <summary className="cursor-pointer w-fit">[预导入内容]</summary>
-            {Img({src:"Rust/prelude.png", width:700, align:"left"})}
+            {Img({src:"Images/Rust/prelude.png", width:700, align:"left"})}
         </details>
         如果需要使用的类型不在预导入内容中, 就必须使用 use 语句显式地将其引入作用域, 然后即可调用io库中的函数stdin().
         (如果程序的开头没有使用 use std::io 引入io库，我们仍可以通过把函数调用写成 std::io::stdin() 来使用该函数). <br />
@@ -277,8 +277,13 @@ let &Message::Write(ref s) = m1 else { return; };\nprintln!("{:?}", s);`}
         2. 一个或多个虚表指针: 在运行时分别指向具体实例所属实现类型的各个虚表(具体实现类型会在编译时为其实现的每个特征分别构建一个虚表(vtable)), 虚表中存放指向该实现类型中对应特征方法的实际代码的指针. <br />
         对"虚表"的理解(自己理解): 是可被重写的虚函数所需使用的表(Rust的Trait中定义的函数可以看作虚函数). 将指向需要调用的实际函数的指针整合为一个的连续的指针数组, 方便查找和指针的重用.
       </strong>
+    <Quote className="border-l-fuchsia-300">
+      dyn Trait 编译时由于类型未知, 相当于"类型擦除", 因此需要<strong>注意以下两点:</strong> <br />
+      1. 用于dyn Trait的Trait中方法不能返回Self类型, 因为Self的具体类型在编译时未知, 编译时无法使用该返回值.(方法内部可以使用Self类型, 因为是在具体类型的上下文中.) <br />
+      2. 用于dyn Trait的Trait方法不可以是泛型方法, 因为编译时不知道应该给哪个实现类型进行该方法的单态化. <br />
+    </Quote>
       <TraitVsInterface />
-      <Quote>对于实现了From&lt;T&gt;的类型，Rust会通过<strong>blanket implementation</strong>方式自动实现Into&lt;T&gt;: <br />
+      <Quote>对于实现了From&lt;T&gt;的类型，Rust会通过<strong>blanket implementation(条件实现)</strong>方式自动实现Into&lt;T&gt;: <br />
       <CodeBlock lang="rust" className="w-[800px] m-2">
         {`impl<T, U> Into<U> for T\nwhere\n  U: From<T>,\n{\n  fn into(self) -> U {\n    U::from(self)\n  }\n}`}
       </CodeBlock>

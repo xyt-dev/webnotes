@@ -29,7 +29,9 @@ export default function DockerImages() {
       <h3>jellyfin: </h3>
       <CodeBlock lang="bash" className="whitespace-pre-line">
         {`docker run -d \\
+          --restart always \\
           --name jellyfin \\
+          --netword host \\
           -e PUID=1000 \\
           -e PGID=1000 \\
           -e TZ=Asia/Shanghai \\
