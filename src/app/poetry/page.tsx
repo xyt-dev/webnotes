@@ -11,6 +11,63 @@ function Poetry({ children }: { children?: React.ReactNode }) {
   )
 }
 
+function Comment({ children, src }: {children?: React.ReactNode, src: string} ) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // 处理鼠标悬停
+  const handleHover = () => {
+    setIsHovered(true);
+  };
+
+  // 处理鼠标离开
+  const handleLeave = () => {
+    setIsHovered(false);
+  };
+
+  // 处理点击播放
+  const handleClick = () => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  return (
+    <div className="">
+      {/*  语音使用Xz乔希, GPT-Sovits训练系列 */}
+
+      <audio ref={audioRef} src={src} /> {/* 将音频文件放在 public/audio 目录 */}
+
+      {/* 交互文字 */}
+      <div
+        className={`
+          font-medium cursor-pointer
+          whitespace-pre-wrap
+          transition-all duration-300
+          ${isHovered ? 'text-blue-500 scale-[1.01]' : 'text-gray-700'}
+          ${isPlaying ? 'animate-pulse' : ''}
+        `}
+        onMouseEnter={handleHover}
+        onMouseLeave={handleLeave}
+        onClick={handleClick}
+        role="button"
+        tabIndex={0}
+        aria-label="Play audio"
+      >
+
+        {children}
+        
+      </div>
+    </div>
+  );
+}
+
 export default function PoetryPage() {
   const [checked, setChecked] = useState(false);
   const container = useRef<HTMLDivElement | null>(null);
@@ -105,26 +162,76 @@ export default function PoetryPage() {
 
  ————高山流水 
  九七七年 “八一”建军节50周年
+      
       ` }
       </Poetry>
 
+      <TextBox className="whitespace-pre-wrap text-center mb-10 !mx-5">
+专业文学评论: 
+      <Comment src="/poetry/满江红军旗颂[嘉然]_1.wav">
+      {`
+《满江红·軍旗颂》—— 一曲激荡山河的强军战歌
+高山流水先生于1977年“八一”建军节50周年之际挥毫泼墨，以《满江红》这一古典词牌为骨，以革命热血为魂，铸就了这首气势恢宏的《軍旗颂》。全词如战鼓擂动、军号嘹亮，既是对人民军队五十年峥嵘岁月的深情回望，更是对新时代强军征程的铿锵宣言，堪称革命浪漫主义与现实主义交融的典范之作。
+      `}
+      </Comment>
+      <Comment src="/poetry/满江红军旗颂[嘉然]_2.wav">
+      {`
+上阕以“彩云满天，旗更艳”开篇，将漫天霞光与猎猎军旗交相辉映，瞬间铺展出一幅壮丽的历史长卷。“井岗山头傲霜雪”以松柏凌寒之姿喻红军初创之艰，“延河岸边迎风卷”借延水奔涌之势显抗战洪流之壮，寥寥数笔便将井冈星火、延安灯塔的红色基因熔铸于词章之中。而“碧血映‘八一’，換人间”一句，更以血染战旗的悲壮意象，将革命先辈以生命缔造新中国的伟业升华至气吞山河的诗意境界。
+      `}
+      </Comment>
+      <Comment src="/poetry/满江红军旗颂[嘉然]_3.wav">
+      {`
+下阕笔锋陡转，以“新一代，继伟业”承接历史与未来，在“除‘四害’，谋新篇”的锐意革新中，迸发出拨云见日的时代强音。“六連举旗树榜样”彰显基层连队永葆本色的钢铁意志，“三軍迈步齐向前”勾勒百万雄师整装待发的磅礴阵势，而“要实现国防现代化，梦必圆”的结句，则将全词推向高潮，以斩钉截铁之语道出中华民族的强军之志，恰似惊雷破空，激荡人心。
+      `}
+      </Comment>
+      <Comment src="/poetry/满江红军旗颂[嘉然]_4.wav">
+      {`
+高山流水先生以如椽巨笔，将革命史诗的壮阔、强军梦想的炽烈熔于一炉，词中既有“快马加鞭”的紧迫豪情，又有“气象万千”的雄浑视野，更饱含“碧血映八一”的深沉缅怀。此词不仅是献给建军五十周年的瑰丽礼赞，更是穿越时空、激励后人的精神火炬，在古典词韵与现代军魂的共鸣中，奏响了永恒的英雄交响曲。
+      `}
+      </Comment>
+      </TextBox>
+
       <Poetry>
         {`
-荷塘月色   
+ 荷塘月色   
 
- 红荷满塘百媚生，
- 碧叶护花别样情。
- 好风掠过惊浴鸟，
- 浮萍散开見鱼群。
- 日暮长堤人流连，
- 月色幽静伴星云。
- 夜影如雪蛙声起，
- 歌咏芙蓉贯古今。
+红荷满塘百媚生，
+碧叶护花别样情。
+好风掠过惊浴鸟，
+浮萍散开見鱼群。
+日暮长堤人流连，
+月色幽静伴星云。
+夜影如雪蛙声起，
+歌咏芙蓉贯古今。
 
- ———高山流水
- 2023年7月
+———高山流水
+2023年7月
         `}
       </Poetry>
+      <TextBox className="whitespace-pre-wrap text-center mb-10 !mx-5">
+专业文学评论: 
+      <Comment src="/poetry/荷塘月色[嘉然]_1.wav">
+      {`
+《荷塘月色》—— 一幅水墨丹青里的古今禅韵
+高山流水先生癸卯年仲夏新作《荷塘月色》，以灵秀之笔绘天地大美，于方寸荷塘间窥见宇宙生机，在月色星辉中叩问永恒诗心。全诗似一幅徐徐展开的水墨长卷，既有“红荷碧叶”的秾丽鲜活，又有“夜影如雪”的空灵澄澈，更以“歌咏芙蓉贯古今”的哲思，将自然之美升华为跨越时空的生命礼赞，堪称现代田园诗的典范之作。
+      `}
+      </Comment>
+      <Comment src="/poetry/荷塘月色[嘉然]_2.wav">
+      {`
+起笔“红荷满塘百媚生”，以“百媚”二字点睛，令灼灼芙蕖顿生顾盼神飞之态；“碧叶护花别样情”则化静为动，赋予荷叶以守护者的深情，草木之缘竟显人间至性。颔联“好风掠过惊浴鸟，浮萍散开見鱼群”，风过鸟惊、萍开鱼现的刹那灵动，恰似天机偶得，于细微处见造物之妙，更暗含“动静相生”的东方美学真谛。
+      `}
+      </Comment>
+      <Comment src="/poetry/荷塘月色[嘉然]_3.wav">
+      {`
+高山流水大诗人的笔锋流转，由昼入夜，从“日暮长堤人流连”的尘世烟火，渐入“月色幽静伴星云”的宇宙苍茫。尾联“夜影如雪蛙声起”以通感之法，令月光可触、声息可视，而“歌咏芙蓉贯古今”如钟磬余音，将眼前荷塘与千年《离骚》“制芰荷以为衣”的吟咏遥相呼应，在物我两忘之境中，完成了一场自然与文明、瞬间与永恒的深邃对话。
+      `}
+      </Comment>
+      <Comment src="/poetry/荷塘月色[嘉然]_4.wav">
+      {`
+高山流水先生此作，以丹青妙手摹写荷塘风物，却不止步于形似；其字里行间浸润着庄周观鱼的物化之思，流淌着王维“月出惊山鸟”的禅意，更蕴藏屈子“香草美人”的寄托。诗中“碧叶护花”的温存与“蛙声贯古”的旷远交织，恰似一曲水墨写就的天籁之音，让喧嚣现代人得以暂避尘寰，在荷香月影中寻得心灵的桃源。这般诗心与哲思的交融，非胸有丘壑、目接洪荒者不能为也！
+      `}
+      </Comment>
+      </TextBox>
       <Poetry>
         {`
 新   荷

@@ -7,6 +7,9 @@ export default function HomePage() {
       <TextBox>
         <ul className="daisy-menu mx-auto text-lg rounded-box text-base-content min-h-full w-full p-3">
           <li>
+            <Link href="/poetry">高山流水大诗人诗词集</Link>
+          </li>
+          {/* <li>
             <Link href='/math'>Math</Link>
           </li>
           <li>
@@ -18,7 +21,7 @@ export default function HomePage() {
           <li>
             <Link href='/english'>English</Link>
           </li>
-          <li><Link href='/configs'>Configs</Link></li>
+          <li><Link href='/configs'>Configs</Link></li> */}
         </ul>
       </TextBox>
     </main>
