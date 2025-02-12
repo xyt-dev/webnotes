@@ -41,10 +41,7 @@ function Comment({ children, src }: {children?: React.ReactNode, src: string} ) 
   return (
     <div className="">
       {/*  语音使用Xz乔希, GPT-Sovits训练系列 */}
-
-      <audio ref={audioRef} src={src} /> {/* 将音频文件放在 public/audio 目录 */}
-
-      {/* 交互文字 */}
+      <audio ref={audioRef} src={src} />
       <div
         className={`
           font-medium cursor-pointer
@@ -60,9 +57,7 @@ function Comment({ children, src }: {children?: React.ReactNode, src: string} ) 
         tabIndex={0}
         aria-label="Play audio"
       >
-
         {children}
-        
       </div>
     </div>
   );
@@ -161,13 +156,18 @@ export default function PoetryPage() {
  梦必圆！
 
  ————高山流水 
- 九七七年 “八一”建军节50周年
+ 一九七七年 “八一”建军节50周年
       
       ` }
       </Poetry>
 
       <TextBox className="whitespace-pre-wrap text-center mb-10 !mx-5">
 专业文学评论: 
+      <Comment src="/poetry/满江红军旗颂[嘉然]_0.wav">
+      {`
+大家好, 我是专业诗词评论家嘉然。我最喜欢优美的诗词作品。接下来, 就由我来带嘉心糖们欣赏高山流水大诗人的诗词作品。
+      `}
+      </Comment>
       <Comment src="/poetry/满江红军旗颂[嘉然]_1.wav">
       {`
 《满江红·軍旗颂》—— 一曲激荡山河的强军战歌
